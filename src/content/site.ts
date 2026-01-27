@@ -20,7 +20,7 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-802879279",
     // keep your profile; individual projects will have their own github links below
     github: "https://github.com/anushka06onu",
-    resume: "PASTE_RESUME_LINK"
+    resume: "https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-hero-goto"
   },
 
   focusAreas: [
@@ -41,7 +41,7 @@ export const site = {
       program: "B.Sc. in Computer Science & Engineering (4th year)",
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
-      time: "2022 – Present",
+      time: "2023 – Present",
       notes: [
         "Currently in 4th year of CSE.",
         "CGPA: 3.93"
@@ -202,7 +202,7 @@ export const site = {
     {
       title: "Lab Prefect (OOP Java)",
       org: "Daffodil International University",
-      time: "2024",
+      time: "Spring 2025 – Summer 2025",
       bullets: [
         "Helped students during lab sessions with OOP Java concepts.",
         "Guided peers through exercises, debugging, and best practices."
