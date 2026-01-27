@@ -7,9 +7,8 @@ export default function SectionTitle({
 }) {
   return (
     <div className="mb-6">
-      <h2 className="text-xl font-semibold">{title}</h2>
-      {subtitle && <p className="text-sm text-gray-600">{subtitle}</p>}
+      <h2 className="text-xl font-semibold tracking-tight text-neutral-900">{title}</h2>
+      {subtitle ? <p className="mt-1 text-sm text-neutral-600">{subtitle}</p> : null}
     </div>
   );
 }
-
