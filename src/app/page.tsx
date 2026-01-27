@@ -23,9 +23,9 @@ export default function HomePage() {
         <div className="ambient-orb left-1/2 top-24 h-64 w-64 -translate-x-1/2 bg-emerald-400/25" />
         <div className="ambient-orb right-8 top-10 h-40 w-40 bg-sky-400/25 animate-[float-slow_10s_ease-in-out_infinite]" />
         <Container>
-          <section className="pt-14 pb-10 sm:pt-20">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              <div className="space-y-6">
+          <section className="pt-12 pb-8 sm:pt-20">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div className="space-y-5 text-center lg:space-y-6 lg:text-left">
                 <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1 text-xs uppercase tracking-[0.2em] text-emerald-200">
                   <span className="h-2 w-2 rounded-full bg-emerald-400" />
                   {site.location}
@@ -41,7 +41,7 @@ export default function HomePage() {
                   {site.about}
                 </p>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
                   <a
                     className="btn-base btn-md btn-emerald btn-hover btn-shine hover:bg-emerald-500"
                     href={`mailto:${site.links.email}`}
@@ -85,14 +85,14 @@ export default function HomePage() {
                   ) : null}
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
                   {(site.focusAreas ?? []).map((f) => (
                     <Badge key={f}>{f}</Badge>
                   ))}
                 </div>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-5 lg:space-y-6">
                 <div className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-full border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur-xl sm:max-w-[320px]">
                   <div className="absolute inset-0 bg-[radial-gradient(300px_circle_at_20%_0%,rgba(16,185,129,0.22),transparent_60%)]" />
                   <img
