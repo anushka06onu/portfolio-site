@@ -18,7 +18,8 @@ export const site = {
   links: {
     email: "fatehahossainanushka@gmail.com",
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-802879279",
-    github: "https://github.com/anushka06onu" 
+    // keep your profile; individual projects will have their own github links below
+    github: "https://github.com/anushka06onu"
   },
 
   focusAreas: [
@@ -29,79 +30,100 @@ export const site = {
   ],
 
   skills: {
-    "Web": ["HTML", "CSS", "JavaScript"],
+    Web: ["HTML", "CSS", "JavaScript"],
     "ML / Data": ["Python", "Pandas", "Scikit-learn (learning)"],
     "Systems / Tools": ["Linux (coursework/projects)", "Postfix/Email stack (project)"],
-    "Programming": ["C", "C++", "Java"]
+    Programming: ["C", "C++", "Java"]
   },
 
-  // Projects are now real and specific (no GitHub required)
   projects: [
     {
-      title: "Online To-let System (House Rental)",
-      category: "Full-stack / Web",
-      status: "Completed (Course Project)",
+      title: "Online To-let System (Student Housing Platform)",
+      category: "Full-stack / University Project",
+      status: "Completed (not deployed)",
       description:
-        "A house rental-style system built with Spring Boot. I worked on features, UI pages, and overall workflow for listing and renting.",
+        "A student-focused platform to reduce the hassle of finding rooms or seats near DIU. Owners can publish listings with images; students can browse, filter, and review.",
       highlights: [
-        "Spring Boot backend structure",
-        "Frontend pages with HTML/CSS",
-        "Focused on clean flow and usability"
+        "Room/seat listings with images",
+        "Filtering + reviews for decision-making",
+        "University email–based authentication (diu.edu.bd) to limit accounts"
       ],
-      tech: ["Spring Boot", "HTML", "CSS"]
+      tech: ["Spring Boot", "HTML", "CSS", "JavaScript"],
+      links: {
+        github: "PASTE_GITHUB_LINK_FOR_TOOLLET"
+      }
     },
+
+    {
+      title: "Meal Management System (Student-Focused)",
+      category: "Web Application / University Project",
+      status: "Completed (not deployed)",
+      description:
+        "A student meal booking system where users can add balance, choose items from a menu, and book meals ahead of time (breakfast/lunch/dinner).",
+      highlights: [
+        "Advance booking by meal type and time",
+        "Menu-based selection",
+        "Balance add/update workflow"
+      ],
+      tech: ["HTML", "CSS", "JavaScript"],
+      links: {
+        github: "PASTE_GITHUB_LINK_FOR_MEAL"
+      }
+    },
+
+    {
+      title: "Compiler Toolkit",
+      category: "Web Tool / Academic Project",
+      status: "Completed",
+      description:
+        "A modern interactive web tool to visualize and practice core compiler design concepts with clear, visual output.",
+      highlights: [
+        "Three-Address Code (TAC) generation",
+        "Regular expression handling",
+        "Left recursion elimination",
+        "Left factoring with interactive & visual output"
+      ],
+      tech: ["React", "JavaScript (ES6)", "HTML", "CSS"],
+      links: {
+        github: "PASTE_GITHUB_LINK_FOR_COMPILER_TOOLKIT",
+        demo: "PASTE_VERCEL_LINK_FOR_COMPILER_TOOLKIT"
+      }
+    },
+
     {
       title: "Mail Server Setup (Linux)",
-      category: "Systems",
-      status: "Completed (OS Course Project)",
+      category: "Systems / OS Course Project",
+      status: "Completed",
       description:
-        "Configured a Linux-based mail server using Postfix with webmail and email authentication. Learned real-world server configuration and troubleshooting.",
+        "Configured a Linux-based mail server stack and learned real-world setup, authentication, and troubleshooting.",
       highlights: [
-        "Postfix setup and configuration",
+        "Postfix configuration",
         "Roundcube webmail integration",
         "OpenDKIM for email authentication"
       ],
-      tech: ["Linux", "Postfix", "Roundcube", "OpenDKIM"]
+      tech: ["Linux", "Postfix", "Roundcube", "OpenDKIM"],
+      links: {
+        github: "PASTE_GITHUB_LINK_FOR_MAIL_SERVER"
+      }
     },
-    {
-      title: "Compiler Design Course Book",
-      category: "Writing / Teaching",
-      status: "Completed",
-      description:
-        "Wrote a course book for Compiler Design, covering fundamentals to advanced topics with examples, figures, and lab work guidance.",
-      highlights: [
-        "Explains concepts with simple language",
-        "Includes visuals and lab exercises",
-        "Includes my related mini-project work"
-      ],
-      tech: ["Technical Writing", "Compiler Design"]
-    },
-    {
-      title: "Compiler Toolkit (JavaScript)",
-      category: "Web Tools",
-      status: "Completed",
-      description:
-        "A browser-based toolkit to practice compiler topics (e.g., regular expressions and related helpers). Built to make learning more interactive.",
-      highlights: [
-        "Simple UI for practice",
-        "Learning-focused tool design",
-        "Hands-on JavaScript implementation"
-      ],
-      tech: ["JavaScript", "HTML", "CSS"]
-    },
+
     {
       title: "Frontend Practice Pages",
       category: "Frontend",
       status: "Multiple small builds",
       description:
-        "A collection of HTML/CSS pages to practice layout and styling (e.g., Naturals-style page, Career Mission style pages).",
+        "A collection of frontend practice pages focused on layout and styling (e.g., Career Mission practice using CSS, Naturals Platter using HTML).",
       highlights: [
-        "Layout practice (flex/grid)",
-        "Typography and spacing improvements",
-        "Better visual consistency over time"
+        "Career Mission practice page (CSS-focused)",
+        "Naturals Platter page (HTML-focused)",
+        "Improving layout, spacing, and consistency"
       ],
-      tech: ["HTML", "CSS"]
+      tech: ["HTML", "CSS"],
+      links: {
+        github: "PASTE_GITHUB_LINK_FOR_FRONTEND_PAGES"
+      }
     },
+
     {
       title: "NLP Research Project",
       category: "Research",
@@ -110,14 +132,24 @@ export const site = {
         "An ongoing NLP research project. Currently improving dataset quality, experimenting with approaches, and learning evaluation practices. Not published yet.",
       highlights: [
         "Dataset cleaning and preparation (ongoing)",
-        "Experimenting with modeling approaches",
-        "Learning evaluation and reporting"
+        "Model experimentation (learning phase)",
+        "Evaluation-focused reporting (learning)"
       ],
       tech: ["Python", "NLP (learning)"]
+      // no github link required
     }
   ],
 
   experience: [
+    {
+      title: "Lab Prefect (OOP Java)",
+      org: "Daffodil International University",
+      time: "2024",
+      bullets: [
+        "Helped students during lab sessions with OOP Java concepts.",
+        "Guided peers through exercises, debugging, and best practices."
+      ]
+    },
     {
       title: "Vice President (PR Wing)",
       org: "DIU Girls' Computer Programming Club (DIU GCPC)",
