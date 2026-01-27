@@ -15,7 +15,7 @@ type Project = {
 
 export default function ProjectCard({ p }: { p: Project }) {
   return (
-    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-2xl">
+    <div className="card-glow rounded-3xl p-6">
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(420px_circle_at_80%_-20%,rgba(34,197,94,0.18),transparent_60%)]" />
       <div>
         <h3 className="text-base font-semibold text-white">{p.title}</h3>
@@ -48,7 +48,7 @@ export default function ProjectCard({ p }: { p: Project }) {
               href={p.links.github}
               target="_blank"
               rel="noreferrer"
-              className="btn-base btn-sm btn-emerald btn-hover hover:bg-emerald-500"
+              className="btn-base btn-sm btn-emerald btn-hover btn-shine hover:bg-emerald-500"
             >
               GitHub
             </a>
@@ -58,7 +58,7 @@ export default function ProjectCard({ p }: { p: Project }) {
               href={p.links.demo}
               target="_blank"
               rel="noreferrer"
-              className="btn-base btn-sm btn-glass btn-hover hover:bg-white/20"
+              className="btn-base btn-sm btn-glass btn-hover btn-shine hover:bg-white/20"
             >
               Live Demo
             </a>

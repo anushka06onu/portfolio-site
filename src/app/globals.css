@@ -45,6 +45,30 @@ body {
   }
 }
 
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
 @layer utilities {
   .btn-base {
     @apply inline-flex items-center justify-center rounded-xl text-sm font-medium transition-all duration-300;
@@ -76,5 +100,35 @@ body {
 
   .btn-hover {
     @apply hover:-translate-y-0.5 hover:scale-[1.02] hover:brightness-110;
+  }
+
+  .card-glow {
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-2xl;
+  }
+
+  .card-glow::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: radial-gradient(420px circle at 90% -20%, rgba(56, 189, 248, 0.18), transparent 60%);
+  }
+
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .btn-shine {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-shine::after {
+    content: "";
+    @apply pointer-events-none absolute inset-y-0 left-0 w-1/2;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2.8s ease-in-out infinite;
+  }
+
+  .ambient-orb {
+    @apply pointer-events-none absolute rounded-full blur-3xl;
+    animation: glow-pulse 6s ease-in-out infinite;
   }
 }

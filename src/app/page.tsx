@@ -20,8 +20,8 @@ export default function HomePage() {
   return (
     <main>
       <div className="relative overflow-hidden bg-[radial-gradient(1200px_circle_at_10%_-20%,rgba(16,185,129,0.2),transparent_55%),radial-gradient(900px_circle_at_90%_-10%,rgba(56,189,248,0.18),transparent_55%),linear-gradient(180deg,#0b0f14,rgba(7,10,12,0.95))]">
-        <div className="pointer-events-none absolute left-1/2 top-24 h-64 w-64 -translate-x-1/2 rounded-full bg-emerald-400/25 blur-3xl" />
-        <div className="pointer-events-none absolute right-8 top-10 h-40 w-40 rounded-full bg-sky-400/25 blur-3xl animate-[float-slow_10s_ease-in-out_infinite]" />
+        <div className="ambient-orb left-1/2 top-24 h-64 w-64 -translate-x-1/2 bg-emerald-400/25" />
+        <div className="ambient-orb right-8 top-10 h-40 w-40 bg-sky-400/25 animate-[float-slow_10s_ease-in-out_infinite]" />
         <Container>
           <section className="pt-14 pb-10 sm:pt-20">
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
@@ -43,14 +43,14 @@ export default function HomePage() {
 
                 <div className="flex flex-wrap gap-3">
                   <a
-                    className="btn-base btn-md btn-emerald btn-hover hover:bg-emerald-500"
+                    className="btn-base btn-md btn-emerald btn-hover btn-shine hover:bg-emerald-500"
                     href={`mailto:${site.links.email}`}
                   >
                     Email
                   </a>
 
                   <a
-                    className="btn-base btn-md btn-sky btn-hover hover:bg-sky-500"
+                    className="btn-base btn-md btn-sky btn-hover btn-shine hover:bg-sky-500"
                     href={site.links.linkedin}
                     target="_blank"
                     rel="noreferrer"
@@ -60,7 +60,7 @@ export default function HomePage() {
 
                   {site.links.github ? (
                     <a
-                      className="btn-base btn-md btn-glass btn-hover hover:bg-white/20"
+                      className="btn-base btn-md btn-glass btn-hover btn-shine hover:bg-white/20"
                       href={site.links.github}
                       target="_blank"
                       rel="noreferrer"
@@ -72,6 +72,17 @@ export default function HomePage() {
                       GitHub (not linked)
                     </span>
                   )}
+
+                  {site.links.resume ? (
+                    <a
+                      className="btn-base btn-md btn-emerald btn-hover btn-shine hover:bg-emerald-500"
+                      href={site.links.resume}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Resume
+                    </a>
+                  ) : null}
                 </div>
 
                 <div className="flex flex-wrap gap-2">
@@ -92,7 +103,7 @@ export default function HomePage() {
                   />
                 </div>
 
-                <div className="relative rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl">
+                <div className="card-glow rounded-3xl p-6">
                   <div className="absolute -top-6 left-6 rounded-full bg-amber-400 px-3 py-1 text-xs font-medium text-amber-950 shadow-sm">
                     Current Focus
                   </div>
@@ -162,13 +173,68 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="mt-14 animate-[fade-up_0.85s_ease-out]">
+          <SectionTitle
+            title="Education"
+            subtitle="Academic background and achievements."
+          />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {(site.education ?? []).map((edu) => (
+              <div
+                key={`${edu.program}-${edu.institution}`}
+                className="card-glow p-6"
+              >
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                  <h3 className="text-base font-semibold text-white">{edu.program}</h3>
+                  <p className="text-sm text-neutral-400">{edu.time}</p>
+                </div>
+                <p className="mt-1 text-sm text-neutral-300">
+                  {edu.institution} • {edu.location}
+                </p>
+                {edu.notes?.length ? (
+                  <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-neutral-300">
+                    {edu.notes.map((note) => (
+                      <li key={note}>{note}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-14 animate-[fade-up_0.9s_ease-out]">
+          <SectionTitle
+            title="Courses & Certifications"
+            subtitle="Focused coursework to build practical data and backend skills."
+          />
+          {site.courseNote ? (
+            <p className="mb-4 text-sm text-neutral-300">{site.courseNote}</p>
+          ) : null}
+          <div className="grid gap-4">
+            {(site.courses ?? []).map((course) => (
+              <div
+                key={`${course.title}-${course.provider}`}
+                className="card-glow p-6"
+              >
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                  <h3 className="text-base font-semibold text-white">{course.title}</h3>
+                  <p className="text-sm text-neutral-400">{course.status}</p>
+                </div>
+                <p className="mt-1 text-sm text-emerald-300">{course.provider}</p>
+                <p className="mt-3 text-sm text-neutral-300">{course.summary}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-14 pb-14 animate-[fade-up_0.9s_ease-out]">
           <SectionTitle title="Leadership" subtitle="Student leadership and executive roles." />
           <div className="grid gap-4">
             {(site.experience ?? []).map((e) => (
               <div
                 key={`${e.title}-${e.org}`}
-                className="relative rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-xl"
+                className="card-glow p-6"
               >
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                   <h3 className="text-base font-semibold text-white">{e.title}</h3>

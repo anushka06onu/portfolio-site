@@ -6,8 +6,8 @@ export default function ContactPage() {
   return (
     <main>
       <div className="relative overflow-hidden bg-[radial-gradient(900px_circle_at_15%_-20%,rgba(16,185,129,0.2),transparent_55%),radial-gradient(900px_circle_at_85%_-10%,rgba(59,130,246,0.2),transparent_55%),linear-gradient(180deg,#0b0f14,rgba(7,10,12,0.96))]">
-        <div className="pointer-events-none absolute right-10 top-10 h-40 w-40 rounded-full bg-emerald-400/25 blur-3xl animate-[float-slow_9s_ease-in-out_infinite]" />
-        <div className="pointer-events-none absolute left-12 bottom-10 h-32 w-32 rounded-full bg-sky-400/25 blur-3xl animate-[float-slow_11s_ease-in-out_infinite]" />
+        <div className="ambient-orb right-10 top-10 h-40 w-40 bg-emerald-400/25 animate-[float-slow_9s_ease-in-out_infinite]" />
+        <div className="ambient-orb left-12 bottom-10 h-32 w-32 bg-sky-400/25 animate-[float-slow_11s_ease-in-out_infinite]" />
         <Container>
           <div className="pt-16 pb-20">
           <SectionTitle
@@ -16,7 +16,7 @@ export default function ContactPage() {
           />
 
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl">
+            <div className="card-glow rounded-3xl p-8">
               <p className="text-sm uppercase tracking-[0.25em] text-emerald-300">
                 Let’s connect
               </p>
@@ -29,13 +29,13 @@ export default function ContactPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  className="btn-base btn-lg btn-emerald btn-hover hover:bg-emerald-500"
+                  className="btn-base btn-lg btn-emerald btn-hover btn-shine hover:bg-emerald-500"
                   href={`mailto:${site.links.email}`}
                 >
                   Send Email
                 </a>
                 <a
-                  className="btn-base btn-lg btn-sky btn-hover hover:bg-sky-500"
+                  className="btn-base btn-lg btn-sky btn-hover btn-shine hover:bg-sky-500"
                   href={site.links.linkedin}
                   target="_blank"
                   rel="noreferrer"
@@ -44,7 +44,7 @@ export default function ContactPage() {
                 </a>
                 {site.links.github ? (
                   <a
-                    className="btn-base btn-lg btn-glass btn-hover hover:bg-white/20"
+                    className="btn-base btn-lg btn-glass btn-hover btn-shine hover:bg-white/20"
                     href={site.links.github}
                     target="_blank"
                     rel="noreferrer"
@@ -59,7 +59,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl">
+            <div className="card-glow rounded-3xl p-8">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(280px_circle_at_20%_0%,rgba(16,185,129,0.25),transparent_60%)]" />
               <p className="text-sm uppercase tracking-[0.25em] text-sky-300">
                 Availability

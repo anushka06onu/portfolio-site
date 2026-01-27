@@ -6,7 +6,7 @@ export default function ExperiencePage() {
   return (
     <main>
       <div className="relative overflow-hidden bg-[radial-gradient(900px_circle_at_12%_-20%,rgba(16,185,129,0.18),transparent_55%),radial-gradient(900px_circle_at_90%_-10%,rgba(59,130,246,0.18),transparent_55%),linear-gradient(180deg,#0b0f14,rgba(7,10,12,0.96))]">
-        <div className="pointer-events-none absolute left-6 top-8 h-40 w-40 rounded-full bg-sky-400/25 blur-3xl" />
+        <div className="ambient-orb left-6 top-8 h-40 w-40 bg-sky-400/25" />
         <Container>
           <div className="pt-12 pb-14">
           <SectionTitle
@@ -18,7 +18,7 @@ export default function ExperiencePage() {
             {site.experience.map((e) => (
               <div
                 key={`${e.title}-${e.org}`}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-xl"
+                className="card-glow p-6"
               >
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                   <h3 className="text-base font-semibold text-white">{e.title}</h3>

@@ -19,7 +19,8 @@ export const site = {
     email: "fatehahossainanushka@gmail.com",
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-802879279",
     // keep your profile; individual projects will have their own github links below
-    github: "https://github.com/anushka06onu"
+    github: "https://github.com/anushka06onu",
+    resume: "PASTE_RESUME_LINK"
   },
 
   focusAreas: [
@@ -35,6 +36,63 @@ export const site = {
     "Systems / Tools": ["Linux (coursework/projects)", "Postfix/Email stack (project)"],
     Programming: ["C", "C++", "Java"]
   },
+  education: [
+    {
+      program: "B.Sc. in Computer Science & Engineering (4th year)",
+      institution: "Daffodil International University",
+      location: "Dhaka, Bangladesh",
+      time: "2022 – Present",
+      notes: [
+        "Currently in 4th year of CSE.",
+        "CGPA: 3.93"
+      ]
+    },
+    {
+      program: "HSC — Golden A+",
+      institution: "Bangladesh Navy School & College, Dhaka",
+      location: "Dhaka, Bangladesh",
+      time: "2021",
+      notes: []
+    },
+    {
+      program: "SSC — Golden A+",
+      institution: "Bangladesh Navy School & College, Dhaka",
+      location: "Dhaka, Bangladesh",
+      time: "2019",
+      notes: []
+    }
+  ],
+  courses: [
+    {
+      title: "Data Science, Artificial Intelligence & Machine Learning",
+      provider: "Coursera",
+      status: "Completed",
+      summary:
+        "Completed multiple courses covering data analysis, machine learning fundamentals, and AI concepts, with a strong focus on real datasets, preprocessing, modeling, and evaluation."
+    },
+    {
+      title: "Working with Data & Machine Learning",
+      provider: "Coursera",
+      status: "Completed",
+      summary:
+        "Hands-on coursework focused on data cleaning, feature preparation, exploratory analysis, and applying machine learning techniques in practical scenarios."
+    },
+    {
+      title: "Spring Boot Backend Development",
+      provider: "Udemy",
+      status: "Completed",
+      summary:
+        "Backend development course focusing on building RESTful APIs, application structure, and database integration using Spring Boot."
+    },
+    {
+      title: "Full-Stack Web Development",
+      provider: "Programming Hero",
+      status: "Ongoing",
+      summary:
+        "Currently learning frontend and backend web development, covering HTML, CSS, JavaScript, Node.js, and modern workflows through project-based learning."
+    }
+  ],
+  courseNote: "All certifications are listed on LinkedIn.",
 
   projects: [
     {
@@ -50,7 +108,7 @@ export const site = {
       ],
       tech: ["Spring Boot", "HTML", "CSS", "JavaScript"],
       links: {
-        github: "PASTE_GITHUB_LINK_FOR_TOOLLET"
+        github: "https://github.com/anushka06onu/Online-To-let-Project-Demo-"
       }
     },
 
@@ -67,7 +125,7 @@ export const site = {
       ],
       tech: ["HTML", "CSS", "JavaScript"],
       links: {
-        github: "PASTE_GITHUB_LINK_FOR_MEAL"
+        github: "https://github.com/anushka06onu/Meal-Management-Project"
       }
     },
 
@@ -85,7 +143,7 @@ export const site = {
       ],
       tech: ["React", "JavaScript (ES6)", "HTML", "CSS"],
       links: {
-        github: "PASTE_GITHUB_LINK_FOR_COMPILER_TOOLKIT",
+        github: "https://github.com/anushka06onu/CompilerToolkit",
         demo: "PASTE_VERCEL_LINK_FOR_COMPILER_TOOLKIT"
       }
     },
@@ -103,7 +161,7 @@ export const site = {
       ],
       tech: ["Linux", "Postfix", "Roundcube", "OpenDKIM"],
       links: {
-        github: "PASTE_GITHUB_LINK_FOR_MAIL_SERVER"
+        github: "https://github.com/anushka06onu/Mail-Server-Using-Postfix-Dovecot"
       }
     },
 
@@ -120,7 +178,7 @@ export const site = {
       ],
       tech: ["HTML", "CSS"],
       links: {
-        github: "PASTE_GITHUB_LINK_FOR_FRONTEND_PAGES"
+        github: "https://github.com/anushka06onu/natures-platter"
       }
     },
 
