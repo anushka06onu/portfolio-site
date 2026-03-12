@@ -96,6 +96,23 @@ export const site = {
 
   projects: [
     {
+      title: "DIU GCPC Portal",
+      category: "Club Platform / Web",
+      status: "Launched (March 2026)",
+      description:
+        "Official portal for the DIU Girls' Computer Programming Club that keeps members updated on initiatives, achievements, and onboarding flows.",
+      highlights: [
+        "Landing + wing pages that spotlight ACM practice, research, career, PR, and Women in Tech tracks",
+        "Certificate verification workflow with QR-friendly lookups plus join/contact funnels for intake",
+        "Firebase-backed admin utilities to curate events, metrics, and community submissions"
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "Firebase Authentication", "Firestore"],
+      links: {
+        github: "https://github.com/anushka06onu/GCPC-DIU",
+        demo: "https://gcpc-diu.vercel.app"
+      }
+    },
+    {
       title: "Online To-let System (Student Housing Platform)",
       category: "Full-stack / University Project",
       status: "Completed (not deployed)",
@@ -200,6 +217,15 @@ export const site = {
 
   experience: [
     {
+      title: "President",
+      org: "DIU Girls' Computer Programming Club (DIU GCPC)",
+      time: "February 2026 – Present",
+      bullets: [
+        "Oversee club strategy, programming tracks, and cross-wing coordination.",
+        "Lead executive meetings, mentorship efforts, and external collaborations."
+      ]
+    },
+    {
       title: "Lab Prefect (OOP Java)",
       org: "Daffodil International University",
       time: "Spring 2025 – Summer 2025",
@@ -211,7 +237,7 @@ export const site = {
     {
       title: "Vice President (PR Wing)",
       org: "DIU Girls' Computer Programming Club (DIU GCPC)",
-      time: "2025 – Present",
+      time: "2025 – January 2026",
       bullets: [
         "Support communication and coordination for club activities.",
         "Work with team members to plan and execute PR-related tasks."
