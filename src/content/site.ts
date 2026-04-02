@@ -2,9 +2,9 @@ export const site = {
   name: "Fateha Hossain Anushka",
   location: "Dhaka, Bangladesh",
   headline:
-    "CSE Undergraduate (4th year) • Learning ML/AI & Data Science • Web + Systems Projects",
+    "Full-stack Developer • CSE Undergraduate (4th year) • ML/AI & Data Science",
   about:
-    "I’m a 4th-year Computer Science student exploring machine learning, data science, and applied AI. I learn by building projects—from web interfaces to Linux-based systems—and I’m currently working on an NLP research project (ongoing).",
+    "I’m a full-stack developer and 4th-year Computer Science student focused on machine learning, data science, and applied AI. I build projects—from web interfaces to Linux-based systems—and I’m currently working on an NLP research project.",
 
   academics: {
     cgpa: "3.93",
@@ -24,15 +24,15 @@ export const site = {
   },
 
   focusAreas: [
-    "Machine Learning (learning)",
-    "Data Science (learning)",
-    "Applied AI (learning)",
-    "NLP Research (ongoing)"
+    "Machine Learning",
+    "Data Science",
+    "Applied AI",
+    "NLP Research"
   ],
 
   skills: {
     Web: ["HTML", "CSS", "JavaScript"],
-    "ML / Data": ["Python", "Pandas", "Scikit-learn (learning)"],
+    "ML / Data": ["Python", "Pandas", "Scikit-learn"],
     "Systems / Tools": ["Linux (coursework/projects)", "Postfix/Email stack (project)"],
     Programming: ["C", "C++", "Java"]
   },
@@ -89,12 +89,44 @@ export const site = {
       provider: "Programming Hero",
       status: "Ongoing",
       summary:
-        "Currently learning frontend and backend web development, covering HTML, CSS, JavaScript, Node.js, and modern workflows through project-based learning."
+        "Ongoing full-stack web development program covering HTML, CSS, JavaScript, Node.js, and modern workflows through project-based projects."
     }
   ],
   courseNote: "All certifications are listed on LinkedIn.",
 
   projects: [
+    {
+      title: "University Lost & Found Portal",
+      category: "Full-stack / Campus Utility",
+      status: "Completed",
+      description:
+        "Web portal for students to report, search, and claim lost items with authenticated dashboards and responsive UI tailored to campus use.",
+      highlights: [
+        "Secure login/signup with personal dashboards",
+        "Report lost/found items and track claim status",
+        "Responsive, smooth-scrolling UI with organized listings"
+      ],
+      tech: ["Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
+      links: {
+        github: "https://github.com/anushka06onu/University-lost-and-found-portal"
+      }
+    },
+    {
+      title: "Compiler Architectonics (Book)",
+      category: "Book / Academic Resource",
+      status: "Published (2025)",
+      description:
+        "Student-first handbook on compiler design that breaks down lexers, parsers, three-address code, and optimization concepts with practical walkthroughs.",
+      highlights: [
+        "Written to demystify compiler design for undergrads",
+        "Combines theory with worked examples and visuals",
+        "Covers grammar basics, parsing, and three-address code"
+      ],
+      tech: ["Academic Writing", "Compiler Design"],
+      links: {
+        github: "https://github.com/anushka06onu/Compiler-Architectonics-"
+      }
+    },
     {
       title: "DIU GCPC Portal",
       category: "Club Platform / Web",
@@ -115,7 +147,7 @@ export const site = {
     {
       title: "Online To-let System (Student Housing Platform)",
       category: "Full-stack / University Project",
-      status: "Completed (not deployed)",
+      status: "Completed",
       description:
         "A student-focused platform to reduce the hassle of finding rooms or seats near DIU. Owners can publish listings with images; students can browse, filter, and review.",
       highlights: [
@@ -132,7 +164,7 @@ export const site = {
     {
       title: "Meal Management System (Student-Focused)",
       category: "Web Application / University Project",
-      status: "Completed (not deployed)",
+      status: "Completed",
       description:
         "A student meal booking system where users can add balance, choose items from a menu, and book meals ahead of time (breakfast/lunch/dinner).",
       highlights: [
@@ -204,13 +236,13 @@ export const site = {
       category: "Research",
       status: "Ongoing",
       description:
-        "An ongoing NLP research project. Currently improving dataset quality, experimenting with approaches, and learning evaluation practices. Not published yet.",
+        "An ongoing NLP research project focused on dataset quality, model experimentation, and evaluation practices. Not published yet.",
       highlights: [
-        "Dataset cleaning and preparation (ongoing)",
-        "Model experimentation (learning phase)",
-        "Evaluation-focused reporting (learning)"
+        "Dataset cleaning and preparation",
+        "Model experimentation and iteration",
+        "Evaluation-focused reporting"
       ],
-      tech: ["Python", "NLP (learning)"]
+      tech: ["Python", "NLP"]
       // no github link required
     }
   ],
@@ -248,7 +280,7 @@ export const site = {
       org: "DIU Data Science Club",
       time: "2023 – 2024",
       bullets: [
-        "Participated in club activities and learning-focused events.",
+        "Participated in club activities and skill-building events.",
         "Supported teamwork-based tasks and coordination."
       ]
     },

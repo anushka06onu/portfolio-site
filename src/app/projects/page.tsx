@@ -1,6 +1,6 @@
 import Container from "../../components/Container";
 import SectionTitle from "../../components/SectionTitle";
-import ProjectCard from "../../components/ProjectCard";
+import ProjectCard, { Project } from "../../components/ProjectCard";
 import { site } from "../../content/site";
 
 export default function ProjectsPage() {
@@ -12,11 +12,11 @@ export default function ProjectsPage() {
           <div className="pt-12 pb-14">
           <SectionTitle
             title="Projects"
-            subtitle="Presented as case studies. Some are learning-focused or not public as code."
+            subtitle="Presented as case studies. Some code is private."
           />
           <div className="grid gap-4 sm:grid-cols-2">
-            {site.projects.map((p) => (
-              <ProjectCard key={p.title} p={p as any} />
+            {site.projects.map((p: Project) => (
+              <ProjectCard key={p.title} p={p} />
             ))}
           </div>
         </div>

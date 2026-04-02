@@ -1,6 +1,6 @@
 import Badge from "./Badge";
 
-type Project = {
+export type Project = {
   title: string;
   category: string;
   status: string;

@@ -1,256 +1,302 @@
+import Link from "next/link";
+import Image from "next/image";
 import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import Badge from "../components/Badge";
-import ProjectCard from "../components/ProjectCard";
 import { site } from "../content/site";
+import ContactForm from "../components/ContactForm";
 
-function StatCard({ label, value }: { label: string; value: string }) {
+type Project = (typeof site.projects)[number];
+type Experience = (typeof site.experience)[number];
+
+function StatCard({
+  label,
+  value,
+  detail
+}: {
+  label: string;
+  value: string;
+  detail?: string;
+}) {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 shadow-lg backdrop-blur-xl">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-400" />
-      <p className="text-xs uppercase tracking-[0.2em] text-neutral-300">{label}</p>
-      <p className="mt-2 text-xl font-semibold text-white">{value}</p>
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-emerald-400 via-sky-400 to-purple-500" />
+      <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-400">{label}</p>
+      <p className="mt-2 text-2xl font-semibold text-white">{value}</p>
+      {detail ? <p className="mt-1 text-sm text-neutral-300">{detail}</p> : null}
+    </div>
+  );
+}
+
+function ProjectTile({ project }: { project: Project }) {
+  return (
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:border-emerald-400/30">
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(520px_circle_at_80%_-10%,rgba(56,189,248,0.22),transparent_60%)]" />
+      <div className="relative flex items-start justify-between gap-4">
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.2em] text-emerald-200/80">{project.category}</p>
+          <h3 className="mt-1 text-lg font-semibold text-white">{project.title}</h3>
+        </div>
+        <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] text-neutral-200">
+          {project.status}
+        </span>
+      </div>
+      <p className="relative mt-3 text-sm text-neutral-300">{project.description}</p>
+
+      <div className="relative mt-4 flex flex-wrap gap-2">
+        {(project.tech ?? []).slice(0, 5).map((t) => (
+          <span
+            key={t}
+            className="rounded-full bg-white/10 px-3 py-1 text-xs text-neutral-200"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+
+      {project.links && (project.links.demo || project.links.github) ? (
+        <div className="relative mt-5 flex flex-wrap gap-3 text-sm">
+          {project.links.demo && (
+            <a
+              href={project.links.demo}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-base btn-sm btn-emerald btn-hover btn-shine hover:bg-emerald-500"
+            >
+              Live
+            </a>
+          )}
+          {project.links.github && (
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-base btn-sm btn-glass btn-hover btn-shine hover:bg-white/20"
+            >
+              GitHub
+            </a>
+          )}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function LeadershipCard({ role }: { role: Experience }) {
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 shadow-lg backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-purple-500 via-emerald-400 to-sky-400" />
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+        <h3 className="text-base font-semibold text-white">{role.title}</h3>
+        <p className="text-sm text-neutral-400">{role.time}</p>
+      </div>
+      <p className="mt-1 text-sm text-neutral-300">{role.org}</p>
+      <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-neutral-300">
+        {role.bullets.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default function HomePage() {
+  const awardsCount = site.academics?.awards?.length ?? 0;
+  const awardTerms = site.academics?.awards?.map((a) => a.term).join(", ");
+  const labRole = (site.experience ?? []).find((e) =>
+    e.title.toLowerCase().includes("lab prefect")
+  );
+  const leadershipRoles = (site.experience ?? []).filter(
+    (e) => !e.title.toLowerCase().includes("lab prefect")
+  );
+  const projects = (site.projects ?? []).slice(0, 4);
   const skillEntries = Object.entries(site.skills ?? {});
 
   return (
-    <main>
-      <div className="relative overflow-hidden bg-[radial-gradient(1200px_circle_at_10%_-20%,rgba(16,185,129,0.2),transparent_55%),radial-gradient(900px_circle_at_90%_-10%,rgba(56,189,248,0.18),transparent_55%),linear-gradient(180deg,#0b0f14,rgba(7,10,12,0.95))]">
-        <div className="ambient-orb left-1/2 top-24 h-64 w-64 -translate-x-1/2 bg-emerald-400/25" />
-        <div className="ambient-orb right-8 top-10 h-40 w-40 bg-sky-400/25 animate-[float-slow_10s_ease-in-out_infinite]" />
+    <main className="relative isolate overflow-hidden bg-[#0b0f14] text-neutral-100">
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(1200px_circle_at_18%_-10%,rgba(16,185,129,0.24),transparent_60%),radial-gradient(1000px_circle_at_82%_0%,rgba(99,102,241,0.2),transparent_60%),linear-gradient(180deg,#0b0f14,#06080d)]" />
+      <div className="pointer-events-none absolute left-10 top-24 -z-10 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute right-[-4rem] top-10 -z-10 h-72 w-72 rounded-full bg-sky-500/18 blur-3xl" />
+
+      <Container>
+        <section className="grid gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1 text-[11px] uppercase tracking-[0.2em] text-emerald-100">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              {site.location} · CS (4th year) · ML / Data / Applied AI
+            </div>
+
+            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl font-[var(--font-playfair)]">
+              {site.name}
+            </h1>
+            <p className="max-w-2xl text-lg text-neutral-200">{site.headline}</p>
+            <p className="max-w-2xl text-sm leading-7 text-neutral-300 sm:text-base">
+              {site.about}
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={`mailto:${site.links.email}`}
+                className="btn-base btn-md btn-emerald btn-hover btn-shine hover:bg-emerald-500"
+              >
+                Email
+              </a>
+              <a
+                href={site.links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-base btn-md btn-sky btn-hover btn-shine hover:bg-sky-500"
+              >
+                LinkedIn
+              </a>
+              {site.links.github ? (
+                <a
+                  href={site.links.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-base btn-md btn-glass btn-hover btn-shine hover:bg-white/20"
+                >
+                  GitHub
+                </a>
+              ) : null}
+              {site.links.resume ? (
+                <Link
+                  href={site.links.resume}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-base btn-md btn-glass btn-hover btn-shine hover:bg-white/20"
+                >
+                  Resume
+                </Link>
+              ) : null}
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {(site.focusAreas ?? []).map((f) => (
+                <Badge key={f}>{f}</Badge>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[260px] sm:max-w-[300px] overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-3 shadow-2xl backdrop-blur-xl">
+              <div className="absolute inset-0 bg-[radial-gradient(320px_circle_at_20%_10%,rgba(56,189,248,0.18),transparent_60%)]" />
+              <div className="relative z-10 aspect-square w-full overflow-hidden rounded-full">
+                <Image
+                  src="/IMG_6303 copy.jpg"
+                  alt={`${site.name} portrait`}
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </Container>
+
+      <div className="border-t border-white/5 bg-[#05070b]/70 py-12 backdrop-blur">
         <Container>
-          <section className="pt-12 pb-8 sm:pt-20">
-            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              <div className="space-y-5 text-center lg:space-y-6 lg:text-left">
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1 text-xs uppercase tracking-[0.2em] text-emerald-200">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                  {site.location}
-                </div>
-                <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl font-[var(--font-playfair)]">
-                  {site.name}
-                </h1>
-                <p className="text-base text-neutral-200 sm:text-lg">
-                  {site.headline}
-                </p>
-
-                <p className="max-w-2xl text-sm leading-7 text-neutral-300 sm:text-base">
-                  {site.about}
-                </p>
-
-                <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-                  <a
-                    className="btn-base btn-md btn-emerald btn-hover btn-shine hover:bg-emerald-500"
-                    href={`mailto:${site.links.email}`}
-                  >
-                    Email
-                  </a>
-
-                  <a
-                    className="btn-base btn-md btn-sky btn-hover btn-shine hover:bg-sky-500"
-                    href={site.links.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    LinkedIn
-                  </a>
-
-                  {site.links.github ? (
-                    <a
-                      className="btn-base btn-md btn-glass btn-hover btn-shine hover:bg-white/20"
-                      href={site.links.github}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      GitHub
-                    </a>
-                  ) : (
-                    <span className="rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm text-neutral-400">
-                      GitHub (not linked)
-                    </span>
-                  )}
-
-                  {site.links.resume ? (
-                    <a
-                      className="btn-base btn-md btn-emerald btn-hover btn-shine hover:bg-emerald-500"
-                      href={site.links.resume}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Resume
-                    </a>
-                  ) : null}
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
-                  {(site.focusAreas ?? []).map((f) => (
-                    <Badge key={f}>{f}</Badge>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-5 lg:space-y-6">
-                <div className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-full border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur-xl sm:max-w-[320px]">
-                  <div className="absolute inset-0 bg-[radial-gradient(300px_circle_at_20%_0%,rgba(16,185,129,0.22),transparent_60%)]" />
-                  <img
-                    src="/IMG_6303 copy.jpg"
-                    alt={`${site.name} portrait`}
-                    className="relative aspect-square w-full rounded-full object-cover"
-                    loading="eager"
-                  />
-                </div>
-
-                <div className="card-glow rounded-3xl p-6">
-                  <div className="absolute -top-6 left-6 rounded-full bg-amber-400 px-3 py-1 text-xs font-medium text-amber-950 shadow-sm">
-                    Current Focus
-                  </div>
-                  <div className="grid gap-4 sm:grid-cols-3">
-                    <StatCard label="CGPA" value={site.academics.cgpa} />
-                    <StatCard label="Awards" value={`${site.academics.awards.length}`} />
-                    <StatCard label="Projects" value={`${site.projects.length}`} />
-                  </div>
-                  <div className="mt-6">
-                    <p className="text-xs uppercase tracking-[0.2em] text-neutral-300">
-                      Skills Snapshot
-                    </p>
-                    <div className="mt-3 space-y-3">
-                      {skillEntries.slice(0, 2).map(([group, items]) => (
-                        <div key={group}>
-                          <p className="text-sm font-medium text-white/90">{group}</p>
-                          <div className="mt-2 flex flex-wrap gap-2">
-                            {(items as string[]).slice(0, 5).map((item) => (
-                              <span
-                                key={item}
-                                className="rounded-full bg-white/10 px-3 py-1 text-xs text-neutral-200"
-                              >
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <section className="animate-[fade-up_0.7s_ease-out]">
+            <SectionTitle
+              title="Highlights"
+              subtitle="Academic snapshot in one glance."
+            />
+            <div className="grid gap-4 sm:grid-cols-3">
+              <StatCard label="Current CGPA" value={site.academics.cgpa} />
+              <StatCard label="Dean’s Awards" value={`${awardsCount}`} detail="Consistent high achievement" />
+              <StatCard label="Award Terms" value={awardTerms ?? "—"} />
             </div>
           </section>
-        </Container>
-      </div>
 
-      <div className="bg-[#0b0f14]">
-        <Container>
-        <section className="mt-10 animate-[fade-up_0.7s_ease-out]">
-          <SectionTitle
-            title="Highlights"
-            subtitle="Academic performance and recognition (kept clear and factual)."
-          />
-          <div className="grid gap-4 sm:grid-cols-3">
-            <StatCard label="Current CGPA" value={site.academics.cgpa} />
-            <StatCard label="Dean’s Awards" value={`${site.academics.awards.length}`} />
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 shadow-lg backdrop-blur-xl">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-400" />
-              <p className="text-xs uppercase tracking-[0.2em] text-neutral-300">Award Terms</p>
-              <p className="mt-2 text-sm text-neutral-200">
-                {site.academics.awards.map((a) => a.term).join(", ")}
-              </p>
+          <section className="mt-14 animate-[fade-up_0.75s_ease-out]">
+            <SectionTitle
+              title="Projects"
+              subtitle="Selected builds across web, systems, and applied AI."
+            />
+            <div className="grid gap-5 sm:grid-cols-2">
+              {projects.map((p) => (
+                <ProjectTile key={p.title} project={p} />
+              ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="mt-14 animate-[fade-up_0.8s_ease-out]">
-          <SectionTitle
-            title="Featured Projects"
-            subtitle="A few selected projects. Some work is learning-focused or not public yet."
-          />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {(site.projects ?? []).slice(0, 4).map((p) => (
-              <ProjectCard key={p.title} p={p as any} />
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-14 animate-[fade-up_0.85s_ease-out]">
-          <SectionTitle
-            title="Education"
-            subtitle="Academic background and achievements."
-          />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {(site.education ?? []).map((edu) => (
-              <div
-                key={`${edu.program}-${edu.institution}`}
-                className="card-glow p-6"
-              >
+          <section className="mt-14 animate-[fade-up_0.8s_ease-out]">
+            <SectionTitle
+              title="Academic Support & Teaching"
+              subtitle="Peer mentoring and lab guidance."
+            />
+            {labRole ? (
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-xl">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-emerald-400 via-amber-300 to-purple-400" />
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <h3 className="text-base font-semibold text-white">{edu.program}</h3>
-                  <p className="text-sm text-neutral-400">{edu.time}</p>
+                  <h3 className="text-base font-semibold text-white">{labRole.title}</h3>
+                  <p className="text-sm text-neutral-400">{labRole.time}</p>
                 </div>
-                <p className="mt-1 text-sm text-neutral-300">
-                  {edu.institution} • {edu.location}
-                </p>
-                {edu.notes?.length ? (
-                  <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-neutral-300">
-                    {edu.notes.map((note) => (
-                      <li key={note}>{note}</li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-14 animate-[fade-up_0.9s_ease-out]">
-          <SectionTitle
-            title="Courses & Certifications"
-            subtitle="Focused coursework to build practical data and backend skills."
-          />
-          {site.courseNote ? (
-            <p className="mb-4 text-sm text-neutral-300">{site.courseNote}</p>
-          ) : null}
-          <div className="grid gap-4">
-            {(site.courses ?? []).map((course) => (
-              <div
-                key={`${course.title}-${course.provider}`}
-                className="card-glow p-6"
-              >
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <h3 className="text-base font-semibold text-white">{course.title}</h3>
-                  <p className="text-sm text-neutral-400">{course.status}</p>
-                </div>
-                <p className="mt-1 text-sm text-emerald-300">{course.provider}</p>
-                <p className="mt-3 text-sm text-neutral-300">{course.summary}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-14 pb-14 animate-[fade-up_0.9s_ease-out]">
-          <SectionTitle title="Leadership" subtitle="Student leadership and executive roles." />
-          <div className="grid gap-4">
-            {(site.experience ?? []).map((e) => (
-              <div
-                key={`${e.title}-${e.org}`}
-                className="card-glow p-6"
-              >
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <h3 className="text-base font-semibold text-white">{e.title}</h3>
-                  <p className="text-sm text-neutral-400">{e.time}</p>
-                </div>
-                <p className="mt-1 text-sm text-neutral-300">{e.org}</p>
-                <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-neutral-300">
-                  {e.bullets.map((b) => (
+                <p className="mt-1 text-sm text-neutral-300">{labRole.org}</p>
+                <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-neutral-300">
+                  {labRole.bullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
-        </section>
-      </Container>
+            ) : (
+              <p className="text-sm text-neutral-300">Lab mentoring details will be added soon.</p>
+            )}
+          </section>
+
+          <section className="mt-14 animate-[fade-up_0.85s_ease-out]">
+            <SectionTitle
+              title="Leadership"
+              subtitle="Clubs, coordination, and executive roles."
+            />
+            <div className="grid gap-4 md:grid-cols-2">
+              {leadershipRoles.map((role) => (
+                <LeadershipCard key={`${role.title}-${role.org}`} role={role} />
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-14 animate-[fade-up_0.9s_ease-out]">
+            <SectionTitle
+              title="Skills"
+              subtitle="Tools and stacks used across projects."
+            />
+            <div className="grid gap-4 lg:grid-cols-2">
+              {skillEntries.map(([group, items]) => (
+                <div
+                  key={group}
+                  className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 shadow-lg backdrop-blur-xl"
+                >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-500" />
+                  <p className="text-xs uppercase tracking-[0.22em] text-neutral-400">{group}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {(items as string[]).map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full bg-white/10 px-3 py-1 text-xs text-neutral-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-14 pb-6 animate-[fade-up_0.95s_ease-out]">
+            <SectionTitle
+              title="Contact"
+              subtitle="Prefer email? Drop a message and it will go straight to my inbox."
+            />
+            <div className="max-w-2xl">
+              <ContactForm />
+            </div>
+          </section>
+        </Container>
       </div>
     </main>
   );
