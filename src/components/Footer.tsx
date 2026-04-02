@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { site } from "../content/site";
 
@@ -7,7 +8,7 @@ const socials = [
   site.links.github
     ? { key: "github", href: site.links.github, label: "GitHub", icon: GitHubIcon }
     : null
-].filter(Boolean) as { key: string; href: string; label: string; icon: () => JSX.Element }[];
+].filter(Boolean) as { key: string; href: string; label: string; icon: () => React.ReactNode }[];
 
 export default function Footer() {
   return (
