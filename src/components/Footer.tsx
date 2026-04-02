@@ -12,37 +12,31 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#05070b] py-8 text-sm text-neutral-300 backdrop-blur">
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[radial-gradient(60%_120%_at_50%_120%,rgba(34,197,94,0.18),transparent)]" />
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <div className="space-y-1">
-          <p className="text-neutral-400">
-            © 2026{" "}
-            <Link href="/" className="text-emerald-200 hover:text-emerald-100">
-              Fateha Hossain Anushka
-            </Link>
-          </p>
-          <a
-            href={`mailto:${site.links.email}`}
-            className="inline-flex items-center gap-2 text-neutral-200 hover:text-emerald-100"
-          >
-            Contact me
-          </a>
-        </div>
-        <div className="flex items-center gap-2">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#05070b] py-10 text-sm text-neutral-300">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-[-40%] h-48 bg-[radial-gradient(70%_120%_at_50%_120%,rgba(56,189,248,0.15),transparent)]" />
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 text-center sm:flex-row sm:justify-between sm:text-left">
+        <Link
+          href="/"
+          className="text-base font-semibold text-white transition hover:text-emerald-200"
+        >
+          Fateha Hossain Anushka
+        </Link>
+        <div className="flex items-center gap-3">
           {socials.map((s) => (
             <Link
               key={s.key}
               href={s.href}
               target={s.href.startsWith("http") ? "_blank" : undefined}
               rel={s.href.startsWith("http") ? "noreferrer" : undefined}
-              className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-100 transition hover:-translate-y-0.5 hover:border-emerald-400/50 hover:bg-white/10 hover:shadow-[0_10px_30px_rgba(16,185,129,0.25)]"
+              className="group flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-neutral-100 transition hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_10px_25px_rgba(16,185,129,0.25)]"
               aria-label={s.label}
             >
               <s.icon />
             </Link>
           ))}
         </div>
+        <p className="text-neutral-400">© 2026</p>
       </div>
     </footer>
   );

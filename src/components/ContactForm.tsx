@@ -42,8 +42,8 @@ export default function ContactForm() {
   const isBusy = status === "loading";
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-xl">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_90%_0%,rgba(56,189,248,0.12),transparent_55%)] opacity-60" />
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/5 via-white/0 to-white/5 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl ring-1 ring-white/5">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_90%_0%,rgba(56,189,248,0.12),transparent_55%)] opacity-70" />
       <div className="relative">
         <h3 className="text-xl font-semibold text-white">Contact Me</h3>
         <p className="mt-1 text-sm text-neutral-300">
@@ -93,7 +93,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isBusy}
-          className="btn-base btn-lg btn-emerald btn-hover btn-shine w-full justify-center disabled:cursor-not-allowed disabled:opacity-70"
+          className="btn-base btn-lg btn-emerald btn-hover btn-shine w-full justify-center shadow-[0_15px_40px_rgba(16,185,129,0.25)] disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isBusy ? "Sending..." : status === "sent" ? "Sent!" : "Send Message"}
         </button>

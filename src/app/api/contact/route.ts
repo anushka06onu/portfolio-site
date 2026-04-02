@@ -25,8 +25,11 @@ export async function POST(req: Request) {
     const missing = missingEnv();
     if (missing.length) {
       return NextResponse.json(
-        { ok: false, error: `Server email is not configured. Missing: ${missing.join(", ")}` },
-        { status: 500 }
+        {
+          ok: false,
+          error: `Email service isn’t configured right now. Please email me directly at ${process.env.CONTACT_TO || process.env.SMTP_USER || "fatehahossainanushka@gmail.com"}.`
+        },
+        { status: 200 }
       );
     }
 

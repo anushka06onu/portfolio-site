@@ -4,7 +4,7 @@ export const site = {
   headline:
     "Full-stack Developer • CSE Undergraduate (4th year) • ML/AI & Data Science",
   about:
-    "I’m a full-stack developer and 4th-year Computer Science student focused on machine learning, data science, and applied AI. I build projects—from web interfaces to Linux-based systems—and I’m currently working on an NLP research project.",
+    "I’m a full-stack developer and 4th-year Computer Science student focused on machine learning, data science, and applied AI. I build projects—from web interfaces to Linux-based systems—and I’m focused on an NLP research project.",
 
   academics: {
     cgpa: "3.93",
@@ -31,10 +31,11 @@ export const site = {
   ],
 
   skills: {
-    Web: ["HTML", "CSS", "JavaScript"],
+    Web: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+    "Backend / Cloud": ["Node.js", "Express", "Spring Boot", "Firebase", "MySQL"],
     "ML / Data": ["Python", "Pandas", "Scikit-learn"],
     "Systems / Tools": ["Linux (coursework/projects)", "Postfix/Email stack (project)"],
-    Programming: ["C", "C++", "Java"]
+    Programming: ["C", "C++", "Java", "Python"]
   },
   education: [
     {

@@ -4,7 +4,7 @@ import Container from "../components/Container";
 import SectionTitle from "../components/SectionTitle";
 import Badge from "../components/Badge";
 import { site } from "../content/site";
-import ContactForm from "../components/ContactForm";
+import ContactCTA from "../components/ContactCTA";
 
 type Project = (typeof site.projects)[number];
 type Experience = (typeof site.experience)[number];
@@ -30,8 +30,8 @@ function StatCard({
 
 function ProjectTile({ project }: { project: Project }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:border-emerald-400/30">
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(520px_circle_at_80%_-10%,rgba(56,189,248,0.22),transparent_60%)]" />
+    <div className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 p-6 shadow-lg backdrop-blur-xl transition-transform duration-300 hover:-translate-y-2 hover:border-emerald-400/30 hover:shadow-[0_20px_50px_rgba(16,185,129,0.18)]">
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(520px_circle_at_85%_-10%,rgba(56,189,248,0.18),transparent_60%)]" />
       <div className="relative flex items-start justify-between gap-4">
         <div>
           <p className="text-[11px] uppercase tracking-[0.2em] text-emerald-200/80">{project.category}</p>
@@ -41,7 +41,7 @@ function ProjectTile({ project }: { project: Project }) {
           {project.status}
         </span>
       </div>
-      <p className="relative mt-3 text-sm text-neutral-300">{project.description}</p>
+      <p className="relative mt-4 text-sm leading-6 text-neutral-200">{project.description}</p>
 
       <div className="relative mt-4 flex flex-wrap gap-2">
         {(project.tech ?? []).slice(0, 5).map((t) => (
@@ -55,7 +55,7 @@ function ProjectTile({ project }: { project: Project }) {
       </div>
 
       {project.links && (project.links.demo || project.links.github) ? (
-        <div className="relative mt-5 flex flex-wrap gap-3 text-sm">
+        <div className="relative mt-6 flex flex-wrap gap-3 text-sm">
           {project.links.demo && (
             <a
               href={project.links.demo}
@@ -119,8 +119,8 @@ export default function HomePage() {
       <div className="pointer-events-none absolute right-[-4rem] top-10 -z-10 h-72 w-72 rounded-full bg-sky-500/18 blur-3xl" />
 
       <Container>
-        <section className="grid gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="space-y-6">
+        <section className="grid gap-12 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center animate-[fade-up_0.65s_ease-out]">
+          <div className="space-y-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1 text-[11px] uppercase tracking-[0.2em] text-emerald-100">
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
               {site.location} · CS (4th year) · ML / Data / Applied AI
@@ -197,7 +197,7 @@ export default function HomePage() {
         </section>
       </Container>
 
-      <div className="border-t border-white/5 bg-[#05070b]/70 py-12 backdrop-blur">
+      <div className="border-t border-white/5 bg-[#05070b]/70 py-14 backdrop-blur">
         <Container>
           <section className="animate-[fade-up_0.7s_ease-out]">
             <SectionTitle
@@ -211,7 +211,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="mt-14 animate-[fade-up_0.75s_ease-out]">
+          <section className="mt-16 animate-[fade-up_0.75s_ease-out]">
             <SectionTitle
               title="Projects"
               subtitle="Selected builds across web, systems, and applied AI."
@@ -223,7 +223,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="mt-14 animate-[fade-up_0.8s_ease-out]">
+          <section className="mt-16 animate-[fade-up_0.8s_ease-out]">
             <SectionTitle
               title="Academic Support & Teaching"
               subtitle="Peer mentoring and lab guidance."
@@ -247,7 +247,7 @@ export default function HomePage() {
             )}
           </section>
 
-          <section className="mt-14 animate-[fade-up_0.85s_ease-out]">
+          <section className="mt-16 animate-[fade-up_0.85s_ease-out]">
             <SectionTitle
               title="Leadership"
               subtitle="Clubs, coordination, and executive roles."
@@ -259,7 +259,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="mt-14 animate-[fade-up_0.9s_ease-out]">
+          <section className="mt-16 animate-[fade-up_0.9s_ease-out]">
             <SectionTitle
               title="Skills"
               subtitle="Tools and stacks used across projects."
@@ -287,14 +287,12 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="mt-14 pb-6 animate-[fade-up_0.95s_ease-out]">
+          <section className="mt-20 pb-10 animate-[fade-up_1s_ease-out]">
             <SectionTitle
               title="Contact"
-              subtitle="Prefer email? Drop a message and it will go straight to my inbox."
+              subtitle="Let’s collaborate on ML/AI, data, or product builds—reach out anytime."
             />
-            <div className="max-w-2xl">
-              <ContactForm />
-            </div>
+            <ContactCTA />
           </section>
         </Container>
       </div>
