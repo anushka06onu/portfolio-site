@@ -20,7 +20,8 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-802879279",
     // keep your profile; individual projects will have their own github links below
     github: "https://github.com/anushka06onu",
-    resume: "https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-hero-goto"
+    resume:
+      "https://drive.google.com/file/d/1bar_OHyZ-nhAKV50fZqaG0YkLChmFWu8/view?usp=sharing"
   },
 
   focusAreas: [
