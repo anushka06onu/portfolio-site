@@ -5,7 +5,11 @@ export type Project = {
   category: string;
   status: string;
   description: string;
-  highlights: string[];
+  highlights?: string[];
+  features?: string[];
+  problem?: string;
+  solution?: string;
+  images?: string[];
   tech: string[];
   links?: {
     github?: string;
@@ -29,7 +33,7 @@ export default function ProjectCard({ p }: { p: Project }) {
       <div className="mt-4">
         <p className="text-sm font-medium text-white/90">Highlights</p>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-neutral-200">
-          {p.highlights.map((h) => (
+          {(p.features || p.highlights || []).map((h) => (
             <li key={h}>{h}</li>
           ))}
         </ul>

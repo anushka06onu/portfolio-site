@@ -18,7 +18,6 @@ export const site = {
   links: {
     email: "fatehahossainanushka@gmail.com",
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-802879279",
-    // keep your profile; individual projects will have their own github links below
     github: "https://github.com/anushka06onu",
     resume:
       "https://drive.google.com/file/d/1bar_OHyZ-nhAKV50fZqaG0YkLChmFWu8/view?usp=sharing"
@@ -31,269 +30,190 @@ export const site = {
     "NLP Research"
   ],
 
-  skills: {
-    Web: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
-    "Backend / Cloud": ["Node.js", "Express", "Spring Boot", "Firebase", "MySQL"],
-    "ML / Data": ["Python", "Pandas", "Scikit-learn"],
-    "Systems / Tools": ["Linux (coursework/projects)", "Postfix/Email stack (project)"],
-    Programming: ["C", "C++", "Java", "Python"]
+  research: {
+    role: "Research Assistant",
+    lab: "Health Informatics Research Lab",
+    ongoing: "Currently conducting NLP research focused on dataset quality, model experimentation, and evaluation practices.",
+    interests: [
+      "Machine Learning",
+      "Natural Language Processing",
+      "Healthcare AI",
+      "Explainable AI",
+      "Data Science"
+    ]
   },
-  education: [
-    {
-      program: "B.Sc. in Computer Science & Engineering (4th year)",
-      institution: "Daffodil International University",
-      location: "Dhaka, Bangladesh",
-      time: "2023 – Present",
-      notes: [
-        "Currently in 4th year of CSE.",
-        "CGPA: 3.93"
-      ]
-    },
-    {
-      program: "HSC — Golden A+",
-      institution: "Bangladesh Navy School & College, Dhaka",
-      location: "Dhaka, Bangladesh",
-      time: "2021",
-      notes: []
-    },
-    {
-      program: "SSC — Golden A+",
-      institution: "Bangladesh Navy School & College, Dhaka",
-      location: "Dhaka, Bangladesh",
-      time: "2019",
-      notes: []
-    }
+
+  skills: {
+    "Machine Learning & Data Science": ["Python", "Pandas", "Scikit-learn", "NLP", "Data Visualization"],
+    "Programming": ["C", "C++", "Java", "Python"],
+    "Web Development": ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "Spring Boot", "Firebase", "MySQL"],
+    "Systems & Tools": ["Linux", "Postfix/Email stack", "Git"],
+    "Research": ["Academic Writing", "Dataset Cleaning", "Model Evaluation"]
+  },
+
+  teaching: {
+    role: "Lab Prefect (OOP Java)",
+    duration: "Two Semesters (Spring 2025 – Summer 2025)",
+    description: "Assisted junior students during lab sessions with object-oriented programming concepts. Provided hands-on debugging help, lab guidance, and academic support."
+  },
+
+  certifications: [
+    { title: "IBM Data Science", provider: "Coursera", status: "Completed" },
+    { title: "Data Visualization with Python", provider: "Coursera", status: "Completed" },
+    { title: "Python Project for Data Science", provider: "Coursera", status: "Completed" },
+    { title: "MySQL Bootcamp", provider: "Udemy", status: "Completed" },
+    { title: "Java Bootcamp", provider: "Udemy", status: "Completed" }
   ],
-  courses: [
-    {
-      title: "Data Science, Artificial Intelligence & Machine Learning",
-      provider: "Coursera",
-      status: "Completed",
-      summary:
-        "Completed multiple courses covering data analysis, machine learning fundamentals, and AI concepts, with a strong focus on real datasets, preprocessing, modeling, and evaluation."
-    },
-    {
-      title: "Working with Data & Machine Learning",
-      provider: "Coursera",
-      status: "Completed",
-      summary:
-        "Hands-on coursework focused on data cleaning, feature preparation, exploratory analysis, and applying machine learning techniques in practical scenarios."
-    },
-    {
-      title: "Spring Boot Backend Development",
-      provider: "Udemy",
-      status: "Completed",
-      summary:
-        "Backend development course focusing on building RESTful APIs, application structure, and database integration using Spring Boot."
-    },
-    {
-      title: "Full-Stack Web Development",
-      provider: "Programming Hero",
-      status: "Ongoing",
-      summary:
-        "Ongoing full-stack web development program covering HTML, CSS, JavaScript, Node.js, and modern workflows through project-based projects."
-    }
-  ],
-  courseNote: "All certifications are listed on LinkedIn.",
 
   projects: [
     {
-      title: "University Lost & Found Portal",
-      category: "Full-stack / Campus Utility",
+      title: "Multi-Disease Healthcare Dashboard",
+      category: "Healthcare & AI",
       status: "Completed",
-      description:
-        "Web portal for students to report, search, and claim lost items with authenticated dashboards and responsive UI tailored to campus use.",
-      highlights: [
-        "Secure login/signup with personal dashboards",
-        "Report lost/found items and track claim status",
-        "Responsive, smooth-scrolling UI with organized listings"
+      description: "AI-integrated dashboard providing predictive insights for multiple diseases in a unified interface.",
+      problem: "Access to early predictive diagnostics for multiple chronic diseases is often fragmented and complex for general users.",
+      solution: "Developed an AI-integrated dashboard that provides predictive insights and risk assessments for multiple diseases in a unified, accessible interface.",
+      features: [
+        "Predictive modeling using ML",
+        "Unified patient dashboard",
+        "Data visualization for risk factors"
       ],
-      tech: ["Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
+      images: ["/placeholder-1.jpg", "/placeholder-2.jpg", "/placeholder-3.jpg"],
+      tech: ["Python", "Machine Learning", "Web Technologies"],
       links: {
-        github: "https://github.com/anushka06onu/University-lost-and-found-portal"
+        github: "https://github.com/anushka06onu",
+        demo: "#"
       }
     },
     {
-      title: "Compiler Architectonics (Book)",
-      category: "Book / Academic Resource",
-      status: "Published (2025)",
-      description:
-        "Student-first handbook on compiler design that breaks down lexers, parsers, three-address code, and optimization concepts with practical walkthroughs.",
-      highlights: [
-        "Written to demystify compiler design for undergrads",
-        "Combines theory with worked examples and visuals",
-        "Covers grammar basics, parsing, and three-address code"
-      ],
-      tech: ["Academic Writing", "Compiler Design"],
-      links: {
-        github: "https://github.com/anushka06onu/Compiler-Architectonics-"
-      }
-    },
-    {
-      title: "DIU GCPC Portal",
-      category: "Club Platform / Web",
-      status: "Launched (March 2026)",
-      description:
-        "Official portal for the DIU Girls' Computer Programming Club that keeps members updated on initiatives, achievements, and onboarding flows.",
-      highlights: [
-        "Landing + wing pages that spotlight ACM practice, research, career, PR, and Women in Tech tracks",
-        "Certificate verification workflow with QR-friendly lookups plus join/contact funnels for intake",
-        "Firebase-backed admin utilities to curate events, metrics, and community submissions"
-      ],
-      tech: ["HTML", "CSS", "JavaScript", "Firebase Authentication", "Firestore"],
-      links: {
-        github: "https://github.com/anushka06onu/GCPC-DIU",
-        demo: "https://gcpc-diu.vercel.app"
-      }
-    },
-    {
-      title: "Online To-let System (Student Housing Platform)",
-      category: "Full-stack / University Project",
+      title: "Online To-let System",
+      category: "Web Applications",
       status: "Completed",
-      description:
-        "A student-focused platform to reduce the hassle of finding rooms or seats near DIU. Owners can publish listings with images; students can browse, filter, and review.",
-      highlights: [
+      description: "A student-focused platform to reduce the hassle of finding rooms or seats near DIU.",
+      problem: "Students struggle to find safe and reliable accommodation near the university.",
+      solution: "Built a university-focused rental platform with reviews, advanced filtering, structured listings, and exclusive student verification.",
+      features: [
         "Room/seat listings with images",
-        "Filtering + reviews for decision-making",
-        "University email–based authentication (diu.edu.bd) to limit accounts"
+        "Filtering & review system",
+        "University email–based authentication (diu.edu.bd)"
       ],
-      tech: ["Spring Boot", "HTML", "CSS", "JavaScript"],
+      images: ["/placeholder-1.jpg", "/placeholder-2.jpg", "/placeholder-3.jpg"],
+      tech: ["Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
       links: {
         github: "https://github.com/anushka06onu/Online-To-let-Project-Demo-"
       }
     },
-
     {
-      title: "Meal Management System (Student-Focused)",
-      category: "Web Application / University Project",
+      title: "Meal Management System",
+      category: "Student Systems",
       status: "Completed",
-      description:
-        "A student meal booking system where users can add balance, choose items from a menu, and book meals ahead of time (breakfast/lunch/dinner).",
-      highlights: [
-        "Advance booking by meal type and time",
+      description: "A student meal booking system where users can add balance, choose items from a menu, and book meals ahead of time.",
+      problem: "Managing daily meal bookings, balancing ledgers, and forecasting food requirements is inefficient in student dormitories.",
+      solution: "Created a student-focused web application where users can manage their balance, view menus, and book meals ahead of time.",
+      features: [
+        "Advance booking by meal type/time",
         "Menu-based selection",
-        "Balance add/update workflow"
+        "Ledger and balance updates"
       ],
+      images: ["/placeholder-1.jpg", "/placeholder-2.jpg", "/placeholder-3.jpg"],
       tech: ["HTML", "CSS", "JavaScript"],
       links: {
         github: "https://github.com/anushka06onu/Meal-Management-Project"
       }
     },
-
     {
       title: "Compiler Toolkit",
-      category: "Web Tool / Academic Project",
+      category: "Educational Tools",
       status: "Completed",
-      description:
-        "A modern interactive web tool to visualize and practice core compiler design concepts with clear, visual output.",
-      highlights: [
-        "Three-Address Code (TAC) generation",
-        "Regular expression handling",
-        "Left recursion elimination",
-        "Left factoring with interactive & visual output"
+      description: "A modern interactive web tool to visualize and practice core compiler design concepts with clear, visual output.",
+      problem: "Core compiler design concepts like TAC generation and left recursion are difficult for undergraduates to visualize.",
+      solution: "Developed an interactive web tool that visualizes these concepts with clear, immediate feedback and step-by-step outputs.",
+      features: [
+        "Three-Address Code (TAC) Generation",
+        "Regex Handling",
+        "Left Factoring",
+        "Left Recursion Elimination"
       ],
-      tech: ["React", "JavaScript (ES6)", "HTML", "CSS"],
+      images: ["/placeholder-1.jpg", "/placeholder-2.jpg", "/placeholder-3.jpg"],
+      tech: ["React", "JavaScript", "HTML", "CSS"],
       links: {
-        github: "https://github.com/anushka06onu/CompilerToolkit",
-        demo: "PASTE_VERCEL_LINK_FOR_COMPILER_TOOLKIT"
+        github: "https://github.com/anushka06onu/CompilerToolkit"
       }
     },
-
     {
       title: "Mail Server Setup (Linux)",
-      category: "Systems / OS Course Project",
+      category: "Systems",
       status: "Completed",
-      description:
-        "Configured a Linux-based mail server stack and learned real-world setup, authentication, and troubleshooting.",
-      highlights: [
-        "Postfix configuration",
+      description: "Configured a Linux-based mail server stack and learned real-world setup, authentication, and troubleshooting.",
+      problem: "Understanding the underlying mechanics of email delivery and authentication requires hands-on infrastructure experience.",
+      solution: "Configured a complete Linux-based mail server stack from scratch to handle secure, authenticated email delivery.",
+      features: [
+        "Postfix MTA configuration",
         "Roundcube webmail integration",
         "OpenDKIM for email authentication"
       ],
+      images: ["/placeholder-1.jpg", "/placeholder-2.jpg", "/placeholder-3.jpg"],
       tech: ["Linux", "Postfix", "Roundcube", "OpenDKIM"],
       links: {
         github: "https://github.com/anushka06onu/Mail-Server-Using-Postfix-Dovecot"
       }
-    },
+    }
+  ],
 
+  leadership: [
     {
-      title: "Frontend Practice Pages",
-      category: "Frontend",
-      status: "Multiple small builds",
-      description:
-        "A collection of frontend practice pages focused on layout and styling (e.g., Career Mission practice using CSS, Naturals Platter using HTML).",
-      highlights: [
-        "Career Mission practice page (CSS-focused)",
-        "Naturals Platter page (HTML-focused)",
-        "Improving layout, spacing, and consistency"
-      ],
-      tech: ["HTML", "CSS"],
-      links: {
-        github: "https://github.com/anushka06onu/natures-platter"
-      }
+      title: "President",
+      org: "DIU Girls' Computer Programming Club",
+      time: "Feb 2026 – Present",
+      description: "Overseeing club strategy, programming tracks, and cross-wing coordination to empower women in technology."
     },
-
     {
-      title: "NLP Research Project",
-      category: "Research",
-      status: "Ongoing",
-      description:
-        "An ongoing NLP research project focused on dataset quality, model experimentation, and evaluation practices. Not published yet.",
-      highlights: [
-        "Dataset cleaning and preparation",
-        "Model experimentation and iteration",
-        "Evaluation-focused reporting"
-      ],
-      tech: ["Python", "NLP"]
-      // no github link required
+      title: "Vice President (PR Wing)",
+      org: "DIU Girls' Computer Programming Club",
+      time: "2025 – Jan 2026",
+      description: "Supported communication, managed outreach, and planned PR-related initiatives for the club."
+    },
+    {
+      title: "APS, ACM Wing",
+      org: "DIU Girls' Computer Programming Club",
+      time: "Previous Role",
+      description: "Fostered competitive programming skills among members and organized practice sessions."
+    },
+    {
+      title: "Executive Member",
+      org: "DIU Robotics Club & Data Science Club",
+      time: "2023 – 2025",
+      description: "Participated in skill-building events, supported teamwork-based tasks, and contributed to cross-disciplinary collaborations."
+    }
+  ],
+
+  education: [
+    {
+      program: "BSc in Computer Science & Engineering",
+      institution: "Daffodil International University",
+      location: "Dhaka, Bangladesh",
+      time: "Expected Jan 2027",
+      notes: ["CGPA: 3.93", "Dean's Award (Fall 2023, Spring 2024, Spring 2025)"]
+    }
+  ],
+  
+  courseNote: "Continuous learning focused on ML, AI, and Software Engineering.",
+  
+  courses: [
+    {
+      title: "IBM Data Science Professional Certificate",
+      provider: "Coursera",
+      status: "Completed",
+      summary: "Comprehensive training in Data Science methodologies, Python, and Machine Learning."
     }
   ],
 
   experience: [
     {
-      title: "President",
-      org: "DIU Girls' Computer Programming Club (DIU GCPC)",
-      time: "February 2026 – Present",
-      bullets: [
-        "Oversee club strategy, programming tracks, and cross-wing coordination.",
-        "Lead executive meetings, mentorship efforts, and external collaborations."
-      ]
-    },
-    {
-      title: "Lab Prefect (OOP Java)",
-      org: "Daffodil International University",
-      time: "Spring 2025 – Summer 2025",
-      bullets: [
-        "Helped students during lab sessions with OOP Java concepts.",
-        "Guided peers through exercises, debugging, and best practices."
-      ]
-    },
-    {
-      title: "Vice President (PR Wing)",
-      org: "DIU Girls' Computer Programming Club (DIU GCPC)",
-      time: "2025 – January 2026",
-      bullets: [
-        "Support communication and coordination for club activities.",
-        "Work with team members to plan and execute PR-related tasks."
-      ]
-    },
-    {
-      title: "Executive Member",
-      org: "DIU Data Science Club",
-      time: "2023 – 2024",
-      bullets: [
-        "Participated in club activities and skill-building events.",
-        "Supported teamwork-based tasks and coordination."
-      ]
-    },
-    {
-      title: "Executive Committee Member",
-      org: "DIU Robotics Club",
-      time: "2024 – 2025",
-      bullets: [
-        "Supported club activities and coordination.",
-        "Contributed to teamwork-based initiatives."
-      ]
+      title: "Research Assistant",
+      org: "Health Informatics Research Lab",
+      time: "Present",
+      bullets: ["Conducting NLP research", "Evaluating models and datasets"]
     }
   ]
 };

@@ -1,52 +1,36 @@
-import React from "react";
-import ContactForm from "./ContactForm";
 import { site } from "../content/site";
-import Link from "next/link";
 
 export default function ContactCTA() {
   return (
-    <div className="relative isolate overflow-hidden rounded-[32px] bg-gradient-to-r from-emerald-500/12 via-sky-500/10 to-purple-500/12 p-[1px] ring-1 ring-white/10 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(90%_140%_at_50%_120%,rgba(56,189,248,0.2),transparent)]" />
-      <div className="grid gap-10 rounded-[30px] bg-[#0c1117]/85 p-8 backdrop-blur-2xl lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
-        <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.32em] text-emerald-200">Let’s collaborate</p>
-          <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-            Build the next ML/AI experience together.
-          </h2>
-          <p className="max-w-xl text-sm leading-7 text-neutral-200">
-            I blend full-stack craft with applied AI. Email is best, but LinkedIn and GitHub are just a click away.
-          </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <a
-              href={`mailto:${site.links.email}`}
-              className="btn-base btn-lg btn-emerald btn-hover btn-shine shadow-[0_15px_40px_rgba(16,185,129,0.25)]"
-            >
-              Email me
-            </a>
-            <Link
-              href={site.links.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-base btn-lg btn-glass btn-hover btn-shine hover:bg-white/15"
-            >
-              LinkedIn
-            </Link>
-            {site.links.github ? (
-              <Link
-                href={site.links.github}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-base btn-lg btn-glass btn-hover btn-shine hover:bg-white/15"
-              >
-                GitHub
-              </Link>
-            ) : null}
-          </div>
-        </div>
+    <div className="card-glow relative overflow-hidden px-8 py-14 sm:px-16 sm:py-20 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-10">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-emerald-400/40 via-sky-400/80 to-purple-500/40 opacity-50 dark:opacity-80" />
+      <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
+      <div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+      
+      <div className="relative z-10 max-w-xl">
+        <h2 className="text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-white mb-4 font-[var(--font-playfair)]">
+          Let's build something extraordinary.
+        </h2>
+        <p className="text-neutral-600 dark:text-neutral-300 text-lg">
+          Whether you have a project in mind, want to discuss NLP research, or just want to connect — my inbox is always open.
+        </p>
+      </div>
 
-        <div className="lg:justify-self-end">
-          <ContactForm />
-        </div>
+      <div className="relative z-10 flex-shrink-0 flex flex-col gap-4 w-full sm:w-auto">
+        <a
+          href={`mailto:${site.links.email}`}
+          className="btn-base btn-lg btn-emerald btn-hover btn-shine hover:bg-emerald-500 w-full"
+        >
+          Say Hello
+        </a>
+        <a
+          href={site.links.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="btn-base btn-lg btn-glass btn-hover btn-shine w-full"
+        >
+          Connect on LinkedIn
+        </a>
       </div>
     </div>
   );
