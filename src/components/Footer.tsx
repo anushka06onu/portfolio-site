@@ -12,13 +12,13 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-[#05070b] py-10 text-sm text-neutral-300">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+    <footer className="relative overflow-hidden border-t border-black/5 dark:border-white/5 bg-white dark:bg-[#05070b] py-10 text-sm text-neutral-600 dark:text-neutral-300 transition-colors duration-500">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-[-40%] h-48 bg-[radial-gradient(70%_120%_at_50%_120%,rgba(56,189,248,0.15),transparent)]" />
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 text-center sm:flex-row sm:justify-between sm:text-left">
         <Link
           href="/"
-          className="text-base font-semibold text-white transition hover:text-emerald-200"
+          className="text-base font-semibold text-neutral-900 dark:text-white transition hover:text-emerald-500 dark:hover:text-emerald-200"
         >
           Fateha Hossain Anushka
         </Link>
@@ -29,7 +29,7 @@ export default function Footer() {
               href={s.href}
               target={s.href.startsWith("http") ? "_blank" : undefined}
               rel={s.href.startsWith("http") ? "noreferrer" : undefined}
-              className="group flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-neutral-100 transition hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_10px_25px_rgba(16,185,129,0.25)]"
+              className="group flex h-9 w-9 items-center justify-center rounded-full bg-black/5 dark:bg-white/5 text-neutral-900 dark:text-white transition hover:-translate-y-0.5 hover:bg-black/10 dark:hover:bg-white/10 hover:shadow-[0_10px_25px_rgba(16,185,129,0.15)] dark:hover:shadow-[0_10px_25px_rgba(16,185,129,0.25)]"
               aria-label={s.label}
             >
               <s.icon />
@@ -45,7 +45,7 @@ export default function Footer() {
 function EmailIcon() {
   return (
     <svg
-      className="h-4 w-4 text-emerald-200 group-hover:text-emerald-100"
+      className="h-4 w-4 text-emerald-600 dark:text-emerald-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-100"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -62,7 +62,7 @@ function EmailIcon() {
 function LinkedInIcon() {
   return (
     <svg
-      className="h-4 w-4 text-sky-200 group-hover:text-sky-100"
+      className="h-4 w-4 text-sky-600 dark:text-sky-200 group-hover:text-sky-700 dark:group-hover:text-sky-100"
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"
@@ -75,7 +75,7 @@ function LinkedInIcon() {
 function GitHubIcon() {
   return (
     <svg
-      className="h-4 w-4 text-neutral-200 group-hover:text-white"
+      className="h-4 w-4 text-neutral-700 dark:text-neutral-200 group-hover:text-black dark:group-hover:text-white"
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"

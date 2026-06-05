@@ -5,7 +5,7 @@ export default function ProjectShowcaseCard({ project, index }: { project: any; 
   const isEven = index % 2 === 0;
   
   const desktopImages = project.desktopImages?.length > 0 ? project.desktopImages : project.images || ["/placeholder-1.jpg"];
-  const mobileImages = project.mobileImages?.length > 0 ? project.mobileImages : ["/placeholder-2.jpg"];
+  const mobileImages = project.mobileImages?.length > 0 ? project.mobileImages : desktopImages;
 
   return (
     <div className="group relative overflow-hidden rounded-[2rem] border border-black/5 dark:border-white/5 bg-white/70 dark:bg-white/5 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-emerald-500/20 dark:hover:border-emerald-400/20 hover:shadow-[0_30px_60px_rgba(16,185,129,0.1)]">
@@ -69,14 +69,14 @@ export default function ProjectShowcaseCard({ project, index }: { project: any; 
         <div className={`relative p-8 sm:p-12 flex items-center justify-center bg-black/5 dark:bg-black/20 ${isEven ? 'lg:order-2 lg:border-l' : 'lg:order-1 lg:border-r'} border-black/5 dark:border-white/5 overflow-hidden`}>
           <div className="absolute inset-0 bg-[radial-gradient(500px_circle_at_50%_50%,rgba(56,189,248,0.02),transparent_80%)] dark:bg-[radial-gradient(500px_circle_at_50%_50%,rgba(56,189,248,0.05),transparent_80%)]" />
           
-          <div className="relative w-full max-w-xl mx-auto flex flex-col items-center justify-center h-full min-h-[500px]">
-            {/* Desktop Frame (Upper Half) */}
-            <div className="relative w-[90%] sm:w-full max-w-lg z-10 -translate-y-6 sm:-translate-y-8 transition-transform hover:scale-[1.02] duration-500 shadow-2xl">
+          <div className="relative w-full max-w-xl mx-auto flex flex-col items-center justify-center gap-10 sm:gap-14 py-4 z-10">
+            {/* Desktop Frame (Upper) */}
+            <div className="relative w-full transition-transform hover:scale-[1.02] duration-500 shadow-2xl">
               <Carousel images={desktopImages} altPrefix={project.title} type="desktop" />
             </div>
 
-            {/* Mobile Frame (Lower Half) - Tucked underneath but visible */}
-            <div className="absolute right-[5%] sm:right-[15%] lg:right-[10%] bottom-0 sm:bottom-4 translate-y-6 sm:translate-y-8 z-20 transition-transform hover:scale-[1.05] hover:-translate-y-2 duration-500 shadow-2xl">
+            {/* Mobile Frame (Lower) */}
+            <div className="relative transition-transform hover:scale-[1.05] duration-500 shadow-2xl">
               <Carousel images={mobileImages} altPrefix={`${project.title} Mobile`} type="mobile" />
             </div>
           </div>

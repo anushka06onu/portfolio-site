@@ -19,6 +19,7 @@ export interface CertificationData {
 export default function CertificationManager() {
   const [certs, setCerts] = useState<CertificationData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [editingCert, setEditingCert] = useState<CertificationData | null>(null);
 
   useEffect(() => {
@@ -27,14 +28,22 @@ export default function CertificationManager() {
 
   const fetchCerts = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "certifications"));
+      const querySnapshot = (await Promise.race([
+        getDocs(collection(db, "certifications")),
+        new Promise((_, reject) => setTimeout(() => reject(new Error("⚠️ ACTION REQUIRED: Your Firebase Firestore Database is not created yet! Go to console.firebase.google.com -> Your Project -> Firestore Database -> Click 'Create Database' (Test Mode).")), 5000))
+      ])) as any;
       const data: CertificationData[] = [];
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((doc: any) => {
         data.push({ id: doc.id, ...doc.data() } as CertificationData);
       });
       setCerts(data);
-    } catch (error) {
-      console.error("Error fetching certifications:", error);
+    } catch (err: any) {
+      console.error("Error fetching certifications:", err);
+      if (err.message?.includes("PERMISSION_DENIED")) {
+        setError("Cloud Firestore is not enabled. Go to the Firebase Console -> Build -> Firestore Database and click 'Create Database'.");
+      } else {
+        setError(err.message || "Failed to load.");
+      }
     } finally {
       setLoading(false);
     }
@@ -45,7 +54,7 @@ export default function CertificationManager() {
       setLoading(true);
       try {
         for (const cert of site.certifications) {
-          const c = { ...cert, imageUrl: cert.imageUrl || "" };
+          const c = { ...cert, imageUrl: (cert as any).imageUrl || "" };
           await addDoc(collection(db, "certifications"), c);
         }
         await fetchCerts();
@@ -60,22 +69,34 @@ export default function CertificationManager() {
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this certification?")) {
-      await deleteDoc(doc(db, "certifications", id));
-      fetchCerts();
+      try {
+        await deleteDoc(doc(db, "certifications", id));
+        fetchCerts();
+        setError(null);
+      } catch (err: any) {
+        console.error("Delete failed:", err);
+        setError("Delete failed: " + (err.message || "Permission Denied."));
+      }
     }
   };
 
   const handleSave = async (cert: CertificationData) => {
-    const dataToSave = { ...cert };
-    delete dataToSave.id;
+    try {
+      const dataToSave = { ...cert };
+      delete dataToSave.id;
 
-    if (cert.id) {
-      await updateDoc(doc(db, "certifications", cert.id), dataToSave as any);
-    } else {
-      await addDoc(collection(db, "certifications"), dataToSave);
+      if (cert.id) {
+        await updateDoc(doc(db, "certifications", cert.id), dataToSave as any);
+      } else {
+        await addDoc(collection(db, "certifications"), dataToSave);
+      }
+      setEditingCert(null);
+      fetchCerts();
+      setError(null);
+    } catch (err: any) {
+      console.error("Save failed:", err);
+      setError("Save failed: " + (err.message || "Permission Denied. Check Firestore Rules."));
     }
-    setEditingCert(null);
-    fetchCerts();
   };
 
   if (loading) return <div className="text-neutral-500 dark:text-neutral-400">Loading certifications...</div>;
@@ -90,7 +111,13 @@ export default function CertificationManager() {
         />
       ) : (
         <>
-          <div className="flex justify-between items-center mb-6">
+          {error && (
+            <div className="mb-6 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400">
+              <p className="font-bold">Database Error</p>
+              <p className="text-sm mt-1">{error}</p>
+            </div>
+          )}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <h2 className="text-xl font-bold text-neutral-900 dark:text-white">Manage Certifications</h2>
             <div className="flex gap-2">
               {certs.length === 0 && (

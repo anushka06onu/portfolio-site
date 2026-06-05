@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { signOut } from "firebase/auth";
+import { signOut, User } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import ProjectManager from "./ProjectManager";
 import CertificationManager from "./CertificationManager";
+import TeachingManager from "./TeachingManager";
+import MessageManager from "./MessageManager";
+import SiteSettingsManager from "./SiteSettingsManager";
 
-export default function AdminDashboard({ user }: { user: any }) {
-  const [activeTab, setActiveTab] = useState<"projects" | "certifications">("projects");
+export default function AdminDashboard({ user }: { user: User | null }) {
+  const [activeTab, setActiveTab] = useState<"projects" | "certifications" | "teaching" | "messages" | "settings">("projects");
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -30,31 +33,45 @@ export default function AdminDashboard({ user }: { user: any }) {
           </button>
         </div>
 
-        <div className="flex gap-2 p-1 bg-black/5 dark:bg-white/5 rounded-xl w-fit border border-black/5 dark:border-white/5">
+        <div className="flex flex-wrap gap-4 sm:gap-6 border-b border-black/10 dark:border-white/10">
+          <button
+            onClick={() => setActiveTab("settings")}
+            className={`py-3 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === "settings" ? "border-emerald-500 text-emerald-600 dark:text-emerald-400" : "border-transparent text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"}`}
+          >
+            Site Settings
+          </button>
           <button
             onClick={() => setActiveTab("projects")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              activeTab === "projects" 
-                ? "bg-white dark:bg-white/10 text-neutral-900 dark:text-white shadow-sm" 
-                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-            }`}
+            className={`py-3 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === "projects" ? "border-emerald-500 text-emerald-600 dark:text-emerald-400" : "border-transparent text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"}`}
           >
             Projects
           </button>
           <button
             onClick={() => setActiveTab("certifications")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              activeTab === "certifications" 
-                ? "bg-white dark:bg-white/10 text-neutral-900 dark:text-white shadow-sm" 
-                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-            }`}
+            className={`py-3 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === "certifications" ? "border-emerald-500 text-emerald-600 dark:text-emerald-400" : "border-transparent text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"}`}
           >
             Certifications
+          </button>
+          <button
+            onClick={() => setActiveTab("teaching")}
+            className={`py-3 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === "teaching" ? "border-emerald-500 text-emerald-600 dark:text-emerald-400" : "border-transparent text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"}`}
+          >
+            Teaching
+          </button>
+          <button
+            onClick={() => setActiveTab("messages")}
+            className={`py-3 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === "messages" ? "border-emerald-500 text-emerald-600 dark:text-emerald-400" : "border-transparent text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"}`}
+          >
+            Messages
           </button>
         </div>
 
         <div className="bg-white/70 dark:bg-white/5 p-6 rounded-2xl border border-black/5 dark:border-white/10 shadow-lg backdrop-blur-xl transition-colors min-h-[500px]">
-          {activeTab === "projects" ? <ProjectManager /> : <CertificationManager />}
+          {activeTab === "settings" && <SiteSettingsManager />}
+          {activeTab === "projects" && <ProjectManager />}
+          {activeTab === "certifications" && <CertificationManager />}
+          {activeTab === "teaching" && <TeachingManager />}
+          {activeTab === "messages" && <MessageManager />}
         </div>
       </div>
     </div>

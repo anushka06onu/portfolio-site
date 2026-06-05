@@ -58,7 +58,7 @@ export default function Carousel({ images, altPrefix, type = "desktop" }: Carous
 
       <div className={`absolute inset-0 z-0 bg-black/5 dark:bg-white/5 backdrop-blur-sm ${!isMobile ? "mt-6" : ""}`} />
       
-      <div className={`absolute inset-0 z-10 ${!isMobile ? "top-6" : ""}`}>
+      <div className={`absolute inset-0 z-10 ${!isMobile ? "top-6" : "overflow-hidden rounded-[1.5rem]"}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}

@@ -7,10 +7,10 @@ import ThemeToggle from "./ThemeToggle";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/education", label: "Education" },
-  { href: "/experience", label: "Experience" },
-  { href: "/contact", label: "Contact" }
+  { href: "/#projects", label: "Projects" },
+  { href: "/#education", label: "Education" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#contact", label: "Contact" }
 ];
 
 export default function Navbar() {
@@ -24,15 +24,20 @@ export default function Navbar() {
   };
 
   return (
-    <div className="sticky top-0 z-50 border-b border-black/5 dark:border-white/10 bg-white/75 dark:bg-[#0b0f14]/75 backdrop-blur transition-colors duration-500">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_60%_at_10%_20%,rgba(16,185,129,0.05),transparent),radial-gradient(80%_50%_at_90%_20%,rgba(56,189,248,0.05),transparent)] dark:bg-[radial-gradient(120%_60%_at_10%_20%,rgba(16,185,129,0.08),transparent),radial-gradient(80%_50%_at_90%_20%,rgba(56,189,248,0.08),transparent)] animate-pulse" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-emerald-400/40 via-black/20 to-sky-400/40 dark:from-emerald-400/60 dark:via-white/40 dark:to-sky-400/60 animate-[shimmer_6s_linear_infinite]" />
+    <div className="sticky top-0 z-50 border-b border-black/5 dark:border-white/10 bg-white/85 dark:bg-[#0b0f14]/85 backdrop-blur-md transition-colors duration-500">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_60%_at_10%_20%,rgba(16,185,129,0.03),transparent),radial-gradient(80%_50%_at_90%_20%,rgba(56,189,248,0.03),transparent)] dark:bg-[radial-gradient(120%_60%_at_10%_20%,rgba(16,185,129,0.05),transparent),radial-gradient(80%_50%_at_90%_20%,rgba(56,189,248,0.05),transparent)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-emerald-400/20 via-black/10 to-sky-400/20 dark:from-emerald-400/30 dark:via-white/20 dark:to-sky-400/30" />
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <Link
             href="/"
             className="font-semibold text-neutral-900 dark:text-white transition-transform duration-300 hover:scale-[1.02]"
-            onClick={scrollHome}
+            onClick={(e) => {
+              if (window.location.pathname === "/") {
+                e.preventDefault();
+                scrollHome();
+              }
+            }}
           >
             {site.name}
           </Link>
@@ -80,9 +85,31 @@ export default function Navbar() {
                 key={n.href}
                 href={n.href}
                 className="group relative rounded-full px-2 py-1 transition-all duration-300 hover:-translate-y-0.5 hover:text-neutral-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 hover:shadow-[0_12px_28px_rgba(16,185,129,0.18)] sm:px-3 sm:py-1.5"
-                onClick={() => {
-                  if (n.href === "/") scrollHome();
-                  else setOpen(false);
+                onClick={(e) => {
+                  const isHome = window.location.pathname === "/";
+                  if (n.href === "/") {
+                    if (isHome) {
+                      e.preventDefault();
+                      scrollHome();
+                    } else {
+                      setOpen(false);
+                    }
+                  } else if (n.href.startsWith("/#")) {
+                    if (isHome) {
+                      const targetId = n.href.substring(2);
+                      const el = document.getElementById(targetId);
+                      if (el) {
+                        e.preventDefault();
+                        el.scrollIntoView({ behavior: "smooth" });
+                      }
+                      setOpen(false);
+                    } else {
+                      e.preventDefault();
+                      window.location.href = n.href;
+                    }
+                  } else {
+                    setOpen(false);
+                  }
                 }}
               >
                 {n.label}

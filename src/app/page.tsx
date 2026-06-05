@@ -8,7 +8,9 @@ import ContactCTA from "../components/ContactCTA";
 import Timeline from "../components/Timeline";
 import CertificationCard from "../components/CertificationCard";
 import ProjectShowcaseCard from "../components/ProjectShowcaseCard";
-import { collection, getDocs } from "firebase/firestore";
+import ProjectList from "../components/ProjectList";
+import TeachingCard from "../components/TeachingCard";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "../lib/firebase";
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -21,7 +23,11 @@ async function fetchProjects() {
     querySnapshot.forEach((doc) => {
       data.push({ id: doc.id, ...doc.data() });
     });
-    return data;
+    return data.sort((a, b) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+      return 0;
+    });
   } catch (error) {
     console.error("Firebase fetch failed, falling back to static site.ts:", error);
     return site.projects;
@@ -40,6 +46,32 @@ async function fetchCertifications() {
   } catch (error) {
     console.error("Firebase fetch failed, falling back to static site.ts:", error);
     return site.certifications;
+  }
+}
+
+async function fetchSettings() {
+  try {
+    const docSnap = await getDoc(doc(db, "settings", "site-config"));
+    if (docSnap.exists()) return docSnap.data();
+    return null;
+  } catch (error) {
+    console.error("Firebase fetch failed, falling back to static site.ts:", error);
+    return null;
+  }
+}
+
+async function fetchTeaching() {
+  try {
+    const querySnapshot = await getDocs(collection(db, "teaching"));
+    if (querySnapshot.empty) return null;
+    const data: any[] = [];
+    querySnapshot.forEach((doc) => {
+      data.push({ id: doc.id, ...doc.data() });
+    });
+    return data;
+  } catch (error) {
+    console.error("Firebase fetch failed, falling back to static site.ts:", error);
+    return null;
   }
 }
 
@@ -70,6 +102,34 @@ export default async function HomePage() {
   // Fetch dynamic data, with static fallback
   const projects = await fetchProjects();
   const certifications = await fetchCertifications();
+  const fetchedSettings = await fetchSettings();
+  const fetchedTeaching = await fetchTeaching();
+
+  // Merge static with fetched settings
+  const dynamicSite = {
+    ...site,
+    name: fetchedSettings?.name || site.name,
+    headline: fetchedSettings?.headline || site.headline,
+    about: fetchedSettings?.about || site.about,
+    academics: {
+      ...site.academics,
+      cgpa: fetchedSettings?.cgpa || site.academics.cgpa,
+    },
+    research: {
+      lab: fetchedSettings?.researchLab || site.research.lab,
+      role: fetchedSettings?.researchRole || site.research.role,
+      ongoing: fetchedSettings?.researchOngoing || site.research.ongoing,
+      interests: fetchedSettings?.researchInterests || site.research.interests,
+    }
+  };
+
+  const teachingData = fetchedTeaching || [{
+    role: site.teaching.role,
+    duration: site.teaching.duration,
+    description: site.teaching.description,
+    tasks: [],
+    imageUrl: ""
+  }];
 
   return (
     <main className="relative isolate overflow-hidden bg-neutral-50 dark:bg-[#0b0f14] text-neutral-900 dark:text-neutral-100 transition-colors duration-500">
@@ -86,11 +146,11 @@ export default async function HomePage() {
             </div>
 
             <h1 className="text-4xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-5xl lg:text-6xl font-[var(--font-playfair)]">
-              {site.name}
+              {dynamicSite.name}
             </h1>
-            <p className="max-w-2xl text-lg text-neutral-700 dark:text-neutral-200">{site.headline}</p>
+            <p className="max-w-2xl text-lg text-neutral-700 dark:text-neutral-200">{dynamicSite.headline}</p>
             <p className="max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-300 sm:text-base">
-              {site.about}
+              {dynamicSite.about}
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -143,7 +203,7 @@ export default async function HomePage() {
               <div className="relative z-10 aspect-square w-full overflow-hidden rounded-full">
                 <Image
                   src="/IMG_6303 copy.jpg"
-                  alt={`${site.name} portrait`}
+                  alt={`${dynamicSite.name} portrait`}
                   width={600}
                   height={600}
                   className="h-full w-full object-cover"
@@ -159,13 +219,13 @@ export default async function HomePage() {
         <Container>
           
           {/* Achievement Section */}
-          <section className="animate-[fade-up_0.7s_ease-out]">
+          <section id="education" className="animate-[fade-up_0.7s_ease-out]">
             <SectionTitle
               title="Achievements & Roles"
               subtitle="Key highlights from my academic and extracurricular journey."
             />
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-              <StatCard label="Current CGPA" value={site.academics.cgpa} detail="Daffodil Int. University" />
+              <StatCard label="Current CGPA" value={dynamicSite.academics.cgpa} detail="Daffodil Int. University" />
               <StatCard label="Dean’s Awards" value={`${awardsCount}`} detail={awardTerms} />
               <StatCard label="Research" value="Research Assistant" detail="Health Informatics Research Lab" />
               <StatCard label="Leadership" value="President" detail="DIU GCPC" />
@@ -181,16 +241,16 @@ export default async function HomePage() {
             <div className="grid gap-6 md:grid-cols-2">
               <div className="card-glow p-8 flex flex-col justify-center">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-500 opacity-60 dark:opacity-70" />
-                <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">{site.research.role}</h3>
-                <p className="text-emerald-600 dark:text-emerald-300 text-sm uppercase tracking-wider mb-6">{site.research.lab}</p>
+                <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">{dynamicSite.research.role}</h3>
+                <p className="text-emerald-600 dark:text-emerald-300 text-sm uppercase tracking-wider mb-6">{dynamicSite.research.lab}</p>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-sm sm:text-base">
-                  {site.research.ongoing}
+                  {dynamicSite.research.ongoing}
                 </p>
               </div>
               <div className="card-glow p-8 border border-black/5 dark:border-white/10">
                 <h4 className="text-sm uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400 mb-6">Research Interests</h4>
                 <ul className="space-y-3">
-                  {site.research.interests.map((interest) => (
+                  {dynamicSite.research.interests.map((interest: string) => (
                     <li key={interest} className="flex items-center text-neutral-800 dark:text-neutral-200">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 mr-3 shadow-[0_0_8px_rgba(16,185,129,0.5)] dark:shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                       {interest}
@@ -202,20 +262,16 @@ export default async function HomePage() {
           </section>
 
           {/* Project Showcase */}
-          <section className="mt-24 animate-[fade-up_0.8s_ease-out]">
+          <section id="projects" className="mt-24 animate-[fade-up_0.8s_ease-out]">
             <SectionTitle
               title="Project Showcase"
               subtitle="Detailed case studies of selected builds."
             />
-            <div className="flex flex-col gap-12 sm:gap-16">
-              {projects.map((p, index) => (
-                <ProjectShowcaseCard key={p.title || index} project={p} index={index} />
-              ))}
-            </div>
+            <ProjectList projects={projects} />
           </section>
 
           {/* Leadership Timeline */}
-          <section className="mt-24 animate-[fade-up_0.85s_ease-out]">
+          <section id="experience" className="mt-24 animate-[fade-up_0.85s_ease-out]">
             <SectionTitle
               title="Leadership Journey"
               subtitle="Clubs, coordination, and executive progression."
@@ -231,17 +287,17 @@ export default async function HomePage() {
               title="Teaching & Mentorship"
               subtitle="Guiding peers in software engineering and foundational concepts."
             />
-            <div className="card-glow p-8 md:p-10 border border-black/5 dark:border-white/10 max-w-3xl">
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-purple-500 to-sky-400 opacity-50 dark:opacity-60" />
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                <h3 className="text-2xl font-bold text-neutral-900 dark:text-white font-[var(--font-playfair)]">{site.teaching.role}</h3>
-                <span className="inline-flex rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 text-xs text-neutral-700 dark:text-neutral-200 backdrop-blur-md">
-                  {site.teaching.duration}
-                </span>
-              </div>
-              <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-lg">
-                {site.teaching.description}
-              </p>
+            <div className="grid gap-6">
+              {teachingData.map((t: any, i: number) => (
+                <TeachingCard 
+                  key={t.id || i}
+                  role={t.role}
+                  duration={t.duration}
+                  description={t.description}
+                  tasks={t.tasks}
+                  imageUrl={t.imageUrl}
+                />
+              ))}
             </div>
           </section>
 
@@ -296,7 +352,7 @@ export default async function HomePage() {
           </section>
 
           {/* Contact */}
-          <section className="mt-28 pb-10 animate-[fade-up_1.1s_ease-out]">
+          <section id="contact" className="mt-28 pb-10 animate-[fade-up_1.1s_ease-out]">
             <ContactCTA />
           </section>
           

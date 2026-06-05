@@ -26,7 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${manrope.variable} ${playfair.variable} bg-neutral-50 text-neutral-900 dark:bg-[#0b0f14] dark:text-neutral-100 font-sans transition-colors duration-300`}>
+      <body className={`${manrope.variable} ${playfair.variable} bg-neutral-50 text-neutral-900 dark:bg-[#0b0f14] dark:text-neutral-100 font-sans transition-colors duration-300 overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ScrollToTopOnLoad />
           <Navbar />

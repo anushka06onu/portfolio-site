@@ -18,6 +18,7 @@ export interface ProjectData {
   desktopImages: string[];
   mobileImages: string[];
   tech: string[];
+  pinned?: boolean;
   links: {
     github: string;
     demo: string;
@@ -27,6 +28,7 @@ export interface ProjectData {
 export default function ProjectManager() {
   const [projects, setProjects] = useState<ProjectData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [editingProject, setEditingProject] = useState<ProjectData | null>(null);
 
   useEffect(() => {
@@ -35,14 +37,22 @@ export default function ProjectManager() {
 
   const fetchProjects = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "projects"));
+      const querySnapshot = (await Promise.race([
+        getDocs(collection(db, "projects")),
+        new Promise((_, reject) => setTimeout(() => reject(new Error("⚠️ ACTION REQUIRED: Your Firebase Firestore Database is not created yet! Go to console.firebase.google.com -> Your Project -> Firestore Database -> Click 'Create Database' (Test Mode).")), 5000))
+      ])) as any;
       const data: ProjectData[] = [];
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((doc: any) => {
         data.push({ id: doc.id, ...doc.data() } as ProjectData);
       });
       setProjects(data);
-    } catch (error) {
-      console.error("Error fetching projects:", error);
+    } catch (err: any) {
+      console.error("Error fetching projects:", err);
+      if (err.message?.includes("PERMISSION_DENIED")) {
+        setError("Cloud Firestore is not enabled. Go to the Firebase Console -> Build -> Firestore Database and click 'Create Database' to enable the CMS.");
+      } else {
+        setError(err.message || "Failed to load.");
+      }
     } finally {
       setLoading(false);
     }
@@ -69,22 +79,34 @@ export default function ProjectManager() {
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this project?")) {
-      await deleteDoc(doc(db, "projects", id));
-      fetchProjects();
+      try {
+        await deleteDoc(doc(db, "projects", id));
+        fetchProjects();
+        setError(null);
+      } catch (err: any) {
+        console.error("Delete failed:", err);
+        setError("Delete failed: " + (err.message || "Permission Denied."));
+      }
     }
   };
 
   const handleSave = async (project: ProjectData) => {
-    const dataToSave = { ...project };
-    delete dataToSave.id;
+    try {
+      const dataToSave = { ...project };
+      delete dataToSave.id;
 
-    if (project.id) {
-      await updateDoc(doc(db, "projects", project.id), dataToSave as any);
-    } else {
-      await addDoc(collection(db, "projects"), dataToSave);
+      if (project.id) {
+        await updateDoc(doc(db, "projects", project.id), dataToSave as any);
+      } else {
+        await addDoc(collection(db, "projects"), dataToSave);
+      }
+      setEditingProject(null);
+      fetchProjects();
+      setError(null);
+    } catch (err: any) {
+      console.error("Save failed:", err);
+      setError("Save failed: " + (err.message || "Permission Denied. Check Firestore Rules."));
     }
-    setEditingProject(null);
-    fetchProjects();
   };
 
   if (loading) return <div className="text-neutral-500 dark:text-neutral-400">Loading projects...</div>;
@@ -99,7 +121,13 @@ export default function ProjectManager() {
         />
       ) : (
         <>
-          <div className="flex justify-between items-center mb-6">
+          {error && (
+            <div className="mb-6 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400">
+              <p className="font-bold">Database Error</p>
+              <p className="text-sm mt-1">{error}</p>
+            </div>
+          )}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <h2 className="text-xl font-bold text-neutral-900 dark:text-white">Manage Projects</h2>
             <div className="flex gap-2">
               {projects.length === 0 && (
@@ -129,7 +157,10 @@ export default function ProjectManager() {
             {projects.map((p) => (
               <div key={p.id} className="flex items-center justify-between p-4 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 shadow-sm">
                 <div>
-                  <h3 className="text-neutral-900 dark:text-white font-semibold">{p.title}</h3>
+                  <h3 className="text-neutral-900 dark:text-white font-semibold flex items-center gap-2">
+                    {p.title}
+                    {p.pinned && <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider">Pinned</span>}
+                  </h3>
                   <p className="text-sm text-neutral-500 dark:text-neutral-400">{p.category}</p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -189,6 +220,12 @@ function ProjectForm({ project, onSave, onCancel }: { project: ProjectData, onSa
         <div>
           <label className="block text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">Status</label>
           <input name="status" value={formData.status} onChange={handleChange} className="w-full rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-neutral-900 dark:text-white outline-none focus:border-emerald-500/50" />
+        </div>
+        <div className="flex items-center">
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked={formData.pinned || false} onChange={(e) => setFormData(prev => ({...prev, pinned: e.target.checked}))} className="w-5 h-5 rounded border-black/10 text-emerald-500 focus:ring-emerald-500" />
+            <span className="text-sm font-semibold text-neutral-900 dark:text-white">Pin this project to top</span>
+          </label>
         </div>
         <div className="md:col-span-2">
           <label className="block text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">Description</label>
