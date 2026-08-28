@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "../content/site";
 import { featuredProjects } from "../content/projects";
-import { researchDirection, researchOutputs, thesisDetails } from "../content/research";
 import CoreToolkit from "../components/CoreToolkit";
 import ContactSection from "../components/ContactSection";
 import { GithubIcon, LinkedinIcon } from "../components/Icons";
@@ -15,14 +14,12 @@ import {
   Calendar,
   Activity,
   ShieldCheck,
-  Server,
-  FileText
+  Server
 } from "lucide-react";
 
 export default function HomePage() {
   const resilinet = featuredProjects.find((p) => p.slug === "resilinet")!;
   const computepulse = featuredProjects.find((p) => p.slug === "computepulse")!;
-  const primaryExperience = siteConfig.experience.slice(0, 2);
 
   const pillars = [
     {
@@ -155,7 +152,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. SELECTED WORK (BENTO GRID) */}
+        {/* 2. SELECTED WORK */}
         <section id="work" className="space-y-6 scroll-mt-20" aria-labelledby="work-heading">
           <div className="border-b border-[var(--border-color)] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
             <div>
@@ -186,7 +183,7 @@ export default function HomePage() {
                   <span className="text-xs font-semibold text-[var(--primary-accent)] tracking-wide font-mono">
                     NETWORK INTELLIGENCE
                   </span>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
                     Research prototype
                   </span>
                 </div>
@@ -217,10 +214,10 @@ export default function HomePage() {
 
               <div className="pt-3 border-t border-[var(--border-color)] space-y-3">
                 <div className="flex flex-wrap gap-1.5 font-mono text-xs text-[var(--text-muted)]">
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Python</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">LightGBM</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Mininet</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">FastAPI</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Python</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">LightGBM</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Mininet</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">FastAPI</span>
                 </div>
 
                 <div className="flex items-center gap-2 pt-0.5 text-xs font-medium">
@@ -264,7 +261,7 @@ export default function HomePage() {
                   <span className="text-xs font-semibold text-[var(--secondary-accent)] tracking-wide font-mono">
                     PREDICTIVE INFRASTRUCTURE
                   </span>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
                     Hackathon prototype
                   </span>
                 </div>
@@ -295,10 +292,10 @@ export default function HomePage() {
 
               <div className="pt-3 border-t border-[var(--border-color)] space-y-3">
                 <div className="flex flex-wrap gap-1.5 font-mono text-xs text-[var(--text-muted)]">
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">FastAPI</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">LightGBM</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">React</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">SHAP</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">FastAPI</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">LightGBM</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">React</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">SHAP</span>
                 </div>
 
                 <div className="flex items-center gap-2 pt-0.5 text-xs font-medium">
@@ -335,14 +332,14 @@ export default function HomePage() {
               </div>
             </article>
 
-            {/* 3. Dental VFM Thesis & Research (Full Width) */}
+            {/* 3. Healthcare Vision Thesis (Full Width) */}
             <article className="md:col-span-2 editorial-card p-5 sm:p-6 flex flex-col justify-between gap-4">
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
                   <span className="text-xs font-semibold text-[var(--primary-accent)] tracking-wide font-mono">
                     MEDICAL IMAGE ANALYSIS
                   </span>
-                  <span className="text-[11px] px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
                     Undergraduate thesis
                   </span>
                 </div>
@@ -362,10 +359,10 @@ export default function HomePage() {
 
               <div className="pt-3 border-t border-[var(--border-color)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex flex-wrap gap-1.5 font-mono text-xs text-[var(--text-muted)]">
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">PyTorch</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">DINOv2</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">PEFT (LoRA/BitFit)</span>
-                  <span className="px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Grad-CAM</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">PyTorch</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">DINOv2</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">PEFT (LoRA/BitFit)</span>
+                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Grad-CAM</span>
                 </div>
 
                 <Link
@@ -377,16 +374,6 @@ export default function HomePage() {
                 </Link>
               </div>
             </article>
-          </div>
-
-          <div className="pt-2 text-center">
-            <Link
-              href="/projects"
-              className="text-sm font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1.5"
-            >
-              <span>View all engineering projects (GCPC, Study Hub, Mail Server, Academic Analytics)</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </section>
 
@@ -408,35 +395,23 @@ export default function HomePage() {
               href="/research"
               className="text-xs font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1 font-mono"
             >
-              <span>All 6 Research Manuscripts</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>View all research →</span>
             </Link>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
             {/* Left Narrative */}
-            <div className="lg:col-span-2 editorial-card p-5 sm:p-6 space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-[var(--primary-accent)] font-mono text-xs font-semibold uppercase">
-                  <Activity className="w-4 h-4" />
-                  <span>Medical AI &amp; Vision Models</span>
-                </div>
-                <h3 className="text-lg font-bold text-[var(--text-main)]">
-                  Trustworthy Medical AI
-                </h3>
-                <p className="text-sm leading-6 text-[var(--text-muted)]">
-                  My current work focuses on trustworthy medical AI, particularly parameter-efficient vision models and explainable analysis of panoramic radiographs. My earlier research includes low-resource Bangla NLP.
-                </p>
+            <div className="lg:col-span-2 editorial-card p-5 sm:p-6 space-y-3 flex flex-col justify-center">
+              <div className="flex items-center gap-2 text-[var(--primary-accent)] font-mono text-xs font-semibold uppercase">
+                <Activity className="w-4 h-4" />
+                <span>Medical AI &amp; Vision Models</span>
               </div>
-
-              <div className="pt-3 border-t border-[var(--border-subtle)]">
-                <Link
-                  href="/research"
-                  className="btn-outline w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-xs text-[var(--text-main)] font-semibold"
-                >
-                  <span>View All Research →</span>
-                </Link>
-              </div>
+              <h3 className="text-lg font-bold text-[var(--text-main)]">
+                Trustworthy Medical AI
+              </h3>
+              <p className="text-sm leading-6 text-[var(--text-muted)]">
+                My current work focuses on trustworthy medical AI, particularly parameter-efficient vision models and explainable analysis of panoramic radiographs. My earlier research includes low-resource Bangla NLP.
+              </p>
             </div>
 
             {/* Right 3 Compact Research Entries */}
@@ -447,11 +422,11 @@ export default function HomePage() {
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
                     PMAM Journal Study
                   </h4>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)]">
                     Manuscript in preparation
                   </span>
                 </div>
-                <p className="text-xs text-[var(--text-muted)] leading-5">
+                <p className="text-sm text-[var(--text-muted)] leading-6">
                   Pediatric morphology alignment module for explainable, uncertainty-aware multi-disease detection in panoramic radiographs.
                 </p>
               </div>
@@ -462,11 +437,11 @@ export default function HomePage() {
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
                     Undergraduate Thesis
                   </h4>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--secondary-accent)] border border-[var(--border-subtle)]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--secondary-accent)] border border-[var(--border-subtle)]">
                     Ongoing
                   </span>
                 </div>
-                <p className="text-xs text-[var(--text-muted)] leading-5">
+                <p className="text-sm text-[var(--text-muted)] leading-6">
                   Parameter-efficient adaptation (LoRA, BitFit, VPT) of Vision Foundation Models for dental radiograph classification.
                 </p>
               </div>
@@ -477,11 +452,11 @@ export default function HomePage() {
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
                     Health Informatics Conference Study
                   </h4>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
                     Under review
                   </span>
                 </div>
-                <p className="text-xs text-[var(--text-muted)] leading-5">
+                <p className="text-sm text-[var(--text-muted)] leading-6">
                   Benchmarked and explainable machine learning approach to tri-class hematological classification for compensated microcytosis.
                 </p>
               </div>
@@ -530,7 +505,7 @@ export default function HomePage() {
                   <span>2026 – Present</span>
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-6">
+              <p className="text-sm text-[var(--text-muted)] leading-6">
                 Contributing to healthcare-oriented machine-learning experiments, reproducible evaluation, and research manuscript preparation.
               </p>
             </div>
@@ -552,7 +527,7 @@ export default function HomePage() {
                   <span>2026 – Present</span>
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-6">
+              <p className="text-sm text-[var(--text-muted)] leading-6">
                 Developing backend features and database-backed APIs across Spring Boot, Laravel, and FastAPI applications.
               </p>
             </div>
