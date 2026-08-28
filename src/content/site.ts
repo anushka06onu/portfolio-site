@@ -6,7 +6,7 @@ export const siteConfig = {
   author: "Fateha Hossain",
   title: "Fateha Hossain — Health Informatics Researcher & Software Engineer",
   description:
-    "Academic and engineering portfolio of Fateha Hossain. Health informatics research, parameter-efficient Vision Foundation Models, explainable machine learning, and resilient software backends.",
+    "Academic and engineering portfolio of Fateha Hossain. Health informatics research, parameter-efficient Vision Foundation Models, explainable machine learning, and software systems.",
   role: "Health Informatics Researcher & Software Engineer",
   availability: "Research Assistant · Final-year CSE student · Bangladesh",
   location: "Dhaka, Bangladesh",
@@ -21,36 +21,21 @@ export const siteConfig = {
   },
 
   hero: {
-    eyebrow: "RESEARCHER & SOFTWARE ENGINEER",
+    eyebrow: "HEALTH INFORMATICS · INTELLIGENT SYSTEMS",
     headline:
-      "I build reliable intelligent systems for healthcare and complex infrastructure.",
+      "Building trustworthy intelligent systems for healthcare and infrastructure.",
     intro:
-      "Undergraduate researcher and software engineer specializing in health informatics, parameter-efficient foundation models, explainable machine learning, and resilient software backends. Experienced in building reproducible ML pipelines, distributed telemetry tools, and production web platforms.",
+      "I’m Fateha Hossain, a final-year CSE student and Research Assistant working in health informatics, explainable machine learning and backend engineering.",
     buttons: {
-      work: { label: "Selected Work", href: "#work" },
-      research: { label: "Research Roadmap", href: "#research" },
+      work: { label: "View My Work", href: "#work" },
+      research: { label: "Research", href: "/research" },
       cv: { label: "View CV", href: "/resume.pdf" }
     }
   },
 
   narrative: {
-    threePillars: [
-      {
-        title: "Health Informatics",
-        desc: "Exploring trustworthy machine learning and medical-image analysis for healthcare research."
-      },
-      {
-        title: "Explainable Intelligent Systems",
-        desc: "Building ML systems with transparent predictions, tested fallback behavior and traceable experiments."
-      },
-      {
-        title: "Backend Engineering",
-        desc: "Developing APIs, data pipelines and full-stack applications that turn technical ideas into usable systems."
-      }
-    ],
-
     aboutText:
-      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems with clean architectures and tested resilience."
+      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (CGPA: 3.92 / 4.00) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems with clean architectures and tested resilience."
   },
 
   experience: [
@@ -58,24 +43,24 @@ export const siteConfig = {
       title: "Research Assistant",
       organization: "Health Informatics Research Lab",
       location: "Dhaka, Bangladesh",
-      period: "March 2026 – Present",
+      period: "2026 – Present",
       type: "Research" as const,
       bullets: [
-        "Conducting research on pediatric morphology alignment modules (PMAM) and uncertainty quantification for multi-disease diagnosis in panoramic radiography.",
-        "Benchmarking parameter-efficient fine-tuning (LoRA, BitFit, VPT) on Vision Foundation Models for dental radiographs.",
-        "Developing benchmarked and explainable machine learning pipelines for tri-class hematological classification."
+        "Contributing to healthcare-oriented machine-learning experiments, evaluation, and manuscript preparation.",
+        "Conducting research on pediatric morphology alignment modules (PMAM) and uncertainty quantification in panoramic radiography.",
+        "Benchmarking parameter-efficient fine-tuning (LoRA, BitFit, VPT) on Vision Foundation Models for dental radiographs."
       ]
     },
     {
       title: "Backend Developer Intern",
       organization: "Software Engineering Company",
       location: "Dhaka, Bangladesh",
-      period: "March 2026 – Present",
+      period: "2026 – Present",
       type: "Engineering" as const,
       bullets: [
-        "Designing and maintaining enterprise REST APIs with Spring Boot and Laravel, adhering to strict validation standards.",
-        "Optimizing relational database schemas in MySQL and PostgreSQL with indexed queries for low-latency operations.",
-        "Structuring modular backend services with automated integration testing and secure authentication."
+        "Developing backend features and database-backed APIs across Spring Boot and Laravel projects.",
+        "Designing structured REST endpoints with strict validation, automated integration tests, and secure authentication.",
+        "Optimizing relational schemas in MySQL and PostgreSQL for low-latency query performance."
       ]
     },
     {
@@ -109,7 +94,7 @@ export const siteConfig = {
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "2022 – 2026",
-      distinction: "Expected Graduation with Distinction (CGPA: 3.90+ / 4.00)",
+      distinction: "Graduation with Distinction (CGPA: 3.92 / 4.00)",
       notes: [
         "Undergraduate Thesis: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis.",
         "Awarded University Academic Merit Scholarships across consecutive semesters.",
