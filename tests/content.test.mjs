@@ -19,6 +19,7 @@ test("Public screenshots and diagrams exist", () => {
   assert.ok(fs.existsSync(path.join(publicDir, "projects/computepulse/dashboard.png")), "computepulse dashboard.png exists");
   assert.ok(fs.existsSync(path.join(publicDir, "projects/healthcare-analytics/overview.png")), "healthcare overview.png exists");
   assert.ok(fs.existsSync(path.join(publicDir, "projects/academic-analytics/dashboard.png")), "academic-analytics dashboard.png exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "projects/gcpc-diu/homepage.png")), "gcpc-diu homepage.png exists");
 });
 
 test("ResiliNet content adheres to exact repository policies, scenarios, and classifier wording", () => {
@@ -45,7 +46,7 @@ test("ResiliNet content adheres to exact repository policies, scenarios, and cla
   assert.doesNotMatch(projectsContent, /physical Mininet/);
 });
 
-test("ComputePulse and Healthcare entries use honest prototype and responsible exploratory claims", () => {
+test("ComputePulse, Healthcare, and GCPC entries use verified claims and genuine links", () => {
   const projectsContent = fs.readFileSync(path.resolve("src/content/projects.ts"), "utf-8");
   
   assert.match(projectsContent, /Hackathon prototype · Synthetic telemetry demonstration/);
@@ -57,6 +58,11 @@ test("ComputePulse and Healthcare entries use honest prototype and responsible e
   assert.match(projectsContent, /Responsible Framing as Decision Support/);
   assert.doesNotMatch(projectsContent, /patient trajectory/i);
   assert.doesNotMatch(projectsContent, /provable calibration/i);
+
+  // GCPC Official Website
+  assert.match(projectsContent, /DIU GCPC Official Website/);
+  assert.match(projectsContent, /https:\/\/gcpc\.daffodilvarsity\.edu\.bd\//);
+  assert.match(projectsContent, /Lead Developer & Maintainer/);
 });
 
 test("Site configuration uses canonical URL, exact roles, and natural text", () => {

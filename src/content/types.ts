@@ -64,10 +64,14 @@ export interface Project {
 export interface AdditionalProject {
   title: string;
   category: string;
+  status?: string;
+  role?: string;
   description: string;
+  contribution?: string;
   technologies: string[];
   github?: string;
   demo?: string;
+  institution?: string;
   highlights: string[];
 }
 

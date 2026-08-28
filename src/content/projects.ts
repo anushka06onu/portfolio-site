@@ -408,6 +408,26 @@ export const featuredProjects: Project[] = [
 
 export const additionalProjects: AdditionalProject[] = [
   {
+    title: "DIU GCPC Official Website",
+    category: "Production Web Engineering",
+    status: "Official website of DIU Girls’ Computer Programming Club",
+    role: "Lead Developer & Maintainer",
+    description:
+      "Developed and deployed the official web platform for the DIU Girls’ Computer Programming Club, providing centralized access to club activities, events, initiatives, and organizational information.",
+    contribution:
+      "Designed and implemented the responsive interface, structured the public-facing content, integrated deployment workflows, and maintained the platform for a real university organization.",
+    highlights: [
+      "Officially deployed on university domain for DIU GCPC",
+      "Dynamic event management with wing-specific activities and registration modals",
+      "Interactive certificate verification desk with student ID verification",
+      "Clean URL routing, HTTPS enforcement, and custom responsive design system"
+    ],
+    technologies: ["JavaScript", "HTML5", "CSS3", "Firebase", "Vite", "Apache"],
+    demo: "https://gcpc.daffodilvarsity.edu.bd/",
+    github: "https://github.com/anushka06onu/GCPC-DIU",
+    institution: "https://daffodilvarsity.edu.bd/"
+  },
+  {
     title: "Study Hub",
     category: "Full-Stack Web Application",
     description:
@@ -431,19 +451,6 @@ export const additionalProjects: AdditionalProject[] = [
       "MTA/MDA routing with Postfix and Dovecot",
       "DKIM, SPF, and DMARC email authentication setup",
       "Secure TLS encryption and virtual mailbox user management"
-    ]
-  },
-  {
-    title: "Air-Writing Bangla Character Recognition",
-    category: "Computer Vision & HCI",
-    description:
-      "A real-time hand-gesture tracking and computer vision pipeline for recognizing in-air Bangla alphanumeric character writing using fingertip trajectories.",
-    technologies: ["Python", "OpenCV", "MediaPipe", "Scikit-learn", "NumPy"],
-    github: "https://github.com/anushka06onu",
-    highlights: [
-      "MediaPipe fingertip coordinate extraction and trajectory smoothing",
-      "Temporal canvas buffer for multi-stroke character capture",
-      "Feature extraction and classification pipeline for Bangla script"
     ]
   }
 ];
