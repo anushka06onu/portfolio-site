@@ -8,8 +8,8 @@ interface ExperienceItemProps {
 
 export default function ExperienceItem({ role, showTech = false }: ExperienceItemProps) {
   return (
-    <div className="editorial-card p-6 sm:p-7 space-y-4">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2.5 border-b border-[var(--border-subtle)] pb-3.5">
+    <div className="editorial-card p-5 sm:p-7 space-y-4">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
         <div>
           <h4 className="text-lg sm:text-xl font-bold text-[var(--text-main)]">
             {role.title}
@@ -20,7 +20,7 @@ export default function ExperienceItem({ role, showTech = false }: ExperienceIte
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0 self-start sm:self-auto">
           <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[var(--text-muted)] px-2.5 py-1 rounded-md bg-[var(--surface-subtle)] border border-[var(--border-subtle)] whitespace-nowrap">
             <Calendar className="w-3.5 h-3.5 text-[var(--primary-accent)] shrink-0" />
             <span>{role.period}</span>
@@ -32,7 +32,7 @@ export default function ExperienceItem({ role, showTech = false }: ExperienceIte
       </div>
 
       <ul className="space-y-2.5">
-        {role.bullets.slice(0, 3).map((bullet, idx) => (
+        {role.bullets.map((bullet, idx) => (
           <li key={idx} className="flex items-start gap-3 text-sm sm:text-base text-[var(--text-muted)] leading-7">
             <span className="text-[var(--primary-accent)] font-bold mt-1 text-base shrink-0">•</span>
             <span>{bullet}</span>

@@ -183,7 +183,7 @@ export default function HomePage() {
                   <span className="text-xs font-semibold text-[var(--primary-accent)] tracking-wide font-mono">
                     NETWORK INTELLIGENCE
                   </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)] shrink-0">
                     Research prototype
                   </span>
                 </div>
@@ -261,7 +261,7 @@ export default function HomePage() {
                   <span className="text-xs font-semibold text-[var(--secondary-accent)] tracking-wide font-mono">
                     PREDICTIVE INFRASTRUCTURE
                   </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)] shrink-0">
                     Hackathon prototype
                   </span>
                 </div>
@@ -339,7 +339,7 @@ export default function HomePage() {
                   <span className="text-xs font-semibold text-[var(--primary-accent)] tracking-wide font-mono">
                     MEDICAL IMAGE ANALYSIS
                   </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)] shrink-0">
                     Undergraduate thesis
                   </span>
                 </div>
@@ -403,7 +403,7 @@ export default function HomePage() {
             {/* Left Narrative */}
             <div className="lg:col-span-2 editorial-card p-5 sm:p-6 space-y-3 flex flex-col justify-center">
               <div className="flex items-center gap-2 text-[var(--primary-accent)] font-mono text-xs font-semibold uppercase">
-                <Activity className="w-4 h-4" />
+                <Activity className="w-4 h-4 shrink-0" />
                 <span>Medical AI &amp; Vision Models</span>
               </div>
               <h3 className="text-lg font-bold text-[var(--text-main)]">
@@ -414,15 +414,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Right 3 Compact Research Entries */}
+            {/* Right 3 Compact Research Entries (Protected Mobile Layout) */}
             <div className="lg:col-span-3 space-y-3">
               {/* 1. PMAM */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
                     PMAM Journal Study
                   </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
                     Manuscript in preparation
                   </span>
                 </div>
@@ -433,11 +433,11 @@ export default function HomePage() {
 
               {/* 2. Thesis */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
                     Undergraduate Thesis
                   </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--secondary-accent)] border border-[var(--border-subtle)]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--secondary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
                     Ongoing
                   </span>
                 </div>
@@ -448,11 +448,11 @@ export default function HomePage() {
 
               {/* 3. Hematological Classification */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
                     Health Informatics Conference Study
                   </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
                     Under review
                   </span>
                 </div>
@@ -490,18 +490,18 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* 1. Research Assistant */}
             <div className="editorial-card p-5 space-y-3">
-              <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
                 <div>
                   <h4 className="text-base font-bold text-[var(--text-main)]">
                     Research Assistant
                   </h4>
                   <p className="text-xs font-medium text-[var(--primary-accent)] flex items-center gap-1 mt-0.5">
-                    <Building2 className="w-3.5 h-3.5" />
+                    <Building2 className="w-3.5 h-3.5 shrink-0" />
                     <span>Health Informatics Research Lab</span>
                   </p>
                 </div>
-                <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
+                <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1 shrink-0 self-start sm:self-auto">
+                  <Calendar className="w-3 h-3 shrink-0" />
                   <span>2026 – Present</span>
                 </span>
               </div>
@@ -512,18 +512,18 @@ export default function HomePage() {
 
             {/* 2. Backend Developer Intern */}
             <div className="editorial-card p-5 space-y-3">
-              <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
                 <div>
                   <h4 className="text-base font-bold text-[var(--text-main)]">
                     Backend Developer Intern
                   </h4>
                   <p className="text-xs font-medium text-[var(--primary-accent)] flex items-center gap-1 mt-0.5">
-                    <Building2 className="w-3.5 h-3.5" />
+                    <Building2 className="w-3.5 h-3.5 shrink-0" />
                     <span>CSE-Tech</span>
                   </p>
                 </div>
-                <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
+                <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1 shrink-0 self-start sm:self-auto">
+                  <Calendar className="w-3 h-3 shrink-0" />
                   <span>2026 – Present</span>
                 </span>
               </div>
