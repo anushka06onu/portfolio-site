@@ -12,8 +12,8 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
   const defaultScreenshot = `/projects/${project.slug}/${
     project.slug === "computepulse" || project.slug === "academic-analytics"
-      ? "dashboard.png"
-      : "overview.png"
+      ? "dashboard.png?v=2"
+      : "overview.png?v=2"
   }`;
 
   const imageSrc = imagePath || defaultScreenshot;
@@ -53,6 +53,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
             src={imageSrc}
             alt={`${project.title} Interface Screenshot`}
             fill
+            unoptimized
             className="object-cover object-top transition-transform duration-300 hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           />

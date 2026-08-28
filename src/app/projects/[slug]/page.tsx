@@ -64,13 +64,13 @@ export default async function CaseStudyPage({ params }: Props) {
   const study = project.caseStudy;
   const screenshotPath = `/projects/${project.slug}/${
     project.slug === "computepulse" || project.slug === "academic-analytics"
-      ? "dashboard.png"
-      : "overview.png"
+      ? "dashboard.png?v=2"
+      : "overview.png?v=2"
   }`;
   const diagramPath = `/projects/${project.slug}/${
     project.slug === "computepulse" || project.slug === "academic-analytics"
-      ? "dashboard.svg"
-      : "overview.svg"
+      ? "dashboard.svg?v=2"
+      : "overview.svg?v=2"
   }`;
 
   const diagramCaption =
@@ -172,6 +172,7 @@ export default async function CaseStudyPage({ params }: Props) {
             alt={`${project.title} Application Screenshot`}
             fill
             priority
+            unoptimized
             className="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 896px"
           />
@@ -237,6 +238,7 @@ export default async function CaseStudyPage({ params }: Props) {
               src={diagramPath}
               alt={`${project.title} Architectural Diagram`}
               fill
+              unoptimized
               className="object-contain p-2"
               sizes="(max-width: 1024px) 100vw, 896px"
             />
