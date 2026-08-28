@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from "../content/types";
-import { ExternalLink, ArrowRight, ShieldCheck } from "lucide-react";
+import { ExternalLink, ArrowRight, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 interface ProjectCardProps {
@@ -18,16 +18,25 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
 
   const imageSrc = imagePath || defaultScreenshot;
 
+  // Show up to 3 evidence points and up to 6 technologies on homepage card preview
+  const previewEvidence = project.evidence.slice(0, 3);
+  const previewTech = project.technologies.slice(0, 6);
+  const remainingTechCount = project.technologies.length - previewTech.length;
+
   return (
     <article className="editorial-card editorial-card-accent p-6 sm:p-7 flex flex-col justify-between gap-6">
-      {/* Top Metadata */}
       <div className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-3.5">
-          <span className="mono-tag text-xs font-semibold text-[var(--primary-accent)] tracking-wide">
+        {/* Category & Status */}
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
+          <span className="text-sm font-semibold text-[var(--primary-accent)] tracking-wide">
             {project.categoryTrack}
           </span>
-          <span className="mono-tag px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
-            {project.statusLabel}
+          <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
+            {project.status === "prototype"
+              ? "Research prototype"
+              : project.slug === "computepulse"
+              ? "Hackathon prototype"
+              : "Production platform"}
           </span>
         </div>
 
@@ -42,7 +51,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
               <ArrowRight className="w-4 h-4 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--primary-accent)]" />
             </Link>
           </h3>
-          <p className="mt-1 text-xs sm:text-sm font-medium text-[var(--secondary-accent)]">
+          <p className="mt-1 text-sm sm:text-base font-medium text-[var(--secondary-accent)]">
             {project.tagline}
           </p>
         </div>
@@ -59,69 +68,49 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
           />
         </div>
 
-        {/* One-Sentence Outcome */}
-        <p className="text-sm text-[var(--text-main)] leading-relaxed">
+        {/* Summary Description */}
+        <p className="text-base leading-7 text-[var(--text-main)]">
           {project.summary}
         </p>
 
-        {/* Why it Matters & Contribution Box */}
-        <div className="space-y-2 text-xs bg-[var(--surface-subtle)]/70 p-3.5 rounded-xl border border-[var(--border-subtle)]">
-          <div>
-            <span className="font-semibold font-mono text-[var(--text-main)] uppercase tracking-wider text-[10px] block text-[var(--primary-accent)]">
-              Why it matters
-            </span>
-            <p className="mt-0.5 text-[var(--text-muted)] leading-relaxed">
-              {project.whyItMatters}
-            </p>
-          </div>
-          <div className="pt-2 border-t border-[var(--border-color)]">
-            <span className="font-semibold font-mono text-[var(--text-main)] uppercase tracking-wider text-[10px] block text-[var(--secondary-accent)]">
-              My contribution
-            </span>
-            <p className="mt-0.5 text-[var(--text-muted)] leading-relaxed">
-              {project.myContribution}
-            </p>
-          </div>
-        </div>
-
-        {/* Verified Evidence Points */}
-        <div className="space-y-1.5 pt-0.5">
-          <span className="mono-tag font-semibold text-[var(--text-main)] block text-[11px]">
-            Verified Evidence &amp; Verification
-          </span>
-          <ul className="space-y-1">
-            {project.evidence.map((point, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-xs text-[var(--text-muted)]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[var(--primary-accent)] shrink-0 mt-0.5" />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Key Highlights / Evidence (3 points) */}
+        <ul className="space-y-1.5 pt-1">
+          {previewEvidence.map((point, idx) => (
+            <li key={idx} className="flex items-start gap-2 text-sm leading-6 text-[var(--text-muted)]">
+              <CheckCircle2 className="w-4 h-4 text-[var(--primary-accent)] shrink-0 mt-1" />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Footer: Tech Stack & Action Links */}
-      <div className="pt-3 border-t border-[var(--border-color)] space-y-3.5">
+      <div className="pt-4 border-t border-[var(--border-color)] space-y-4">
         {/* Tech Stack Chips */}
         <div className="flex flex-wrap gap-1.5">
-          {project.technologies.map((tech) => (
+          {previewTech.map((tech) => (
             <span
               key={tech}
-              className="mono-tag px-2 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] text-[11px] font-medium"
+              className="text-xs px-2.5 py-1 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] font-medium"
             >
               {tech}
             </span>
           ))}
+          {remainingTechCount > 0 && (
+            <span className="text-xs px-2 py-1 rounded-md bg-[var(--surface-subtle)] text-[var(--text-muted)] font-medium">
+              +{remainingTechCount}
+            </span>
+          )}
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-2.5 pt-1 text-xs font-mono">
+        <div className="flex flex-wrap items-center gap-2.5 text-sm font-medium">
           <Link
             href={project.links.caseStudy}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-bold shadow-md shadow-teal-500/15 transition-all"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-semibold shadow-md shadow-teal-500/15 transition-all"
           >
             <span>Case Study</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-4 h-4" />
           </Link>
 
           {project.links.demo && (
@@ -129,7 +118,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
               href={project.links.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
             >
               <span>Live Demo</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -141,22 +130,10 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
             >
               <GithubIcon className="w-4 h-4" />
               <span>Source Code</span>
-            </a>
-          )}
-
-          {project.links.methodology && (
-            <a
-              href={project.links.methodology}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--secondary-accent)] hover:border-[var(--secondary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
-            >
-              <span>Methodology</span>
-              <ExternalLink className="w-3.5 h-3.5" />
             </a>
           )}
         </div>

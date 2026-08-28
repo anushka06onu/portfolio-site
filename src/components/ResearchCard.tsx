@@ -1,5 +1,5 @@
 import { ResearchOutput } from "../content/types";
-import { BookOpen, Tag, ExternalLink } from "lucide-react";
+import { Tag } from "lucide-react";
 
 interface ResearchCardProps {
   output: ResearchOutput;
@@ -24,40 +24,34 @@ export default function ResearchCard({ output }: ResearchCardProps) {
   return (
     <div className="editorial-card p-6 flex flex-col justify-between gap-4">
       <div className="space-y-3">
+        {/* Top Venue & Status */}
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
-          <span className="mono-tag text-xs text-[var(--secondary-accent)] font-medium">
+          <span className="text-sm font-medium text-[var(--secondary-accent)]">
             {output.venueOrType} · {output.year}
           </span>
-          <span className={`mono-tag text-[11px] px-2.5 py-0.5 rounded-full border ${getStatusBadgeStyle(output.status)}`}>
+          <span className={`text-xs px-2.5 py-0.5 rounded-full border font-medium ${getStatusBadgeStyle(output.status)}`}>
             {output.status}
           </span>
         </div>
 
-        <h4 className="text-base font-bold text-[var(--text-main)] leading-snug">
+        {/* Title */}
+        <h4 className="text-lg font-bold text-[var(--text-main)] leading-7">
           {output.title}
         </h4>
 
-        <p className="text-xs font-mono text-[var(--primary-accent)] font-medium">
-          Role: {output.role}
-        </p>
-
-        <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+        {/* Summary */}
+        <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
           {output.summary}
         </p>
-
-        {output.statusNote && (
-          <p className="text-[11px] font-mono text-[var(--text-muted)] italic">
-            Status note: {output.statusNote}
-          </p>
-        )}
       </div>
 
-      <div className="pt-2.5 border-t border-[var(--border-color)] flex flex-wrap gap-1.5 items-center">
-        <Tag className="w-3 h-3 text-[var(--text-muted)] shrink-0 mr-0.5" />
+      {/* Topics */}
+      <div className="pt-3 border-t border-[var(--border-color)] flex flex-wrap gap-1.5 items-center">
+        <Tag className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0 mr-1" />
         {output.topics.map((topic) => (
           <span
             key={topic}
-            className="mono-tag px-2 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] text-[10px]"
+            className="text-xs px-2.5 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] font-medium"
           >
             {topic}
           </span>

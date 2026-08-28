@@ -1,14 +1,14 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
-/* Radiant Scientific & Engineering Design System */
+/* Readable Scientific & Engineering Design System */
 :root {
   --bg-color: #F8FAFC;
   --surface: #FFFFFF;
   --surface-subtle: #F1F5F9;
   --surface-elevated: #FFFFFF;
   --text-main: #0F172A;
-  --text-muted: #64748B;
+  --text-muted: #475569;
   --border-color: #E2E8F0;
   --border-subtle: #EDF2F7;
   
@@ -23,8 +23,8 @@
   --badge-text: #334155;
   --badge-border: #CBD5E1;
 
-  --card-glow: rgba(13, 148, 136, 0.05);
-  --hero-glow: radial-gradient(circle at 50% 0%, rgba(13, 148, 136, 0.08) 0%, transparent 60%);
+  --card-glow: rgba(13, 148, 136, 0.04);
+  --hero-glow: radial-gradient(circle at 50% 0%, rgba(13, 148, 136, 0.06) 0%, transparent 60%);
 }
 
 :root[class~="dark"] {
@@ -48,14 +48,16 @@
   --badge-text: #CBD5E1;
   --badge-border: #1E293B;
 
-  --card-glow: rgba(20, 184, 166, 0.08);
-  --hero-glow: radial-gradient(circle at 50% -10%, rgba(20, 184, 166, 0.15) 0%, rgba(37, 99, 235, 0.08) 40%, transparent 70%);
+  --card-glow: rgba(20, 184, 166, 0.06);
+  --hero-glow: radial-gradient(circle at 50% -10%, rgba(20, 184, 166, 0.12) 0%, rgba(37, 99, 235, 0.06) 40%, transparent 70%);
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -65,16 +67,16 @@ body {
   background: var(--hero-glow);
 }
 
-/* Precision Technical Dot Grid */
+/* Subtle, Calm Technical Dot Grid */
 .bg-tech-grid {
-  background-size: 28px 28px;
+  background-size: 32px 32px;
   background-image: 
-    radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    radial-gradient(circle, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
 }
 
 :root[class~="dark"] .bg-tech-grid {
   background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 /* Skip link */
@@ -101,27 +103,27 @@ body {
   outline-offset: 2px;
 }
 
-/* Radiant Glass Card */
+/* Clean Editorial Card */
 .editorial-card {
   position: relative;
   background-color: var(--surface);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 :root[class~="dark"] .editorial-card {
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
 }
 
 .editorial-card:hover {
-  border-color: rgba(20, 184, 166, 0.4);
+  border-color: rgba(20, 184, 166, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -4px var(--card-glow);
+  box-shadow: 0 12px 28px -4px var(--card-glow);
 }
 
-/* Top Accent Line for Cards */
+/* Top Accent Line for Featured Cards Only */
 .editorial-card-accent {
   position: relative;
   overflow: hidden;
