@@ -4,7 +4,7 @@ export const researchDirection = {
   heading: "Research Direction",
   tagline: "Health Informatics, Vision Foundation Models & Trustworthy Machine Learning",
   overview:
-    "My current research focuses on health informatics, parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical image diagnosis, and explainable machine learning. My undergraduate thesis investigates PEFT methods on dental radiographs using the DentIRO dataset, while my ongoing lab and conference work spans clinical hematological classification and low-resource language processing.",
+    "My current research focuses on health informatics, parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical image diagnosis, and explainable machine learning. As a Research Assistant at the Health Informatics Research Lab, I work on pediatric morphology alignment and uncertainty-aware disease detection in panoramic radiographs, while my undergraduate thesis benchmarks PEFT methods on the DentIRO dataset.",
 
   corePillars: [
     {
@@ -13,25 +13,26 @@ export const researchDirection = {
         "Evaluating and fine-tuning foundation models (DINOv2, BiomedCLIP, MedSAM) with LoRA, BitFit, and VPT for data-scarce medical imaging domains."
     },
     {
+      title: "Pediatric Morphology & Uncertainty-Aware AI",
+      description:
+        "Developing morphological alignment modules (PMAM) and uncertainty-quantified frameworks for explainable multi-disease detection in pediatric radiography."
+    },
+    {
       title: "Health Informatics & Hematological ML",
       description:
         "Developing benchmarked, calibrated, and interpretable machine learning pipelines for complex clinical classification and disease detection."
-    },
-    {
-      title: "Explainable AI & Model Interpretability",
-      description:
-        "Applying TreeSHAP, attention-based interpretability, and transformer-adapted Grad-CAM to ensure transparency and clinical alignment."
     }
   ],
 
   topics: [
     "Health Informatics",
     "Vision Foundation Models (VFMs)",
+    "Pediatric Morphology Alignment (PMAM)",
     "Parameter-Efficient Fine-Tuning (PEFT)",
+    "Uncertainty Quantification",
     "Medical Image Analysis",
     "Explainable AI (XAI)",
-    "Low-Resource Machine Learning",
-    "Clinical Data Benchmarking"
+    "Low-Resource NLP"
   ],
 
   historyNote:
@@ -53,6 +54,17 @@ export const thesisDetails = {
 };
 
 export const researchOutputs: ResearchOutput[] = [
+  {
+    title: "PMAM: A Pediatric Morphology Alignment Module for Explainable, Uncertainty-Aware Multi-Disease Detection in Panoramic Radiographs",
+    venueOrType: "Journal Manuscript · Health Informatics",
+    role: "Research Assistant (Health Informatics Research Lab)",
+    status: "Manuscript in preparation",
+    statusNote: "Journal-focused study on pediatric morphology alignment, uncertainty-aware modeling, and multi-disease detection",
+    year: "2026",
+    summary:
+      "Investigates a pediatric morphology alignment module (PMAM) to address anatomical growth variations and quantify predictive uncertainty for explainable, trustworthy multi-disease detection in dental panoramic radiographs.",
+    topics: ["Health Informatics", "Pediatric Morphology", "Panoramic Radiography", "Uncertainty Quantification", "Explainable AI"]
+  },
   {
     title: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
     venueOrType: "Undergraduate Thesis · Ongoing Research",

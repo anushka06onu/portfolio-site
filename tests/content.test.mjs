@@ -66,9 +66,13 @@ test("ComputePulse, Healthcare, and GCPC entries use verified claims and genuine
   assert.match(projectsContent, /Lead Developer & Maintainer/);
 });
 
-test("Research outputs match exact thesis details and 4 under-review conference papers", () => {
+test("Research outputs match exact PMAM journal study, thesis details, and 4 under-review conference papers", () => {
   const researchContent = fs.readFileSync(path.resolve("src/content/research.ts"), "utf-8");
   
+  // PMAM Journal Study
+  assert.match(researchContent, /PMAM: A Pediatric Morphology Alignment Module for Explainable, Uncertainty-Aware Multi-Disease Detection in Panoramic Radiographs/);
+  assert.match(researchContent, /Research Assistant \(Health Informatics Research Lab\)/);
+
   // Thesis details
   assert.match(researchContent, /Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis/);
   assert.match(researchContent, /DentIRO/);
