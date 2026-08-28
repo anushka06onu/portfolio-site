@@ -72,7 +72,7 @@ export default function AboutPage() {
           <div className="relative p-1 rounded-2xl bg-gradient-to-br from-teal-500/30 via-cyan-500/20 to-blue-500/30 shadow-xl shadow-teal-500/10">
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface)] shadow-sm">
               <Image
-                src="/fateha-hossain.jpg"
+                src="/fateha-hossain.jpg?v=4"
                 alt="Fateha Hossain"
                 fill
                 priority
