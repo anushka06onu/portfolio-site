@@ -6,21 +6,20 @@ export const featuredProjects: Project[] = [
     title: "ResiliNet",
     tagline: "Explainable ML-Assisted SDN Digital Twin & Predictive Routing",
     category: "Network Intelligence · Explainable AI",
-    categoryTrack: "NETWORK INTELLIGENCE · EXPLAINABLE AI",
+    categoryTrack: "Network Intelligence · Explainable AI",
     status: "prototype",
-    statusLabel: "Research prototype · Real comparative Mininet campaign pending",
+    statusLabel: "Research prototype · Emulated SDN validation pipeline",
     summary:
-      "An explainable ML-assisted SDN digital twin for congestion forecasting, policy-aware OpenFlow routing, and reproducible Mininet experiments.",
+      "An explainable ML-assisted SDN digital twin for link-congestion forecasting, policy-aware OpenFlow routing, and reproducible Mininet experiments.",
     whyItMatters:
-      "Traditional SDN reactive routing only handles congestion after packet drops occur. ResiliNet forecasts link buffer saturation before queuing failure happens, using SHAP values to explain routing decisions to network operators.",
+      "Standard SDN reactive routing only adjusts paths after packet loss occurs. ResiliNet explores estimating congestion risk before queue exhaustion happens, using TreeSHAP values to provide transparent feature attribution for routing decisions.",
     myContribution:
-      "Designed the experiment architecture, predictive routing pipeline, evidence lifecycle, FastAPI backend integration, and end-to-end evaluation framework.",
+      "Designed the experiment architecture, telemetry ingestion pipeline, LightGBM congestion-risk classifier integration, TreeSHAP explanation formatting, FastAPI backend endpoints, and automated test suite.",
     evidence: [
-      "61 automated backend tests",
-      "11 automated frontend tests",
-      "3 routing policy baselines (Dijkstra, Predictive, Fallback)",
-      "4 controlled experimental scenarios (Flash Crowd, Degrading Link, Periodic Spike, Invariant Baseline)",
-      "SHA-256 experiment run provenance tracking"
+      "61 automated backend tests and 11 frontend tests",
+      "Three controlled routing policies: static/no-reroute, reactive-threshold, and predictive-ML",
+      "Four seed-controlled Mininet scenarios: normal operation, gradual congestion, sudden traffic surge, and concurrent service-class flows",
+      "SHA-256 experiment run provenance tracking and artifact validation"
     ],
     technologies: [
       "Python",
@@ -42,73 +41,74 @@ export const featuredProjects: Project[] = [
     order: 1,
     caseStudy: {
       problem:
-        "Modern Software-Defined Networks (SDN) struggle with sudden traffic bursts. Conventional shortest-path algorithms (like standard Dijkstra) react to congestion only after packet loss and latency spikes have degraded user experience. Furthermore, black-box ML models for traffic steering lack operational interpretability, making network operators hesitant to deploy autonomous routing.",
+        "In software-defined networks, conventional routing algorithms react to link congestion only after packet loss and latency spikes have degraded traffic quality. In addition, black-box machine learning models for traffic steering lack transparency, making it difficult for network operators to interpret automated decisions.",
       context:
-        "Developed as an advanced research prototype exploring the intersection of SDN data-plane telemetry, machine learning forecasting, and explainable decision support. The project focuses on rigorous provenance, reproducible scenario injection, and transparent fallback mechanisms.",
+        "Developed as an academic research prototype investigating the combination of SDN telemetry, machine learning risk forecasting, and explainable decision support with reproducible artifact tracking.",
       role:
-        "Project Creator & Lead Architect. Formulated the digital twin architecture, implemented the telemetry ingestion pipelines, trained LightGBM congestion risk models, integrated TreeSHAP local explanations, and built the FastAPI control interface.",
+        "Project Creator & Lead Developer. Formulated the digital twin architecture, implemented telemetry collection and feature engineering pipelines, integrated the LightGBM classifier, formatted TreeSHAP local explanations, and built the FastAPI control endpoints.",
       architecture: {
         overview:
-          "ResiliNet couples a simulated/emulated SDN data plane with an asynchronous machine learning inference engine and a real-time operator control dashboard.",
+          "ResiliNet couples a simulated/emulated SDN data plane with an asynchronous machine learning inference service and an operator dashboard.",
         highlights: [
-          "Data Plane Emulation: Mininet topology with OpenFlow switches managed via Ryu SDN controller.",
-          "Telemetry Collector: Periodic port-stats polling calculating link utilization, packet delta, and queue depth.",
-          "Predictive Inference Pipeline: LightGBM regressor predicting congestion risk over multi-step horizons.",
-          "Explainability Engine: SHAP TreeExplainer decomposing feature attribution (bytes/sec, burst history, port variance) per decision.",
-          "Policy-Aware Routing Engine: Multi-criteria path computation comparing baseline shortest-path against predictive congestion-minimizing paths.",
-          "Provenance & Audit Logger: Every run generates a cryptographic SHA-256 artifact capturing scenario parameters, model weights, and telemetry logs."
+          "Data Plane Emulation: Mininet topology with OpenFlow switches managed through the Ryu SDN controller.",
+          "Telemetry Collector: Periodic port-stats polling computing link utilization, packet delta, and queue depth.",
+          "Predictive Inference Pipeline: LightGBM classifier estimating short-horizon link-congestion risk from rolling telemetry features.",
+          "Explainability Engine: TreeSHAP local feature attribution decomposing the influence of port counters, burst history, and utilization deltas.",
+          "Policy Engine: Three controlled routing baselines (static/no-reroute, reactive-threshold, and predictive-ML).",
+          "Provenance & Artifact Logger: Run parameters, model configurations, and telemetry logs recorded with SHA-256 hashes for reproducibility."
         ]
       },
       decisions: [
         {
-          decision: "LightGBM over Deep RNN/LSTM for Traffic Forecasting",
+          decision: "LightGBM for Telemetry Classification",
           rationale:
-            "Tabular network metrics (utilization deltas, port counters) with engineered rolling windows achieved sub-5ms inference latency, whereas recurrent architectures introduced unacceptable inference overhead for real-time SDN control loops.",
+            "LightGBM was selected for compatibility with structured rolling-window telemetry, efficient inference, and direct support for TreeSHAP local explanations.",
           tradeoff:
-            "Requires manual feature engineering of rolling windows rather than automated sequence representation learning."
+            "Requires manual feature engineering of rolling windows rather than automated sequence representation."
         },
         {
-          decision: "TreeSHAP Local Attribution over LIME",
+          decision: "TreeSHAP for Local Feature Attribution",
           rationale:
-            "TreeSHAP computes exact Shapley values with mathematical consistency and significantly faster computation time on tree ensembles, essential for per-flow route explanation.",
+            "TreeSHAP computes exact Shapley values with mathematical consistency on tree ensembles, providing per-flow feature attribution without stochastic sampling variance.",
           tradeoff:
-            "Tied directly to tree-based estimators; switching to neural backends would require KernelSHAP or Integrated Gradients."
+            "Tied directly to tree-based estimators."
         },
         {
-          decision: "Fail-Safe Routing Invariants & Dijkstra Fallback",
+          decision: "Deterministic Fallback Invariants",
           rationale:
-            "If the ML confidence drops below safety thresholds or telemetry becomes stale, the controller deterministically reverts to standard Dijkstra shortest path without dropping existing active flows.",
+            "If model risk scores fall below confidence thresholds or telemetry is unavailable, routing deterministically falls back to standard shortest-path without interrupting active flows.",
           tradeoff:
             "Requires continuous health monitoring of the inference service."
         }
       ],
       methodology:
-        "Evaluated across 4 controlled synthetic and emulated traffic injection scenarios: Flash Crowd (exponential burst), Degrading Link (gradual queue exhaustion), Periodic Spike (cyclical burst patterns), and Invariant Baseline (steady Poisson arrivals). Each scenario was recorded with full provenance manifests.",
+        "Constructed four seed-controlled Mininet experimental scenarios: normal operation (steady background traffic), gradual congestion (incremental load ramp), sudden traffic surge (burst injection), and concurrent service-class flows. Verified execution workflows with automated test fixtures.",
       evaluation: {
         metrics: [
-          "Inference Latency (< 8ms per route decision)",
-          "Prediction RMSE against synthetic queue depth",
-          "Test Suite Coverage (61 backend unit/integration tests, 11 frontend UI/state tests)",
-          "Path switch stability under fluctuating telemetry"
+          "Model inference latency recorded as an evaluation target; comparative benchmark pending",
+          "Classifier ROC-AUC and PR-AUC across rolling telemetry validation sets",
+          "Test Suite Coverage (61 backend unit/integration tests, 11 frontend tests)",
+          "Artifact schema validation and hash verification across mock runs"
         ],
         summary:
-          "Automated test suites verify route computation, fallback integrity, SHAP vector formatting, and telemetry serialization."
+          "Automated test suites verify route computation, fallback behavior, SHAP vector formatting, and telemetry serialization."
       },
       results: [
-        "Constructed a full digital twin pipeline combining telemetry simulation, ML inference, and interactive topology visualization.",
-        "Demonstrated real-time SHAP feature attribution directly explaining why specific alternate paths were selected during simulated bursts.",
-        "Implemented deterministic SHA-256 audit trails ensuring full repeatability of experimental telemetry and model outputs."
+        "Implemented an end-to-end telemetry, prediction, explanation, and routing architecture.",
+        "Verified system behavior through automated backend and frontend test suites.",
+        "Implemented reproducible campaign orchestration, artifact validation, and statistical evaluation pipelines.",
+        "Completed mock campaign runs for pipeline verification; real comparative Mininet performance benchmark remains pending."
       ],
       limitations: [
-        "Comparative physical Mininet multi-switch hardware testbed campaign is currently pending rigorous comparative latency benchmarking against ECMP baselines.",
-        "Current model assumes stationary topology; dynamic link failure retraining is an ongoing area of investigation."
+        "The real comparative Mininet emulation campaign has not yet been published; physical-network and hardware-testbed validation remain future work.",
+        "Current model assumes a fixed topology; dynamic topology discovery and online model adaptation are areas for future research."
       ],
       learnings: [
-        "Explainability in autonomous infrastructure is not a luxury—operators demand clear attribution before delegating automated routing authority.",
-        "Robust software engineering (rigorous test suites and strict fallback invariants) is as critical to research credibility as the underlying ML algorithm."
+        "Explainability in automated infrastructure is essential: operators require clear feature attribution before trusting predictive route adjustments.",
+        "Rigorous automated testing and deterministic fallback invariants are as important for system credibility as the machine learning model itself."
       ],
       statusNote:
-        "Research prototype with full automated verification. Comparative Mininet physical campaign pending final publication benchmark."
+        "Research prototype with automated test verification. Real comparative Mininet campaign pending final evaluation."
     }
   },
   {
@@ -116,20 +116,21 @@ export const featuredProjects: Project[] = [
     title: "ComputePulse",
     tagline: "Predictive GPU-Cluster Intelligence & Failure-Risk Forecasting",
     category: "Predictive Infrastructure · Machine Learning",
-    categoryTrack: "PREDICTIVE INFRASTRUCTURE · MACHINE LEARNING",
-    status: "complete",
-    statusLabel: "Completed Hackathon Project & Prototype · Role: Team Lead",
+    categoryTrack: "Predictive Infrastructure · Machine Learning",
+    status: "prototype",
+    statusLabel: "Hackathon prototype · Synthetic telemetry demonstration",
     summary:
-      "A predictive GPU-cluster intelligence platform that combines node telemetry, failure-risk forecasting, explainable alerts, and an operational dashboard.",
+      "A predictive GPU-cluster intelligence prototype that combines telemetry monitoring, LightGBM risk scoring, explainable alert presentation, and an operational dashboard.",
     whyItMatters:
-      "Unplanned node outages and thermal throttling in distributed GPU clusters disrupt multi-day training jobs, wasting computational budgets. ComputePulse provides proactive warning with feature-level fault explanations.",
+      "Hardware degradation and thermal stress in GPU clusters can disrupt compute jobs. ComputePulse explores proactive anomaly alerting and feature-level attribution using simulated cluster metrics.",
     myContribution:
-      "Served as Team Lead. Directed the system architecture, built the Python/FastAPI telemetry and inference service, integrated the predictive risk models, and designed the real-time node triage dashboard.",
+      "Served as Team Lead. Directed the project scope, built the Python/FastAPI backend and telemetry simulation service, integrated the LightGBM risk model, and designed the dashboard interface.",
     evidence: [
-      "Sub-100ms real-time cluster telemetry processing",
-      "Multi-node health score aggregation & anomaly detection",
-      "SHAP-based feature importance for hardware risk factors (VRAM thrashing, thermal spikes)",
-      "Automated alert escalation & workload migration recommendations"
+      "Telemetry-driven GPU node health monitoring",
+      "LightGBM-based risk model estimating node fault probability",
+      "SHAP-based feature attribution for thermal and memory utilization anomalies",
+      "Rule-based mitigation recommendations and alert triage UI",
+      "Fully deployed demonstration web interface"
     ],
     technologies: [
       "Python",
@@ -150,63 +151,63 @@ export const featuredProjects: Project[] = [
     order: 2,
     caseStudy: {
       problem:
-        "High-performance AI clusters operate near thermal and memory limits. Silent GPU hardware degradation, memory bus errors, and cooling inefficiencies often trigger mid-run task crashes, requiring expensive checkpoints rollbacks.",
+        "GPU clusters operate under intense thermal and memory workloads. Identifying early warning signals of node stress before job crashes occur helps infrastructure teams prioritize maintenance.",
       context:
-        "Created during a competitive hackathon and subsequently refined into a robust predictive systems prototype. Designed to give infrastructure teams visibility into impending node failures.",
+        "Created during a competitive hackathon and subsequently organized into a clean prototype demonstrating how predictive models and explainability can aid hardware operations.",
       role:
-        "Team Lead & Backend/ML Engineer. Led a multi-disciplinary team, architected the modular FastAPI backend, integrated telemetry simulation pipelines, and built the risk aggregation heuristics.",
+        "Team Lead & Backend/ML Developer. Led team coordination, built the FastAPI backend and simulated metric feeds, integrated the LightGBM risk estimator, and created the triage dashboard.",
       architecture: {
         overview:
-          "A layered telemetry processing pipeline that ingests simulated GPU sensor metrics (temperature, power draw, PCIe bandwidth, VRAM utilization, fan speeds) and outputs instant anomaly scores with root-cause explanations.",
+          "A telemetry processing pipeline that ingests simulated GPU sensor metrics (temperature, memory utilization, fan speed, power draw) and computes anomaly risk scores with root-cause indicators.",
         highlights: [
-          "Telemetry Ingestion Worker: Streams metrics across simulated nodes and cluster racks.",
-          "Anomaly & Risk Engine: Ensemble gradient-boosted trees scoring per-node failure probability.",
-          "Attribution Layer: Generates per-metric risk contribution so sysadmins understand whether thermal creep or memory degradation is driving the alert.",
-          "Interactive Operations Dashboard: Real-time status cards, node heatmaps, and mitigation action triggers."
+          "Telemetry Simulation Service: Generates multi-node sensor streams across nominal and stressed operating profiles.",
+          "Anomaly Risk Estimator: LightGBM model estimating node failure likelihood based on rolling telemetry trends.",
+          "Attribution Layer: SHAP feature breakdown highlighting whether thermal creep, power spikes, or memory pressure drive the risk score.",
+          "Operator Dashboard: Interactive cluster node grid, time-series charts, and rule-based mitigation recommendations."
         ]
       },
       decisions: [
         {
-          decision: "Modular Microservices Architecture (FastAPI + React)",
+          decision: "Separation of Inference Backend and React Dashboard",
           rationale:
-            "Separating the high-frequency telemetry analytics engine from the React presentation layer allowed independent scaling and low-latency websocket updates.",
+            "Decoupling the FastAPI analytics backend from the React visualization frontend allowed clean API contracts and independent development.",
           tradeoff:
-            "Introduced CORS and API contract maintenance overhead during rapid hackathon prototyping."
+            "Required maintaining OpenAPI schemas across both services."
         },
         {
-          decision: "Composite Health Index (0-100) with Tiered Warning Bands",
+          decision: "Tiered Risk Status Bands (Nominal, Elevated, Critical)",
           rationale:
-            "Engineers need an immediate visual heuristic to prioritize triage before drilling into deep multi-sensor graphs.",
+            "Provides an immediate visual triage heuristic for operators before inspecting multi-sensor graphs.",
           tradeoff:
-            "Heuristic weighting of composite scores requires domain tuning per cluster hardware spec."
+            "Threshold boundaries require calibration depending on hardware tolerance."
         }
       ],
       methodology:
-        "Tested against synthetic multi-node stress profiles simulating thermal runaway, ECC memory corruption cascades, and PCIe bus congestion.",
+        "Tested against synthetic multi-node operational profiles simulating thermal stress patterns and memory load spikes.",
       evaluation: {
         metrics: [
-          "Risk classification accuracy on synthetic stress runs",
-          "Telemetry processing throughput (> 500 node events/sec)",
-          "UI latency under continuous live metric updates"
+          "Risk classification consistency on synthetic evaluation sets",
+          "UI rendering responsiveness under periodic data polling",
+          "End-to-end API response times"
         ],
         summary:
-          "Successfully demonstrated automated risk detection and visual root-cause attribution across 16-node cluster configurations."
+          "Demonstrated automated risk scoring and visual feature attribution across simulated multi-node cluster configurations."
       },
       results: [
-        "Built and deployed a fully functional live demo platform with simulated telemetry feeds.",
-        "Demonstrated automated pre-failure alerts identifying simulated cooling unit degradation 15 minutes before emergency thermal throttling thresholds.",
-        "Won competitive recognition for system completeness and clean interface design."
+        "Built and deployed a functional demonstration platform with live telemetry feeds.",
+        "Demonstrated automated pre-failure alerts identifying simulated cooling unit stress before critical thermal thresholds.",
+        "Recognized for end-to-end prototype completeness and clean interface design."
       ],
       limitations: [
-        "Currently validated on synthetic and emulated telemetry distributions rather than production NVIDIA NVML/DCGM production cluster feeds.",
-        "Automated workload migration orchestration is a recommended feature rather than an executed Kubernetes command."
+        "Validated on synthetic and simulated telemetry distributions rather than production NVIDIA DCGM enterprise cluster feeds.",
+        "Workload mitigation recommendations are rule-based advisory suggestions rather than executed orchestrations."
       ],
       learnings: [
-        "Leading a technical team under tight deadlines requires uncompromising clarity on API contracts and data schemas early in the sprint.",
-        "Real-time operational dashboards must prioritize actionable signal-to-noise ratio over complex, hard-to-interpret charts."
+        "Delivering a complete prototype under tight deadlines requires rigorous agreement on data schemas early in development.",
+        "Operational dashboards are most effective when they present clear, actionable root causes alongside aggregate scores."
       ],
       statusNote:
-        "Completed hackathon project and functional prototype. Role: Team Lead."
+        "Completed hackathon prototype and functional demo. Role: Team Lead."
     }
   },
   {
@@ -214,20 +215,20 @@ export const featuredProjects: Project[] = [
     title: "Healthcare Analytics Platform",
     tagline: "Reproducible Risk Modeling & Explainable Decision Support",
     category: "Health Informatics · Responsible ML",
-    categoryTrack: "HEALTH INFORMATICS · RESPONSIBLE ML",
+    categoryTrack: "Health Informatics · Responsible ML",
     status: "prototype",
     statusLabel: "Research prototype · Structured clinical data exploration",
     summary:
-      "A research-oriented healthcare analytics platform exploring reproducible risk modeling, evaluation, and explainable decision support across structured health datasets.",
+      "A research prototype exploring reproducible risk modeling, cross-validation protocols, and explainable decision support across public structured health datasets.",
     whyItMatters:
-      "Clinical decision support systems must prioritize data provenance, validation transparency, and feature attribution over unvalidated predictive claims. This project demonstrates responsible ML engineering for healthcare data.",
+      "Machine learning models for healthcare must prioritize validation transparency, data provenance, and feature attribution over unvalidated diagnostic claims.",
     myContribution:
-      "Formulated the data preprocessing and cross-validation pipelines, implemented explainability modules (SHAP/feature contributions), structured clinical metric visualizations, and wrote the methodology documentation.",
+      "Implemented data preprocessing and cross-validation pipelines, structured SHAP feature contribution plots, developed the web exploration interface, and authored the methodology documentation.",
     evidence: [
-      "Stratified k-fold validation across structured biomarker datasets",
-      "Transparent calibration curves & Brier score evaluation",
-      "Feature-level risk decomposition for individual patient records",
-      "Strict avoidance of unverified diagnostic claims in favor of decision-support telemetry"
+      "Stratified cross-validation across structured biomarker datasets",
+      "Model calibration and probability evaluation",
+      "Feature-level risk attribution using SHAP summary plots",
+      "Explicit documentation of dataset scope, limitations, and ethical boundaries"
     ],
     technologies: [
       "Python",
@@ -247,64 +248,64 @@ export const featuredProjects: Project[] = [
     order: 3,
     caseStudy: {
       problem:
-        "Many AI healthcare demos make irresponsible diagnostic claims without rigorous calibration, bias audits, or feature transparency. In real health informatics environments, clinicians require explainable risk estimates, clear baseline comparisons, and explicit acknowledgment of dataset limitations.",
+        "Predictive healthcare demos frequently present optimistic metrics without proper validation or interpretability. Real health informatics workflows require transparent calibration, baseline comparisons, and clear disclosures of data boundaries.",
       context:
-        "Developed as part of research exploration in health informatics, focusing on how responsible ML practices and explainability can be embedded into clinical risk exploration tools.",
+        "Developed as part of academic research exploration in health informatics, focusing on responsible machine learning practices and explainability in structured clinical data analysis.",
       role:
-        "Lead Researcher & Developer. Curated benchmark datasets, built reproducible data cleaning pipelines, established stratified validation protocols, and developed the web exploration interface.",
+        "Lead Developer & Researcher. Built the data cleaning and preprocessing pipelines, implemented stratified cross-validation routines, trained baseline classifiers, and developed the web interface.",
       architecture: {
         overview:
-          "An end-to-end analytical pipeline connecting verified tabular clinical datasets to calibrated classifiers and an explainable decision-support UI.",
+          "An analytical pipeline connecting structured tabular health records to calibrated classifiers and an explainable decision-support dashboard.",
         highlights: [
-          "Data Ingestion & Cleaning: Handles missing value imputation, outlier winsorization, and biomarker standard scaling.",
-          "Model Benchmark Suite: Evaluates Logistic Regression, Random Forest, and Gradient Boosted trees with stratified cross-validation.",
-          "Calibration Layer: Platt scaling and isotonic regression to ensure predicted probabilities match empirical risk.",
-          "Explainability Engine: Local and global SHAP summary plots highlighting the relative influence of physiological biomarkers.",
-          "Clinical Explorer UI: Interactive patient profile scenario planner with risk delta indicators."
+          "Data Preprocessing: Handles missing value imputation and biomarker scaling strictly within cross-validation folds.",
+          "Model Benchmarks: Evaluates Logistic Regression, Random Forest, and Gradient Boosted trees under stratified cross-validation.",
+          "Calibration Assessment: Evaluates predicted probabilities to ensure reliable risk indicators.",
+          "Explainability Layer: SHAP feature importance plots showing relative biomarker contributions.",
+          "Exploration UI: Interactive scenario planner allowing inspection of risk score variations across biomarker profiles."
         ]
       },
       decisions: [
         {
-          decision: "Explicit Responsible AI Guardrails in UI Copy",
+          decision: "Responsible Framing as Decision Support",
           rationale:
-            "Framed all model outputs as statistical risk indicators rather than definitive medical diagnoses, including visible disclaimers regarding clinical validation boundaries.",
+            "Framed all model outputs as statistical risk indicators rather than medical diagnoses, including prominent disclaimers regarding clinical validation boundaries.",
           tradeoff:
-            "Prevents flashy marketing claims but maintains strict scientific and ethical integrity."
+            "Avoids sensational claims while maintaining scientific integrity."
         },
         {
-          decision: "Stratified K-Fold with Strict Train/Test Leakage Prevention",
+          decision: "Strict In-Fold Preprocessing",
           rationale:
-            "All scalers, imputers, and encoders were strictly fit within cross-validation folds to avoid optimistic performance bias.",
+            "All scalers and imputers were fit strictly within cross-validation splits to prevent data leakage and overly optimistic evaluation.",
           tradeoff:
             "Slightly increased training runtime during pipeline evaluation."
         }
       ],
       methodology:
-        "Evaluated on public benchmark tabular health datasets (chronic kidney disease, cardiovascular indicators). Evaluated using ROC-AUC, PR-AUC, Brier score calibration, and sensitivity at fixed clinical specificity thresholds.",
+        "Evaluated on public benchmark tabular health datasets (chronic kidney disease, cardiovascular indicators) using ROC-AUC, PR-AUC, and stratified cross-validation.",
       evaluation: {
         metrics: [
           "Stratified 5-Fold ROC-AUC and PR-AUC",
-          "Brier Calibration Loss",
+          "Brier score probability calibration",
           "SHAP attribution consistency across biomarker subgroups"
         ],
         summary:
-          "Demonstrated that calibrated ensemble models with explainability provide actionable insight into biomarker risk factors without opaque black-box predictions."
+          "Demonstrated that calibrated models paired with feature attribution provide transparent insights into biomarker risk factors."
       },
       results: [
         "Constructed a clean, reproducible healthcare analytics repository with documented data schemas.",
-        "Implemented transparent SHAP waterfall visualizations explaining individual risk scores based on blood pressure, glucose, and demographic indicators.",
-        "Established an ethical baseline for machine learning in health informatics projects."
+        "Implemented transparent SHAP visualizations explaining individual risk scores based on physiological indicators.",
+        "Established an ethical and methodological foundation for healthcare machine learning experiments."
       ],
       limitations: [
-        "Trained on public observational datasets; has not undergone clinical trial validation or deployment in hospital electronic health record (EHR) workflows.",
-        "Not approved as a medical device or diagnostic instrument."
+        "Trained and evaluated on public benchmark datasets; has not undergone clinical trial validation or electronic health record (EHR) integration.",
+        "Not intended or approved for clinical diagnostic use."
       ],
       learnings: [
-        "In healthcare applications, model calibration (trusting the predicted probability) is often far more important than raw classification accuracy.",
-        "Transparent error analysis and limitation disclosures build trust with reviewers and medical practitioners."
+        "In healthcare applications, probability reliability and data leakage prevention are far more critical than raw accuracy numbers.",
+        "Transparent error analysis and limitation disclosures build necessary trust with reviewers and practitioners."
       ],
       statusNote:
-        "Research prototype exploring structured health data. Repository contains full methodology documentation."
+        "Research prototype exploring structured health data. Repository contains methodology documentation."
     }
   },
   {
@@ -312,20 +313,20 @@ export const featuredProjects: Project[] = [
     title: "DIU Academic Analytics Platform",
     tagline: "Deterministic Credit-Weighted Analytics & Student Academic Planning",
     category: "Full-Stack Product Engineering",
-    categoryTrack: "FULL-STACK PRODUCT ENGINEERING",
+    categoryTrack: "Full-Stack Product Engineering",
     status: "complete",
     statusLabel: "Completed Full-Stack Web Platform · Live Deployment",
     summary:
       "A cloud-backed academic planning platform with authenticated records, credit-weighted GPA analytics, goal-feasibility calculations, and interactive reporting.",
     whyItMatters:
-      "Undergraduates often face uncertainty when planning multi-semester graduation trajectories. This platform provides deterministic, mathematically exact projections and scenario modeling without unneeded algorithmic complexity.",
+      "Undergraduates often face difficulty planning multi-semester graduation trajectories. This platform provides deterministic, mathematically exact projections and scenario modeling without unnecessary algorithmic complexity.",
     myContribution:
       "Designed the full application architecture, implemented the credit-weighted calculation engine, structured state management with Zustand, and deployed the production web application.",
     evidence: [
       "Deterministic credit-hour weighted CGPA calculations",
       "Goal-feasibility scenario solver (calculating required GPA per remaining credit)",
-      "Secure user authentication & encrypted cloud record synchronization",
-      "Fully responsive dashboard with Recharts visual trend analysis"
+      "User authentication and cloud record synchronization",
+      "Responsive dashboard with Recharts visual trend analysis"
     ],
     technologies: [
       "React",
@@ -344,14 +345,14 @@ export const featuredProjects: Project[] = [
     order: 4,
     caseStudy: {
       problem:
-        "University student portals typically show historical grades without providing forward-looking scenario modeling or graduation trajectory calculators. Students frequently miscalculate credit-weighted impact when planning retakes or elective course loads.",
+        "University student portals typically display past grades without providing forward-looking scenario modeling or degree planning calculators. Students frequently miscalculate credit-weighted impact when planning retakes or upcoming semester course loads.",
       context:
-        "Built to address student academic planning needs at Daffodil International University, transforming manual grade spreadsheet calculations into a modern, cloud-synchronized web experience.",
+        "Built to address student academic planning needs at Daffodil International University, transforming manual grade calculations into a modern, cloud-synchronized web application.",
       role:
-        "Sole Architect & Full-Stack Developer. Conceived the feature set, designed UI/UX workflows, implemented calculation logic and state persistence, and deployed to production.",
+        "Sole Architect & Full-Stack Developer. Conceived the feature set, designed UI workflows, implemented calculation logic and state persistence, and deployed to production.",
       architecture: {
         overview:
-          "A client-side rendered Single Page Application (SPA) backed by Firebase Authentication and Firestore real-time synchronization.",
+          "A client-side rendered Single Page Application (SPA) backed by Firebase Authentication and Firestore data synchronization.",
         highlights: [
           "State Store (Zustand): Centralized store managing semester records, course credits, grade points, and target CGPA settings.",
           "Calculation Engine: Pure deterministic TypeScript functions computing cumulative GPA, earned credits, and required semester target averages.",
@@ -361,42 +362,42 @@ export const featuredProjects: Project[] = [
       },
       decisions: [
         {
-          decision: "Deterministic Mathematical Formulation over 'AI' Predictions",
+          decision: "Deterministic Mathematical Formulation over Probabilistic Models",
           rationale:
-            "Academic grading is strictly deterministic governed by credit-weighted arithmetic. Using ML would introduce hallucination and error into high-stakes academic planning.",
+            "Academic grading is strictly deterministic governed by credit-weighted arithmetic. Using machine learning would introduce unnecessary error into degree planning.",
           tradeoff:
-            "Focuses purely on rule-based projection rather than probabilistic course difficulty prediction."
+            "Focuses purely on rule-based projection rather than predictive difficulty scoring."
         },
         {
           decision: "Zustand for State Management over Redux",
           rationale:
-            "Zustand provided minimal boilerplate, clean TypeScript typing, and fast local persistence hooks without the complexity of Redux toolkit.",
+            "Zustand provided minimal boilerplate, clean TypeScript typing, and fast local persistence hooks without complex boilerplate.",
           tradeoff:
-            "Slightly fewer devtool inspection plugins out of the box."
+            "Slightly smaller ecosystem of pre-built devtool extensions."
         }
       ],
       methodology:
-        "Validated against historical university grading policies and official DIU credit weighting matrices across 12-semester degree plans.",
+        "Validated against DIU university grading policies and credit weighting formulas across 12-semester degree plans.",
       evaluation: {
         metrics: [
-          "Mathematical precision verified against official student transcripts",
-          "Zero layout shift and instant sub-second calculation updates",
-          "100% client-side calculation responsiveness"
+          "Mathematical accuracy verified against official student transcripts",
+          "Zero layout shift and instant calculation updates",
+          "Responsive client-side interaction without perceptible lag"
         ],
         summary:
           "Live in production and used by peer undergraduate students for degree planning."
       },
       results: [
-        "Deployed a reliable, production-ready platform with zero server runtime overhead.",
-        "Empowered students to simulate scenarios (e.g. 'What if I achieve an A in 15 credits next semester?').",
+        "Deployed a reliable, production-ready platform with zero server runtime maintenance overhead.",
+        "Empowered students to simulate scenarios (e.g., target GPA requirements over remaining semesters).",
         "Demonstrated solid full-stack engineering, clean UI architecture, and robust state management."
       ],
       limitations: [
-        "Currently tailored to DIU standard 4.00 grading scales; multi-university scale customization is an ongoing feature expansion.",
-        "Manual entry of past courses is required in absence of direct university SIS API integration."
+        "Currently tailored to DIU standard 4.00 grading scales; multi-institution scale customization is a planned extension.",
+        "Requires manual entry of past courses in the absence of direct university SIS API access."
       ],
       learnings: [
-        "Good engineering is about choosing the simplest right tool for the job—not forcing machine learning into problems solved by elegant deterministic math.",
+        "Good engineering is about choosing the simplest right tool for the job—not forcing machine learning where deterministic logic is exact.",
         "User experience in data-heavy tools relies on immediate visual feedback and zero input latency."
       ],
       statusNote:
@@ -434,7 +435,7 @@ export const additionalProjects: AdditionalProject[] = [
   },
   {
     title: "Air-Writing Bangla Character Recognition",
-    category: "Computer Vision & Human-Computer Interaction",
+    category: "Computer Vision & HCI",
     description:
       "A real-time hand-gesture tracking and computer vision pipeline for recognizing in-air Bangla alphanumeric character writing using fingertip trajectories.",
     technologies: ["Python", "OpenCV", "MediaPipe", "Scikit-learn", "NumPy"],

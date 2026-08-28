@@ -6,20 +6,20 @@ export const siteConfig = {
   title: "Fateha Hossain | Health Informatics & Intelligent Systems",
   description:
     "Portfolio of Fateha Hossain, a final-year CSE student and Research Assistant building health-informatics, explainable machine learning, and reliable backend software systems.",
-  url: "https://anushka-portfolio.vercel.app",
+  url: "https://portfolio-site-omega-rose.vercel.app",
   author: "Fateha Hossain",
   location: "Dhaka, Bangladesh",
   availability: "Final-year CSE student · Research Assistant · Dhaka, Bangladesh",
   
   hero: {
-    eyebrow: "HEALTH INFORMATICS · INTELLIGENT SYSTEMS · BACKEND ENGINEERING",
+    eyebrow: "Health Informatics · Intelligent Systems · Backend Engineering",
     headline: "I build reliable intelligent systems for healthcare and complex infrastructure.",
     intro:
       "I’m Fateha Hossain, a final-year Computer Science and Engineering student and Research Assistant at the Health Informatics Research Lab. My work combines machine learning, explainable AI, backend engineering, and reproducible experimentation, with a developing specialization in health informatics.",
     buttons: {
-      work: { label: "Explore Selected Work", href: "/#work" },
-      research: { label: "View Research", href: "/#research" },
-      cv: { label: "Download CV", href: "https://drive.google.com/file/d/1bar_OHyZ-nhAKV50fZqaG0YkLChmFWu8/view?usp=sharing" }
+      work: { label: "Selected Work", href: "/#work" },
+      research: { label: "Research", href: "/#research" },
+      cv: { label: "View CV", href: "https://drive.google.com/file/d/1bar_OHyZ-nhAKV50fZqaG0YkLChmFWu8/view?usp=sharing" }
     }
   },
 
@@ -27,19 +27,19 @@ export const siteConfig = {
     threePillars: [
       {
         title: "Health Informatics Research",
-        desc: "Developing validated clinical analytics, medical-image classifiers, and trustworthy models tailored for healthcare decision support."
+        desc: "Investigating machine learning and medical-image analysis methods for healthcare applications, with emphasis on transparent and reproducible evaluation."
       },
       {
-        title: "Reliable & Explainable Intelligent Systems",
-        desc: "Integrating SHAP/XAI attribution, strict fallback invariants, and cryptographic provenance so ML outputs are transparent and accountable."
+        title: "Reliable & Explainable Systems",
+        desc: "Building explainable ML systems with tested fallback behavior and traceable experiment artifacts."
       },
       {
         title: "Backend & Systems Engineering",
-        desc: "Building high-performance APIs, robust database architectures, Linux network services, and responsive web platforms."
+        desc: "Developing backend APIs with Spring Boot, FastAPI, and Laravel, alongside Linux networking and web platforms."
       }
     ],
     aboutText:
-      "I am a final-year Computer Science and Engineering student at Daffodil International University and a Research Assistant at the Health Informatics Research Lab. My academic journey began with foundational work in Bangla NLP and systems programming, which instilled a deep appreciation for experimental rigor, dataset cleanliness, and software reliability. Today, my primary research focus is health informatics—building systems where accuracy, interpretability, and fault tolerance are paramount.",
+      "I am a final-year Computer Science and Engineering student at Daffodil International University and a Research Assistant at the Health Informatics Research Lab. My academic journey began with foundational work in Bangla NLP and systems programming, which developed my focus on experimental rigor, dataset cleanliness, and software reliability. Today, my primary research focus is health informatics—building systems where transparency, interpretability, and robust engineering are paramount.",
     shortAbout:
       "Final-year CSE student at Daffodil International University, currently working as a Research Assistant in health informatics and as a backend-development intern."
   },
@@ -74,27 +74,27 @@ export const siteConfig = {
       title: "Research Assistant",
       organization: "Health Informatics Research Lab",
       location: "Dhaka, Bangladesh",
-      period: "2025 – Present",
+      period: "March 2026 – Present",
       type: "Research",
       bullets: [
-        "Conducting healthcare-oriented data and model experiments across structured clinical records and imaging benchmarks.",
-        "Supporting dataset validation, stratified cross-validation protocols, and reproducible evaluation pipelines.",
-        "Contributing to peer-reviewed journal manuscript preparation, ablation studies, and literature syntheses.",
-        "Maintaining experimental audit logs and technical documentation for research reproducibility."
+        "Conducting healthcare-oriented data and model experiments across structured clinical benchmarks.",
+        "Supporting dataset validation, cross-validation protocols, and reproducible evaluation pipelines.",
+        "Contributing to literature syntheses, experimental documentation, and journal manuscript preparation.",
+        "Maintaining research documentation and experimental logs for reproducibility."
       ],
-      technologies: ["Python", "PyTorch", "Scikit-learn", "SHAP", "Pandas", "Statistical Analysis"]
+      technologies: ["Python", "PyTorch", "Scikit-learn", "SHAP", "Pandas"]
     },
     {
       title: "Backend Developer Intern",
-      organization: "Software Engineering Team",
+      organization: "Software Engineering Company",
       location: "Dhaka, Bangladesh",
-      period: "2025 – Present",
+      period: "March 2026 – Present",
       type: "Engineering",
       bullets: [
-        "Developing and maintaining backend services and REST APIs across Spring Boot and Laravel application stacks.",
-        "Implementing database schemas, query optimizations, payload validation, and JWT-authenticated workflows.",
-        "Debugging application integration bottlenecks and resolving API latency issues.",
-        "Collaborating through task-based sprint workflows, pull request reviews, and Git version control."
+        "Implemented and maintained backend features across project-specific Spring Boot and Laravel codebases.",
+        "Worked with REST endpoints, request validation, and relational database operations.",
+        "Debugged integration and application issues across backend services.",
+        "Used Git-based task workflows to deliver assigned backend changes."
       ],
       technologies: ["Spring Boot", "Laravel", "Java", "PHP", "MySQL", "REST APIs", "Git"]
     },
@@ -102,10 +102,10 @@ export const siteConfig = {
       title: "President",
       organization: "DIU Girls’ Computer Programming Club",
       location: "Daffodil International University",
-      period: "2026 – Present (Previously VP, PR Wing)",
+      period: "Feb 2026 – Present (Previously VP, PR Wing)",
       type: "Leadership",
       bullets: [
-        "Leading programming training tracks, technical workshops, and competitive programming initiatives.",
+        "Leading programming training tracks, technical workshops, and competitive programming practice sessions.",
         "Coordinating cross-wing mentorship to empower female undergraduates in computing and engineering."
       ]
     },
@@ -182,7 +182,7 @@ export const siteConfig = {
         "Pytest",
         "Vitest / Unit Testing",
         "API Integration Testing",
-        "Docker / Containerization Basics"
+        "Docker Basics"
       ]
     }
   ] as SkillCategory[]
