@@ -13,8 +13,8 @@ export default function SkillsMatrix() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {siteConfig.skills.map((group, idx) => (
-        <div key={group.category} className="editorial-card p-6 space-y-4 flex flex-col justify-between">
-          <div className="space-y-2">
+        <div key={group.category} className="editorial-card p-6 space-y-3.5 flex flex-col justify-between">
+          <div className="space-y-1.5">
             <h4 className="text-base font-bold text-[var(--text-main)] flex items-center gap-2.5">
               <div className="p-1.5 rounded-md bg-[var(--surface-subtle)] border border-[var(--border-subtle)]">
                 {categoryIcons[idx % categoryIcons.length]}
@@ -26,15 +26,11 @@ export default function SkillsMatrix() {
             </p>
           </div>
 
-          <div className="pt-3 border-t border-[var(--border-subtle)] flex flex-wrap gap-2">
-            {group.skills.map((skill) => (
-              <span
-                key={skill}
-                className="text-xs px-2.5 py-1 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] font-medium hover:border-[var(--primary-accent)]/50 transition-colors"
-              >
-                {skill}
-              </span>
-            ))}
+          {/* Clean calm inline text separated by middle dots */}
+          <div className="pt-3 border-t border-[var(--border-subtle)]">
+            <p className="text-sm leading-6 text-[var(--text-main)]">
+              {group.skills.join(" · ")}
+            </p>
           </div>
         </div>
       ))}

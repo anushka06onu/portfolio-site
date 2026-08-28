@@ -42,7 +42,7 @@ export default function HomePage() {
           <div className="flex flex-col-reverse lg:flex-row items-start justify-between gap-8 lg:gap-12">
             <div className="flex-1 space-y-5">
               {/* Clean Status Line without Pulsing Dot */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-color)] bg-[var(--surface)]/90 backdrop-blur-md text-sm text-[var(--text-muted)] shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[var(--border-color)] bg-[var(--surface)]/90 backdrop-blur-md text-sm text-[var(--text-muted)] shadow-sm">
                 <span>{siteConfig.availability}</span>
               </div>
 
@@ -153,7 +153,7 @@ export default function HomePage() {
                   <div className="p-1.5 rounded-md bg-[var(--surface-subtle)] border border-[var(--border-subtle)]">
                     {pillarIcons[idx]}
                   </div>
-                  <h3 className="text-sm font-semibold text-[var(--text-main)]">
+                  <h3 className="text-base font-semibold text-[var(--text-main)]">
                     {pillar.title}
                   </h3>
                 </div>
@@ -230,19 +230,19 @@ export default function HomePage() {
               href="/research"
               className="text-sm font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1.5"
             >
-              <span>View Full Research Roadmap</span>
+              <span>All Research</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Narrative & Topics */}
+          {/* Narrative & Focus Topics (5 only on homepage) */}
           <div className="editorial-card editorial-card-accent p-6 sm:p-7 space-y-4">
             <p className="text-base leading-7 text-[var(--text-main)]">
               {researchDirection.overview}
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--border-subtle)] items-center">
-              {researchDirection.topics.map((t) => (
+              {researchDirection.homepageTopics.map((t) => (
                 <span
                   key={t}
                   className="text-xs px-2.5 py-1 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] font-medium"
@@ -253,14 +253,19 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Research Outputs Preview */}
+          {/* Research Outputs Preview (Short titles, no repeated chips) */}
           <div className="space-y-3">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
               Current Research Outputs &amp; Manuscripts
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {researchOutputs.slice(0, 3).map((item, idx) => (
-                <ResearchCard key={idx} output={item} />
+                <ResearchCard
+                  key={idx}
+                  output={item}
+                  useShortTitle={true}
+                  showTopics={false}
+                />
               ))}
             </div>
           </div>
@@ -284,7 +289,7 @@ export default function HomePage() {
               href="/about"
               className="text-sm font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1.5"
             >
-              <span>View Leadership &amp; Teaching on About Page</span>
+              <span>More Experience</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

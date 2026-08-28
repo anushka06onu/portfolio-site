@@ -85,6 +85,7 @@ export type ResearchStatus =
 
 export interface ResearchOutput {
   title: string;
+  shortTitle?: string;
   venueOrType: string;
   role: string;
   status: ResearchStatus;

@@ -1,10 +1,10 @@
 import { ResearchOutput } from "./types";
 
 export const researchDirection = {
-  heading: "Research Direction",
-  tagline: "Health Informatics, Vision Foundation Models & Trustworthy Machine Learning",
+  heading: "Research",
+  tagline: "Trustworthy Machine Learning & Medical Image Analysis",
   overview:
-    "My current research focuses on health informatics, parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical image diagnosis, and explainable machine learning. As a Research Assistant at the Health Informatics Research Lab, I work on pediatric morphology alignment and uncertainty-aware disease detection in panoramic radiographs, while my undergraduate thesis benchmarks PEFT methods on the DentIRO dataset.",
+    "My current research focuses on trustworthy machine learning and medical-image analysis for healthcare. As a Research Assistant, I contribute to explainable and uncertainty-aware analysis of panoramic radiographs, while my undergraduate thesis evaluates parameter-efficient adaptation of vision foundation models.",
 
   corePillars: [
     {
@@ -24,6 +24,16 @@ export const researchDirection = {
     }
   ],
 
+  // 5 concise focus tags for the homepage
+  homepageTopics: [
+    "Health Informatics",
+    "Vision Foundation Models",
+    "Medical Image Analysis",
+    "Explainable AI",
+    "Reproducible Evaluation"
+  ],
+
+  // Comprehensive tags for dedicated /research page
   topics: [
     "Health Informatics",
     "Vision Foundation Models (VFMs)",
@@ -56,6 +66,7 @@ export const thesisDetails = {
 export const researchOutputs: ResearchOutput[] = [
   {
     title: "PMAM: A Pediatric Morphology Alignment Module for Explainable, Uncertainty-Aware Multi-Disease Detection in Panoramic Radiographs",
+    shortTitle: "PMAM for Pediatric Panoramic Radiographs",
     venueOrType: "Journal Manuscript · Health Informatics",
     role: "Research Assistant (Health Informatics Research Lab)",
     status: "Manuscript in preparation",
@@ -67,6 +78,7 @@ export const researchOutputs: ResearchOutput[] = [
   },
   {
     title: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
+    shortTitle: "PEFT for Dental Vision Foundation Models",
     venueOrType: "Undergraduate Thesis · Ongoing Research",
     role: "Lead Undergraduate Researcher",
     status: "Ongoing",
@@ -78,6 +90,7 @@ export const researchOutputs: ResearchOutput[] = [
   },
   {
     title: "Detecting Compensated Microcytosis: A Benchmarked and Explainable Machine Learning Approach to Tri-Class Hematological Classification",
+    shortTitle: "Explainable Hematological Classification",
     venueOrType: "Health Informatics Conference",
     role: "Co-Author / Researcher",
     status: "Under review",
@@ -89,6 +102,7 @@ export const researchOutputs: ResearchOutput[] = [
   },
   {
     title: "Bridging the Dialect Gap: Enhancing Bangla Dialect-to-English Machine Translation with Regional Metadata and Romanized Standard Bangla",
+    shortTitle: "Bangla Dialect-to-English Translation",
     venueOrType: "NLP Conference",
     role: "Co-Author / Researcher",
     status: "Under review",
@@ -100,6 +114,7 @@ export const researchOutputs: ResearchOutput[] = [
   },
   {
     title: "Explainable Neural Machine Translation for Bangla Regional Dialect Normalization: A Multi-Model Comparative Study with Attention-Based Interpretability",
+    shortTitle: "Bangla Dialect Normalization with XAI",
     venueOrType: "NLP Conference",
     role: "Co-Author / Researcher",
     status: "Under review",
@@ -111,6 +126,7 @@ export const researchOutputs: ResearchOutput[] = [
   },
   {
     title: "Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions",
+    shortTitle: "Ethnic Language Identification in Bengali Script",
     venueOrType: "NLP Conference",
     role: "Co-Author / Researcher",
     status: "Under review",

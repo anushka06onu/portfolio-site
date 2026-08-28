@@ -3,9 +3,17 @@ import { Tag } from "lucide-react";
 
 interface ResearchCardProps {
   output: ResearchOutput;
+  useShortTitle?: boolean;
+  showTopics?: boolean;
 }
 
-export default function ResearchCard({ output }: ResearchCardProps) {
+export default function ResearchCard({
+  output,
+  useShortTitle = false,
+  showTopics = true
+}: ResearchCardProps) {
+  const displayTitle = useShortTitle && output.shortTitle ? output.shortTitle : output.title;
+
   const getStatusBadgeStyle = (status: string) => {
     switch (status) {
       case "Published":
@@ -36,7 +44,7 @@ export default function ResearchCard({ output }: ResearchCardProps) {
 
         {/* Title */}
         <h4 className="text-lg font-bold text-[var(--text-main)] leading-7">
-          {output.title}
+          {displayTitle}
         </h4>
 
         {/* Summary */}
@@ -45,18 +53,20 @@ export default function ResearchCard({ output }: ResearchCardProps) {
         </p>
       </div>
 
-      {/* Topics */}
-      <div className="pt-3 border-t border-[var(--border-color)] flex flex-wrap gap-1.5 items-center">
-        <Tag className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0 mr-1" />
-        {output.topics.map((topic) => (
-          <span
-            key={topic}
-            className="text-xs px-2.5 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] font-medium"
-          >
-            {topic}
-          </span>
-        ))}
-      </div>
+      {/* Topics (Shown on /research, omitted on homepage for clarity) */}
+      {showTopics && (
+        <div className="pt-3 border-t border-[var(--border-color)] flex flex-wrap gap-1.5 items-center">
+          <Tag className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0 mr-1" />
+          {output.topics.map((topic) => (
+            <span
+              key={topic}
+              className="text-xs px-2.5 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] font-medium"
+            >
+              {topic}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
