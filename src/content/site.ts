@@ -17,7 +17,7 @@ export const siteConfig = {
     github: "https://github.com/anushka06onu",
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-614749293/",
     email: "fatehahossainanushka@gmail.com",
-    resume: "/resume.pdf"
+    resume: "https://drive.google.com/file/d/1w7BZR9Dy_dCr9W8tyP3qnwq336X5PN5u/view?usp=sharing"
   },
 
   hero: {
@@ -29,7 +29,7 @@ export const siteConfig = {
     buttons: {
       work: { label: "Explore My Work", href: "/projects" },
       research: { label: "Research Roadmap", href: "/research" },
-      cv: { label: "View CV", href: "/resume.pdf" }
+      cv: { label: "View CV", href: "https://drive.google.com/file/d/1w7BZR9Dy_dCr9W8tyP3qnwq336X5PN5u/view?usp=sharing" }
     }
   },
 
