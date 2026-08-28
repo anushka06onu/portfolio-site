@@ -5,7 +5,7 @@ import { featuredProjects, additionalProjects } from "../content/projects";
 import { researchDirection, researchOutputs } from "../content/research";
 import ProjectCard from "../components/ProjectCard";
 import AdditionalProjectCard from "../components/AdditionalProjectCard";
-import ResearchCard from "../components/ResearchCard";
+import ResearchOutputsSection from "../components/ResearchOutputsSection";
 import ExperienceItem from "../components/ExperienceItem";
 import SkillsMatrix from "../components/SkillsMatrix";
 import ContactSection from "../components/ContactSection";
@@ -18,6 +18,7 @@ import {
   GraduationCap,
   Award,
   BookOpen,
+  CheckCircle2,
   Activity,
   ShieldAlert,
   Server
@@ -213,7 +214,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. RESEARCH DIRECTION SECTION (All 6 Research Outputs Included) */}
+        {/* 4. RESEARCH DIRECTION SECTION (Paginated 3-per-page track view) */}
         <section id="research" className="space-y-6 scroll-mt-20" aria-labelledby="research-heading">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[var(--border-color)] pb-3">
             <div>
@@ -254,22 +255,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Complete Research Outputs Grid (All 6 Papers: PMAM, Thesis, Health, 3 NLP) */}
-          <div className="space-y-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
-              Current Research Outputs &amp; Manuscripts ({researchOutputs.length})
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {researchOutputs.map((item, idx) => (
-                <ResearchCard
-                  key={idx}
-                  output={item}
-                  useShortTitle={false}
-                  showTopics={true}
-                />
-              ))}
-            </div>
-          </div>
+          {/* Paginated Research Outputs Component (3 on Page 1, 3 on Page 2) */}
+          <ResearchOutputsSection outputs={researchOutputs} />
         </section>
 
         {/* 5. EXPERIENCE SECTION */}
@@ -319,18 +306,72 @@ export default function HomePage() {
           <SkillsMatrix />
         </section>
 
-        {/* 7. ACADEMIC BACKGROUND, 3x DEAN'S AWARD & 12 COURSERA CERTIFICATIONS */}
+        {/* 7. DEDICATED HONORS, AWARDS & CERTIFICATIONS SECTION */}
+        <section id="honors" className="space-y-6 scroll-mt-20" aria-labelledby="honors-heading">
+          <div className="border-b border-[var(--border-color)] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <div>
+              <span className="text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider">
+                06 / Honors &amp; Certifications
+              </span>
+              <h2
+                id="honors-heading"
+                className="mt-0.5 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
+              >
+                Academic Honors &amp; Professional Certifications
+              </h2>
+            </div>
+            <Link
+              href="/about"
+              className="text-sm font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1.5"
+            >
+              <span>View Credential Details</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* 3x Dean's Award (Top 0.5% Students) */}
+            <div className="editorial-card editorial-card-accent p-6 space-y-3">
+              <div className="flex items-center gap-2.5 text-[var(--primary-accent)] font-bold text-base">
+                <Award className="w-5 h-5 shrink-0" />
+                <span>3× Dean&apos;s Honor List Award</span>
+              </div>
+              <p className="text-xs font-semibold text-[var(--secondary-accent)]">
+                Conferred to Top 0.5% Students · Faculty of Science &amp; IT, DIU (2023, 2024, 2025)
+              </p>
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                Awarded across consecutive academic years to the top 0.5% of students in the entire university for sustained academic performance and maintaining a CGPA of 3.90+.
+              </p>
+            </div>
+
+            {/* 12x Coursera Certifications */}
+            <div className="editorial-card p-6 space-y-3">
+              <div className="flex items-center gap-2.5 text-[var(--secondary-accent)] font-bold text-base">
+                <BookOpen className="w-5 h-5 shrink-0" />
+                <span>12× Professional Course Certifications</span>
+              </div>
+              <p className="text-xs font-semibold text-[var(--primary-accent)]">
+                Coursera (DeepLearning.AI, Stanford Online, Google, Meta)
+              </p>
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                Completed 12 comprehensive specialization courses covering Machine Learning, Deep Learning, Python for Data Science, Backend API Engineering, and Cloud Architecture.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. FORMAL ACADEMIC BACKGROUND */}
         <section id="about" className="space-y-6 scroll-mt-20" aria-labelledby="about-heading">
           <div className="border-b border-[var(--border-color)] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
             <div>
               <span className="text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider">
-                06 / Education &amp; Honors
+                07 / Academic Background
               </span>
               <h2
                 id="about-heading"
                 className="mt-0.5 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
               >
-                Academic Background &amp; Honors
+                Academic Background
               </h2>
             </div>
             <Link
@@ -351,27 +392,10 @@ export default function HomePage() {
                 {siteConfig.narrative.aboutText}
               </p>
 
-              {/* Honors & 12 Coursera Certifications Highlights */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-[var(--border-subtle)]">
-                <div className="p-3.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-subtle)] space-y-1">
-                  <div className="flex items-center gap-2 text-[var(--primary-accent)] font-semibold text-sm">
-                    <Award className="w-4 h-4" />
-                    <span>3× Dean&apos;s Honor List Award</span>
-                  </div>
-                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                    Conferred for continuous top-tier academic excellence (CGPA 3.90+) across consecutive academic years.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-subtle)] space-y-1">
-                  <div className="flex items-center gap-2 text-[var(--secondary-accent)] font-semibold text-sm">
-                    <BookOpen className="w-4 h-4" />
-                    <span>12× Professional Certifications</span>
-                  </div>
-                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                    Coursera certifications in Machine Learning, Deep Learning, Backend APIs, Python, and Java.
-                  </p>
-                </div>
+              <div className="pt-2 border-t border-[var(--border-subtle)]">
+                <p className="text-xs text-[var(--text-muted)]">
+                  {siteConfig.additionalTraining}
+                </p>
               </div>
             </div>
 
@@ -395,7 +419,7 @@ export default function HomePage() {
 
                 <div className="flex items-start gap-2 p-2.5 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-xs text-[var(--primary-accent)] font-medium">
                   <Award className="w-4 h-4 shrink-0 mt-0.5" />
-                  <span>Current CGPA: 3.92 / 4.00 · 3× Dean&apos;s Award</span>
+                  <span>Current CGPA: 3.92 / 4.00 · Top 0.5% (3× Dean&apos;s Award)</span>
                 </div>
               </div>
 
@@ -414,7 +438,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 8. CONTACT SECTION */}
+        {/* 9. CONTACT SECTION */}
         <ContactSection />
       </div>
     </div>

@@ -50,7 +50,7 @@ export const siteConfig = {
     ],
 
     aboutText:
-      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 3× Dean's Award recipient) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
+      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 3× Dean's Award recipient among the top 0.5% students) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
   },
 
   experience: [
@@ -113,10 +113,10 @@ export const siteConfig = {
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "2022 – 2026",
-      distinction: "Current CGPA: 3.92 / 4.00 · 3× Dean's Award Recipient",
+      distinction: "Current CGPA: 3.92 / 4.00 · Top 0.5% (3× Dean's Award)",
       notes: [
         "Current CGPA: 3.92 / 4.00 (Department of Computer Science and Engineering).",
-        "Recipient of 3× Dean's Honor List Award for academic excellence across consecutive academic years.",
+        "Recipient of 3× Dean's Honor List Award awarded to the university's top 0.5% students for sustained academic distinction.",
         "Undergraduate Thesis: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis.",
         "Awarded University Academic Merit Scholarships across consecutive semesters.",
         "Core Coursework: Machine Learning, Artificial Intelligence, Object-Oriented Programming (Java), Data Structures & Algorithms, Database Systems, Computer Networks, Operating Systems, Software Engineering."
@@ -126,31 +126,31 @@ export const siteConfig = {
 
   honors: [
     {
-      title: "3× Dean's Honor List Award",
-      issuer: "Faculty of Science & Information Technology, Daffodil International University",
+      title: "3× Dean's Honor List Award (Top 0.5% Students)",
+      issuer: "Daffodil International University",
       year: "2023, 2024, 2025",
-      description: "Conferred for achieving outstanding semester grade point averages (CGPA 3.90+) across consecutive academic years."
+      description: "Conferred across consecutive academic years to the top 0.5% students of the entire university for achieving outstanding academic performance (CGPA 3.90+)."
     },
     {
       title: "University Academic Merit Scholarships",
       issuer: "Daffodil International University",
       year: "2022 – 2026",
-      description: "Full tuition merit scholarship awarded on the basis of academic performance."
+      description: "Full tuition merit scholarship awarded continuously based on academic distinction."
     }
   ],
 
   certifications: [
     {
-      title: "12× Professional Specialization & Course Certifications",
+      title: "12× Professional Course & Specialization Certifications",
       issuer: "Coursera (DeepLearning.AI, Stanford Online, Google & Meta)",
       year: "2023 – 2025",
-      description: "Completed 12 rigorous online courses covering Machine Learning, Deep Learning, Python for Data Science, Backend API Engineering, and Cloud Systems."
+      description: "Completed 12 comprehensive courses spanning Machine Learning, Deep Learning, Python for Data Science, Backend API Engineering, and Cloud Architecture."
     },
     {
       title: "Specialized Research Writing & Methodology",
       issuer: "Health Informatics Research Lab & Academic Workshops",
       year: "2025",
-      description: "Training in scientific paper writing, experiment reproducibility, statistical validation, and academic ethics."
+      description: "Rigorous training in scientific manuscript drafting, experimental reproducibility, statistical verification, and publication ethics."
     }
   ],
 
