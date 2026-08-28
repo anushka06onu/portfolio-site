@@ -1,53 +1,55 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
-/* Scientific Engineering Design System */
+/* Radiant Scientific & Engineering Design System */
 :root {
-  --bg-color: #F7F8F6;
+  --bg-color: #F8FAFC;
   --surface: #FFFFFF;
-  --surface-subtle: #EEF2F3;
-  --text-main: #15202B;
-  --text-muted: #5C6975;
-  --border-color: #DDE3E6;
-  --border-subtle: #E8ECEE;
+  --surface-subtle: #F1F5F9;
+  --surface-elevated: #FFFFFF;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --border-color: #E2E8F0;
+  --border-subtle: #EDF2F7;
   
-  --primary-accent: #087F8C;
-  --primary-accent-hover: #066670;
-  --primary-accent-subtle: rgba(8, 127, 140, 0.08);
+  --primary-accent: #0D9488;
+  --primary-accent-hover: #0F766E;
+  --primary-accent-subtle: rgba(13, 148, 136, 0.08);
   
-  --secondary-accent: #345995;
-  --secondary-accent-subtle: rgba(52, 89, 149, 0.08);
+  --secondary-accent: #2563EB;
+  --secondary-accent-subtle: rgba(37, 99, 235, 0.08);
 
-  --badge-bg: #E6ECEF;
-  --badge-text: #243542;
-  --badge-border: #D0D8DC;
+  --badge-bg: #F1F5F9;
+  --badge-text: #334155;
+  --badge-border: #CBD5E1;
 
-  --code-bg: #EAEFF2;
-  --code-text: #1F2E3A;
+  --card-glow: rgba(13, 148, 136, 0.05);
+  --hero-glow: radial-gradient(circle at 50% 0%, rgba(13, 148, 136, 0.08) 0%, transparent 60%);
 }
 
 :root[class~="dark"] {
-  --bg-color: #0B1014;
-  --surface: #111820;
-  --surface-subtle: #17222C;
-  --text-main: #E8EEF2;
-  --text-muted: #95A3AE;
-  --border-color: #26323B;
-  --border-subtle: #1C2730;
+  --bg-color: #070A0E;
+  --surface: #0E131A;
+  --surface-subtle: #131A24;
+  --surface-elevated: #182230;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border-color: #1E293B;
+  --border-subtle: #17202E;
 
-  --primary-accent: #35B8C5;
-  --primary-accent-hover: #48C7D4;
-  --primary-accent-subtle: rgba(53, 184, 197, 0.12);
+  --primary-accent: #14B8A6;
+  --primary-accent-hover: #2DD4BF;
+  --primary-accent-subtle: rgba(20, 184, 166, 0.12);
 
-  --secondary-accent: #79A7E8;
-  --secondary-accent-subtle: rgba(121, 167, 232, 0.12);
+  --secondary-accent: #60A5FA;
+  --secondary-accent-subtle: rgba(96, 165, 250, 0.12);
 
-  --badge-bg: #18242F;
-  --badge-text: #B7C9D6;
-  --badge-border: #2B3D4C;
+  --badge-bg: #111827;
+  --badge-text: #CBD5E1;
+  --badge-border: #1E293B;
 
-  --code-bg: #141E27;
-  --code-text: #CDE1EC;
+  --card-glow: rgba(20, 184, 166, 0.08);
+  --hero-glow: radial-gradient(circle at 50% -10%, rgba(20, 184, 166, 0.15) 0%, rgba(37, 99, 235, 0.08) 40%, transparent 70%);
 }
 
 body {
@@ -58,31 +60,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Engineering Technical Grid Background */
+/* Radiant Background Glow */
+.hero-ambient-glow {
+  background: var(--hero-glow);
+}
+
+/* Precision Technical Dot Grid */
 .bg-tech-grid {
-  background-size: 32px 32px;
+  background-size: 28px 28px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
 }
 
 :root[class~="dark"] .bg-tech-grid {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
 
-/* Accessibility: Skip link */
+/* Skip link */
 .skip-link {
   position: absolute;
   top: -40px;
   left: 0;
   background: var(--primary-accent);
-  color: #FFFFFF;
+  color: #070A0E;
   padding: 8px 16px;
   z-index: 100;
   transition: top 0.2s ease;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 0 0 6px 0;
 }
 
@@ -96,28 +101,59 @@ body {
   outline-offset: 2px;
 }
 
-/* Clean Editorial Engineering Card */
+/* Radiant Glass Card */
 .editorial-card {
+  position: relative;
   background-color: var(--surface);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 16px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+:root[class~="dark"] .editorial-card {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
 }
 
 .editorial-card:hover {
-  border-color: var(--primary-accent);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  border-color: rgba(20, 184, 166, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -4px var(--card-glow);
 }
 
-:root[class~="dark"] .editorial-card:hover {
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+/* Top Accent Line for Cards */
+.editorial-card-accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.editorial-card-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #14B8A6, #3B82F6, transparent);
+  opacity: 0.8;
 }
 
 /* Monospace chips and tags */
 .mono-tag {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.75rem;
-  letter-spacing: -0.01em;
+}
+
+/* Gradient Text Helper */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 50%, #818CF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:root:not([class~="dark"]) .text-gradient-cyan {
+  background: linear-gradient(135deg, #0F766E 0%, #0369A1 60%, #1E40AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Reduced motion preferences */

@@ -5,12 +5,11 @@ import { siteConfig } from "../../content/site";
 import ResearchCard from "../../components/ResearchCard";
 import {
   ArrowLeft,
-  BookOpen,
   Microscope,
-  Cpu,
-  FileText,
   FileDown,
-  Sparkles
+  Activity,
+  ShieldCheck,
+  Eye
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,6 +19,12 @@ export const metadata: Metadata = {
 };
 
 export default function ResearchPage() {
+  const pillarIcons = [
+    <Activity key="1" className="w-4 h-4 text-teal-400" />,
+    <ShieldCheck key="2" className="w-4 h-4 text-cyan-400" />,
+    <Eye key="3" className="w-4 h-4 text-blue-400" />
+  ];
+
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 py-8 sm:py-14 space-y-12">
       <div>
@@ -34,11 +39,11 @@ export default function ResearchPage() {
 
       {/* Header */}
       <header className="space-y-4 border-b border-[var(--border-color)] pb-8">
-        <span className="mono-tag text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider">
+        <span className="mono-tag text-xs font-semibold text-[var(--primary-accent)]">
           Research Direction &amp; Vision
         </span>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)]">
-          Health Informatics &amp; Trustworthy Systems
+          Health Informatics &amp; <span className="text-gradient-cyan">Trustworthy ML</span>
         </h1>
         <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl">
           {researchDirection.overview}
@@ -53,8 +58,13 @@ export default function ResearchPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {researchDirection.corePillars.map((pillar, idx) => (
             <div key={idx} className="editorial-card p-6 space-y-3">
-              <div className="w-8 h-8 rounded-md bg-[var(--primary-accent-subtle)] text-[var(--primary-accent)] flex items-center justify-center font-mono font-bold text-sm">
-                0{idx + 1}
+              <div className="flex items-center justify-between">
+                <div className="p-2 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border-subtle)]">
+                  {pillarIcons[idx]}
+                </div>
+                <span className="mono-tag text-xs text-[var(--primary-accent)] font-bold">
+                  0{idx + 1}
+                </span>
               </div>
               <h3 className="text-base font-bold text-[var(--text-main)]">
                 {pillar.title}
@@ -86,7 +96,7 @@ export default function ResearchPage() {
       </section>
 
       {/* Research Journey Context */}
-      <section className="editorial-card p-6 sm:p-8 space-y-4">
+      <section className="editorial-card editorial-card-accent p-6 sm:p-8 space-y-4">
         <h3 className="text-lg font-bold text-[var(--text-main)] flex items-center gap-2">
           <Microscope className="w-5 h-5 text-[var(--primary-accent)]" />
           <span>Research Evolution: From Bangla NLP to Health Informatics</span>
@@ -104,7 +114,7 @@ export default function ResearchPage() {
           {researchDirection.topics.map((t) => (
             <span
               key={t}
-              className="mono-tag px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] text-xs"
+              className="mono-tag px-2.5 py-0.5 rounded-full bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] text-xs font-medium"
             >
               {t}
             </span>
@@ -116,7 +126,7 @@ export default function ResearchPage() {
       <div className="pt-6 border-t border-[var(--border-color)] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
         <Link
           href="/#work"
-          className="inline-flex items-center gap-1.5 text-[var(--primary-accent)] hover:underline"
+          className="inline-flex items-center gap-1.5 text-[var(--primary-accent)] hover:underline font-semibold"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Explore Implementation Case Studies</span>
@@ -125,10 +135,10 @@ export default function ResearchPage() {
           href={siteConfig.links.resume}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-[var(--text-main)] hover:text-[var(--primary-accent)]"
+          className="inline-flex items-center gap-1.5 text-[var(--text-main)] hover:text-[var(--primary-accent)] font-medium"
         >
-          <FileDown className="w-4 h-4" />
-          <span>Download Curriculum Vitae (PDF)</span>
+          <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
+          <span>View Curriculum Vitae (PDF)</span>
         </a>
       </div>
     </div>

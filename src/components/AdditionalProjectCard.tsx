@@ -9,9 +9,9 @@ interface AdditionalProjectCardProps {
 export default function AdditionalProjectCard({ project }: AdditionalProjectCardProps) {
   return (
     <div className="editorial-card p-5 flex flex-col justify-between gap-4">
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <div className="flex items-center justify-between gap-2">
-          <span className="mono-tag text-[11px] text-[var(--secondary-accent)] uppercase tracking-wider">
+          <span className="mono-tag text-[11px] text-[var(--secondary-accent)] font-semibold">
             {project.category}
           </span>
           {project.github && (
@@ -19,7 +19,7 @@ export default function AdditionalProjectCard({ project }: AdditionalProjectCard
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--text-muted)] hover:text-[var(--primary-accent)] transition-colors"
+              className="text-[var(--text-muted)] hover:text-[var(--primary-accent)] transition-colors p-1 rounded-md hover:bg-[var(--surface-subtle)]"
               aria-label={`${project.title} GitHub repository`}
             >
               <GithubIcon className="w-4 h-4" />
@@ -45,11 +45,11 @@ export default function AdditionalProjectCard({ project }: AdditionalProjectCard
         </ul>
       </div>
 
-      <div className="pt-3 border-t border-[var(--border-color)] flex flex-wrap gap-1">
+      <div className="pt-2.5 border-t border-[var(--border-color)] flex flex-wrap gap-1">
         {project.technologies.map((t) => (
           <span
             key={t}
-            className="mono-tag px-1.5 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] text-[10px]"
+            className="mono-tag px-2 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] text-[10px] font-medium"
           >
             {t}
           </span>

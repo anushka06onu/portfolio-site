@@ -17,14 +17,14 @@ export default function ResearchCard({ output }: ResearchCardProps) {
       case "Manuscript in preparation":
       case "Ongoing":
       default:
-        return "bg-[var(--primary-accent-subtle)] text-[var(--primary-accent)] border-[var(--primary-accent)]/30";
+        return "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/30";
     }
   };
 
   return (
     <div className="editorial-card p-6 flex flex-col justify-between gap-4">
       <div className="space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
           <span className="mono-tag text-xs text-[var(--secondary-accent)] font-medium">
             {output.venueOrType} · {output.year}
           </span>
@@ -33,11 +33,11 @@ export default function ResearchCard({ output }: ResearchCardProps) {
           </span>
         </div>
 
-        <h4 className="text-base sm:text-lg font-bold text-[var(--text-main)] leading-snug">
+        <h4 className="text-base font-bold text-[var(--text-main)] leading-snug">
           {output.title}
         </h4>
 
-        <p className="text-xs font-mono text-[var(--primary-accent)]">
+        <p className="text-xs font-mono text-[var(--primary-accent)] font-medium">
           Role: {output.role}
         </p>
 
@@ -52,12 +52,12 @@ export default function ResearchCard({ output }: ResearchCardProps) {
         )}
       </div>
 
-      <div className="pt-3 border-t border-[var(--border-color)] flex flex-wrap gap-1.5 items-center">
-        <Tag className="w-3 h-3 text-[var(--text-muted)] shrink-0 mr-1" />
+      <div className="pt-2.5 border-t border-[var(--border-color)] flex flex-wrap gap-1.5 items-center">
+        <Tag className="w-3 h-3 text-[var(--text-muted)] shrink-0 mr-0.5" />
         {output.topics.map((topic) => (
           <span
             key={topic}
-            className="mono-tag px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] text-[10px]"
+            className="mono-tag px-2 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] text-[10px]"
           >
             {topic}
           </span>

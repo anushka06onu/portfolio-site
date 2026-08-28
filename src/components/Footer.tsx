@@ -1,5 +1,5 @@
 import { siteConfig } from "../content/site";
-import { Mail, FileDown } from "lucide-react";
+import { Mail, FileDown, Heart } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 
 export default function Footer() {
@@ -7,8 +7,11 @@ export default function Footer() {
     <footer className="border-t border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] py-12 px-4 sm:px-6 transition-colors">
       <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left space-y-1">
-          <p className="font-mono text-sm font-semibold text-[var(--text-main)]">
-            {siteConfig.name}
+          <p className="font-mono text-sm font-semibold text-[var(--text-main)] flex items-center justify-center md:justify-start gap-2">
+            <span className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-teal-400 to-cyan-600 text-[10px] font-bold text-slate-950">
+              F
+            </span>
+            <span>{siteConfig.name}</span>
           </p>
           <p className="text-xs text-[var(--text-muted)]">
             Health Informatics · Intelligent Systems · Backend Engineering
@@ -20,7 +23,7 @@ export default function Footer() {
             href={siteConfig.links.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-[var(--primary-accent)] transition-colors"
+            className="flex items-center gap-1.5 hover:text-[var(--primary-accent)] transition-colors"
             aria-label="GitHub Profile"
           >
             <GithubIcon className="w-4 h-4" />
@@ -30,15 +33,15 @@ export default function Footer() {
             href={siteConfig.links.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-[var(--primary-accent)] transition-colors"
+            className="flex items-center gap-1.5 hover:text-[#0077B5] transition-colors"
             aria-label="LinkedIn Profile"
           >
-            <LinkedinIcon className="w-4 h-4" />
+            <LinkedinIcon className="w-4 h-4 text-[#0077B5]" />
             <span>LinkedIn</span>
           </a>
           <a
             href={`mailto:${siteConfig.links.email}`}
-            className="flex items-center gap-1 hover:text-[var(--primary-accent)] transition-colors"
+            className="flex items-center gap-1.5 hover:text-[var(--primary-accent)] transition-colors"
             aria-label="Email Address"
           >
             <Mail className="w-4 h-4" />
@@ -48,17 +51,17 @@ export default function Footer() {
             href={siteConfig.links.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-[var(--primary-accent)] transition-colors"
+            className="flex items-center gap-1.5 hover:text-[var(--primary-accent)] transition-colors"
             aria-label="Curriculum Vitae"
           >
-            <FileDown className="w-4 h-4" />
+            <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
             <span>CV</span>
           </a>
         </div>
 
         <div className="text-xs font-mono text-[var(--text-muted)] text-center md:text-right">
           <p>Built with Next.js &amp; TypeScript</p>
-          <p className="text-[11px] text-[var(--text-muted)] opacity-80">Last updated: 2026</p>
+          <p className="text-[11px] opacity-70 mt-0.5">Dhaka, Bangladesh · 2026</p>
         </div>
       </div>
     </footer>
