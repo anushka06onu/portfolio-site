@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1014"/>
+      <stop offset="100%" stop-color="#111820"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad3)"/>
+  
+  <g opacity="0.15" stroke="#35B8C5" stroke-width="0.5">
+    <line x1="0" y1="75" x2="800" y2="75"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="225" x2="800" y2="225"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="375" x2="800" y2="375"/>
+  </g>
+
+  <!-- Title -->
+  <text x="40" y="48" fill="#35B8C5" font-family="monospace" font-size="12" letter-spacing="2">HEALTHCARE ANALYTICS PLATFORM · REPRODUCIBLE CLINICAL RISK MODELING</text>
+  <rect x="570" y="32" width="190" height="24" rx="4" fill="#18242F" stroke="#2B3D4C"/>
+  <text x="580" y="48" fill="#79A7E8" font-family="monospace" font-size="11">RESPONSIBLE ML METHODOLOGY</text>
+
+  <!-- Pipeline Step 1 -->
+  <rect x="40" y="85" width="220" height="150" rx="8" fill="#141E27" stroke="#26323B"/>
+  <text x="55" y="112" fill="#E8EEF2" font-family="sans-serif" font-weight="600" font-size="13">1. Stratified Data Pipeline</text>
+  <text x="55" y="132" fill="#95A3AE" font-family="monospace" font-size="10">Clinical Biomarkers &amp; Imputation</text>
+  <rect x="55" y="145" width="190" height="24" rx="4" fill="#18242F"/>
+  <text x="65" y="161" fill="#35B8C5" font-family="sans-serif" font-size="11">✓ In-Fold Scaler Fitting</text>
+  <rect x="55" y="175" width="190" height="24" rx="4" fill="#18242F"/>
+  <text x="65" y="191" fill="#35B8C5" font-family="sans-serif" font-size="11">✓ Zero Train/Test Leakage</text>
+  <text x="55" y="222" fill="#5C6975" font-family="monospace" font-size="10">5-Fold Stratified Cross-Validation</text>
+
+  <!-- Arrow -->
+  <polygon points="280,160 272,155 272,165" fill="#79A7E8"/>
+
+  <!-- Pipeline Step 2 -->
+  <rect x="290" y="85" width="220" height="150" rx="8" fill="#141E27" stroke="#087F8C" stroke-width="1.5"/>
+  <text x="305" y="112" fill="#E8EEF2" font-family="sans-serif" font-weight="600" font-size="13">2. Calibrated Classifiers</text>
+  <text x="305" y="132" fill="#35B8C5" font-family="monospace" font-size="10">Platt Scaling / Isotonic Reg</text>
+  <rect x="305" y="145" width="190" height="24" rx="4" fill="#18242F"/>
+  <text x="315" y="161" fill="#E8EEF2" font-family="sans-serif" font-size="11">Brier Calibration Score</text>
+  <rect x="305" y="175" width="190" height="24" rx="4" fill="#18242F"/>
+  <text x="315" y="191" fill="#E8EEF2" font-family="sans-serif" font-size="11">PR-AUC &amp; Specificity Curve</text>
+  <text x="305" y="222" fill="#5C6975" font-family="monospace" font-size="10">Ensemble &amp; Logistic Baselines</text>
+
+  <!-- Arrow -->
+  <polygon points="530,160 522,155 522,165" fill="#79A7E8"/>
+
+  <!-- Pipeline Step 3 -->
+  <rect x="540" y="85" width="220" height="150" rx="8" fill="#141E27" stroke="#26323B"/>
+  <text x="555" y="112" fill="#E8EEF2" font-family="sans-serif" font-weight="600" font-size="13">3. Decision-Support XAI</text>
+  <text x="555" y="132" fill="#95A3AE" font-family="monospace" font-size="10">Feature Attribution &amp; Audit</text>
+  <rect x="555" y="145" width="190" height="24" rx="4" fill="#18242F"/>
+  <text x="565" y="161" fill="#35B8C5" font-family="sans-serif" font-size="11">✓ SHAP Waterfall Plots</text>
+  <rect x="555" y="175" width="190" height="24" rx="4" fill="#18242F"/>
+  <text x="565" y="191" fill="#79A7E8" font-family="sans-serif" font-size="11">✓ Ethical Clinical Disclaimer</text>
+  <text x="555" y="222" fill="#5C6975" font-family="monospace" font-size="10">Transparent Risk Telemetry</text>
+
+  <!-- Bottom Panel: Sample Patient Attribution -->
+  <rect x="40" y="255" width="720" height="155" rx="8" fill="#111820" stroke="#26323B"/>
+  <text x="60" y="282" fill="#E8EEF2" font-family="sans-serif" font-weight="600" font-size="13">Sample Patient Profile · Biomarker Attribution Breakdown</text>
+
+  <g transform="translate(60, 300)">
+    <text x="0" y="15" fill="#95A3AE" font-family="monospace" font-size="11">Serum Creatinine (mg/dL)</text>
+    <rect x="200" y="5" width="240" height="12" fill="#35B8C5" rx="2"/>
+    <text x="450" y="15" fill="#35B8C5" font-family="monospace" font-size="11">+0.54 (Elevated)</text>
+
+    <text x="0" y="40" fill="#95A3AE" font-family="monospace" font-size="11">Blood Pressure (Systolic)</text>
+    <rect x="200" y="30" width="160" height="12" fill="#35B8C5" rx="2"/>
+    <text x="370" y="40" fill="#35B8C5" font-family="monospace" font-size="11">+0.31 (142 mmHg)</text>
+
+    <text x="0" y="65" fill="#95A3AE" font-family="monospace" font-size="11">Hemoglobin (g/dL)</text>
+    <rect x="200" y="55" width="90" height="12" fill="#79A7E8" rx="2"/>
+    <text x="300" y="65" fill="#79A7E8" font-family="monospace" font-size="11">-0.18 (Protective)</text>
+
+    <text x="0" y="90" fill="#95A3AE" font-family="monospace" font-size="11">Fasting Blood Glucose</text>
+    <rect x="200" y="80" width="60" height="12" fill="#35B8C5" rx="2"/>
+    <text x="270" y="90" fill="#35B8C5" font-family="monospace" font-size="11">+0.12 (Mild)</text>
+  </g>
+</svg>

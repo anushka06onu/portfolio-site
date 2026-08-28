@@ -4,26 +4,28 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
-export default function ThemeToggle() {
+export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
-  // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
-    return <div className="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 animate-pulse" />;
+    return <div className="w-8 h-8 rounded-md border border-[var(--border-color)] bg-[var(--surface-subtle)]" />;
   }
+
+  const isDark = resolvedTheme === "dark";
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-300 transition-all hover:bg-black/10 dark:hover:bg-white/10 hover:scale-[1.05]"
-      aria-label="Toggle theme"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="p-2 rounded-md border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] transition-colors"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      type="button"
     >
-      {theme === "dark" ? (
+      {isDark ? (
         <Sun className="w-4 h-4" />
       ) : (
         <Moon className="w-4 h-4" />
@@ -31,3 +33,5 @@ export default function ThemeToggle() {
     </button>
   );
 }
+
+export default ThemeToggle;

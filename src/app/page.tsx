@@ -1,363 +1,379 @@
-import Link from "next/link";
 import Image from "next/image";
-import Container from "../components/Container";
-import SectionTitle from "../components/SectionTitle";
-import Badge from "../components/Badge";
-import { site } from "../content/site";
-import ContactCTA from "../components/ContactCTA";
-import Timeline from "../components/Timeline";
-import CertificationCard from "../components/CertificationCard";
-import ProjectShowcaseCard from "../components/ProjectShowcaseCard";
-import ProjectList from "../components/ProjectList";
-import TeachingCard from "../components/TeachingCard";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import Link from "next/link";
+import { siteConfig } from "../content/site";
+import { featuredProjects, additionalProjects } from "../content/projects";
+import { researchDirection, researchOutputs } from "../content/research";
+import ProjectCard from "../components/ProjectCard";
+import AdditionalProjectCard from "../components/AdditionalProjectCard";
+import ResearchCard from "../components/ResearchCard";
+import ExperienceItem from "../components/ExperienceItem";
+import SkillsMatrix from "../components/SkillsMatrix";
+import ContactSection from "../components/ContactSection";
+import { GithubIcon, LinkedinIcon } from "../components/Icons";
+import {
+  ArrowDown,
+  ArrowRight,
+  FileDown,
+  Mail,
+  GraduationCap,
+  Award
+} from "lucide-react";
 
-export const revalidate = 60; // Revalidate every 60 seconds
-
-async function fetchProjects() {
-  try {
-    const querySnapshot = await getDocs(collection(db, "projects"));
-    if (querySnapshot.empty) return site.projects;
-    const data: any[] = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
-    });
-    return data.sort((a, b) => {
-      if (a.pinned && !b.pinned) return -1;
-      if (!a.pinned && b.pinned) return 1;
-      return 0;
-    });
-  } catch (error) {
-    console.error("Firebase fetch failed, falling back to static site.ts:", error);
-    return site.projects;
-  }
-}
-
-async function fetchCertifications() {
-  try {
-    const querySnapshot = await getDocs(collection(db, "certifications"));
-    if (querySnapshot.empty) return site.certifications;
-    const data: any[] = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
-    });
-    return data;
-  } catch (error) {
-    console.error("Firebase fetch failed, falling back to static site.ts:", error);
-    return site.certifications;
-  }
-}
-
-async function fetchSettings() {
-  try {
-    const docSnap = await getDoc(doc(db, "settings", "site-config"));
-    if (docSnap.exists()) return docSnap.data();
-    return null;
-  } catch (error) {
-    console.error("Firebase fetch failed, falling back to static site.ts:", error);
-    return null;
-  }
-}
-
-async function fetchTeaching() {
-  try {
-    const querySnapshot = await getDocs(collection(db, "teaching"));
-    if (querySnapshot.empty) return null;
-    const data: any[] = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
-    });
-    return data;
-  } catch (error) {
-    console.error("Firebase fetch failed, falling back to static site.ts:", error);
-    return null;
-  }
-}
-
-function StatCard({
-  label,
-  value,
-  detail
-}: {
-  label: string;
-  value: string;
-  detail?: string;
-}) {
+export default function HomePage() {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 p-5 shadow-lg backdrop-blur-xl transition-colors duration-300">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-emerald-400 via-sky-400 to-purple-500 opacity-60 dark:opacity-100" />
-      <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-500 dark:text-neutral-400">{label}</p>
-      <p className="mt-2 text-2xl font-semibold text-neutral-900 dark:text-white">{value}</p>
-      {detail ? <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">{detail}</p> : null}
-    </div>
-  );
-}
-
-export default async function HomePage() {
-  const awardsCount = site.academics?.awards?.length ?? 0;
-  const awardTerms = site.academics?.awards?.map((a) => a.term).join(", ");
-  const skillEntries = Object.entries(site.skills ?? {});
-
-  // Fetch dynamic data, with static fallback
-  const projects = await fetchProjects();
-  const certifications = await fetchCertifications();
-  const fetchedSettings = await fetchSettings();
-  const fetchedTeaching = await fetchTeaching();
-
-  // Merge static with fetched settings
-  const dynamicSite = {
-    ...site,
-    name: fetchedSettings?.name || site.name,
-    headline: fetchedSettings?.headline || site.headline,
-    about: fetchedSettings?.about || site.about,
-    academics: {
-      ...site.academics,
-      cgpa: fetchedSettings?.cgpa || site.academics.cgpa,
-    },
-    research: {
-      lab: fetchedSettings?.researchLab || site.research.lab,
-      role: fetchedSettings?.researchRole || site.research.role,
-      ongoing: fetchedSettings?.researchOngoing || site.research.ongoing,
-      interests: fetchedSettings?.researchInterests || site.research.interests,
-    }
-  };
-
-  const teachingData = fetchedTeaching || [{
-    role: site.teaching.role,
-    duration: site.teaching.duration,
-    description: site.teaching.description,
-    tasks: [],
-    imageUrl: ""
-  }];
-
-  return (
-    <main className="relative isolate overflow-hidden bg-neutral-50 dark:bg-[#0b0f14] text-neutral-900 dark:text-neutral-100 transition-colors duration-500">
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(1200px_circle_at_18%_-10%,rgba(16,185,129,0.08),transparent_60%),radial-gradient(1000px_circle_at_82%_0%,rgba(99,102,241,0.08),transparent_60%),linear-gradient(180deg,#f8fafc,#f1f5f9)] dark:bg-[radial-gradient(1200px_circle_at_18%_-10%,rgba(16,185,129,0.24),transparent_60%),radial-gradient(1000px_circle_at_82%_0%,rgba(99,102,241,0.2),transparent_60%),linear-gradient(180deg,#0b0f14,#06080d)] transition-colors duration-500" />
-      <div className="pointer-events-none absolute left-10 top-24 -z-10 h-64 w-64 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 blur-3xl transition-colors duration-500" />
-      <div className="pointer-events-none absolute right-[-4rem] top-10 -z-10 h-72 w-72 rounded-full bg-sky-500/10 dark:bg-sky-500/18 blur-3xl transition-colors duration-500" />
-
-      <Container>
-        <section className="grid gap-12 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center animate-[fade-up_0.65s_ease-out]">
-          <div className="space-y-7">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 dark:border-emerald-400/40 bg-emerald-500/10 dark:bg-emerald-400/10 px-4 py-1 text-[11px] uppercase tracking-[0.2em] text-emerald-800 dark:text-emerald-100">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-              {site.location} · CS (4th year) · ML / Data / Applied AI
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-14 space-y-20 sm:space-y-28">
+      {/* 1. HERO SECTION */}
+      <section className="space-y-8 pt-4 sm:pt-8" aria-labelledby="hero-heading">
+        <div className="flex flex-col-reverse lg:flex-row items-start justify-between gap-8 lg:gap-12">
+          <div className="flex-1 space-y-6">
+            {/* Availability Status */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-color)] bg-[var(--surface)] text-xs font-mono text-[var(--text-muted)]">
+              <span className="w-2 h-2 rounded-full bg-[var(--primary-accent)]" />
+              <span>{siteConfig.availability}</span>
             </div>
 
-            <h1 className="text-4xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-5xl lg:text-6xl font-[var(--font-playfair)]">
-              {dynamicSite.name}
-            </h1>
-            <p className="max-w-2xl text-lg text-neutral-700 dark:text-neutral-200">{dynamicSite.headline}</p>
-            <p className="max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-300 sm:text-base">
-              {dynamicSite.about}
+            {/* Hero Eyebrow */}
+            <p className="mono-tag text-xs sm:text-sm font-semibold tracking-wider text-[var(--primary-accent)] uppercase">
+              {siteConfig.hero.eyebrow}
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            {/* Main Headline */}
+            <h1
+              id="hero-heading"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)] leading-[1.15]"
+            >
+              {siteConfig.hero.headline}
+            </h1>
+
+            {/* Introduction Paragraph */}
+            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl font-normal">
+              {siteConfig.hero.intro}
+            </p>
+
+            {/* Action Buttons & Social Links */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
               <a
-                href={`mailto:${site.links.email}`}
-                className="btn-base btn-md btn-emerald btn-hover btn-shine hover:bg-emerald-500"
+                href={siteConfig.hero.buttons.work.href}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md bg-[var(--primary-accent)] text-white font-medium hover:opacity-90 transition-opacity"
               >
-                Email
+                <span>{siteConfig.hero.buttons.work.label}</span>
+                <ArrowDown className="w-3.5 h-3.5" />
               </a>
+
               <a
-                href={site.links.linkedin}
+                href={siteConfig.hero.buttons.research.href}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] transition-colors"
+              >
+                <span>{siteConfig.hero.buttons.research.label}</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+              </a>
+
+              <a
+                href={siteConfig.hero.buttons.cv.href}
                 target="_blank"
-                rel="noreferrer"
-                className="btn-base btn-md btn-sky btn-hover btn-shine hover:bg-sky-500"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-md border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] transition-colors"
+                aria-label="Download Curriculum Vitae"
               >
-                LinkedIn
+                <FileDown className="w-3.5 h-3.5" />
+                <span>Download CV</span>
               </a>
-              {site.links.github ? (
+
+              <div className="flex items-center gap-2 pl-1">
                 <a
-                  href={site.links.github}
+                  href={siteConfig.links.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className="btn-base btn-md btn-glass btn-hover btn-shine hover:bg-black/10 dark:hover:bg-white/20"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-md border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] hover:text-[var(--text-main)] hover:border-[var(--primary-accent)] transition-colors"
+                  aria-label="GitHub Profile"
                 >
-                  GitHub
+                  <GithubIcon className="w-4 h-4" />
                 </a>
-              ) : null}
-              {site.links.resume ? (
-                <Link
-                  href={site.links.resume}
+
+                <a
+                  href={siteConfig.links.linkedin}
                   target="_blank"
-                  rel="noreferrer"
-                  className="btn-base btn-md btn-glass btn-hover btn-shine hover:bg-black/10 dark:hover:bg-white/20"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-md border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] hover:text-[#0077B5] hover:border-[#0077B5] transition-colors"
+                  aria-label="LinkedIn Profile"
                 >
-                  Resume
-                </Link>
-              ) : null}
-            </div>
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
 
-            <div className="flex flex-wrap gap-2">
-              {(site.focusAreas ?? []).map((f) => (
-                <Badge key={f}>{f}</Badge>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[260px] sm:max-w-[300px] overflow-hidden rounded-full border border-black/5 dark:border-white/10 bg-gradient-to-b from-black/5 to-transparent dark:from-white/10 dark:to-white/5 p-3 shadow-2xl backdrop-blur-xl">
-              <div className="absolute inset-0 bg-[radial-gradient(320px_circle_at_20%_10%,rgba(56,189,248,0.08),transparent_60%)] dark:bg-[radial-gradient(320px_circle_at_20%_10%,rgba(56,189,248,0.18),transparent_60%)]" />
-              <div className="relative z-10 aspect-square w-full overflow-hidden rounded-full">
-                <Image
-                  src="/IMG_6303 copy.jpg"
-                  alt={`${dynamicSite.name} portrait`}
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                  priority
-                />
+                <a
+                  href={`mailto:${siteConfig.links.email}`}
+                  className="p-2.5 rounded-md border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] hover:text-[var(--primary-accent)] hover:border-[var(--primary-accent)] transition-colors"
+                  aria-label="Send Email"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
               </div>
             </div>
           </div>
-        </section>
-      </Container>
 
-      <div className="border-t border-black/5 dark:border-white/5 bg-white/70 dark:bg-[#05070b]/70 py-14 backdrop-blur transition-colors duration-500">
-        <Container>
-          
-          {/* Achievement Section */}
-          <section id="education" className="animate-[fade-up_0.7s_ease-out]">
-            <SectionTitle
-              title="Achievements & Roles"
-              subtitle="Key highlights from my academic and extracurricular journey."
-            />
-            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-              <StatCard label="Current CGPA" value={dynamicSite.academics.cgpa} detail="Daffodil Int. University" />
-              <StatCard label="Dean’s Awards" value={`${awardsCount}`} detail={awardTerms} />
-              <StatCard label="Research" value="Research Assistant" detail="Health Informatics Research Lab" />
-              <StatCard label="Leadership" value="President" detail="DIU GCPC" />
+          {/* Portrait Asset */}
+          <div className="shrink-0 w-48 sm:w-56 lg:w-64">
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface)] shadow-md">
+              <Image
+                src="/fateha-hossain.jpg"
+                alt="Portrait of Fateha Hossain"
+                fill
+                priority
+                className="object-cover object-top"
+                sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 256px"
+              />
             </div>
-          </section>
+            <p className="mt-2 text-center text-[11px] font-mono text-[var(--text-muted)]">
+              Fateha Hossain Anushka
+            </p>
+          </div>
+        </div>
 
-          {/* Research Section */}
-          <section className="mt-20 animate-[fade-up_0.75s_ease-out]">
-            <SectionTitle
-              title="Research Focus"
-              subtitle="Dedicated to advancing AI applications in healthcare and NLP."
-            />
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="card-glow p-8 flex flex-col justify-center">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-500 opacity-60 dark:opacity-70" />
-                <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">{dynamicSite.research.role}</h3>
-                <p className="text-emerald-600 dark:text-emerald-300 text-sm uppercase tracking-wider mb-6">{dynamicSite.research.lab}</p>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-sm sm:text-base">
-                  {dynamicSite.research.ongoing}
+        {/* Three Pillars Overview */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-[var(--border-subtle)]">
+          {siteConfig.narrative.threePillars.map((pillar, idx) => (
+            <div
+              key={idx}
+              className="p-4 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] space-y-1.5"
+            >
+              <h3 className="text-xs font-bold font-mono text-[var(--primary-accent)] uppercase tracking-wide">
+                {pillar.title}
+              </h3>
+              <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                {pillar.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 2. SELECTED WORK SECTION */}
+      <section id="work" className="space-y-8 scroll-mt-20" aria-labelledby="work-heading">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-color)] pb-4">
+          <div>
+            <span className="mono-tag text-xs uppercase tracking-wider text-[var(--primary-accent)] font-semibold">
+              01 / Core Systems &amp; Prototypes
+            </span>
+            <h2
+              id="work-heading"
+              className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
+            >
+              Selected Work
+            </h2>
+          </div>
+          <p className="text-xs sm:text-sm font-mono text-[var(--text-muted)] max-w-md">
+            Four flagship implementations combining machine learning, explainable AI, telemetry pipelines, and deterministic analytics.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
+
+      {/* 3. ADDITIONAL ENGINEERING PROJECTS */}
+      <section className="space-y-6" aria-labelledby="additional-work-heading">
+        <div className="border-b border-[var(--border-color)] pb-3">
+          <span className="mono-tag text-xs uppercase tracking-wider text-[var(--secondary-accent)] font-semibold">
+            02 / Systems, HCI &amp; Applications
+          </span>
+          <h3
+            id="additional-work-heading"
+            className="mt-1 text-xl font-bold tracking-tight text-[var(--text-main)]"
+          >
+            Additional Engineering Work
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {additionalProjects.map((project, idx) => (
+            <AdditionalProjectCard key={idx} project={project} />
+          ))}
+        </div>
+      </section>
+
+      {/* 4. RESEARCH DIRECTION SECTION */}
+      <section id="research" className="space-y-8 scroll-mt-20" aria-labelledby="research-heading">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-color)] pb-4">
+          <div>
+            <span className="mono-tag text-xs uppercase tracking-wider text-[var(--primary-accent)] font-semibold">
+              03 / Investigation &amp; Methodology
+            </span>
+            <h2
+              id="research-heading"
+              className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
+            >
+              {researchDirection.heading}
+            </h2>
+          </div>
+          <Link
+            href="/research"
+            className="text-xs font-mono text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1"
+          >
+            <span>View Full Research Roadmap</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        {/* Narrative & Topics */}
+        <div className="editorial-card p-6 sm:p-8 space-y-5">
+          <p className="text-sm sm:text-base text-[var(--text-main)] leading-relaxed">
+            {researchDirection.overview}
+          </p>
+
+          <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--border-subtle)] items-center">
+            <span className="mono-tag text-xs font-semibold text-[var(--text-muted)] mr-1">
+              Active Focus Badges:
+            </span>
+            {researchDirection.topics.map((t) => (
+              <span
+                key={t}
+                className="mono-tag px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] text-xs"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <p className="text-xs font-mono text-[var(--text-muted)] italic pt-1">
+            Note: {researchDirection.historyNote}
+          </p>
+        </div>
+
+        {/* Research Outputs Grid */}
+        <div className="space-y-3">
+          <h3 className="mono-tag text-xs font-semibold uppercase text-[var(--text-muted)]">
+            Current Research Outputs &amp; Manuscripts
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {researchOutputs.map((item, idx) => (
+              <ResearchCard key={idx} output={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. EXPERIENCE SECTION */}
+      <section id="experience" className="space-y-8 scroll-mt-20" aria-labelledby="exp-heading">
+        <div className="border-b border-[var(--border-color)] pb-4">
+          <span className="mono-tag text-xs uppercase tracking-wider text-[var(--primary-accent)] font-semibold">
+            04 / Track Record
+          </span>
+          <h2
+            id="exp-heading"
+            className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
+          >
+            Experience &amp; Leadership
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {siteConfig.experience.map((role, idx) => (
+            <ExperienceItem key={idx} role={role} />
+          ))}
+        </div>
+      </section>
+
+      {/* 6. TECHNICAL CAPABILITIES SECTION */}
+      <section id="capabilities" className="space-y-8 scroll-mt-20" aria-labelledby="skills-heading">
+        <div className="border-b border-[var(--border-color)] pb-4">
+          <span className="mono-tag text-xs uppercase tracking-wider text-[var(--primary-accent)] font-semibold">
+            05 / Technical Inventory
+          </span>
+          <h2
+            id="skills-heading"
+            className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
+          >
+            Technical Capabilities
+          </h2>
+        </div>
+
+        <SkillsMatrix />
+      </section>
+
+      {/* 7. BRIEF ABOUT & EDUCATION */}
+      <section id="about" className="space-y-8 scroll-mt-20" aria-labelledby="about-heading">
+        <div className="border-b border-[var(--border-color)] pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span className="mono-tag text-xs uppercase tracking-wider text-[var(--primary-accent)] font-semibold">
+              06 / Background &amp; Education
+            </span>
+            <h2
+              id="about-heading"
+              className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
+            >
+              Academic Background &amp; Overview
+            </h2>
+          </div>
+          <Link
+            href="/about"
+            className="text-xs font-mono text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1"
+          >
+            <span>Read Detailed Bio</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 editorial-card p-6 sm:p-8 space-y-4">
+            <h3 className="text-lg font-bold text-[var(--text-main)]">
+              Engineering Philosophy &amp; Research Focus
+            </h3>
+            <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+              {siteConfig.narrative.aboutText}
+            </p>
+            <div className="pt-3 border-t border-[var(--border-subtle)]">
+              <p className="text-xs font-mono text-[var(--text-muted)]">
+                {siteConfig.additionalTraining}
+              </p>
+            </div>
+          </div>
+
+          <div className="editorial-card p-6 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-[var(--primary-accent)]">
+                <GraduationCap className="w-5 h-5" />
+                <span className="mono-tag font-bold text-xs uppercase">Formal Education</span>
+              </div>
+              <div>
+                <h4 className="text-base font-bold text-[var(--text-main)]">
+                  {siteConfig.education[0].degree}
+                </h4>
+                <p className="text-xs font-mono text-[var(--text-muted)] mt-0.5">
+                  {siteConfig.education[0].institution} · {siteConfig.education[0].location}
+                </p>
+                <p className="text-xs font-mono text-[var(--primary-accent)] mt-1 font-semibold">
+                  {siteConfig.education[0].period}
                 </p>
               </div>
-              <div className="card-glow p-8 border border-black/5 dark:border-white/10">
-                <h4 className="text-sm uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400 mb-6">Research Interests</h4>
-                <ul className="space-y-3">
-                  {dynamicSite.research.interests.map((interest: string) => (
-                    <li key={interest} className="flex items-center text-neutral-800 dark:text-neutral-200">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 mr-3 shadow-[0_0_8px_rgba(16,185,129,0.5)] dark:shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                      {interest}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </section>
 
-          {/* Project Showcase */}
-          <section id="projects" className="mt-24 animate-[fade-up_0.8s_ease-out]">
-            <SectionTitle
-              title="Project Showcase"
-              subtitle="Detailed case studies of selected builds."
-            />
-            <ProjectList projects={projects} />
-          </section>
-
-          {/* Leadership Timeline */}
-          <section id="experience" className="mt-24 animate-[fade-up_0.85s_ease-out]">
-            <SectionTitle
-              title="Leadership Journey"
-              subtitle="Clubs, coordination, and executive progression."
-            />
-            <div className="max-w-4xl">
-              <Timeline items={site.leadership} />
-            </div>
-          </section>
-
-          {/* Teaching & Mentorship */}
-          <section className="mt-24 animate-[fade-up_0.9s_ease-out]">
-            <SectionTitle
-              title="Teaching & Mentorship"
-              subtitle="Guiding peers in software engineering and foundational concepts."
-            />
-            <div className="grid gap-6">
-              {teachingData.map((t: any, i: number) => (
-                <TeachingCard 
-                  key={t.id || i}
-                  role={t.role}
-                  duration={t.duration}
-                  description={t.description}
-                  tasks={t.tasks}
-                  imageUrl={t.imageUrl}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* Certifications */}
-          <section className="mt-24 animate-[fade-up_0.95s_ease-out]">
-            <SectionTitle
-              title="Certifications"
-              subtitle="Continuous learning and professional skill development."
-            />
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {certifications.map((cert) => (
-                <CertificationCard
-                  key={cert.title}
-                  title={cert.title}
-                  provider={cert.provider}
-                  status={cert.status}
-                  description={cert.description}
-                  learned={cert.learned}
-                  imageUrl={cert.imageUrl}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* Skills */}
-          <section className="mt-24 animate-[fade-up_1s_ease-out]">
-            <SectionTitle
-              title="Skills"
-              subtitle="Tools, languages, and stacks used across projects."
-            />
-            <div className="grid gap-4 lg:grid-cols-2">
-              {skillEntries.map(([group, items]) => (
-                <div
-                  key={group}
-                  className="card-glow p-5"
-                >
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-500 opacity-40" />
-                  <p className="text-xs uppercase tracking-[0.22em] text-neutral-500 dark:text-neutral-400">{group}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {(items as string[]).map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full bg-black/5 dark:bg-white/10 px-3 py-1 text-xs text-neutral-700 dark:text-neutral-200 hover:bg-black/10 dark:hover:bg-white/20 transition-colors cursor-default"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+              {siteConfig.education[0].distinction && (
+                <div className="flex items-start gap-2 p-2.5 rounded bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-xs text-[var(--primary-accent)] font-medium">
+                  <Award className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>Academic distinction: {siteConfig.education[0].distinction}</span>
                 </div>
-              ))}
+              )}
             </div>
-          </section>
 
-          {/* Contact */}
-          <section id="contact" className="mt-28 pb-10 animate-[fade-up_1.1s_ease-out]">
-            <ContactCTA />
-          </section>
-          
-        </Container>
-      </div>
-    </main>
+            <div className="pt-2 border-t border-[var(--border-color)]">
+              <a
+                href={siteConfig.links.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border border-[var(--border-color)] bg-[var(--surface)] text-xs font-mono text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] transition-colors"
+              >
+                <FileDown className="w-3.5 h-3.5" />
+                <span>View Full Curriculum Vitae</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CONTACT SECTION */}
+      <ContactSection />
+    </div>
   );
 }

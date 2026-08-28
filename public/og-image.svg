@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1014"/>
+      <stop offset="100%" stop-color="#141E27"/>
+    </linearGradient>
+    <linearGradient id="tealGradOg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#087F8C"/>
+      <stop offset="100%" stop-color="#35B8C5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+
+  <g opacity="0.12" stroke="#35B8C5" stroke-width="0.8">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="100" y="180" fill="#35B8C5" font-family="monospace" font-size="20" font-weight="600" letter-spacing="4">HEALTH INFORMATICS · INTELLIGENT SYSTEMS · BACKEND</text>
+
+  <!-- Name & Title -->
+  <text x="100" y="270" fill="#E8EEF2" font-family="sans-serif" font-weight="bold" font-size="64">Fateha Hossain</text>
+
+  <!-- Headline -->
+  <text x="100" y="340" fill="#95A3AE" font-family="sans-serif" font-size="28">I build reliable intelligent systems for healthcare and complex infrastructure.</text>
+
+  <!-- Highlights / Badges -->
+  <g transform="translate(100, 420)">
+    <rect x="0" y="0" width="300" height="50" rx="8" fill="#18242F" stroke="#2B3D4C"/>
+    <text x="25" y="32" fill="#35B8C5" font-family="monospace" font-size="16">✓ ResiliNet &amp; ComputePulse</text>
+
+    <rect x="330" y="0" width="320" height="50" rx="8" fill="#18242F" stroke="#2B3D4C"/>
+    <text x="355" y="32" fill="#79A7E8" font-family="monospace" font-size="16">✓ Health Informatics Research</text>
+
+    <rect x="680" y="0" width="280" height="50" rx="8" fill="#18242F" stroke="#2B3D4C"/>
+    <text x="705" y="32" fill="#E8EEF2" font-family="monospace" font-size="16">✓ Backend Engineering</text>
+  </g>
+
+  <!-- Footer metadata -->
+  <text x="100" y="550" fill="#5C6975" font-family="monospace" font-size="16">Final-year CSE Student · Research Assistant · Dhaka, Bangladesh</text>
+</svg>

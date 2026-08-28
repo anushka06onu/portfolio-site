@@ -1,37 +1,116 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ScrollToTopOnLoad from "../components/ScrollToTopOnLoad";
-import { Manrope, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "../components/ThemeProvider";
+import { siteConfig } from "../content/site";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap"
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap"
-});
-
-export const metadata = {
-  title: "Fateha Hossain Anushka | Portfolio",
-  description:
-    "CSE undergraduate (4th year) exploring ML/AI, data science, and web development. Projects, leadership, and contact."
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | Fateha Hossain`
+  },
+  description: siteConfig.description,
+  authors: [{ name: siteConfig.author, url: siteConfig.url }],
+  creator: siteConfig.author,
+  keywords: [
+    "Fateha Hossain",
+    "Health Informatics",
+    "Machine Learning",
+    "Software Engineering",
+    "Explainable AI",
+    "SDN",
+    "ResiliNet",
+    "ComputePulse",
+    "Backend Developer",
+    "Research Assistant"
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: siteConfig.title
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ["/og-image.svg"]
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
+  }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.fullName,
+  alternateName: siteConfig.name,
+  url: siteConfig.url,
+  jobTitle: "Research Assistant & Software Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Health Informatics Research Lab"
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Daffodil International University"
+  },
+  knowsAbout: [
+    "Health Informatics",
+    "Explainable Artificial Intelligence",
+    "Machine Learning",
+    "Software-Defined Networking",
+    "Backend Software Engineering"
+  ],
+  sameAs: [
+    siteConfig.links.github,
+    siteConfig.links.linkedin
+  ]
+};
+
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${manrope.variable} ${playfair.variable} bg-neutral-50 text-neutral-900 dark:bg-[#0b0f14] dark:text-neutral-100 font-sans transition-colors duration-300 overflow-x-hidden`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-screen bg-[var(--bg-color)] text-[var(--text-main)] transition-colors duration-200">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <ScrollToTopOnLoad />
-          <Navbar />
-          {children}
-          <Footer />
+          <div className="flex min-h-screen flex-col bg-tech-grid">
+            <Navbar />
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

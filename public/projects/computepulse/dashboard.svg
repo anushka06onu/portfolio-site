@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1014"/>
+      <stop offset="100%" stop-color="#111820"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad2)"/>
+  
+  <g opacity="0.15" stroke="#35B8C5" stroke-width="0.5">
+    <line x1="0" y1="75" x2="800" y2="75"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="225" x2="800" y2="225"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="375" x2="800" y2="375"/>
+  </g>
+
+  <!-- Title -->
+  <text x="40" y="48" fill="#35B8C5" font-family="monospace" font-size="12" letter-spacing="2">COMPUTEPULSE · PREDICTIVE GPU CLUSTER RISK INTELLIGENCE</text>
+  <rect x="590" y="32" width="170" height="24" rx="4" fill="#18242F" stroke="#2B3D4C"/>
+  <text x="600" y="48" fill="#35B8C5" font-family="monospace" font-size="11">ROLE: TEAM LEAD (ML/API)</text>
+
+  <!-- Left: Node Matrix -->
+  <rect x="40" y="80" width="440" height="330" rx="8" fill="#141E27" stroke="#26323B"/>
+  <text x="60" y="108" fill="#E8EEF2" font-family="sans-serif" font-weight="600" font-size="14">16-Node Cluster Telemetry &amp; Anomaly Matrix</text>
+  <text x="60" y="128" fill="#95A3AE" font-family="monospace" font-size="11">Stream rate: 500 events/sec · NVLink/PCIe/VRAM Sensors</text>
+
+  <!-- 16 Nodes Grid (4x4) -->
+  <g transform="translate(60, 145)">
+    <!-- Row 1 -->
+    <rect x="0" y="0" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="10" y="20" fill="#E8EEF2" font-family="monospace" font-size="11">Node-01</text>
+    <text x="10" y="40" fill="#35B8C5" font-family="sans-serif" font-size="10">98% Normal</text>
+
+    <rect x="95" y="0" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="105" y="20" fill="#E8EEF2" font-family="monospace" font-size="11">Node-02</text>
+    <text x="105" y="40" fill="#35B8C5" font-family="sans-serif" font-size="10">95% Normal</text>
+
+    <rect x="190" y="0" width="85" height="55" rx="4" fill="#2C1D1D" stroke="#E57373" stroke-width="1.5"/>
+    <text x="200" y="20" fill="#E8EEF2" font-family="monospace" font-size="11">Node-03</text>
+    <text x="200" y="40" fill="#E57373" font-family="sans-serif" font-weight="bold" font-size="10">⚠️ Risk 84%</text>
+
+    <rect x="285" y="0" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="295" y="20" fill="#E8EEF2" font-family="monospace" font-size="11">Node-04</text>
+    <text x="295" y="40" fill="#35B8C5" font-family="sans-serif" font-size="10">99% Normal</text>
+
+    <!-- Row 2 -->
+    <rect x="0" y="65" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="10" y="85" fill="#E8EEF2" font-family="monospace" font-size="11">Node-05</text>
+    <text x="10" y="105" fill="#35B8C5" font-family="sans-serif" font-size="10">94% Normal</text>
+
+    <rect x="95" y="65" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="105" y="85" fill="#E8EEF2" font-family="monospace" font-size="11">Node-06</text>
+    <text x="105" y="105" fill="#35B8C5" font-family="sans-serif" font-size="10">96% Normal</text>
+
+    <rect x="190" y="65" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="200" y="85" fill="#E8EEF2" font-family="monospace" font-size="11">Node-07</text>
+    <text x="200" y="105" fill="#35B8C5" font-family="sans-serif" font-size="10">91% Normal</text>
+
+    <rect x="285" y="65" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="295" y="85" fill="#E8EEF2" font-family="monospace" font-size="11">Node-08</text>
+    <text x="295" y="105" fill="#35B8C5" font-family="sans-serif" font-size="10">97% Normal</text>
+
+    <!-- Row 3 -->
+    <rect x="0" y="130" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="10" y="150" fill="#E8EEF2" font-family="monospace" font-size="11">Node-09</text>
+    <text x="10" y="170" fill="#35B8C5" font-family="sans-serif" font-size="10">99% Normal</text>
+
+    <rect x="95" y="130" width="85" height="55" rx="4" fill="#2E2818" stroke="#F6AD55"/>
+    <text x="105" y="150" fill="#E8EEF2" font-family="monospace" font-size="11">Node-10</text>
+    <text x="105" y="170" fill="#F6AD55" font-family="sans-serif" font-size="10">⚡ Elev 62%</text>
+
+    <rect x="190" y="130" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="200" y="150" fill="#E8EEF2" font-family="monospace" font-size="11">Node-11</text>
+    <text x="200" y="170" fill="#35B8C5" font-family="sans-serif" font-size="10">96% Normal</text>
+
+    <rect x="285" y="130" width="85" height="55" rx="4" fill="#18242F" stroke="#35B8C5"/>
+    <text x="295" y="150" fill="#E8EEF2" font-family="monospace" font-size="11">Node-12</text>
+    <text x="295" y="170" fill="#35B8C5" font-family="sans-serif" font-size="10">98% Normal</text>
+
+    <!-- Legend -->
+    <g transform="translate(0, 205)">
+      <circle cx="10" cy="10" r="5" fill="#35B8C5"/>
+      <text x="25" y="14" fill="#95A3AE" font-family="sans-serif" font-size="11">Nominal (0-30%)</text>
+      <circle cx="140" cy="10" r="5" fill="#F6AD55"/>
+      <text x="155" y="14" fill="#95A3AE" font-family="sans-serif" font-size="11">Elevated (30-70%)</text>
+      <circle cx="280" cy="10" r="5" fill="#E57373"/>
+      <text x="295" y="14" fill="#95A3AE" font-family="sans-serif" font-size="11">Critical (&gt;70%)</text>
+    </g>
+  </g>
+
+  <!-- Right: Root-Cause Explainability Panel -->
+  <rect x="500" y="80" width="260" height="330" rx="8" fill="#141E27" stroke="#26323B"/>
+  <text x="520" y="108" fill="#E8EEF2" font-family="sans-serif" font-weight="600" font-size="14">SHAP Root-Cause Attribution</text>
+  <text x="520" y="128" fill="#E57373" font-family="monospace" font-size="11">Target: Node-03 Critical Alert</text>
+
+  <g transform="translate(520, 150)">
+    <text x="0" y="12" fill="#E8EEF2" font-family="sans-serif" font-size="11">Thermal Junction Rise</text>
+    <rect x="0" y="20" width="180" height="8" rx="2" fill="#E57373"/>
+    <text x="190" y="28" fill="#E57373" font-family="monospace" font-size="10">+0.48</text>
+
+    <text x="0" y="52" fill="#E8EEF2" font-family="sans-serif" font-size="11">VRAM Memory Thrash</text>
+    <rect x="0" y="60" width="140" height="8" rx="2" fill="#E57373"/>
+    <text x="150" y="68" fill="#E57373" font-family="monospace" font-size="10">+0.32</text>
+
+    <text x="0" y="92" fill="#E8EEF2" font-family="sans-serif" font-size="11">Fan Speed PWM Stutter</text>
+    <rect x="0" y="100" width="90" height="8" rx="2" fill="#F6AD55"/>
+    <text x="100" y="108" fill="#F6AD55" font-family="monospace" font-size="10">+0.19</text>
+
+    <text x="0" y="132" fill="#E8EEF2" font-family="sans-serif" font-size="11">PCIe Bus Bandwidth Saturation</text>
+    <rect x="0" y="140" width="40" height="8" rx="2" fill="#79A7E8"/>
+    <text x="50" y="148" fill="#79A7E8" font-family="monospace" font-size="10">+0.07</text>
+
+    <!-- Suggested Action Box -->
+    <rect x="0" y="170" width="220" height="70" rx="6" fill="#18242F" stroke="#2B3D4C"/>
+    <text x="10" y="190" fill="#35B8C5" font-family="monospace" font-size="10">RECOMMENDED ACTION</text>
+    <text x="10" y="210" fill="#E8EEF2" font-family="sans-serif" font-size="11">Migrate rank-0 workers from Node-03 to Node-01 before throttle event.</text>
+  </g>
+</svg>

@@ -1,63 +1,91 @@
-# Premium Portfolio Website
+# Fateha Hossain — Research & Engineering Portfolio
 
-A high-fidelity, modern, and aesthetically pleasing portfolio website built with the latest web technologies. This project showcases the work, experience, and skills of **Fateha Hossain Anushka**, a Full-stack Developer and CSE Undergraduate focusing on ML/AI and Data Science.
+This repository contains the source code for the personal research and engineering portfolio of **Fateha Hossain Anushka**, a final-year Computer Science and Engineering student and Research Assistant at the Health Informatics Research Lab.
 
-## ✨ Features
+## Overview & Positioning
 
-- **Stunning Aesthetics**: Uses glassmorphism effects, ambient orbs, and custom glow effects for a premium feel.
-- **Handcrafted Animations**: Smooth entrance animations (`fade-up`), floating effects, and shimmers.
-- **Native Dark Mode**: Automatically adapts to system preferences with a deep, rich dark palette.
-- **Dynamic Content Architecture**: All content (projects, education, experience) is driven by a single, structured file (`src/content/site.ts`), making it incredibly easy to update.
-- **Responsive Design**: Pixel-perfect on mobile, tablet, and desktop viewports.
-- **Contact Form Integration**: Ready for backend integration via Nodemailer.
+The portfolio presents a curated record of academic research, technical case studies, and engineering prototypes across three core pillars:
+1. **Health Informatics Research**: Clinical biomarker modeling, medical image classification, and trustworthy validation.
+2. **Reliable & Explainable Intelligent Systems**: SDN digital twins (ResiliNet), predictive infrastructure (ComputePulse), and feature attribution (SHAP).
+3. **Backend & Full-Stack Engineering**: Scalable APIs (FastAPI, Spring Boot, Laravel), deterministic calculation engines, and responsive web platforms.
 
-## 🛠️ Tech Stack
+## Architecture
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **Library**: [React 19](https://reactjs.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Mailing**: [Nodemailer](https://nodemailer.com/)
+- **Framework**: [Next.js](https://nextjs.org/) (App Router, Static Site Generation)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict mode, zero `any`)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with CSS variables and editorial scientific design tokens
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Theme**: Light & Dark mode via `next-themes` with full `prefers-reduced-motion` compliance
+- **Data Model**: Strongly-typed static content layer in `src/content/` for complete reproducibility and zero runtime attack surface
 
-## 🚀 Getting Started
-
-To run this project locally, follow these steps:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/anushka06onu/portfolio-site.git
-   cd portfolio-site
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
-
-4. **Open the site**:
-   Navigate to [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
-src/
-├── app/               # Next.js App Router pages and layouts
-│   ├── api/           # API routes (e.g., for contact form)
-│   ├── globals.css    # Global styles with Tailwind 4 and custom animations
-│   └── page.tsx       # Main portfolio landing page
-├── components/        # Reusable UI components
-└── content/
-    └── site.ts        # Centralized data file containing all portfolio content
+├── public/
+│   ├── projects/            # Technical architecture diagrams & visual assets
+│   ├── fateha-hossain.jpg   # Portrait asset
+│   └── og-image.svg         # Social sharing OpenGraph card
+├── src/
+│   ├── app/
+│   │   ├── about/           # Detailed biographical & education page
+│   │   ├── projects/[slug]/ # Dedicated technical case studies
+│   │   ├── research/        # Comprehensive research roadmap & outputs
+│   │   ├── globals.css      # Design tokens & accessibility utilities
+│   │   ├── layout.tsx       # Root layout with SEO & JSON-LD schema
+│   │   ├── page.tsx         # Structured homepage
+│   │   ├── robots.ts        # SEO crawler rules
+│   │   └── sitemap.ts       # Dynamic sitemap generation
+│   ├── components/          # Modular UI components
+│   └── content/             # Canonical TypeScript content data
+│       ├── projects.ts      # Flagship case studies & evidence data
+│       ├── research.ts      # Research direction & manuscript records
+│       ├── site.ts          # Profile, experience, and capability matrices
+│       └── types.ts         # Strict TypeScript interfaces
+└── tests/                   # Automated schema, link, and content tests
 ```
 
-## 📝 License
+## Local Development
 
-This project is open-source and available under the [MIT License](LICENSE).
+### Prerequisites
+- Node.js 18.x or higher
+- npm 9.x or higher
 
----
+### Setup
 
-*Built with ❤️ by [Fateha Hossain Anushka](https://github.com/anushka06onu)*
+```bash
+# Clone repository
+git clone https://github.com/anushka06onu/portfolio-site.git
+cd portfolio-site
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
+
+### Verification & Testing
+
+```bash
+# Run ESLint validation
+npm run lint
+
+# Run type check
+npx tsc --noEmit
+
+# Run unit and schema tests
+npm test
+
+# Build production bundle
+npm run build
+```
+
+## Continuous Integration
+
+GitHub Actions workflow is configured in `.github/workflows/ci.yml` to automatically validate linting, type safety, test suites, and production builds on every pull request and push to `main`.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
