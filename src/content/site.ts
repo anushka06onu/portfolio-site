@@ -28,7 +28,7 @@ export const siteConfig = {
       "Undergraduate researcher and software engineer specializing in health informatics, parameter-efficient foundation models, explainable machine learning, and resilient software backends. Experienced in building reproducible ML pipelines, distributed telemetry tools, and production web platforms.",
     buttons: {
       work: { label: "Selected Work", href: "#work" },
-      research: { label: "Research Roadmap", href: "#research" },
+      research: { label: "Research Roadmap", href: "/research" },
       cv: { label: "View CV", href: "/resume.pdf" }
     }
   },
@@ -50,7 +50,7 @@ export const siteConfig = {
     ],
 
     aboutText:
-      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech."
+      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 3× Dean's Award recipient) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
   },
 
   experience: [
@@ -60,9 +60,10 @@ export const siteConfig = {
       location: "Dhaka, Bangladesh",
       period: "March 2026 – Present",
       type: "Research" as const,
+      technologies: ["PyTorch", "Vision Foundation Models", "PEFT", "Grad-CAM", "XAI"],
       bullets: [
         "Conducting research on pediatric morphology alignment modules (PMAM) and uncertainty quantification for multi-disease diagnosis in panoramic radiography.",
-        "Benchmarking parameter-efficient fine-tuning (LoRA, BitFit, VPT) on Vision Foundation Models for dental radiographs.",
+        "Benchmarking parameter-efficient fine-tuning (LoRA, BitFit, VPT) on Vision Foundation Models (DINOv2, BiomedCLIP, MedSAM) for dental radiographs.",
         "Developing benchmarked and explainable machine learning pipelines for tri-class hematological classification."
       ]
     },
@@ -72,8 +73,9 @@ export const siteConfig = {
       location: "Dhaka, Bangladesh",
       period: "March 2026 – Present",
       type: "Engineering" as const,
+      technologies: ["Spring Boot", "Laravel", "FastAPI", "PostgreSQL", "MySQL", "REST APIs", "Docker"],
       bullets: [
-        "Designing and maintaining enterprise REST APIs with Spring Boot and Laravel, adhering to strict validation standards.",
+        "Designing and maintaining enterprise REST APIs with Spring Boot, Laravel, and FastAPI adhering to strict validation standards.",
         "Optimizing relational database schemas in MySQL and PostgreSQL with indexed queries for low-latency operations.",
         "Structuring modular backend services with automated integration testing and secure authentication."
       ]
@@ -84,6 +86,7 @@ export const siteConfig = {
       location: "Daffodil International University",
       period: "Jan 2026 – Present",
       type: "Leadership" as const,
+      technologies: ["Leadership", "Community", "Web Deployment", "Event Management"],
       bullets: [
         "Leading strategic operations across ACM, Research, and Career wings, coordinating workshops for 300+ active members.",
         "Led the architecture, development, and deployment of the official GCPC institutional web platform on a university domain.",
@@ -91,14 +94,15 @@ export const siteConfig = {
       ]
     },
     {
-      title: "Student Prefect (Data Structures & Algorithms)",
+      title: "Student Prefect (Object-Oriented Programming in Java)",
       organization: "Department of CSE, Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "May 2025 – Dec 2025",
       type: "Teaching" as const,
+      technologies: ["Java", "OOP", "Design Patterns", "Code Review"],
       bullets: [
-        "Conducted laboratory problem-solving sessions and code reviews for 100+ undergraduate students in C++ and Java.",
-        "Assisted faculty in designing programming assignments and debugging complex algorithmic implementations."
+        "Conducted laboratory problem-solving sessions and code reviews in Object-Oriented Programming (OOP) and Java for 100+ undergraduate students.",
+        "Assisted faculty in designing programming assignments, explaining OOP design patterns, and debugging complex Java implementations."
       ]
     }
   ],
@@ -109,13 +113,44 @@ export const siteConfig = {
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "2022 – 2026",
-      distinction: "Current CGPA: 3.92 / 4.00",
+      distinction: "Current CGPA: 3.92 / 4.00 · 3× Dean's Award Recipient",
       notes: [
-        "Current CGPA: 3.92 / 4.00 (Department of CSE).",
+        "Current CGPA: 3.92 / 4.00 (Department of Computer Science and Engineering).",
+        "Recipient of 3× Dean's Honor List Award for academic excellence across consecutive academic years.",
         "Undergraduate Thesis: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis.",
         "Awarded University Academic Merit Scholarships across consecutive semesters.",
-        "Core Coursework: Machine Learning, Artificial Intelligence, Data Structures & Algorithms, Database Systems, Computer Networks, Operating Systems, Software Engineering."
+        "Core Coursework: Machine Learning, Artificial Intelligence, Object-Oriented Programming (Java), Data Structures & Algorithms, Database Systems, Computer Networks, Operating Systems, Software Engineering."
       ]
+    }
+  ],
+
+  honors: [
+    {
+      title: "3× Dean's Honor List Award",
+      issuer: "Faculty of Science & Information Technology, Daffodil International University",
+      year: "2023, 2024, 2025",
+      description: "Conferred for achieving outstanding semester grade point averages (CGPA 3.90+) across consecutive academic years."
+    },
+    {
+      title: "University Academic Merit Scholarships",
+      issuer: "Daffodil International University",
+      year: "2022 – 2026",
+      description: "Full tuition merit scholarship awarded on the basis of academic performance."
+    }
+  ],
+
+  certifications: [
+    {
+      title: "12× Professional Specialization & Course Certifications",
+      issuer: "Coursera (DeepLearning.AI, Stanford Online, Google & Meta)",
+      year: "2023 – 2025",
+      description: "Completed 12 rigorous online courses covering Machine Learning, Deep Learning, Python for Data Science, Backend API Engineering, and Cloud Systems."
+    },
+    {
+      title: "Specialized Research Writing & Methodology",
+      issuer: "Health Informatics Research Lab & Academic Workshops",
+      year: "2025",
+      description: "Training in scientific paper writing, experiment reproducibility, statistical validation, and academic ethics."
     }
   ],
 

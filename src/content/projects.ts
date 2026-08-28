@@ -433,7 +433,7 @@ export const additionalProjects: AdditionalProject[] = [
     description:
       "A collaborative academic platform designed for student resource sharing, organized subject archives, and discussion channels.",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-    github: "https://github.com/anushka06onu",
+    github: "https://github.com/anushka06onu/Study-Hub",
     highlights: [
       "Structured subject-wise document cataloging",
       "Tag-based search and filter system",

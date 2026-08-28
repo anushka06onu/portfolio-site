@@ -17,6 +17,7 @@ import {
   Mail,
   GraduationCap,
   Award,
+  BookOpen,
   Activity,
   ShieldAlert,
   Server
@@ -41,7 +42,7 @@ export default function HomePage() {
         <section className="space-y-8 pt-4 sm:pt-6" aria-labelledby="hero-heading">
           <div className="flex flex-col-reverse lg:flex-row items-start justify-between gap-8 lg:gap-12">
             <div className="flex-1 space-y-5">
-              {/* Clean Status Line without Pulsing Dot */}
+              {/* Clean Status Line */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[var(--border-color)] bg-[var(--surface)]/90 backdrop-blur-md text-sm text-[var(--text-muted)] shadow-sm">
                 <span>{siteConfig.availability}</span>
               </div>
@@ -67,23 +68,23 @@ export default function HomePage() {
               {/* Action Buttons & Social Links */}
               <div className="flex flex-wrap items-center gap-3 pt-2 text-sm font-medium">
                 <a
-                  href={siteConfig.hero.buttons.work.href}
+                  href="#work"
                   className="btn-gradient inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-950 font-semibold shadow-lg shadow-teal-500/20"
                 >
                   <span>{siteConfig.hero.buttons.work.label}</span>
                   <ArrowDown className="w-4 h-4" />
                 </a>
 
-                <a
-                  href={siteConfig.hero.buttons.research.href}
+                <Link
+                  href="/research"
                   className="btn-outline inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
                 >
                   <span>{siteConfig.hero.buttons.research.label}</span>
                   <ArrowRight className="w-4 h-4 text-[var(--text-muted)]" />
-                </a>
+                </Link>
 
                 <a
-                  href={siteConfig.hero.buttons.cv.href}
+                  href={siteConfig.links.resume}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
@@ -212,7 +213,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. RESEARCH DIRECTION SECTION */}
+        {/* 4. RESEARCH DIRECTION SECTION (All 6 Research Outputs Included) */}
         <section id="research" className="space-y-6 scroll-mt-20" aria-labelledby="research-heading">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[var(--border-color)] pb-3">
             <div>
@@ -230,12 +231,12 @@ export default function HomePage() {
               href="/research"
               className="text-sm font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1.5"
             >
-              <span>All Research</span>
+              <span>Full Research Roadmap &amp; Details</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Narrative & Focus Topics (5 only on homepage) */}
+          {/* Narrative & Focus Topics */}
           <div className="editorial-card editorial-card-accent p-6 sm:p-7 space-y-4">
             <p className="text-base leading-7 text-[var(--text-main)]">
               {researchDirection.overview}
@@ -253,18 +254,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Research Outputs Preview (Short titles, no repeated chips) */}
+          {/* Complete Research Outputs Grid (All 6 Papers: PMAM, Thesis, Health, 3 NLP) */}
           <div className="space-y-3">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
-              Current Research Outputs &amp; Manuscripts
+              Current Research Outputs &amp; Manuscripts ({researchOutputs.length})
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {researchOutputs.slice(0, 3).map((item, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {researchOutputs.map((item, idx) => (
                 <ResearchCard
                   key={idx}
                   output={item}
-                  useShortTitle={true}
-                  showTopics={false}
+                  useShortTitle={false}
+                  showTopics={true}
                 />
               ))}
             </div>
@@ -289,14 +290,14 @@ export default function HomePage() {
               href="/about"
               className="text-sm font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1.5"
             >
-              <span>More Experience</span>
+              <span>More Experience &amp; Leadership</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {primaryExperience.map((role, idx) => (
-              <ExperienceItem key={idx} role={role} />
+              <ExperienceItem key={idx} role={role} showTech={true} />
             ))}
           </div>
         </section>
@@ -318,18 +319,18 @@ export default function HomePage() {
           <SkillsMatrix />
         </section>
 
-        {/* 7. BRIEF ABOUT & EDUCATION */}
+        {/* 7. ACADEMIC BACKGROUND, 3x DEAN'S AWARD & 12 COURSERA CERTIFICATIONS */}
         <section id="about" className="space-y-6 scroll-mt-20" aria-labelledby="about-heading">
           <div className="border-b border-[var(--border-color)] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
             <div>
               <span className="text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider">
-                06 / Education
+                06 / Education &amp; Honors
               </span>
               <h2
                 id="about-heading"
                 className="mt-0.5 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
               >
-                Academic Background
+                Academic Background &amp; Honors
               </h2>
             </div>
             <Link
@@ -342,17 +343,35 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-            <div className="lg:col-span-2 editorial-card p-6 sm:p-7 space-y-3">
+            <div className="lg:col-span-2 editorial-card p-6 sm:p-7 space-y-4">
               <h3 className="text-lg font-bold text-[var(--text-main)]">
                 Engineering Philosophy &amp; Research Focus
               </h3>
               <p className="text-sm sm:text-base text-[var(--text-muted)] leading-7">
                 {siteConfig.narrative.aboutText}
               </p>
-              <div className="pt-3 border-t border-[var(--border-subtle)]">
-                <p className="text-xs text-[var(--text-muted)]">
-                  {siteConfig.additionalTraining}
-                </p>
+
+              {/* Honors & 12 Coursera Certifications Highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-[var(--border-subtle)]">
+                <div className="p-3.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-subtle)] space-y-1">
+                  <div className="flex items-center gap-2 text-[var(--primary-accent)] font-semibold text-sm">
+                    <Award className="w-4 h-4" />
+                    <span>3× Dean&apos;s Honor List Award</span>
+                  </div>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Conferred for continuous top-tier academic excellence (CGPA 3.90+) across consecutive academic years.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-subtle)] space-y-1">
+                  <div className="flex items-center gap-2 text-[var(--secondary-accent)] font-semibold text-sm">
+                    <BookOpen className="w-4 h-4" />
+                    <span>12× Professional Certifications</span>
+                  </div>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Coursera certifications in Machine Learning, Deep Learning, Backend APIs, Python, and Java.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -376,7 +395,7 @@ export default function HomePage() {
 
                 <div className="flex items-start gap-2 p-2.5 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-xs text-[var(--primary-accent)] font-medium">
                   <Award className="w-4 h-4 shrink-0 mt-0.5" />
-                  <span>{siteConfig.education[0].distinction}</span>
+                  <span>Current CGPA: 3.92 / 4.00 · 3× Dean&apos;s Award</span>
                 </div>
               </div>
 
