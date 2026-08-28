@@ -68,7 +68,7 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-3 pt-2 text-sm font-medium">
                 <a
                   href={siteConfig.hero.buttons.work.href}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-semibold shadow-lg shadow-teal-500/20 transition-all"
+                  className="btn-gradient inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-950 font-semibold shadow-lg shadow-teal-500/20"
                 >
                   <span>{siteConfig.hero.buttons.work.label}</span>
                   <ArrowDown className="w-4 h-4" />
@@ -76,7 +76,7 @@ export default function HomePage() {
 
                 <a
                   href={siteConfig.hero.buttons.research.href}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+                  className="btn-outline inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
                 >
                   <span>{siteConfig.hero.buttons.research.label}</span>
                   <ArrowRight className="w-4 h-4 text-[var(--text-muted)]" />
@@ -86,7 +86,7 @@ export default function HomePage() {
                   href={siteConfig.hero.buttons.cv.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+                  className="btn-outline inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
                   aria-label="View Curriculum Vitae"
                 >
                   <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
@@ -98,7 +98,7 @@ export default function HomePage() {
                     href={siteConfig.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] hover:text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+                    className="btn-outline p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)]"
                     aria-label="GitHub Profile"
                   >
                     <GithubIcon className="w-4 h-4" />
@@ -108,7 +108,7 @@ export default function HomePage() {
                     href={siteConfig.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] hover:text-[#0077B5] hover:border-[#0077B5] hover:bg-[var(--surface-subtle)] transition-all"
+                    className="btn-outline p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)]"
                     aria-label="LinkedIn Profile"
                   >
                     <LinkedinIcon className="w-4 h-4" />
@@ -116,7 +116,7 @@ export default function HomePage() {
 
                   <a
                     href={`mailto:${siteConfig.links.email}`}
-                    className="p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] hover:text-[var(--primary-accent)] hover:border-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+                    className="btn-outline p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)]"
                     aria-label="Send Email"
                   >
                     <Mail className="w-4 h-4" />
@@ -374,12 +374,10 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {siteConfig.education[0].distinction && (
-                  <div className="flex items-start gap-2 p-2.5 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-xs text-[var(--primary-accent)] font-medium">
-                    <Award className="w-4 h-4 shrink-0 mt-0.5" />
-                    <span>Academic distinction: {siteConfig.education[0].distinction}</span>
-                  </div>
-                )}
+                <div className="flex items-start gap-2 p-2.5 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-xs text-[var(--primary-accent)] font-medium">
+                  <Award className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>{siteConfig.education[0].distinction}</span>
+                </div>
               </div>
 
               <div className="pt-3 border-t border-[var(--border-color)]">
@@ -387,7 +385,7 @@ export default function HomePage() {
                   href={siteConfig.links.resume}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-sm text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all font-medium"
+                  className="btn-outline w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-sm text-[var(--text-main)] font-medium"
                 >
                   <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
                   <span>View Full Curriculum Vitae</span>

@@ -21,7 +21,7 @@ export default function ContactSection() {
       <div className="flex flex-wrap items-center gap-3 pt-1 text-sm font-medium">
         <a
           href={`mailto:${siteConfig.links.email}`}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-semibold shadow-md shadow-teal-500/20 transition-all"
+          className="btn-gradient inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-950 font-semibold shadow-md shadow-teal-500/20"
         >
           <Mail className="w-4 h-4" />
           <span>Email Me ({siteConfig.links.email})</span>
@@ -31,7 +31,7 @@ export default function ContactSection() {
           href={siteConfig.links.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+          className="btn-outline inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
         >
           <LinkedinIcon className="w-4 h-4 text-[#0077B5]" />
           <span>LinkedIn Profile</span>
@@ -42,7 +42,7 @@ export default function ContactSection() {
           href={siteConfig.links.resume}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+          className="btn-outline inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
         >
           <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
           <span>View Curriculum Vitae (PDF)</span>

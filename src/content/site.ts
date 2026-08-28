@@ -16,7 +16,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/anushka06onu",
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-614749293/",
-    email: "anushkafateha@gmail.com",
+    email: "fatehahossainanushka@gmail.com",
     resume: "/resume.pdf"
   },
 
@@ -50,7 +50,7 @@ export const siteConfig = {
     ],
 
     aboutText:
-      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems with clean architectures and tested resilience."
+      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech."
   },
 
   experience: [
@@ -68,7 +68,7 @@ export const siteConfig = {
     },
     {
       title: "Backend Developer Intern",
-      organization: "Software Engineering Company",
+      organization: "CSE-Tech",
       location: "Dhaka, Bangladesh",
       period: "March 2026 – Present",
       type: "Engineering" as const,
@@ -109,8 +109,9 @@ export const siteConfig = {
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "2022 – 2026",
-      distinction: "Graduation with Distinction (CGPA: 3.92 / 4.00)",
+      distinction: "Current CGPA: 3.92 / 4.00",
       notes: [
+        "Current CGPA: 3.92 / 4.00 (Department of CSE).",
         "Undergraduate Thesis: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis.",
         "Awarded University Academic Merit Scholarships across consecutive semesters.",
         "Core Coursework: Machine Learning, Artificial Intelligence, Data Structures & Algorithms, Database Systems, Computer Networks, Operating Systems, Software Engineering."

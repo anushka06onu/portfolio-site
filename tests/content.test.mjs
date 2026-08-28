@@ -88,8 +88,10 @@ test("Research outputs match exact PMAM journal study, thesis details, and 4 und
   assert.match(researchContent, /Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions/);
 });
 
-test("Site config contains exact CGPA 3.92 and streamlined metadata", () => {
+test("Site config contains verified email, CSE-Tech company, and CGPA 3.92", () => {
   const siteContent = fs.readFileSync(path.resolve("src/content/site.ts"), "utf-8");
+  assert.match(siteContent, /fatehahossainanushka@gmail\.com/);
+  assert.match(siteContent, /CSE-Tech/);
   assert.match(siteContent, /3\.92/);
 });
 

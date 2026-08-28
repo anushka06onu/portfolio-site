@@ -23,8 +23,8 @@
   --badge-text: #334155;
   --badge-border: #CBD5E1;
 
-  --card-glow: rgba(13, 148, 136, 0.04);
-  --hero-glow: radial-gradient(circle at 50% 0%, rgba(13, 148, 136, 0.06) 0%, transparent 60%);
+  --card-glow: rgba(13, 148, 136, 0.06);
+  --hero-glow: radial-gradient(circle at 50% 0%, rgba(13, 148, 136, 0.08) 0%, transparent 60%);
 }
 
 :root[class~="dark"] {
@@ -48,8 +48,8 @@
   --badge-text: #CBD5E1;
   --badge-border: #1E293B;
 
-  --card-glow: rgba(20, 184, 166, 0.06);
-  --hero-glow: radial-gradient(circle at 50% -10%, rgba(20, 184, 166, 0.12) 0%, rgba(37, 99, 235, 0.06) 40%, transparent 70%);
+  --card-glow: rgba(20, 184, 166, 0.08);
+  --hero-glow: radial-gradient(circle at 50% -10%, rgba(20, 184, 166, 0.14) 0%, rgba(37, 99, 235, 0.06) 40%, transparent 70%);
 }
 
 body {
@@ -76,7 +76,7 @@ body {
 
 :root[class~="dark"] .bg-tech-grid {
   background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
 /* Skip link */
@@ -109,7 +109,7 @@ body {
   background-color: var(--surface);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
@@ -120,7 +120,7 @@ body {
 .editorial-card:hover {
   border-color: rgba(20, 184, 166, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px var(--card-glow);
+  box-shadow: 0 14px 30px -4px var(--card-glow);
 }
 
 /* Top Accent Line for Featured Cards Only */
@@ -138,6 +138,42 @@ body {
   height: 2px;
   background: linear-gradient(90deg, #14B8A6, #3B82F6, transparent);
   opacity: 0.8;
+}
+
+/* Animated Gradient Buttons */
+.btn-gradient {
+  background-size: 200% auto;
+  background-image: linear-gradient(135deg, #14B8A6 0%, #38BDF8 50%, #14B8A6 100%);
+  color: #070A0E !important;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gradient:hover {
+  background-position: right center;
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 8px 24px -4px rgba(20, 184, 166, 0.45);
+}
+
+.btn-gradient:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* Interactive Outline Buttons */
+.btn-outline {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 20px -4px rgba(20, 184, 166, 0.2);
+  background-color: var(--surface-subtle);
+}
+
+.btn-outline:active {
+  transform: translateY(0px) scale(0.98);
 }
 
 /* Monospace chips and tags */

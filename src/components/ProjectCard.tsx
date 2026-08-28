@@ -107,7 +107,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
         <div className="flex flex-wrap items-center gap-2.5 text-sm font-medium">
           <Link
             href={project.links.caseStudy}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-semibold shadow-md shadow-teal-500/15 transition-all"
+            className="btn-gradient inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-slate-950 font-semibold shadow-md shadow-teal-500/15"
           >
             <span>Case Study</span>
             <ArrowRight className="w-4 h-4" />
@@ -118,7 +118,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
               href={project.links.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+              className="btn-outline inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
             >
               <span>Live Demo</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -130,7 +130,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+              className="btn-outline inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
             >
               <GithubIcon className="w-4 h-4" />
               <span>Source Code</span>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { AdditionalProject } from "../content/types";
-import { CheckCircle2, ExternalLink, Globe, Building } from "lucide-react";
+import { ExternalLink, Globe } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 interface AdditionalProjectCardProps {
@@ -15,8 +15,8 @@ export default function AdditionalProjectCard({ project }: AdditionalProjectCard
     : null;
 
   return (
-    <div className="editorial-card p-6 flex flex-col justify-between gap-5">
-      <div className="space-y-3.5">
+    <div className={`editorial-card ${screenshot ? "p-6" : "p-5 sm:p-6"} flex flex-col justify-between gap-4`}>
+      <div className="space-y-3">
         {/* Top Badges */}
         <div className="flex flex-wrap items-center justify-between gap-1.5 border-b border-[var(--border-subtle)] pb-2.5">
           <span className="text-sm font-semibold text-[var(--primary-accent)]">
@@ -67,7 +67,7 @@ export default function AdditionalProjectCard({ project }: AdditionalProjectCard
       </div>
 
       {/* Footer: Tech Stack & Action Links */}
-      <div className="pt-3.5 border-t border-[var(--border-color)] space-y-3.5">
+      <div className="pt-3 border-t border-[var(--border-color)] space-y-3">
         <div className="flex flex-wrap gap-1.5">
           {project.technologies.slice(0, 4).map((t) => (
             <span
@@ -80,13 +80,13 @@ export default function AdditionalProjectCard({ project }: AdditionalProjectCard
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-2 pt-1 text-sm font-medium">
+        <div className="flex flex-wrap items-center gap-2 pt-0.5 text-sm font-medium">
           {project.demo && (
             <a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-semibold shadow-sm transition-all"
+              className="btn-gradient inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-slate-950 font-semibold shadow-sm"
             >
               <Globe className="w-3.5 h-3.5" />
               <span>Visit Website</span>
@@ -99,7 +99,7 @@ export default function AdditionalProjectCard({ project }: AdditionalProjectCard
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
+              className="btn-outline inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
             >
               <GithubIcon className="w-3.5 h-3.5" />
               <span>Source Code</span>
