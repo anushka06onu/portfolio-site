@@ -27,7 +27,7 @@ export const siteConfig = {
     intro:
       "Undergraduate researcher and software engineer specializing in health informatics, parameter-efficient foundation models, explainable machine learning, and resilient software backends. Experienced in building reproducible ML pipelines, distributed telemetry tools, and production web platforms.",
     buttons: {
-      work: { label: "Selected Work", href: "#work" },
+      work: { label: "Explore My Work", href: "/projects" },
       research: { label: "Research Roadmap", href: "/research" },
       cv: { label: "View CV", href: "/resume.pdf" }
     }

@@ -69,13 +69,13 @@ export default function HomePage() {
 
               {/* Action Buttons & Social Links */}
               <div className="flex flex-wrap items-center gap-3 pt-1 text-sm font-medium">
-                <a
-                  href="#work"
+                <Link
+                  href="/projects"
                   className="btn-gradient inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-950 font-semibold shadow-md shadow-teal-500/20"
                 >
                   <span>Explore My Work</span>
-                  <ArrowDown className="w-4 h-4" />
-                </a>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
 
                 <a
                   href={siteConfig.links.resume}

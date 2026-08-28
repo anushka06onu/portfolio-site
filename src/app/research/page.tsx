@@ -188,7 +188,7 @@ export default function ResearchPage() {
       {/* Footer Actions */}
       <div className="pt-6 border-t border-[var(--border-color)] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
         <Link
-          href="/#work"
+          href="/projects"
           className="inline-flex items-center gap-1.5 text-[var(--primary-accent)] hover:underline font-semibold"
         >
           <ArrowLeft className="w-4 h-4" />

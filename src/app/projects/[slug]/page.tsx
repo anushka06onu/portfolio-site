@@ -87,11 +87,11 @@ export default async function CaseStudyPage({ params }: Props) {
       {/* Top Back Navigation */}
       <div>
         <Link
-          href="/#work"
+          href="/projects"
           className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--primary-accent)] transition-colors font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Selected Work</span>
+          <span>Back to All Projects</span>
         </Link>
       </div>
 
@@ -383,11 +383,11 @@ export default async function CaseStudyPage({ params }: Props) {
       {/* Bottom Navigation */}
       <div className="pt-6 border-t border-[var(--border-color)] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
         <Link
-          href="/#work"
+          href="/projects"
           className="inline-flex items-center gap-1.5 text-[var(--primary-accent)] hover:underline font-semibold"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to All Selected Work</span>
+          <span>Back to All Projects</span>
         </Link>
         <Link
           href="/research"

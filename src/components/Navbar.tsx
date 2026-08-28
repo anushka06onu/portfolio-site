@@ -12,9 +12,8 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
-    { label: "Work", href: "/#work" },
-    { label: "Research", href: "/#research" },
-    { label: "Experience", href: "/#experience" },
+    { label: "Work", href: "/projects" },
+    { label: "Research", href: "/research" },
     { label: "About", href: "/about" }
   ];
 
@@ -44,7 +43,7 @@ export default function Navbar() {
               const isActive =
                 link.href === "/"
                   ? pathname === "/"
-                  : pathname.startsWith(link.href.replace("/#", "/"));
+                  : pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.label}

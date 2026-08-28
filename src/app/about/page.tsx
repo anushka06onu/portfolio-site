@@ -183,18 +183,18 @@ export default function AboutPage() {
       {/* Footer Navigation */}
       <div className="pt-6 border-t border-[var(--border-color)] flex flex-wrap items-center justify-between gap-4 text-sm font-medium">
         <Link
-          href="/#work"
+          href="/projects"
           className="inline-flex items-center gap-1.5 text-[var(--primary-accent)] hover:underline font-semibold"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>View Featured Projects</span>
+          <span>View All Projects</span>
         </Link>
-        <Link
-          href="/#contact"
+        <a
+          href={`mailto:${siteConfig.links.email}`}
           className="inline-flex items-center gap-1.5 text-[var(--text-main)] hover:text-[var(--primary-accent)] font-medium"
         >
-          <span>Get in Touch</span>
-        </Link>
+          <span>Get in Touch ({siteConfig.links.email})</span>
+        </a>
       </div>
     </div>
   );
