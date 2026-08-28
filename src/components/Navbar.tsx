@@ -13,8 +13,9 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Work", href: "/#work" },
-    { label: "Research", href: "/research" },
-    { label: "About", href: "/about" },
+    { label: "Research", href: "/#research" },
+    { label: "Experience", href: "/#experience" },
+    { label: "About", href: "/about" }
   ];
 
   return (
@@ -22,14 +23,19 @@ export default function Navbar() {
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <header className="sticky top-0 z-50 w-full border-b border-[var(--border-color)] bg-[var(--bg-color)]/90 backdrop-blur-xl transition-all">
+      <header className="sticky top-0 z-50 w-full border-b border-[var(--border-color)] bg-[var(--bg-color)]/85 backdrop-blur-xl transition-all">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 h-16">
           {/* Brand */}
           <Link
             href="/"
-            className="text-base font-semibold tracking-tight text-[var(--text-main)] hover:text-[var(--primary-accent)] transition-colors"
+            className="group flex items-center gap-2.5 text-base font-semibold tracking-tight text-[var(--text-main)] transition-colors"
           >
-            {siteConfig.name}
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-teal-400 to-cyan-600 text-xs font-bold text-slate-950 shadow-sm shadow-teal-500/20">
+              F
+            </span>
+            <span className="group-hover:text-[var(--primary-accent)] transition-colors">
+              {siteConfig.name}
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -62,8 +68,8 @@ export default function Navbar() {
               className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] px-3.5 py-1.5 text-sm font-medium text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:shadow-sm transition-all"
             >
               <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
-              <span>CV</span>
-              <ExternalLink className="w-3 h-3 text-[var(--text-muted)]" />
+              <span>View CV</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--text-muted)]" />
             </a>
 
             <ThemeToggle />

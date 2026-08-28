@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
-/* Modern Research Editorial × Technical Systems Design System */
+/* Readable Scientific & Engineering Design System */
 :root {
   --bg-color: #F8FAFC;
   --surface: #FFFFFF;
   --surface-subtle: #F1F5F9;
   --surface-elevated: #FFFFFF;
-  --text-main: #0B1320;
+  --text-main: #0F172A;
   --text-muted: #475569;
   --border-color: #E2E8F0;
   --border-subtle: #EDF2F7;
@@ -16,62 +16,50 @@
   --primary-accent-hover: #0F766E;
   --primary-accent-subtle: rgba(13, 148, 136, 0.08);
   
-  --secondary-accent: #0284C7;
-  --secondary-accent-subtle: rgba(2, 132, 199, 0.08);
-
-  --blue-accent: #3B82F6;
-  --warm-paper: #F8F7F4;
+  --secondary-accent: #2563EB;
+  --secondary-accent-subtle: rgba(37, 99, 235, 0.08);
 
   --badge-bg: #F1F5F9;
   --badge-text: #334155;
   --badge-border: #CBD5E1;
 
-  --hero-glow: radial-gradient(circle at 60% -10%, rgba(13, 148, 136, 0.08) 0%, rgba(2, 132, 199, 0.04) 45%, transparent 70%);
+  --card-glow: rgba(13, 148, 136, 0.04);
+  --hero-glow: radial-gradient(circle at 50% 0%, rgba(13, 148, 136, 0.06) 0%, transparent 60%);
 }
 
 :root[class~="dark"] {
-  --bg-color: #070B11;
-  --surface: #0D141D;
-  --surface-subtle: #121C27;
-  --surface-elevated: #172433;
-  --text-main: #F4F7FA;
-  --text-muted: #9CAAB7;
-  --border-color: #1E2B3C;
-  --border-subtle: #15202E;
+  --bg-color: #070A0E;
+  --surface: #0E131A;
+  --surface-subtle: #131A24;
+  --surface-elevated: #182230;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border-color: #1E293B;
+  --border-subtle: #17202E;
 
-  --primary-accent: #2DD4BF;
-  --primary-accent-hover: #5EEAD4;
-  --primary-accent-subtle: rgba(45, 212, 191, 0.12);
+  --primary-accent: #14B8A6;
+  --primary-accent-hover: #2DD4BF;
+  --primary-accent-subtle: rgba(20, 184, 166, 0.12);
 
-  --secondary-accent: #38BDF8;
-  --secondary-accent-subtle: rgba(56, 189, 248, 0.12);
+  --secondary-accent: #60A5FA;
+  --secondary-accent-subtle: rgba(96, 165, 250, 0.12);
 
-  --blue-accent: #608BFF;
-  --warm-paper: #18161A;
-
-  --badge-bg: #101924;
+  --badge-bg: #111827;
   --badge-text: #CBD5E1;
-  --badge-border: #1E2B3C;
+  --badge-border: #1E293B;
 
-  --hero-glow: radial-gradient(circle at 70% -5%, rgba(45, 212, 191, 0.14) 0%, rgba(56, 189, 248, 0.08) 35%, rgba(96, 139, 255, 0.04) 60%, transparent 75%);
+  --card-glow: rgba(20, 184, 166, 0.06);
+  --hero-glow: radial-gradient(circle at 50% -10%, rgba(20, 184, 166, 0.12) 0%, rgba(37, 99, 235, 0.06) 40%, transparent 70%);
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: var(--font-display), var(--font-sans), sans-serif;
-}
-
-code, kbd, samp, pre, .font-mono, .mono-tag {
-  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
 }
 
 /* Radiant Background Glow */
@@ -79,16 +67,16 @@ code, kbd, samp, pre, .font-mono, .mono-tag {
   background: var(--hero-glow);
 }
 
-/* Calm Technical Dot Grid */
+/* Subtle, Calm Technical Dot Grid */
 .bg-tech-grid {
   background-size: 32px 32px;
   background-image: 
-    radial-gradient(circle, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    radial-gradient(circle, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
 }
 
 :root[class~="dark"] .bg-tech-grid {
   background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 /* Skip link */
@@ -97,7 +85,7 @@ code, kbd, samp, pre, .font-mono, .mono-tag {
   top: -40px;
   left: 0;
   background: var(--primary-accent);
-  color: #070B11;
+  color: #070A0E;
   padding: 8px 16px;
   z-index: 100;
   transition: top 0.2s ease;
@@ -115,49 +103,46 @@ code, kbd, samp, pre, .font-mono, .mono-tag {
   outline-offset: 2px;
 }
 
-/* Editorial Major Panel (24px radius) */
-.editorial-panel {
-  position: relative;
-  background-color: var(--surface);
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+/* Clean Editorial Card */
 .editorial-card {
   position: relative;
   background-color: var(--surface);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
+  border-radius: 16px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
-/* Distinct Project Shadows */
-.shadow-resilinet {
-  box-shadow: 0 8px 30px -4px rgba(45, 212, 191, 0.12);
-}
-.shadow-resilinet:hover {
-  border-color: rgba(45, 212, 191, 0.4);
-  box-shadow: 0 16px 40px -4px rgba(45, 212, 191, 0.2);
-  transform: translateY(-2px);
+:root[class~="dark"] .editorial-card {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
 }
 
-.shadow-computepulse {
-  box-shadow: 0 8px 30px -4px rgba(96, 139, 255, 0.12);
-}
-.shadow-computepulse:hover {
-  border-color: rgba(96, 139, 255, 0.4);
-  box-shadow: 0 16px 40px -4px rgba(96, 139, 255, 0.2);
+.editorial-card:hover {
+  border-color: rgba(20, 184, 166, 0.35);
   transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px var(--card-glow);
 }
 
-.shadow-healthcare {
-  box-shadow: 0 8px 30px -4px rgba(243, 240, 232, 0.06);
+/* Top Accent Line for Featured Cards Only */
+.editorial-card-accent {
+  position: relative;
+  overflow: hidden;
 }
-.shadow-healthcare:hover {
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 16px 40px -4px rgba(56, 189, 248, 0.15);
-  transform: translateY(-2px);
+
+.editorial-card-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #14B8A6, #3B82F6, transparent);
+  opacity: 0.8;
+}
+
+/* Monospace chips and tags */
+.mono-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* Gradient Text Helper */
@@ -168,23 +153,12 @@ code, kbd, samp, pre, .font-mono, .mono-tag {
 }
 
 :root:not([class~="dark"]) .text-gradient-cyan {
-  background: linear-gradient(135deg, #0D9488 0%, #0284C7 60%, #1D4ED8 100%);
+  background: linear-gradient(135deg, #0F766E 0%, #0369A1 60%, #1E40AF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Browser Frame Simulation */
-.browser-header {
-  height: 28px;
-  background: rgba(18, 28, 39, 0.85);
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  gap: 6px;
-}
-
-/* Reduced motion */
+/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
