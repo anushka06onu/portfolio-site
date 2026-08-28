@@ -11,14 +11,14 @@ test("Canonical content files exist and are readable", () => {
   assert.ok(fs.existsSync(path.join(contentDir, "site.ts")), "site.ts exists");
 });
 
-test("Public SVG assets and diagrams exist", () => {
+test("Public screenshots and diagrams exist", () => {
   const publicDir = path.resolve("public");
   assert.ok(fs.existsSync(path.join(publicDir, "fateha-hossain.jpg")), "fateha-hossain.jpg exists");
   assert.ok(fs.existsSync(path.join(publicDir, "og-image.svg")), "og-image.svg exists");
-  assert.ok(fs.existsSync(path.join(publicDir, "projects/resilinet/overview.svg")), "resilinet overview.svg exists");
-  assert.ok(fs.existsSync(path.join(publicDir, "projects/computepulse/dashboard.svg")), "computepulse dashboard.svg exists");
-  assert.ok(fs.existsSync(path.join(publicDir, "projects/healthcare-analytics/overview.svg")), "healthcare overview.svg exists");
-  assert.ok(fs.existsSync(path.join(publicDir, "projects/academic-analytics/dashboard.svg")), "academic-analytics dashboard.svg exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "projects/resilinet/overview.png")), "resilinet overview.png exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "projects/computepulse/dashboard.png")), "computepulse dashboard.png exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "projects/healthcare-analytics/overview.png")), "healthcare overview.png exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "projects/academic-analytics/dashboard.png")), "academic-analytics dashboard.png exists");
 });
 
 test("ResiliNet content adheres to exact repository policies, scenarios, and classifier wording", () => {

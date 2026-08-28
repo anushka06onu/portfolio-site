@@ -1,22 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from "../content/types";
-import { ExternalLink, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { ExternalLink, ArrowRight, ShieldCheck } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 interface ProjectCardProps {
   project: Project;
-  diagramPath?: string;
+  imagePath?: string;
 }
 
-export default function ProjectCard({ project, diagramPath }: ProjectCardProps) {
-  const defaultDiagram = `/projects/${project.slug}/${
+export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
+  const defaultScreenshot = `/projects/${project.slug}/${
     project.slug === "computepulse" || project.slug === "academic-analytics"
-      ? "dashboard.svg"
-      : "overview.svg"
+      ? "dashboard.png"
+      : "overview.png"
   }`;
 
-  const imageSrc = diagramPath || defaultDiagram;
+  const imageSrc = imagePath || defaultScreenshot;
 
   return (
     <article className="editorial-card editorial-card-accent p-6 sm:p-7 flex flex-col justify-between gap-6">
@@ -47,13 +47,13 @@ export default function ProjectCard({ project, diagramPath }: ProjectCardProps) 
           </p>
         </div>
 
-        {/* Visual Architecture Preview with subtle hover scale */}
+        {/* Genuine Application Screenshot Preview */}
         <div className="relative w-full h-48 sm:h-56 rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface-subtle)] shadow-inner">
           <Image
             src={imageSrc}
-            alt={`${project.title} Architecture and Workflow`}
+            alt={`${project.title} Interface Screenshot`}
             fill
-            className="object-contain p-3 transition-transform duration-300 hover:scale-[1.02]"
+            className="object-cover object-top transition-transform duration-300 hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           />
         </div>
@@ -142,7 +142,7 @@ export default function ProjectCard({ project, diagramPath }: ProjectCardProps) 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
             >
-              <GithubIcon className="w-3.5 h-3.5" />
+              <GithubIcon className="w-4 h-4" />
               <span>Source Code</span>
             </a>
           )}
