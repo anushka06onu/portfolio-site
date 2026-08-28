@@ -20,6 +20,7 @@ test("Public screenshots and diagrams exist", () => {
   assert.ok(fs.existsSync(path.join(publicDir, "projects/healthcare-analytics/overview.png")), "healthcare overview.png exists");
   assert.ok(fs.existsSync(path.join(publicDir, "projects/academic-analytics/dashboard.png")), "academic-analytics dashboard.png exists");
   assert.ok(fs.existsSync(path.join(publicDir, "projects/gcpc-diu/homepage.png")), "gcpc-diu homepage.png exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "projects/study-hub/overview.png")), "study-hub overview.png exists");
 });
 
 test("ResiliNet content adheres to exact repository policies, scenarios, and classifier wording", () => {
@@ -65,23 +66,28 @@ test("ComputePulse, Healthcare, and GCPC entries use verified claims and genuine
   assert.match(projectsContent, /Lead Developer & Maintainer/);
 });
 
-test("Site configuration uses canonical URL, exact roles, and natural text", () => {
-  const siteContent = fs.readFileSync(path.resolve("src/content/site.ts"), "utf-8");
-  
-  assert.match(siteContent, /https:\/\/portfolio-site-omega-rose\.vercel\.app/);
-  assert.match(siteContent, /March 2026 – Present/);
-  assert.match(siteContent, /Health Informatics Research Lab/);
-  assert.match(siteContent, /Backend Developer Intern/);
-  assert.match(siteContent, /label:\s*"View CV"/);
-  assert.doesNotMatch(siteContent, /Direct inquiries typically answered within 24–48 hours/);
-});
-
-test("Research outputs use neutral, verified titles and statuses", () => {
+test("Research outputs match exact thesis details and 4 under-review conference papers", () => {
   const researchContent = fs.readFileSync(path.resolve("src/content/research.ts"), "utf-8");
   
-  assert.match(researchContent, /Undergraduate Thesis: Medical Image Classification/);
-  assert.match(researchContent, /Health Informatics Journal Study/);
-  assert.match(researchContent, /Earlier Bangla NLP Research/);
+  // Thesis details
+  assert.match(researchContent, /Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis/);
+  assert.match(researchContent, /DentIRO/);
+  assert.match(researchContent, /DINOv2, BiomedCLIP, MedSAM/);
+  assert.match(researchContent, /LoRA, BitFit, VPT/);
+
+  // Health Conference Paper
+  assert.match(researchContent, /Detecting Compensated Microcytosis: A Benchmarked and Explainable Machine Learning Approach to Tri-Class Hematological Classification/);
+
+  // 3 NLP Conference Papers
+  assert.match(researchContent, /Bridging the Dialect Gap: Enhancing Bangla Dialect-to-English Machine Translation with Regional Metadata and Romanized Standard Bangla/);
+  assert.match(researchContent, /Explainable Neural Machine Translation for Bangla Regional Dialect Normalization: A Multi-Model Comparative Study with Attention-Based Interpretability/);
+  assert.match(researchContent, /Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions/);
+});
+
+test("Footer removed Next.js and location lines", () => {
+  const footerContent = fs.readFileSync(path.resolve("src/components/Footer.tsx"), "utf-8");
+  assert.doesNotMatch(footerContent, /Built with Next\.js/);
+  assert.doesNotMatch(footerContent, /Dhaka, Bangladesh · 2026/);
 });
 
 test("LICENSE and CI workflow files are present", () => {

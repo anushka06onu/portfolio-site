@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { AdditionalProject } from "../content/types";
-import { CheckCircle2, ExternalLink, Globe, Building, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ExternalLink, Globe, Building } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 interface AdditionalProjectCardProps {
@@ -8,8 +8,11 @@ interface AdditionalProjectCardProps {
 }
 
 export default function AdditionalProjectCard({ project }: AdditionalProjectCardProps) {
-  const isGCPC = project.title.includes("GCPC");
-  const screenshot = isGCPC ? "/projects/gcpc-diu/homepage.png?v=2" : null;
+  const screenshot = project.title.includes("GCPC")
+    ? "/projects/gcpc-diu/homepage.png?v=3"
+    : project.title.includes("Study Hub")
+    ? "/projects/study-hub/overview.png?v=3"
+    : null;
 
   return (
     <div className="editorial-card editorial-card-accent p-5 flex flex-col justify-between gap-4">
@@ -38,7 +41,7 @@ export default function AdditionalProjectCard({ project }: AdditionalProjectCard
           )}
         </div>
 
-        {/* Screenshot if available (e.g. GCPC) */}
+        {/* Screenshot if available (GCPC / Study Hub) */}
         {screenshot && (
           <div className="relative w-full h-36 rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--surface-subtle)] shadow-inner">
             <Image

@@ -2,73 +2,110 @@ import { ResearchOutput } from "./types";
 
 export const researchDirection = {
   heading: "Research Direction",
-  tagline: "Health Informatics, Explainable Machine Learning & Reproducible Systems",
+  tagline: "Health Informatics, Vision Foundation Models & Trustworthy Machine Learning",
   overview:
-    "My current research direction is health informatics, with particular interest in trustworthy machine learning, medical image analysis, explainable models, and reproducible evaluation. I began research through Bangla NLP, which developed my experience in dataset curation, experimental comparison, and academic writing. My present undergraduate thesis and Research Assistant work are focused on healthcare applications.",
-  
+    "My current research focuses on health informatics, parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical image diagnosis, and explainable machine learning. My undergraduate thesis investigates PEFT methods on dental radiographs using the DentIRO dataset, while my ongoing lab and conference work spans clinical hematological classification and low-resource language processing.",
+
   corePillars: [
     {
-      title: "Health Informatics & Clinical Data",
+      title: "Parameter-Efficient Vision Foundation Models",
       description:
-        "Investigating machine learning methods on structured health records, focusing on transparent evaluation and feature attribution."
+        "Evaluating and fine-tuning foundation models (DINOv2, BiomedCLIP, MedSAM) with LoRA, BitFit, and VPT for data-scarce medical imaging domains."
     },
     {
-      title: "Explainable & Reliable Machine Learning",
+      title: "Health Informatics & Hematological ML",
       description:
-        "Using feature attribution methods (such as TreeSHAP) and tested fallback behavior to make predictive model outputs transparent and auditable."
+        "Developing benchmarked, calibrated, and interpretable machine learning pipelines for complex clinical classification and disease detection."
     },
     {
-      title: "Medical Image Classification",
+      title: "Explainable AI & Model Interpretability",
       description:
-        "Investigating computer vision and deep learning approaches for medical image screening with reproducible experimental benchmarks."
+        "Applying TreeSHAP, attention-based interpretability, and transformer-adapted Grad-CAM to ensure transparency and clinical alignment."
     }
   ],
 
   topics: [
     "Health Informatics",
+    "Vision Foundation Models (VFMs)",
+    "Parameter-Efficient Fine-Tuning (PEFT)",
     "Medical Image Analysis",
-    "Explainable AI",
-    "Trustworthy Machine Learning",
-    "Clinical Data Exploration",
-    "Reproducible Evaluation"
+    "Explainable AI (XAI)",
+    "Low-Resource Machine Learning",
+    "Clinical Data Benchmarking"
   ],
 
   historyNote:
-    "Prior research background includes foundational work in Bangla Natural Language Processing, where I built datasets, implemented baselines, and established experimental evaluation protocols."
+    "Prior and ongoing NLP research includes 3 conference manuscripts on Bangla dialect machine translation, dialect normalization with attention interpretability, and ethnic language identification in shared script."
+};
+
+export const thesisDetails = {
+  title: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
+  venueOrType: "Undergraduate Thesis · Ongoing Research",
+  role: "Lead Undergraduate Researcher",
+  status: "Ongoing" as const,
+  year: "2026",
+  description:
+    "To address the computational costs and representational gaps of applying Vision Foundation Models to dental radiography, this study leverages the DentIRO dataset to analyze embedding-space failure modes. It subsequently benchmarks parameter-efficient fine-tuning methods against full fine-tuning, evaluating model accuracy, robustness, and interpretability under data-scarce conditions.",
+  objective:
+    "This study evaluates frozen Vision Foundation Models (DINOv2, BiomedCLIP, MedSAM) via linear probing to quantify baseline performance gaps on subtle pathologies like caries. It benchmarks parameter-efficient fine-tuning strategies (LoRA, BitFit, VPT) against full fine-tuning while utilizing layer-depth ablations to isolate where localized dental decay features are best learned. Finally, the framework validates model robustness under label-scarce regimes (10–50% data) and confirms clinical alignment using transformer-adapted Grad-CAM heatmaps.",
+  motivation:
+    "Full fine-tuning of Vision Foundation Models on dental radiographs is computationally expensive and constrained by scarce data. This work addresses these domain gaps using parameter-efficient fine-tuning to achieve scalable, accurate, and interpretable dental diagnosis."
 };
 
 export const researchOutputs: ResearchOutput[] = [
   {
-    title: "Undergraduate Thesis: Medical Image Classification",
-    venueOrType: "Undergraduate Thesis / Ongoing Research",
-    role: "Lead Student Researcher",
+    title: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
+    venueOrType: "Undergraduate Thesis · Ongoing Research",
+    role: "Lead Undergraduate Researcher",
     status: "Ongoing",
-    statusNote: "Experimental benchmarking and model evaluation in progress",
+    statusNote: "Benchmarking DINOv2, BiomedCLIP, MedSAM with LoRA/BitFit/VPT on DentIRO",
     year: "2026",
     summary:
-      "Investigating deep learning architectures for automated medical image anomaly detection, focusing on standardized baseline comparisons and cross-dataset evaluation integrity.",
-    topics: ["Medical Image Analysis", "Deep Learning", "Evaluation Protocols"]
+      "Leverages the DentIRO dataset to analyze embedding-space failure modes of Vision Foundation Models in dental radiography, benchmarking parameter-efficient fine-tuning (LoRA, BitFit, VPT) against full fine-tuning under data-scarce conditions with Grad-CAM interpretability.",
+    topics: ["Vision Foundation Models", "PEFT (LoRA/BitFit/VPT)", "DentIRO", "Medical Imaging", "Grad-CAM"]
   },
   {
-    title: "Health Informatics Journal Study",
-    venueOrType: "Journal Manuscript",
-    role: "Research Assistant (Health Informatics Research Lab)",
-    status: "Manuscript in preparation",
-    statusNote: "Working title withheld during ongoing manuscript preparation",
-    year: "2026",
-    summary:
-      "Collaborative research investigating risk modeling approaches and explainability stability across tabular health datasets with documented validation protocols.",
-    topics: ["Health Informatics", "Explainable AI", "Tabular Modeling"]
-  },
-  {
-    title: "Earlier Bangla NLP Research",
-    venueOrType: "Conference / Manuscript Submission",
-    role: "Contributing Student Researcher",
+    title: "Detecting Compensated Microcytosis: A Benchmarked and Explainable Machine Learning Approach to Tri-Class Hematological Classification",
+    venueOrType: "Health Informatics Conference",
+    role: "Co-Author / Researcher",
     status: "Under review",
-    statusNote: "Peer review in progress",
-    year: "2025–2026",
+    statusNote: "Under peer review at international health informatics conference",
+    year: "2026",
     summary:
-      "Constructed and annotated a domain-specific Bangla language benchmark dataset, evaluating classical feature baselines alongside transformer models.",
-    topics: ["Bangla NLP", "Dataset Construction", "Benchmark Evaluation"]
+      "A benchmarked and explainable machine learning approach to tri-class hematological classification for identifying compensated microcytosis with transparent biomarker feature attribution.",
+    topics: ["Health Informatics", "Hematological Classification", "Explainable AI", "Clinical Benchmarking"]
+  },
+  {
+    title: "Bridging the Dialect Gap: Enhancing Bangla Dialect-to-English Machine Translation with Regional Metadata and Romanized Standard Bangla",
+    venueOrType: "NLP Conference",
+    role: "Co-Author / Researcher",
+    status: "Under review",
+    statusNote: "Under peer review at international NLP conference",
+    year: "2026",
+    summary:
+      "Enhances regional Bangla dialect-to-English machine translation by integrating regional metadata injection and romanized standard Bangla intermediate representations.",
+    topics: ["Bangla NLP", "Machine Translation", "Dialect Processing", "Low-Resource NLP"]
+  },
+  {
+    title: "Explainable Neural Machine Translation for Bangla Regional Dialect Normalization: A Multi-Model Comparative Study with Attention-Based Interpretability",
+    venueOrType: "NLP Conference",
+    role: "Co-Author / Researcher",
+    status: "Under review",
+    statusNote: "Under peer review at international NLP conference",
+    year: "2026",
+    summary:
+      "A comprehensive multi-model comparative evaluation for normalizing Bangla regional dialects into standard Bangla, integrating attention-based interpretability and systematic error analysis.",
+    topics: ["Bangla NLP", "Dialect Normalization", "NMT", "Attention Interpretability"]
+  },
+  {
+    title: "Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions",
+    venueOrType: "NLP Conference",
+    role: "Co-Author / Researcher",
+    status: "Under review",
+    statusNote: "Under peer review at international NLP conference",
+    year: "2026",
+    summary:
+      "Investigates parameter-efficient adaptation and explainability for ethnic and indigenous languages written in shared Bengali script under severe low-resource conditions.",
+    topics: ["Low-Resource NLP", "Ethnic Language Identification", "PEFT", "Interpretability"]
   }
 ];

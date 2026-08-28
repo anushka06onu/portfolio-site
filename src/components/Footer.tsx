@@ -1,10 +1,10 @@
 import { siteConfig } from "../content/site";
-import { Mail, FileDown, Heart } from "lucide-react";
+import { Mail, FileDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] py-12 px-4 sm:px-6 transition-colors">
+    <footer className="border-t border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-muted)] py-10 px-4 sm:px-6 transition-colors">
       <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left space-y-1">
           <p className="font-mono text-sm font-semibold text-[var(--text-main)] flex items-center justify-center md:justify-start gap-2">
@@ -57,11 +57,6 @@ export default function Footer() {
             <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
             <span>CV</span>
           </a>
-        </div>
-
-        <div className="text-xs font-mono text-[var(--text-muted)] text-center md:text-right">
-          <p>Built with Next.js &amp; TypeScript</p>
-          <p className="text-[11px] opacity-70 mt-0.5">Dhaka, Bangladesh · 2026</p>
         </div>
       </div>
     </footer>
