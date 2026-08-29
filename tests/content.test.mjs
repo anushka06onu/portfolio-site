@@ -11,10 +11,12 @@ test("Canonical content files exist and are readable", () => {
   assert.ok(fs.existsSync(path.join(contentDir, "site.ts")), "site.ts exists");
 });
 
-test("Public screenshots and diagrams exist", () => {
+test("Public assets and local CV exist", () => {
   const publicDir = path.resolve("public");
   assert.ok(fs.existsSync(path.join(publicDir, "fateha-hossain.jpg")), "fateha-hossain.jpg exists");
   assert.ok(fs.existsSync(path.join(publicDir, "og-image.svg")), "og-image.svg exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "Fateha_Hossain_CV.pdf")), "Fateha_Hossain_CV.pdf exists");
+  assert.ok(fs.existsSync(path.join(publicDir, "resume.pdf")), "resume.pdf exists");
   assert.ok(fs.existsSync(path.join(publicDir, "projects/resilinet/overview.png")), "resilinet overview.png exists");
   assert.ok(fs.existsSync(path.join(publicDir, "projects/computepulse/dashboard.png")), "computepulse dashboard.png exists");
   assert.ok(fs.existsSync(path.join(publicDir, "projects/healthcare-analytics/overview.png")), "healthcare overview.png exists");
@@ -88,11 +90,14 @@ test("Research outputs match exact PMAM journal study, thesis details, and 4 und
   assert.match(researchContent, /Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions/);
 });
 
-test("Site config contains verified email, CSE-Tech company, and CGPA 3.92", () => {
+test("Site config contains verified email, CSE-Tech company, CGPA 3.92, April 2026 RA, and 4x Dean's Award", () => {
   const siteContent = fs.readFileSync(path.resolve("src/content/site.ts"), "utf-8");
   assert.match(siteContent, /fatehahossainanushka@gmail\.com/);
   assert.match(siteContent, /CSE-Tech/);
   assert.match(siteContent, /3\.92/);
+  assert.match(siteContent, /April 2026 – Present/);
+  assert.match(siteContent, /4×/);
+  assert.doesNotMatch(siteContent, /top 0\.5%/i);
 });
 
 test("LICENSE and CI workflow files are present", () => {

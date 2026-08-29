@@ -1,9 +1,28 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { siteConfig } from "../content/site";
+
+const spaceGrotesk = localFont({
+  src: "../fonts/space-grotesk.woff2",
+  variable: "--font-heading",
+  display: "swap"
+});
+
+const manrope = localFont({
+  src: "../fonts/manrope.woff2",
+  variable: "--font-body",
+  display: "swap"
+});
+
+const jetbrainsMono = localFont({
+  src: "../fonts/jetbrains-mono.ttf",
+  variable: "--font-mono",
+  display: "swap"
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -95,7 +114,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${manrope.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"

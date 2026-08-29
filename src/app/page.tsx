@@ -502,7 +502,7 @@ export default function HomePage() {
                 </div>
                 <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1 shrink-0 self-start sm:self-auto">
                   <Calendar className="w-3 h-3 shrink-0" />
-                  <span>2026 – Present</span>
+                  <span>Apr 2026 – Present</span>
                 </span>
               </div>
               <p className="text-sm text-[var(--text-muted)] leading-6">
@@ -524,7 +524,7 @@ export default function HomePage() {
                 </div>
                 <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1 shrink-0 self-start sm:self-auto">
                   <Calendar className="w-3 h-3 shrink-0" />
-                  <span>2026 – Present</span>
+                  <span>Mar 2026 – Present</span>
                 </span>
               </div>
               <p className="text-sm text-[var(--text-muted)] leading-6">

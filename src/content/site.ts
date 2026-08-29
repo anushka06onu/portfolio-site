@@ -17,7 +17,7 @@ export const siteConfig = {
     github: "https://github.com/anushka06onu",
     linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-614749293/",
     email: "fatehahossainanushka@gmail.com",
-    resume: "https://drive.google.com/file/d/1w7BZR9Dy_dCr9W8tyP3qnwq336X5PN5u/view?usp=sharing"
+    resume: "/Fateha_Hossain_CV.pdf"
   },
 
   hero: {
@@ -29,7 +29,7 @@ export const siteConfig = {
     buttons: {
       work: { label: "Explore My Work", href: "/projects" },
       research: { label: "Research Roadmap", href: "/research" },
-      cv: { label: "View CV", href: "https://drive.google.com/file/d/1w7BZR9Dy_dCr9W8tyP3qnwq336X5PN5u/view?usp=sharing" }
+      cv: { label: "View CV", href: "/Fateha_Hossain_CV.pdf" }
     }
   },
 
@@ -50,7 +50,7 @@ export const siteConfig = {
     ],
 
     aboutText:
-      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 3× Dean's Award recipient among the top 0.5% students) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
+      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 4× Dean's Honor List Award recipient) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
   },
 
   experience: [
@@ -58,7 +58,7 @@ export const siteConfig = {
       title: "Research Assistant",
       organization: "Health Informatics Research Lab",
       location: "Dhaka, Bangladesh",
-      period: "March 2026 – Present",
+      period: "April 2026 – Present",
       type: "Research" as const,
       technologies: ["PyTorch", "Vision Foundation Models", "PEFT", "Grad-CAM", "XAI"],
       bullets: [
@@ -113,10 +113,10 @@ export const siteConfig = {
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "2022 – 2026",
-      distinction: "Current CGPA: 3.92 / 4.00 · Top 0.5% (3× Dean's Award)",
+      distinction: "Current CGPA: 3.92 / 4.00 · 4× Dean's Honor List Award",
       notes: [
         "Current CGPA: 3.92 / 4.00 (Department of Computer Science and Engineering).",
-        "Recipient of 3× Dean's Honor List Award awarded to the university's top 0.5% students for sustained academic distinction.",
+        "Dean’s Honor List Award (4 times); recipient of consecutive university academic merit scholarships.",
         "Undergraduate Thesis: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis.",
         "Awarded University Academic Merit Scholarships across consecutive semesters.",
         "Core Coursework: Machine Learning, Artificial Intelligence, Object-Oriented Programming (Java), Data Structures & Algorithms, Database Systems, Computer Networks, Operating Systems, Software Engineering."
@@ -126,10 +126,10 @@ export const siteConfig = {
 
   honors: [
     {
-      title: "3× Dean's Honor List Award (Top 0.5% Students)",
+      title: "Dean's Honor List Award (4 times)",
       issuer: "Daffodil International University",
-      year: "2023, 2024, 2025",
-      description: "Conferred across consecutive academic years to the top 0.5% students of the entire university for achieving outstanding academic performance (CGPA 3.90+)."
+      year: "Spring 2024, Fall 2024, Spring 2025, Fall 2025",
+      description: "Conferred 4 times across consecutive academic semesters for sustained academic excellence and high semester grade point average (CGPA 3.92 / 4.00)."
     },
     {
       title: "University Academic Merit Scholarships",

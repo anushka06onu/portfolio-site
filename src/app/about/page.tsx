@@ -117,7 +117,7 @@ export default function AboutPage() {
 
           <div className="flex items-center gap-2 p-3 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-sm text-[var(--primary-accent)] font-medium">
             <Award className="w-4 h-4 shrink-0" />
-            <span>Academic Standing: Current CGPA 3.92 / 4.00 · 3× Dean&apos;s Honor List Award</span>
+            <span>Academic Standing: Current CGPA 3.92 / 4.00 · 4× Dean&apos;s Honor List Award</span>
           </div>
         </div>
       </section>
@@ -134,13 +134,13 @@ export default function AboutPage() {
           <div className="editorial-card p-6 space-y-3">
             <div className="flex items-center gap-2 text-[var(--primary-accent)] font-semibold text-base">
               <Award className="w-5 h-5" />
-              <span>3× Dean&apos;s Honor List Award</span>
+              <span>Dean&apos;s Honor List Award (4 times)</span>
             </div>
             <p className="text-xs font-semibold text-[var(--secondary-accent)]">
-              Faculty of Science &amp; Information Technology, DIU (2023, 2024, 2025)
+              Faculty of Science &amp; Information Technology, DIU (Spring 2024, Fall 2024, Spring 2025, Fall 2025)
             </p>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              Awarded across consecutive academic years in recognition of top-tier academic excellence and maintaining high semester grade point averages (CGPA 3.90+).
+              Conferred across consecutive academic semesters in recognition of sustained academic excellence and maintaining high semester grade point averages (CGPA 3.92 / 4.00).
             </p>
           </div>
 
