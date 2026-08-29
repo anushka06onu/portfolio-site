@@ -117,7 +117,7 @@ export default function AboutPage() {
 
           <div className="flex items-center gap-2 p-3 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-sm text-[var(--primary-accent)] font-medium">
             <Award className="w-4 h-4 shrink-0" />
-            <span>Academic Standing: Current CGPA 3.92 / 4.00 · 4× Dean&apos;s Honor List Award</span>
+            <span>Academic Standing: Current CGPA 3.92 / 4.00 · 3× Dean&apos;s Award · 75% Merit Waiver</span>
           </div>
         </div>
       </section>
@@ -134,13 +134,27 @@ export default function AboutPage() {
           <div className="editorial-card p-6 space-y-3">
             <div className="flex items-center gap-2 text-[var(--primary-accent)] font-semibold text-base">
               <Award className="w-5 h-5" />
-              <span>Dean&apos;s Honor List Award (4 times)</span>
+              <span>3× Dean&apos;s Honor List Award</span>
             </div>
             <p className="text-xs font-semibold text-[var(--secondary-accent)]">
-              Faculty of Science &amp; Information Technology, DIU (Spring 2024, Fall 2024, Spring 2025, Fall 2025)
+              Faculty of Science &amp; Information Technology, DIU (Spring 2024, Fall 2024, Spring 2025)
             </p>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              Conferred across consecutive academic semesters in recognition of sustained academic excellence and maintaining high semester grade point averages (CGPA 3.92 / 4.00).
+              Conferred 3 times across consecutive academic semesters in recognition of sustained academic excellence and maintaining high semester grade point averages (CGPA 3.92 / 4.00).
+            </p>
+          </div>
+
+          {/* 75% Merit Waiver */}
+          <div className="editorial-card p-6 space-y-3">
+            <div className="flex items-center gap-2 text-[var(--secondary-accent)] font-semibold text-base">
+              <Award className="w-5 h-5" />
+              <span>75% Merit-Based Tuition Waiver</span>
+            </div>
+            <p className="text-xs font-semibold text-[var(--primary-accent)]">
+              Daffodil International University (2022 – 2026)
+            </p>
+            <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+              Awarded 75% tuition scholarship continuously across consecutive academic semesters based on top-tier academic merit.
             </p>
           </div>
 

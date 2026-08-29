@@ -50,7 +50,7 @@ export const siteConfig = {
     ],
 
     aboutText:
-      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 4× Dean's Honor List Award recipient) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
+      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 3× Dean's Honor List Award recipient, 75% Merit-Based Scholarship) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
   },
 
   experience: [
@@ -113,12 +113,12 @@ export const siteConfig = {
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "2022 – 2026",
-      distinction: "Current CGPA: 3.92 / 4.00 · 4× Dean's Honor List Award",
+      distinction: "Current CGPA: 3.92 / 4.00 · 3× Dean's Award · 75% Merit Waiver",
       notes: [
         "Current CGPA: 3.92 / 4.00 (Department of Computer Science and Engineering).",
-        "Dean’s Honor List Award (4 times); recipient of consecutive university academic merit scholarships.",
+        "Recipient of 3× Dean's Honor List Award for sustained academic distinction.",
+        "Recipient of 75% Merit-Based Tuition Scholarship (Waiver) across consecutive academic semesters.",
         "Undergraduate Thesis: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis.",
-        "Awarded University Academic Merit Scholarships across consecutive semesters.",
         "Core Coursework: Machine Learning, Artificial Intelligence, Object-Oriented Programming (Java), Data Structures & Algorithms, Database Systems, Computer Networks, Operating Systems, Software Engineering."
       ]
     }
@@ -126,16 +126,16 @@ export const siteConfig = {
 
   honors: [
     {
-      title: "Dean's Honor List Award (4 times)",
+      title: "3× Dean's Honor List Award",
       issuer: "Daffodil International University",
-      year: "Spring 2024, Fall 2024, Spring 2025, Fall 2025",
-      description: "Conferred 4 times across consecutive academic semesters for sustained academic excellence and high semester grade point average (CGPA 3.92 / 4.00)."
+      year: "Spring 2024, Fall 2024, Spring 2025",
+      description: "Conferred 3 times across consecutive academic semesters for sustained academic excellence and maintaining high semester grade point average (CGPA 3.92 / 4.00)."
     },
     {
-      title: "University Academic Merit Scholarships",
+      title: "75% Merit-Based Tuition Scholarship (Waiver)",
       issuer: "Daffodil International University",
       year: "2022 – 2026",
-      description: "Full tuition merit scholarship awarded continuously based on academic distinction."
+      description: "75% merit-based tuition waiver awarded continuously across consecutive academic semesters based on academic distinction."
     }
   ],
 
