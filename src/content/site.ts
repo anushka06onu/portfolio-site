@@ -141,10 +141,10 @@ export const siteConfig = {
 
   certifications: [
     {
-      title: "12× Professional Course & Specialization Certifications",
-      issuer: "Coursera (DeepLearning.AI, Stanford Online, Google & Meta)",
-      year: "2023 – 2025",
-      description: "Completed 12 comprehensive courses spanning Machine Learning, Deep Learning, Python for Data Science, Backend API Engineering, and Cloud Architecture."
+      title: "15+ Professional Course Certifications",
+      issuer: "Coursera, Udemy & AWS (DeepLearning.AI, Stanford Online, Google, Meta)",
+      year: "2023 – 2026",
+      description: "Completed 15+ comprehensive certifications covering Machine Learning, Deep Learning Specializations, Python for Data Science, Backend API Design, Cloud Systems, and AWS infrastructure."
     },
     {
       title: "Specialized Research Writing & Methodology",

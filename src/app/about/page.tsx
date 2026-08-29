@@ -158,17 +158,17 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* 12 Coursera Certifications */}
+          {/* 15+ Certifications */}
           <div className="editorial-card p-6 space-y-3">
             <div className="flex items-center gap-2 text-[var(--secondary-accent)] font-semibold text-base">
               <BookOpen className="w-5 h-5" />
-              <span>12× Professional Course Certifications</span>
+              <span>15+ Professional Course Certifications</span>
             </div>
             <p className="text-xs font-semibold text-[var(--primary-accent)]">
-              Coursera (DeepLearning.AI, Stanford Online, Google &amp; Meta)
+              Coursera, Udemy &amp; AWS (DeepLearning.AI, Stanford Online, Google &amp; Meta)
             </p>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              Completed 12 comprehensive certifications covering Machine Learning, Deep Learning Specializations, Python for Data Science, Backend API Design, and Cloud Systems.
+              Completed 15+ comprehensive certifications covering Machine Learning, Deep Learning Specializations, Python for Data Science, Backend API Design, Cloud Systems, and AWS infrastructure.
             </p>
           </div>
         </div>
