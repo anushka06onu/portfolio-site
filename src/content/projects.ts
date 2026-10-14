@@ -118,17 +118,17 @@ export const featuredProjects: Project[] = [
     category: "Predictive Infrastructure · Machine Learning",
     categoryTrack: "Predictive Infrastructure · Machine Learning",
     status: "prototype",
-    statusLabel: "Hackathon prototype · Synthetic telemetry demonstration",
+    statusLabel: "Research prototype · Alibaba historical GPU trace",
     summary:
       "A predictive GPU-cluster intelligence prototype that combines telemetry monitoring, LightGBM risk scoring, explainable alert presentation, and an operational dashboard.",
     whyItMatters:
-      "Hardware degradation and thermal stress in GPU clusters can disrupt compute jobs. ComputePulse explores proactive anomaly alerting and feature-level attribution using simulated cluster metrics.",
+      "GPU workload failures and resource contention can interrupt experiments. ComputePulse explores explainable risk estimation and offline placement recommendations using historical Alibaba PAI trace data.",
     myContribution:
-      "Served as Team Lead. Directed the project scope, built the Python/FastAPI backend and telemetry simulation service, integrated the LightGBM risk model, and designed the dashboard interface.",
+      "Served as Team Lead on the two-person Aletheia team. Detailed individual implementation responsibilities should be verified against the project contribution record.",
     evidence: [
-      "Telemetry-driven GPU node health monitoring",
-      "LightGBM-based risk model estimating node fault probability",
-      "SHAP-based feature attribution for thermal and memory utilization anomalies",
+      "Alibaba PAI GPU trace preprocessing and historical dashboard replay",
+      "LightGBM classifier estimating failed or interrupted workload observations",
+      "SHAP-based attribution for engineered CPU, GPU, memory-pressure, and I/O features",
       "Rule-based mitigation recommendations and alert triage UI",
       "Fully deployed demonstration web interface"
     ],
@@ -155,14 +155,14 @@ export const featuredProjects: Project[] = [
       context:
         "Created during a competitive hackathon and subsequently organized into a clean prototype demonstrating how predictive models and explainability can aid hardware operations.",
       role:
-        "Team Lead & Backend/ML Developer. Led team coordination, built the FastAPI backend and simulated metric feeds, integrated the LightGBM risk estimator, and created the triage dashboard.",
+        "Team Lead, Aletheia. Coordinated the prototype; detailed individual engineering responsibilities require contributor verification.",
       architecture: {
         overview:
-          "A telemetry processing pipeline that ingests simulated GPU sensor metrics (temperature, memory utilization, fan speed, power draw) and computes anomaly risk scores with root-cause indicators.",
+          "A historical Alibaba trace pipeline that engineers workload and resource features, estimates failure risk with LightGBM, and exposes explanations and advisory recommendations through FastAPI and React.",
         highlights: [
-          "Telemetry Simulation Service: Generates multi-node sensor streams across nominal and stressed operating profiles.",
-          "Anomaly Risk Estimator: LightGBM model estimating node failure likelihood based on rolling telemetry trends.",
-          "Attribution Layer: SHAP feature breakdown highlighting whether thermal creep, power spikes, or memory pressure drive the risk score.",
+          "Data Preparation: Processes historical workload and sensor records from the Alibaba PAI GPU trace.",
+          "Risk Estimator: LightGBM classifier for workload failure-risk estimation, with a separate Isolation Forest anomaly model.",
+          "Attribution Layer: TreeSHAP explanations for engineered workload and resource-utilization features.",
           "Operator Dashboard: Interactive cluster node grid, time-series charts, and rule-based mitigation recommendations."
         ]
       },
@@ -183,23 +183,23 @@ export const featuredProjects: Project[] = [
         }
       ],
       methodology:
-        "Tested against synthetic multi-node operational profiles simulating thermal stress patterns and memory load spikes.",
+        "Evaluated on 100,014 processed historical observations using a stratified random row-level holdout of 20,003 observations. Related workloads or machines may occur in multiple partitions.",
       evaluation: {
         metrics: [
-          "Risk classification consistency on synthetic evaluation sets",
+          "Recorded row-level holdout accuracy: 0.881; F1: 0.745",
           "UI rendering responsiveness under periodic data polling",
           "End-to-end API response times"
         ],
         summary:
-          "Demonstrated automated risk scoring and visual feature attribution across simulated multi-node cluster configurations."
+          "Recorded workload failure-risk evaluation and offline placement evidence on historical trace data. These results do not establish future-time or unseen-machine generalization."
       },
       results: [
-        "Built and deployed a functional demonstration platform with live telemetry feeds.",
-        "Demonstrated automated pre-failure alerts identifying simulated cooling unit stress before critical thermal thresholds.",
-        "Recognized for end-to-end prototype completeness and clean interface design."
+        "Built a dashboard that replays static historical trace data.",
+        "Integrated risk estimates, anomaly flags, explanations, and offline placement recommendations.",
+        "Packaged data preparation, model artifacts, evaluation reports, and backend services."
       ],
       limitations: [
-        "Validated on synthetic and simulated telemetry distributions rather than production NVIDIA DCGM enterprise cluster feeds.",
+        "Current evaluation uses a random row-level split; chronological and workload/machine-grouped validation remain pending.",
         "Workload mitigation recommendations are rule-based advisory suggestions rather than executed orchestrations."
       ],
       learnings: [
@@ -207,7 +207,7 @@ export const featuredProjects: Project[] = [
         "Operational dashboards are most effective when they present clear, actionable root causes alongside aggregate scores."
       ],
       statusNote:
-        "Completed hackathon prototype and functional demo. Role: Team Lead."
+        "Historical trace research prototype and dashboard demonstration. Role: Team Lead."
     }
   },
   {
@@ -255,7 +255,7 @@ export const featuredProjects: Project[] = [
         "Lead Developer & Researcher. Built the data cleaning and preprocessing pipelines, implemented stratified cross-validation routines, trained baseline classifiers, and developed the web interface.",
       architecture: {
         overview:
-          "An analytical pipeline connecting structured tabular health records to calibrated classifiers and an explainable decision-support dashboard.",
+          "Offline tabular model and SHAP experiments alongside a separate React demonstration interface. The deployed interface uses manually defined rules and does not invoke the serialized models.",
         highlights: [
           "Data Preprocessing: Handles missing value imputation and biomarker scaling strictly within cross-validation folds.",
           "Model Benchmarks: Evaluates Logistic Regression, Random Forest, and Gradient Boosted trees under stratified cross-validation.",
@@ -293,7 +293,7 @@ export const featuredProjects: Project[] = [
       },
       results: [
         "Constructed a clean, reproducible healthcare analytics repository with documented data schemas.",
-        "Implemented transparent SHAP visualizations explaining individual risk scores based on physiological indicators.",
+        "Stored offline SHAP artifacts; the deployed interface displays manually assigned demonstration contributions.",
         "Established an ethical and methodological foundation for healthcare machine learning experiments."
       ],
       limitations: [
@@ -305,7 +305,7 @@ export const featuredProjects: Project[] = [
         "Transparent error analysis and limitation disclosures build necessary trust with reviewers and practitioners."
       ],
       statusNote:
-        "Research prototype exploring structured health data. Repository contains methodology documentation."
+        "Offline research outputs plus a rule-based interface demonstration; backend model and live SHAP integration remain pending."
     }
   },
   {
