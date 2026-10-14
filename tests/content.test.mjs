@@ -52,7 +52,7 @@ test("ResiliNet content adheres to exact repository policies, scenarios, and cla
 test("ComputePulse, Healthcare, and GCPC entries use verified claims and genuine links", () => {
   const projectsContent = fs.readFileSync(path.resolve("src/content/projects.ts"), "utf-8");
   
-  assert.match(projectsContent, /Hackathon prototype · Synthetic telemetry demonstration/);
+  assert.match(projectsContent, /Research prototype · Alibaba historical GPU trace/);
   assert.match(projectsContent, /Rule-based mitigation recommendations/);
   assert.doesNotMatch(projectsContent, /> 500 node events\/sec/);
   assert.doesNotMatch(projectsContent, /Automated workload migration orchestration/);
