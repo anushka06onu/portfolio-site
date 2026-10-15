@@ -163,7 +163,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="flex items-center gap-2">
           <Monitor className="w-4 h-4 text-[var(--primary-accent)]" />
           <h2 className="mono-tag text-xs text-[var(--text-main)] font-semibold uppercase">
-            Application Interface &amp; Live Telemetry
+            Application Interface
           </h2>
         </div>
         <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface)] shadow-lg">

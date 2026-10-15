@@ -124,7 +124,7 @@ export const featuredProjects: Project[] = [
     whyItMatters:
       "GPU workload failures and resource contention can interrupt experiments. ComputePulse explores explainable risk estimation and offline placement recommendations using historical Alibaba PAI trace data.",
     myContribution:
-      "Served as Team Lead on the two-person Aletheia team. Detailed individual implementation responsibilities should be verified against the project contribution record.",
+      "Served as Team Lead on the two-person Aletheia team. Coordinated project scope and team delivery.",
     evidence: [
       "Alibaba PAI GPU trace preprocessing and historical dashboard replay",
       "LightGBM classifier estimating failed or interrupted workload observations",
@@ -155,7 +155,7 @@ export const featuredProjects: Project[] = [
       context:
         "Created during a competitive hackathon and subsequently organized into a clean prototype demonstrating how predictive models and explainability can aid hardware operations.",
       role:
-        "Team Lead, Aletheia. Coordinated the prototype; detailed individual engineering responsibilities require contributor verification.",
+        "Team Lead, Aletheia. Coordinated project scope and team delivery.",
       architecture: {
         overview:
           "A historical Alibaba trace pipeline that engineers workload and resource features, estimates failure risk with LightGBM, and exposes explanations and advisory recommendations through FastAPI and React.",

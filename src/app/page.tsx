@@ -262,7 +262,7 @@ export default function HomePage() {
                     PREDICTIVE INFRASTRUCTURE
                   </span>
                   <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)] shrink-0">
-                    Hackathon prototype
+                    Historical trace prototype
                   </span>
                 </div>
 
@@ -286,7 +286,7 @@ export default function HomePage() {
                 </div>
 
                 <p className="text-sm leading-6 text-[var(--text-muted)]">
-                  A GPU-cluster monitoring prototype combining simulated telemetry, explainable risk scoring and operational alerts.
+                  A GPU-cluster research prototype using historical Alibaba trace data, explainable workload-risk estimates and advisory placement recommendations.
                 </p>
               </div>
 
