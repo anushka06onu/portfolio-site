@@ -408,6 +408,24 @@ export const featuredProjects: Project[] = [
 
 export const additionalProjects: AdditionalProject[] = [
   {
+    title: "RetinaGuard-QA: Retinal Image Quality Assessment",
+    category: "Medical AI & Computer Vision",
+    status: "Quality triage & uncertainty pipeline",
+    role: "Lead ML Developer",
+    description:
+      "Developed a retinal photograph quality assessment tool that identifies blur, artifacts, and poor field definition, recommends retakes, and flags uncertain images for manual review.",
+    contribution:
+      "Trained a multi-task MobileNetV3 model, benchmarked it on patient-separated DeepDRiD, and served ONNX inference on CPU through FastAPI.",
+    highlights: [
+      "Trained multi-task MobileNetV3 on patient-separated DeepDRiD dataset",
+      "Identifies blur, artifacts, illumination defects, and poor field definition",
+      "Recommends patient retakes and flags uncertain images for manual clinical review",
+      "Low-latency CPU inference pipeline served via ONNX and FastAPI"
+    ],
+    technologies: ["Python", "FastAPI", "MobileNetV3", "ONNX", "PyTorch", "DeepDRiD"],
+    github: "https://github.com/anushka06onu"
+  },
+  {
     title: "DIU GCPC Official Website",
     category: "Production Web Engineering",
     status: "Official website of DIU Girls’ Computer Programming Club",
