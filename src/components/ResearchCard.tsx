@@ -1,5 +1,5 @@
 import { ResearchOutput } from "../content/types";
-import { Tag } from "lucide-react";
+import { Tag, ExternalLink } from "lucide-react";
 
 interface ResearchCardProps {
   output: ResearchOutput;
@@ -52,6 +52,24 @@ export default function ResearchCard({
           {output.summary}
         </p>
       </div>
+
+      {/* Links (e.g., Code, Dataset, Paper) */}
+      {output.links && output.links.length > 0 && (
+        <div className="flex flex-wrap gap-2 pt-1">
+          {output.links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface-subtle)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] transition-all"
+            >
+              <span>{link.label}</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          ))}
+        </div>
+      )}
 
       {/* Topics (Shown on /research, omitted on homepage for clarity) */}
       {showTopics && (

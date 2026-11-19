@@ -1,5 +1,5 @@
 import { ExperienceRole } from "../content/types";
-import { Building2, Calendar } from "lucide-react";
+import { Building2, Calendar, ExternalLink } from "lucide-react";
 
 interface ExperienceItemProps {
   role: ExperienceRole;
@@ -16,7 +16,20 @@ export default function ExperienceItem({ role, showTech = false }: ExperienceIte
           </h4>
           <p className="text-sm font-medium text-[var(--primary-accent)] flex items-center gap-1.5 mt-0.5">
             <Building2 className="w-4 h-4 shrink-0" />
-            <span>{role.organization} · {role.location}</span>
+            {role.website ? (
+              <a
+                href={role.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline inline-flex items-center gap-1 group/link"
+              >
+                <span>{role.organization}</span>
+                <ExternalLink className="w-3 h-3 opacity-70 group-hover/link:opacity-100 transition-opacity" />
+              </a>
+            ) : (
+              <span>{role.organization}</span>
+            )}
+            <span>· {role.location}</span>
           </p>
         </div>
 

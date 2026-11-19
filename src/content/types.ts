@@ -102,6 +102,7 @@ export interface ResearchOutput {
 export interface ExperienceRole {
   title: string;
   organization: string;
+  website?: string;
   location: string;
   period: string;
   type: "Research" | "Engineering" | "Leadership" | "Teaching";
