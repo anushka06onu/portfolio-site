@@ -2,25 +2,25 @@ import { ResearchOutput } from "./types";
 
 export const researchDirection = {
   heading: "Research",
-  tagline: "Trustworthy Machine Learning & Medical Image Analysis",
+  tagline: "Trustworthy Machine Learning, Medical Image Analysis & Low-Resource NLP",
   overview:
-    "My current research focuses on trustworthy machine learning and medical-image analysis for healthcare. As a Research Assistant, I contribute to explainable and uncertainty-aware analysis of panoramic radiographs, while my undergraduate thesis evaluates parameter-efficient adaptation of vision foundation models.",
+    "My research focuses on trustworthy machine learning, parameter-efficient adaptation of Vision Foundation Models for healthcare, and explainable AI. As a Research Assistant at the Health Informatics Research Lab (HIRL), I contribute to medical image analysis in dental radiography and explainable hematological classification (accepted at ICERIE 2027). Alongside research, I authored the academic textbook 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design'.",
 
   corePillars: [
     {
       title: "Parameter-Efficient Vision Foundation Models",
       description:
-        "Evaluating and fine-tuning foundation models (DINOv2, BiomedCLIP, MedSAM) with LoRA, BitFit, and VPT for data-scarce medical imaging domains."
+        "Adapting Vision Foundation Models (DINOv2-Small, BiomedCLIP, MedSAM) with LoRA, BitFit, and bottleneck adapters for data-scarce dental and clinical radiography."
     },
     {
-      title: "Pediatric Morphology & Uncertainty-Aware AI",
+      title: "Trustworthy Medical AI & Hematological Modeling",
       description:
-        "Developing morphological alignment modules (PMAM) and uncertainty-quantified frameworks for explainable multi-disease detection in pediatric radiography."
+        "Developing calibrated, benchmarked, and explainable ML pipelines (SHAP, Grad-CAM, Integrated Gradients) for tri-class hematological classification and ultrasound grounding."
     },
     {
-      title: "Health Informatics & Hematological ML",
+      title: "Low-Resource Bangla NLP & Multiregional Corpora",
       description:
-        "Developing benchmarked, calibrated, and interpretable machine learning pipelines for complex clinical classification and disease detection."
+        "Curating multiregional dialect corpora (50,513-sentence Upobhasha dataset), dialect normalization, and ethnic language identification in shared script under severe data scarcity."
     }
   ],
 
@@ -30,44 +30,84 @@ export const researchDirection = {
     "Vision Foundation Models",
     "Medical Image Analysis",
     "Explainable AI",
-    "Reproducible Evaluation"
+    "Low-Resource NLP"
   ],
 
   // Comprehensive tags for dedicated /research page
   topics: [
     "Health Informatics",
     "Vision Foundation Models (VFMs)",
-    "Pediatric Morphology Alignment (PMAM)",
+    "DINOv2-Small Adaptation",
     "Parameter-Efficient Fine-Tuning (PEFT)",
-    "Uncertainty Quantification",
-    "Medical Image Analysis",
-    "Explainable AI (XAI)",
-    "Low-Resource NLP"
+    "Grad-CAM Interpretability",
+    "SHAP Attribution",
+    "Hematological Classification",
+    "Pulmonary Ultrasound",
+    "Bangla Dialect Corpora",
+    "Compiler Design Education"
   ],
 
   historyNote:
-    "Prior and ongoing NLP research includes 3 conference manuscripts on Bangla dialect machine translation, dialect normalization with attention interpretability, and ethnic language identification in shared script."
+    "Research spans clinical computer vision at HIRL (undergraduate thesis on dental radiograph classification, journal under review), 2 accepted papers at ICERIE 2027 (hematology and ethnic language identification), 3 submissions at ICEEICT 2027, the 50,513-sentence Upobhasha dialect corpus, and an authored textbook on compiler design."
+};
+
+export const authoredBook = {
+  title: "Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design",
+  venueOrType: "Authored Academic Book & Laboratory Manual",
+  role: "Author",
+  status: "Published" as const,
+  year: "2026",
+  description:
+    "Authored an illustrated companion book covering compiler design theory, lexical analysis, syntax analysis, parsing algorithms, intermediate code representations, and practical laboratory exercises, made freely available online and distributed in print to students.",
+  summary:
+    "Authored an illustrated companion book covering compiler design theory and laboratory exercises, made freely available online and distributed in print to students.",
+  topics: [
+    "Compiler Design",
+    "Lexical & Syntax Analysis",
+    "Abstract Syntax Trees",
+    "Computer Science Education",
+    "Laboratory Exercises"
+  ],
+  links: [
+    {
+      label: "Book Information & Resources",
+      url: "https://github.com/anushka06onu"
+    }
+  ]
 };
 
 export const thesisDetails = {
-  title: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
-  venueOrType: "Undergraduate Thesis · Ongoing Research",
+  title: "Parameter-Efficient Adaptation of DINOv2-Small for Dental Radiograph Classification: A Comparative Study of Fine-Tuning Strategies, Data Efficiency, and Interpretability",
+  alternateTitle: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
+  venueOrType: "Undergraduate Thesis Research · Journal Manuscript (Under Review)",
   role: "Lead Undergraduate Researcher",
-  status: "Ongoing" as const,
+  status: "Under review" as const,
   year: "2026",
   description:
-    "To address the computational costs and representational gaps of applying Vision Foundation Models to dental radiography, this study leverages the DentIRO dataset to analyze embedding-space failure modes. It subsequently benchmarks parameter-efficient fine-tuning methods against full fine-tuning, evaluating model accuracy, robustness, and interpretability under data-scarce conditions.",
+    "Benchmarked LoRA and bottleneck adapters on dental radiographs under reduced-data conditions, matching fully fine-tuned ResNet-50 in balanced accuracy with just 2.63% of parameters updated and identifying off-tooth attention in misclassified cases with Grad-CAM. Part of undergraduate thesis research: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis using DentIRO.",
   objective:
-    "This study evaluates frozen Vision Foundation Models (DINOv2, BiomedCLIP, MedSAM) via linear probing to quantify baseline performance gaps on subtle pathologies like caries. It benchmarks parameter-efficient fine-tuning strategies (LoRA, BitFit, VPT) against full fine-tuning while utilizing layer-depth ablations to isolate where localized dental decay features are best learned. Finally, the framework validates model robustness under label-scarce regimes (10–50% data) and confirms clinical alignment using transformer-adapted Grad-CAM heatmaps.",
+    "This study evaluates frozen and parameter-efficient Vision Foundation Models (DINOv2, BiomedCLIP, MedSAM) via linear probing and PEFT strategies (LoRA, BitFit, VPT, bottleneck adapters) against full fine-tuning on patient-level splits across 4-class dental radiograph datasets (DentIRO). It investigates label efficiency under severe data reduction (10–50% data) and validates clinical alignment with Grad-CAM saliency heatmaps.",
   motivation:
-    "Full fine-tuning of Vision Foundation Models on dental radiographs is computationally expensive and constrained by scarce data. This work addresses these domain gaps using parameter-efficient fine-tuning to achieve scalable, accurate, and interpretable dental diagnosis."
+    "Full fine-tuning of Vision Foundation Models on dental radiographs is computationally expensive and constrained by scarce clinical data. This work demonstrates that updating only 2.63% of parameters achieves balanced accuracy comparable to fully fine-tuned ResNet-50 while preserving interpretable clinical focus."
 };
 
 export const researchOutputs: ResearchOutput[] = [
   {
+    title: "Parameter-Efficient Adaptation of DINOv2-Small for Dental Radiograph Classification: A Comparative Study of Fine-Tuning Strategies, Data Efficiency, and Interpretability",
+    shortTitle: "PEFT Adaptation of DINOv2 for Dental Radiography",
+    venueOrType: "Journal Manuscript (Under Review) · Undergraduate Thesis",
+    role: "Lead Undergraduate Researcher",
+    status: "Under review",
+    statusNote: "Journal manuscript under peer review · Undergraduate thesis research on DentIRO (DINOv2, BiomedCLIP, MedSAM with LoRA, BitFit, VPT, and bottleneck adapters)",
+    year: "2026",
+    summary:
+      "Benchmarked LoRA and bottleneck adapters on dental radiographs under reduced-data conditions, matching fully fine-tuned ResNet-50 in balanced accuracy with just 2.63% of parameters updated and identifying off-tooth attention in misclassified cases with Grad-CAM.",
+    topics: ["Vision Foundation Models", "DINOv2-Small", "DentIRO", "PEFT (LoRA)", "Bottleneck Adapters", "Grad-CAM", "Medical Imaging"]
+  },
+  {
     title: "PMAM: A Pediatric Morphology Alignment Module for Explainable, Uncertainty-Aware Multi-Disease Detection in Panoramic Radiographs",
     shortTitle: "PMAM for Pediatric Panoramic Radiographs",
-    venueOrType: "Journal Manuscript · Health Informatics",
+    venueOrType: "Journal Manuscript · Health Informatics Research Lab",
     role: "Research Assistant (Health Informatics Research Lab)",
     status: "Manuscript in preparation",
     statusNote: "Journal-focused study on pediatric morphology alignment, uncertainty-aware modeling, and multi-disease detection",
@@ -77,63 +117,111 @@ export const researchOutputs: ResearchOutput[] = [
     topics: ["Health Informatics", "Pediatric Morphology", "Panoramic Radiography", "Uncertainty Quantification", "Explainable AI"]
   },
   {
-    title: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
-    shortTitle: "PEFT for Dental Vision Foundation Models",
-    venueOrType: "Undergraduate Thesis · Ongoing Research",
-    role: "Lead Undergraduate Researcher",
-    status: "Ongoing",
-    statusNote: "Benchmarking DINOv2, BiomedCLIP, MedSAM with LoRA/BitFit/VPT on DentIRO",
-    year: "2026",
-    summary:
-      "Leverages the DentIRO dataset to analyze embedding-space failure modes of Vision Foundation Models in dental radiography, benchmarking parameter-efficient fine-tuning (LoRA, BitFit, VPT) against full fine-tuning under data-scarce conditions with Grad-CAM interpretability.",
-    topics: ["Vision Foundation Models", "PEFT (LoRA/BitFit/VPT)", "DentIRO", "Medical Imaging", "Grad-CAM"]
-  },
-  {
     title: "Detecting Compensated Microcytosis: A Benchmarked and Explainable Machine Learning Approach to Tri-Class Hematological Classification",
     shortTitle: "Explainable Hematological Classification",
-    venueOrType: "Health Informatics Conference",
+    venueOrType: "ICERIE 2027 · Full Paper Accepted",
     role: "Co-Author / Researcher",
-    status: "Under review",
-    statusNote: "Under peer review at international health informatics conference",
-    year: "2026",
+    status: "Accepted",
+    statusNote: "Full paper accepted at ICERIE 2027",
+    year: "2027",
     summary:
-      "A benchmarked and explainable machine learning approach to tri-class hematological classification for identifying compensated microcytosis with transparent biomarker feature attribution.",
-    topics: ["Health Informatics", "Hematological Classification", "Explainable AI", "Clinical Benchmarking"]
-  },
-  {
-    title: "Bridging the Dialect Gap: Enhancing Bangla Dialect-to-English Machine Translation with Regional Metadata and Romanized Standard Bangla",
-    shortTitle: "Bangla Dialect-to-English Translation",
-    venueOrType: "NLP Conference",
-    role: "Co-Author / Researcher",
-    status: "Under review",
-    statusNote: "Under peer review at international NLP conference",
-    year: "2026",
-    summary:
-      "Enhances regional Bangla dialect-to-English machine translation by integrating regional metadata injection and romanized standard Bangla intermediate representations.",
-    topics: ["Bangla NLP", "Machine Translation", "Dialect Processing", "Low-Resource NLP"]
-  },
-  {
-    title: "Explainable Neural Machine Translation for Bangla Regional Dialect Normalization: A Multi-Model Comparative Study with Attention-Based Interpretability",
-    shortTitle: "Bangla Dialect Normalization with XAI",
-    venueOrType: "NLP Conference",
-    role: "Co-Author / Researcher",
-    status: "Under review",
-    statusNote: "Under peer review at international NLP conference",
-    year: "2026",
-    summary:
-      "A comprehensive multi-model comparative evaluation for normalizing Bangla regional dialects into standard Bangla, integrating attention-based interpretability and systematic error analysis.",
-    topics: ["Bangla NLP", "Dialect Normalization", "NMT", "Attention Interpretability"]
+      "Investigated microcytosis masked by normal hemoglobin through tri-class hematological modelling, with SHAP analysis of the hemoglobin–MCV thresholds underlying ensemble predictions across a six-model benchmark using stratified five-fold cross-validation.",
+    topics: ["Health Informatics", "Hematological Classification", "SHAP", "Explainable AI", "Clinical Benchmarking", "ICERIE 2027"]
   },
   {
     title: "Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions",
     shortTitle: "Ethnic Language Identification in Bengali Script",
-    venueOrType: "NLP Conference",
+    venueOrType: "ICERIE 2027 · Full Paper Accepted",
+    role: "Co-Author / Researcher",
+    status: "Accepted",
+    statusNote: "Full paper accepted at ICERIE 2027",
+    year: "2027",
+    summary:
+      "Examined cross-language ambiguity in Bengali script through controlled data-reduction experiments, comparing four transformer adaptation methods and using SHAP and Integrated Gradients to trace language-specific subword cues.",
+    topics: ["Low-Resource NLP", "Ethnic Language Identification", "Shared Bengali Script", "PEFT", "Integrated Gradients", "ICERIE 2027"]
+  },
+  {
+    title: "A Lesion–Context Audit of Grounding and Calibration in Pulmonary Ultrasound Classification",
+    shortTitle: "Grounding Audit in Pulmonary Ultrasound",
+    venueOrType: "ICEEICT 2027 · Under Review",
     role: "Co-Author / Researcher",
     status: "Under review",
-    statusNote: "Under peer review at international NLP conference",
+    statusNote: "Under peer review at ICEEICT 2027",
+    year: "2027",
+    summary:
+      "Measured saliency map overlap with annotated lesions against a centre-of-image baseline and evaluated grounding and calibration across independent pulmonary ultrasound datasets.",
+    topics: ["Pulmonary Ultrasound", "Model Grounding", "Calibration", "Saliency Maps", "Medical AI", "ICEEICT 2027"]
+  },
+  {
+    title: "Bangla Regional Dialect Normalization: Comparing Direct Translation and Perplexity-Based Selection",
+    shortTitle: "Bangla Regional Dialect Normalization",
+    venueOrType: "ICEEICT 2027 · Under Review",
+    role: "Co-Author / Researcher",
+    status: "Under review",
+    statusNote: "Under peer review at ICEEICT 2027 · Prior draft: Explainable Neural Machine Translation for Bangla Regional Dialect Normalization: A Multi-Model Comparative Study with Attention-Based Interpretability",
+    year: "2027",
+    summary:
+      "Compares direct translation and perplexity-based selection for normalizing regional Bangla dialects into standard Bangla, integrating attention-based interpretability and systematic error analysis.",
+    topics: ["Bangla NLP", "Dialect Normalization", "NMT", "Perplexity Selection", "Attention Interpretability", "ICEEICT 2027"]
+  },
+  {
+    title: "Multiclass Bangla Dialect Identification Using Transformer Ensembles and Explainable AI",
+    shortTitle: "Multiclass Dialect Identification & XAI",
+    venueOrType: "Journal Manuscript (Under Review)",
+    role: "Co-Author / Researcher",
+    status: "Under review",
+    statusNote: "Journal manuscript under peer review",
     year: "2026",
     summary:
-      "Investigates parameter-efficient adaptation and explainability for ethnic and indigenous languages written in shared Bengali script under severe low-resource conditions.",
-    topics: ["Low-Resource NLP", "Ethnic Language Identification", "PEFT", "Interpretability"]
+      "Investigates multiclass identification across 10 regional varieties of Bangla using transformer ensembles coupled with explainable AI attribution methods.",
+    topics: ["Bangla NLP", "Dialect Identification", "Transformer Ensembles", "Explainable AI"]
+  },
+  {
+    title: "When Does Context Help? A Controlled Study of Regional Metadata and Romanized Standard Bangla for Dialect-to-English Translation",
+    shortTitle: "Context in Dialect-to-English Translation",
+    venueOrType: "ICEEICT 2027 · Under Review",
+    role: "Co-Author / Researcher",
+    status: "Under review",
+    statusNote: "Under peer review at ICEEICT 2027 · Prior draft: Bridging the Dialect Gap: Enhancing Bangla Dialect-to-English Machine Translation with Regional Metadata and Romanized Standard Bangla",
+    year: "2027",
+    summary:
+      "A controlled study evaluating whether regional metadata and romanized standard Bangla intermediate representations improve low-resource dialect-to-English translation accuracy.",
+    topics: ["Bangla NLP", "Machine Translation", "Dialect Translation", "Regional Metadata", "ICEEICT 2027"]
+  },
+  {
+    title: "Upobhasha: A Multiregional Bengali Dialect Parallel Corpus",
+    shortTitle: "Upobhasha Multiregional Dialect Corpus",
+    venueOrType: "Linguistic Parallel Corpus & Dataset",
+    role: "Lead Curator / Researcher",
+    status: "Published",
+    statusNote: "Curated resource for low-resource Bengali dialect research",
+    year: "2026",
+    summary:
+      "Curated 50,513 sentences across 10 regional varieties of Bangla, pairing each with its Standard Bangla equivalent, romanized transliteration, and English translation.",
+    topics: ["Bangla NLP", "Corpus Linguistics", "Dialect Dataset", "Parallel Corpus", "Low-Resource NLP"],
+    links: [
+      {
+        label: "Corpus Details",
+        url: "https://github.com/anushka06onu"
+      }
+    ]
+  },
+  {
+    title: "Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design",
+    shortTitle: "Compiler Architectonics Companion Book",
+    venueOrType: "Authored Academic Book & Laboratory Manual",
+    role: "Author",
+    status: "Published",
+    statusNote: "Freely available online and distributed in print to students",
+    year: "2026",
+    summary:
+      "Authored an illustrated companion book covering compiler design theory and laboratory exercises, made freely available online and distributed in print to students.",
+    topics: ["Compiler Design", "Computer Science Education", "Parsing & AST", "Laboratory Manual"],
+    links: [
+      {
+        label: "Companion Book Information",
+        url: "https://github.com/anushka06onu"
+      }
+    ]
   }
 ];

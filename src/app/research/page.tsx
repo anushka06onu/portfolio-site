@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { researchDirection, researchOutputs, thesisDetails } from "../../content/research";
+import { researchDirection, researchOutputs, thesisDetails, authoredBook } from "../../content/research";
 import { siteConfig } from "../../content/site";
 import ResearchCard from "../../components/ResearchCard";
 import {
@@ -13,13 +13,16 @@ import {
   Target,
   Sparkles,
   Layers,
-  FileCode2
+  FileCode2,
+  BookMarked,
+  CheckCircle2,
+  ExternalLink
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Research Direction & Outputs",
+  title: "Research Direction & Outputs — Fateha Hossain Anushka",
   description:
-    "Health informatics research, Vision Foundation Models, parameter-efficient adaptation for dental radiography, and NLP conference manuscripts by Fateha Hossain."
+    "Health informatics research, Vision Foundation Models, parameter-efficient adaptation for dental radiography, accepted ICERIE 2027 papers, and authored compiler textbook by Fateha Hossain Anushka."
 };
 
 export default function ResearchPage() {
@@ -47,7 +50,7 @@ export default function ResearchPage() {
           Research Direction &amp; Vision
         </span>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)]">
-          Health Informatics &amp; <span className="text-gradient-cyan">Vision Foundation Models</span>
+          Health Informatics, <span className="text-gradient-cyan">Vision Foundation Models</span> &amp; NLP
         </h1>
         <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl">
           {researchDirection.overview}
@@ -60,19 +63,25 @@ export default function ResearchPage() {
           <div className="flex items-center gap-2">
             <Microscope className="w-5 h-5 text-[var(--primary-accent)]" />
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)]">
-              Undergraduate Thesis (Ongoing)
+              Undergraduate Thesis Research
             </h2>
           </div>
           <span className="mono-tag text-xs px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/30">
-            Active Thesis Research · 2026
+            Journal Manuscript (Under Review) · 2026
           </span>
         </div>
 
         <div className="editorial-card editorial-card-accent p-6 sm:p-8 space-y-6">
           <div className="space-y-2">
-            <span className="mono-tag text-xs text-[var(--secondary-accent)] font-semibold">
-              {thesisDetails.role}
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="mono-tag text-xs text-[var(--secondary-accent)] font-semibold">
+                {thesisDetails.role}
+              </span>
+              <span className="text-xs text-[var(--text-muted)]">·</span>
+              <span className="mono-tag text-xs text-[var(--text-muted)]">
+                Health Informatics Research Lab (HIRL)
+              </span>
+            </div>
             <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-main)] leading-snug">
               {thesisDetails.title}
             </h3>
@@ -82,7 +91,7 @@ export default function ResearchPage() {
           <div className="space-y-1.5">
             <h4 className="mono-tag text-xs font-bold uppercase text-[var(--primary-accent)] flex items-center gap-1.5">
               <Layers className="w-3.5 h-3.5" />
-              <span>Description</span>
+              <span>Core Findings &amp; Architecture</span>
             </h4>
             <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
               {thesisDetails.description}
@@ -93,7 +102,7 @@ export default function ResearchPage() {
           <div className="space-y-1.5 bg-[var(--surface-subtle)]/70 p-4 rounded-xl border border-[var(--border-subtle)]">
             <h4 className="mono-tag text-xs font-bold uppercase text-[var(--secondary-accent)] flex items-center gap-1.5">
               <Target className="w-3.5 h-3.5" />
-              <span>Objective</span>
+              <span>Methodological Objective</span>
             </h4>
             <p className="text-xs sm:text-sm text-[var(--text-main)] leading-relaxed">
               {thesisDetails.objective}
@@ -104,11 +113,82 @@ export default function ResearchPage() {
           <div className="space-y-1.5">
             <h4 className="mono-tag text-xs font-bold uppercase text-emerald-500 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Motivation</span>
+              <span>Clinical Significance &amp; Motivation</span>
             </h4>
             <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
               {thesisDetails.motivation}
             </p>
+          </div>
+
+          <div className="pt-2 flex flex-wrap gap-2">
+            <span className="mono-tag text-xs px-2.5 py-1 rounded-md bg-[var(--surface-subtle)] text-[var(--text-main)] border border-[var(--border-subtle)] font-medium">
+              DINOv2-Small
+            </span>
+            <span className="mono-tag text-xs px-2.5 py-1 rounded-md bg-[var(--surface-subtle)] text-[var(--text-main)] border border-[var(--border-subtle)] font-medium">
+              LoRA &amp; Bottleneck Adapters
+            </span>
+            <span className="mono-tag text-xs px-2.5 py-1 rounded-md bg-[var(--surface-subtle)] text-[var(--text-main)] border border-[var(--border-subtle)] font-medium">
+              2.63% Parameter Updates
+            </span>
+            <span className="mono-tag text-xs px-2.5 py-1 rounded-md bg-[var(--surface-subtle)] text-[var(--text-main)] border border-[var(--border-subtle)] font-medium">
+              ResNet-50 Patient-Split Benchmark
+            </span>
+            <span className="mono-tag text-xs px-2.5 py-1 rounded-md bg-[var(--surface-subtle)] text-[var(--text-main)] border border-[var(--border-subtle)] font-medium">
+              Grad-CAM Off-Tooth Error Audit
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Authored Academic Book Feature */}
+      <section className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
+          <div className="flex items-center gap-2">
+            <BookMarked className="w-5 h-5 text-[var(--secondary-accent)]" />
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)]">
+              Authored Academic Textbook
+            </h2>
+          </div>
+          <span className="mono-tag text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+            Published · Distributed to Students
+          </span>
+        </div>
+
+        <div className="editorial-card p-6 sm:p-8 space-y-4">
+          <div className="space-y-1.5">
+            <span className="mono-tag text-xs text-[var(--secondary-accent)] font-semibold">
+              Sole Author · Academic Textbook &amp; Laboratory Manual
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-main)]">
+              {authoredBook.title}
+            </h3>
+          </div>
+
+          <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+            {authoredBook.description}
+          </p>
+
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {authoredBook.topics.map((topic) => (
+              <span
+                key={topic}
+                className="mono-tag px-2.5 py-0.5 rounded-md bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] text-xs font-medium"
+              >
+                {topic}
+              </span>
+            ))}
+          </div>
+
+          <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center gap-3">
+            <a
+              href="https://github.com/anushka06onu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface-subtle)] text-[var(--text-main)] hover:text-[var(--primary-accent)] transition-all font-mono"
+            >
+              <span>Repository &amp; Textbook Resources</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </section>
@@ -144,10 +224,10 @@ export default function ResearchPage() {
       <section className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)]">
-            Manuscripts &amp; Conference Submissions
+            Publications, Manuscripts &amp; Research Datasets
           </h2>
           <span className="text-xs font-mono text-[var(--text-muted)]">
-            Includes 1 Health Conference &amp; 3 NLP Conference Papers (Under Review)
+            2 Accepted (ICERIE 2027) · 4 Under Review · 1 Published Corpus · 1 Book
           </span>
         </div>
 
@@ -165,10 +245,10 @@ export default function ResearchPage() {
           <span>Methodological Continuity: From Low-Resource NLP to Clinical AI</span>
         </h3>
         <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-          My experimental methodology originated in low-resource Natural Language Processing, where lack of standardized benchmarks required building custom corpora, handling dialect variations, and establishing rigorous multi-model evaluation frameworks.
+          My experimental methodology originated in low-resource Natural Language Processing, where lack of standardized benchmarks required building custom corpora (such as the 50,513-sentence Upobhasha parallel dataset), handling dialect variations, and establishing rigorous multi-model evaluation frameworks.
         </p>
         <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-          In my current research at the Health Informatics Research Lab and in my undergraduate thesis, I translate these principles to clinical AI—where data scarcity demands parameter-efficient adaptation (LoRA, BitFit, VPT) and diagnostic stakes require rigorous feature attribution (SHAP, Grad-CAM).
+          In my research at the Health Informatics Research Lab and in my undergraduate thesis, I translate these principles to clinical AI—where data scarcity demands parameter-efficient adaptation (LoRA, BitFit, bottleneck adapters) and diagnostic stakes require rigorous feature attribution (SHAP, Grad-CAM, Integrated Gradients).
         </p>
         <div className="pt-3 border-t border-[var(--border-subtle)] flex flex-wrap gap-2 items-center">
           <span className="mono-tag text-xs font-semibold text-[var(--text-muted)] mr-1">
