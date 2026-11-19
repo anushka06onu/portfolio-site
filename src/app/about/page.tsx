@@ -11,13 +11,18 @@ import {
   Mail,
   CheckCircle2,
   Award,
-  BookOpen
+  BookOpen,
+  Users,
+  Languages,
+  BookMarked,
+  ExternalLink
 } from "lucide-react";
+import { LinkedinIcon } from "../../components/Icons";
 
 export const metadata: Metadata = {
-  title: "About Fateha Hossain",
+  title: "About Fateha Hossain Anushka",
   description:
-    "Academic background, research background, engineering experience, honors, certifications, and curriculum vitae of Fateha Hossain."
+    "Academic background, research background, engineering experience, honors, certifications, and curriculum vitae of Fateha Hossain Anushka."
 };
 
 export default function AboutPage() {
@@ -33,34 +38,45 @@ export default function AboutPage() {
         </Link>
       </div>
 
-      {/* Header Profile with Radiant Ring */}
-      <header className="flex flex-col-reverse md:flex-row items-start justify-between gap-8 border-b border-[var(--border-color)] pb-8">
-        <div className="flex-1 space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[var(--primary-accent)]">
-            Biographical Overview
-          </span>
+      {/* Hero Header with Portrait */}
+      <header className="flex flex-col-reverse sm:flex-row items-center sm:items-start justify-between gap-8 border-b border-[var(--border-color)] pb-10">
+        <div className="space-y-4 max-w-xl text-center sm:text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider">
+            <span>Curriculum Vitae &amp; Background</span>
+          </div>
+
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)]">
-            Fateha Hossain
+            About <span className="text-gradient-cyan">{siteConfig.fullName}</span>
           </h1>
-          <p className="text-base sm:text-lg font-medium text-[var(--secondary-accent)]">
-            Health Informatics Researcher &amp; Software Engineer
-          </p>
-          <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+
+          <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
             {siteConfig.narrative.aboutText}
           </p>
-          <div className="flex flex-wrap items-center gap-3 pt-2 text-sm font-medium">
+
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2 text-sm font-medium">
             <a
               href={siteConfig.links.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gradient inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-slate-950 font-semibold shadow-md shadow-teal-500/20"
+              className="btn-gradient inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-slate-950 font-semibold shadow-md shadow-teal-500/20"
             >
               <FileDown className="w-4 h-4" />
-              <span>View CV (PDF)</span>
+              <span>Download CV (PDF)</span>
             </a>
+
+            <a
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
+            >
+              <LinkedinIcon className="w-4 h-4 text-[#0077B5]" />
+              <span>LinkedIn</span>
+            </a>
+
             <a
               href={`mailto:${siteConfig.links.email}`}
-              className="btn-outline inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
+              className="btn-outline inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
             >
               <Mail className="w-4 h-4 text-[var(--primary-accent)]" />
               <span>Email</span>
@@ -72,8 +88,8 @@ export default function AboutPage() {
           <div className="relative p-1 rounded-2xl bg-gradient-to-br from-teal-500/30 via-cyan-500/20 to-blue-500/30 shadow-xl shadow-teal-500/10">
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface)] shadow-sm">
               <Image
-                src="/fateha-hossain.jpg"
-                alt="Fateha Hossain"
+                src="/anushka.jpg"
+                alt="Fateha Hossain Anushka"
                 fill
                 priority
                 className="object-cover object-top"
@@ -98,7 +114,16 @@ export default function AboutPage() {
                 {siteConfig.education[0].degree}
               </h3>
               <p className="text-sm font-medium text-[var(--primary-accent)]">
-                {siteConfig.education[0].institution} · {siteConfig.education[0].location}
+                <a
+                  href="https://daffodilvarsity.edu.bd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline inline-flex items-center gap-1"
+                >
+                  <span>{siteConfig.education[0].institution}</span>
+                  <ExternalLink className="w-3 h-3 opacity-70" />
+                </a>
+                <span> · {siteConfig.education[0].location}</span>
               </p>
             </div>
             <span className="text-sm text-[var(--text-muted)] font-medium">
@@ -117,12 +142,48 @@ export default function AboutPage() {
 
           <div className="flex items-center gap-2 p-3 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-sm text-[var(--primary-accent)] font-medium">
             <Award className="w-4 h-4 shrink-0" />
-            <span>Academic Standing: Current CGPA 3.92 / 4.00 · 3× Dean&apos;s Award · 75% Merit Waiver</span>
+            <span>Academic Standing: Final Grade 3.93 / 4.00 (3.92) · 142.5/154.5 Credits Completed (EQF Level 6) · 3× Dean&apos;s Award · 75% Merit Waiver</span>
           </div>
         </div>
       </section>
 
-      {/* Honors, Awards & 12 Coursera Certifications */}
+      {/* Authored Academic Book */}
+      <section className="space-y-4">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)] flex items-center gap-2">
+          <BookMarked className="w-5 h-5 text-[var(--secondary-accent)]" />
+          <span>Authored Academic Book</span>
+        </h2>
+
+        <div className="editorial-card p-6 sm:p-7 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
+            <span className="mono-tag text-xs font-semibold text-[var(--secondary-accent)]">
+              Academic Textbook &amp; Laboratory Manual · Published (2026)
+            </span>
+            <span className="mono-tag text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+              Distributed in Print &amp; Online
+            </span>
+          </div>
+
+          <h3 className="text-lg sm:text-xl font-bold text-[var(--text-main)]">
+            {siteConfig.authoredBook.title}
+          </h3>
+
+          <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+            {siteConfig.authoredBook.description}
+          </p>
+
+          <div className="pt-2">
+            <Link
+              href="/research"
+              className="text-xs font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1 font-mono"
+            >
+              <span>View Book Details in Research Roadmap →</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Honors, Awards & Professional Certifications */}
       <section className="space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)] flex items-center gap-2">
           <Award className="w-5 h-5 text-[var(--primary-accent)]" />
@@ -137,10 +198,10 @@ export default function AboutPage() {
               <span>3× Dean&apos;s Honor List Award</span>
             </div>
             <p className="text-xs font-semibold text-[var(--secondary-accent)]">
-              Faculty of Science &amp; Information Technology, DIU (Spring 2024, Fall 2024, Spring 2025)
+              Faculty of Science &amp; Information Technology, DIU
             </p>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              Conferred 3 times across consecutive academic semesters in recognition of sustained academic excellence and maintaining high semester grade point averages (CGPA 3.92 / 4.00).
+              Conferred 3 times across consecutive academic semesters in recognition of sustained academic excellence and maintaining high semester grade point averages (Current CGPA: 3.93 / 4.00).
             </p>
           </div>
 
@@ -151,37 +212,92 @@ export default function AboutPage() {
               <span>75% Merit-Based Tuition Waiver</span>
             </div>
             <p className="text-xs font-semibold text-[var(--primary-accent)]">
-              Daffodil International University (2022 – 2026)
+              Daffodil International University (Brilliant Academic Result)
             </p>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              Awarded 75% tuition scholarship continuously across consecutive academic semesters based on top-tier academic merit.
+              Received a 75% tuition fee waiver scholarship continuously across consecutive academic semesters based on top-tier academic merit.
             </p>
           </div>
 
-          {/* 15+ Certifications */}
+          {/* IBM Data Science Professional Certificate */}
+          <div className="editorial-card p-6 space-y-3">
+            <div className="flex items-center gap-2 text-[var(--primary-accent)] font-semibold text-base">
+              <BookOpen className="w-5 h-5" />
+              <span>IBM Data Science Professional Certificate</span>
+            </div>
+            <p className="text-xs font-semibold text-[var(--secondary-accent)]">
+              Coursera / IBM (12 Courses Completed)
+            </p>
+            <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+              Completed all 12 courses under the IBM Data Science Professional Certificate, covering data analysis, Python, machine learning models, databases, and scientific reporting.
+            </p>
+          </div>
+
+          {/* Udemy Developer Bootcamps */}
           <div className="editorial-card p-6 space-y-3">
             <div className="flex items-center gap-2 text-[var(--secondary-accent)] font-semibold text-base">
               <BookOpen className="w-5 h-5" />
-              <span>15+ Professional Course Certifications</span>
+              <span>Java Mastery &amp; MySQL Bootcamps</span>
             </div>
             <p className="text-xs font-semibold text-[var(--primary-accent)]">
-              Coursera, Udemy &amp; AWS (DeepLearning.AI, Stanford Online, Google &amp; Meta)
+              Udemy Professional Bootcamps
             </p>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              Completed 15+ comprehensive certifications covering Machine Learning, Deep Learning Specializations, Python for Data Science, Backend API Design, Cloud Systems, and AWS infrastructure.
+              Completed &apos;The Complete Java Programming Mastery - Developers Bootcamp&apos; and &apos;Complete MySQL Bootcamp: Learn SQL Step by Step&apos; covering enterprise backend design and query optimization.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Full Experience & Leadership Roles */}
+      {/* Leadership & Mentorship */}
+      <section className="space-y-4">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)] flex items-center gap-2">
+          <Users className="w-5 h-5 text-[var(--primary-accent)]" />
+          <span>Leadership &amp; Mentorship</span>
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {siteConfig.leadership.map((item, idx) => (
+            <div key={idx} className="editorial-card p-5 space-y-2">
+              <div className="flex items-start justify-between gap-2 border-b border-[var(--border-subtle)] pb-2">
+                <h3 className="text-sm font-bold text-[var(--text-main)]">{item.title}</h3>
+                <span className="text-xs font-mono text-[var(--primary-accent)] shrink-0">{item.period}</span>
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Full Experience & Professional Roles */}
       <section className="space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)]">
-          Research, Professional, Leadership &amp; Teaching Roles
+          Work Experience &amp; Professional Roles
         </h2>
         <div className="space-y-4">
           {siteConfig.experience.map((role, idx) => (
             <ExperienceItem key={idx} role={role} showTech={true} />
+          ))}
+        </div>
+      </section>
+
+      {/* Language Proficiency */}
+      <section className="space-y-4">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)] flex items-center gap-2">
+          <Languages className="w-5 h-5 text-[var(--primary-accent)]" />
+          <span>Language Skills</span>
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {siteConfig.languages.map((lang, idx) => (
+            <div key={idx} className="editorial-card p-5 space-y-1.5">
+              <h3 className="text-base font-bold text-[var(--text-main)]">{lang.language}</h3>
+              <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                {lang.proficiency}
+              </p>
+            </div>
           ))}
         </div>
       </section>

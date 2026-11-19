@@ -117,8 +117,8 @@ export default function HomePage() {
               <div className="relative p-1 rounded-2xl bg-gradient-to-br from-teal-500/30 via-cyan-500/20 to-blue-500/30 shadow-xl shadow-teal-500/10">
                 <div className="relative aspect-[4/5] rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface)]">
                   <Image
-                    src="/fateha-hossain.jpg"
-                    alt="Portrait of Fateha Hossain"
+                    src="/anushka.jpg"
+                    alt="Portrait of Fateha Hossain Anushka"
                     fill
                     priority
                     className="object-cover object-top"
@@ -416,48 +416,48 @@ export default function HomePage() {
 
             {/* Right 3 Compact Research Entries (Protected Mobile Layout) */}
             <div className="lg:col-span-3 space-y-3">
-              {/* 1. PMAM */}
+              {/* 1. Thesis */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    PMAM Journal Study
-                  </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
-                    Manuscript in preparation
-                  </span>
-                </div>
-                <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Pediatric morphology alignment module for explainable, uncertainty-aware multi-disease detection in panoramic radiographs.
-                </p>
-              </div>
-
-              {/* 2. Thesis */}
-              <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-                  <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Undergraduate Thesis
+                    Undergraduate Thesis · DINOv2 Dental Radiography
                   </h4>
                   <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--secondary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
-                    Ongoing
+                    Journal Under Review
                   </span>
                 </div>
                 <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Parameter-efficient adaptation (LoRA, BitFit, VPT) of Vision Foundation Models for dental radiograph classification.
+                  Adapting DINOv2-Small with LoRA and bottleneck adapters on dental radiographs, matching fully fine-tuned ResNet-50 with just 2.63% parameter updates.
                 </p>
               </div>
 
-              {/* 3. Hematological Classification */}
+              {/* 2. ICERIE 2027 Accepted Papers */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Health Informatics Conference Study
+                    Hematology &amp; Ethnic Languages (ICERIE 2027)
                   </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
-                    Under review
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 self-start sm:self-auto shrink-0">
+                    Full Papers Accepted
                   </span>
                 </div>
                 <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Benchmarked and explainable machine learning approach to tri-class hematological classification for compensated microcytosis.
+                  Two full papers accepted: explainable ML for compensated microcytosis with SHAP, and parameter-efficient ethnic language identification in shared Bengali script.
+                </p>
+              </div>
+
+              {/* 3. Authored Companion Book */}
+              <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+                  <h4 className="text-sm font-bold text-[var(--text-main)]">
+                    Compiler Architectonics (Authored Book)
+                  </h4>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
+                    Published Book
+                  </span>
+                </div>
+                <p className="text-sm text-[var(--text-muted)] leading-6">
+                  Illustrated companion book covering compiler design theory, ASTs, and laboratory exercises, freely available online and distributed in print to students.
                 </p>
               </div>
             </div>
@@ -506,16 +506,16 @@ export default function HomePage() {
                 </span>
               </div>
               <p className="text-sm text-[var(--text-muted)] leading-6">
-                Contributing to healthcare-oriented machine-learning experiments, reproducible evaluation, and research manuscript preparation.
+                Adapting DINOv2 with LoRA for dental radiograph classification, conducting lesion grounding audits in ultrasound, and developing explainable ML pipelines.
               </p>
             </div>
 
-            {/* 2. Backend Developer Intern */}
+            {/* 2. Junior Developer (formerly Backend Developer Intern) */}
             <div className="editorial-card p-5 space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
                 <div>
                   <h4 className="text-base font-bold text-[var(--text-main)]">
-                    Backend Developer Intern
+                    Junior Developer
                   </h4>
                   <p className="text-xs font-medium text-[var(--primary-accent)] flex items-center gap-1 mt-0.5">
                     <Building2 className="w-3.5 h-3.5 shrink-0" />
@@ -524,11 +524,11 @@ export default function HomePage() {
                 </div>
                 <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1 shrink-0 self-start sm:self-auto">
                   <Calendar className="w-3 h-3 shrink-0" />
-                  <span>Mar 2026 – Present</span>
+                  <span>Sept 2026 – Present</span>
                 </span>
               </div>
               <p className="text-sm text-[var(--text-muted)] leading-6">
-                Developing backend features and database-backed APIs across Spring Boot, Laravel, and FastAPI applications.
+                Completed a 6-month backend development internship (March 01 – Sept 01, 2026) before transitioning full-time, building Spring Boot REST APIs and Laravel backend systems.
               </p>
             </div>
           </div>

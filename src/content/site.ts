@@ -3,29 +3,30 @@ import { ExperienceRole, EducationItem, SkillCategory } from "./types";
 export const siteConfig = {
   name: "Fateha Hossain",
   fullName: "Fateha Hossain Anushka",
-  author: "Fateha Hossain",
-  title: "Fateha Hossain — Health Informatics Researcher & Software Engineer",
+  author: "Fateha Hossain Anushka",
+  title: "Fateha Hossain Anushka — Software Engineer & Health Informatics Researcher",
   description:
-    "Academic and engineering portfolio of Fateha Hossain. Health informatics research, parameter-efficient Vision Foundation Models, explainable machine learning, and resilient software backends.",
-  role: "Health Informatics Researcher & Software Engineer",
-  availability: "Research Assistant · Final-year CSE student · Bangladesh",
+    "Academic and engineering portfolio of Fateha Hossain Anushka. Junior Developer at CSE-Tech, Research Assistant at HIRL, author of Compiler Architectonics, and DIU CSE graduate.",
+  role: "Junior Developer & Health Informatics Researcher",
+  availability: "Junior Developer at CSE-Tech · Research Assistant at HIRL · Bangladesh",
   location: "Dhaka, Bangladesh",
-  url: "https://portfolio-site-omega-rose.vercel.app",
-  canonicalUrl: "https://portfolio-site-omega-rose.vercel.app",
+  url: "https://fatehahossainanushka.vercel.app",
+  canonicalUrl: "https://fatehahossainanushka.vercel.app",
 
   links: {
     github: "https://github.com/anushka06onu",
-    linkedin: "https://www.linkedin.com/in/fateha-hossain-anushka-614749293/",
+    linkedin: "https://www.linkedin.com/in/fatehahossainanushka/",
     email: "fatehahossainanushka@gmail.com",
+    website: "https://fatehahossainanushka.vercel.app",
     resume: "/Fateha_Hossain_CV.pdf"
   },
 
   hero: {
-    eyebrow: "RESEARCHER & SOFTWARE ENGINEER",
+    eyebrow: "SOFTWARE ENGINEER & RESEARCHER",
     headline:
-      "I build reliable intelligent systems for healthcare and complex infrastructure.",
+      "I build robust enterprise backend systems and trustworthy clinical AI models.",
     intro:
-      "Undergraduate researcher and software engineer specializing in health informatics, parameter-efficient foundation models, explainable machine learning, and resilient software backends. Experienced in building reproducible ML pipelines, distributed telemetry tools, and production web platforms.",
+      "Junior Developer at CSE-Tech (following a completed 6-month backend development internship), Research Assistant at the Health Informatics Research Lab (HIRL), and author of Compiler Architectonics. Experienced in developing Spring Boot and Laravel REST APIs, parameter-efficient vision foundation models, and explainable machine learning.",
     buttons: {
       work: { label: "Explore My Work", href: "/projects" },
       research: { label: "Research Roadmap", href: "/research" },
@@ -36,72 +37,90 @@ export const siteConfig = {
   narrative: {
     threePillars: [
       {
-        title: "Health Informatics",
-        desc: "Exploring trustworthy machine learning and medical-image analysis for healthcare research."
+        title: "Backend Software Engineering",
+        desc: "Developing enterprise REST APIs, server-side validation, and scalable services across Spring Boot, Laravel, and FastAPI."
       },
       {
-        title: "Explainable Intelligent Systems",
-        desc: "Building ML systems with transparent predictions, tested fallback behavior and traceable experiments."
+        title: "Health Informatics & Clinical AI",
+        desc: "Adapting Vision Foundation Models (DINOv2 with LoRA) for medical diagnostics and trustworthy machine learning in radiography and hematology."
       },
       {
-        title: "Backend Engineering",
-        desc: "Developing APIs, data pipelines and full-stack applications that turn technical ideas into usable systems."
+        title: "Explainable Intelligent Systems & NLP",
+        desc: "Investigating model interpretability with Grad-CAM, SHAP, and Integrated Gradients across low-resource Bangla NLP and clinical datasets."
       }
     ],
 
     aboutText:
-      "I am a final-year Computer Science and Engineering undergraduate at Daffodil International University (Current CGPA: 3.92 / 4.00, 3× Dean's Honor List Award recipient, 75% Merit-Based Scholarship) and a Research Assistant at the Health Informatics Research Lab. My research focuses on parameter-efficient adaptation of Vision Foundation Models (VFMs) for medical diagnostics, uncertainty-aware modeling, and explainable AI. Alongside research, I engineer production web applications and backend systems at CSE-Tech across Spring Boot, Laravel, and FastAPI."
+      "I am a Computer Science and Engineering undergraduate at Daffodil International University (Final Grade: 3.93 / 4.00, previously 3.92, 142.5 credits completed out of 154.5, 3× Dean's Honor List Award recipient, 75% Merit-Based Scholarship). I work full-time as a Junior Developer at CSE-Tech after completing a six-month backend development internship (March 01, 2026 – September 01, 2026), where I build Spring Boot REST APIs for ministry-level web applications and maintain Laravel backend platforms. Concurrently, as a Research Assistant at the Health Informatics Research Lab (HIRL), I conduct research on parameter-efficient adaptation of Vision Foundation Models (DINOv2 with LoRA) for dental radiograph classification (undergraduate thesis, journal manuscript under review) and explainable hematological classification (accepted at ICERIE 2027). I also authored the illustrated academic companion book 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design'."
   },
 
   experience: [
     {
-      title: "Research Assistant",
-      organization: "Health Informatics Research Lab",
+      title: "Junior Developer",
+      organization: "CSE-Tech",
+      website: "https://csetech.diu.edu.bd",
       location: "Dhaka, Bangladesh",
-      period: "April 2026 – Present",
-      type: "Research" as const,
-      technologies: ["PyTorch", "Vision Foundation Models", "PEFT", "Grad-CAM", "XAI"],
+      period: "Sept 2026 – Present",
+      type: "Engineering" as const,
+      technologies: ["Spring Boot", "Laravel", "Java", "PHP", "MySQL", "PostgreSQL", "REST APIs", "Docker"],
       bullets: [
-        "Conducting research on pediatric morphology alignment modules (PMAM) and uncertainty quantification for multi-disease diagnosis in panoramic radiography.",
-        "Benchmarking parameter-efficient fine-tuning (LoRA, BitFit, VPT) on Vision Foundation Models (DINOv2, BiomedCLIP, MedSAM) for dental radiographs.",
-        "Developing benchmarked and explainable machine learning pipelines for tri-class hematological classification."
+        "Completed a six-month backend development internship (March 01 – September 01, 2026) before joining full-time as a Junior Developer.",
+        "Developed Spring Boot REST APIs for a ministry-level web application, implementing server-side validation and handling record retrieval and updates.",
+        "Contributed to the Laravel backend of a separate learning management system where students could access online classes, recorded video lessons, and course materials."
       ]
     },
     {
       title: "Backend Developer Intern",
       organization: "CSE-Tech",
+      website: "https://csetech.diu.edu.bd",
       location: "Dhaka, Bangladesh",
-      period: "March 2026 – Present",
+      period: "March 2026 – Sept 2026 (6 Months)",
       type: "Engineering" as const,
-      technologies: ["Spring Boot", "Laravel", "FastAPI", "PostgreSQL", "MySQL", "REST APIs", "Docker"],
+      technologies: ["Spring Boot", "Laravel", "Java", "PHP", "MySQL", "REST APIs"],
       bullets: [
-        "Designing and maintaining enterprise REST APIs with Spring Boot, Laravel, and FastAPI adhering to strict validation standards.",
-        "Optimizing relational database schemas in MySQL and PostgreSQL with indexed queries for low-latency operations.",
-        "Structuring modular backend services with automated integration testing and secure authentication."
+        "Completed an intensive six-month backend development internship engineering REST APIs and relational database architectures.",
+        "Engineered robust REST API endpoints in Spring Boot with rigorous server-side validation, relational data modeling, and automated error handling.",
+        "Assisted in maintaining and scaling Laravel backend services, student authentication, and media delivery pipelines."
+      ]
+    },
+    {
+      title: "Research Assistant",
+      organization: "Health Informatics Research Lab (HIRL)",
+      website: "https://hirl.daffodilvarsity.edu.bd/",
+      location: "Dhaka, Bangladesh",
+      period: "April 2026 – Present",
+      type: "Research" as const,
+      technologies: ["PyTorch", "DINOv2", "LoRA", "Vision Foundation Models", "Grad-CAM", "SHAP", "LightGBM"],
+      bullets: [
+        "Adapted DINOv2-Small with LoRA and bottleneck adapters for four-class dental radiograph classification, benchmarked against ResNet-50 on patient-level splits, and analysed errors with Grad-CAM.",
+        "Measured saliency map overlap with annotated skin lesions against a centre-of-image baseline and repeated the analysis on a separate dataset.",
+        "Contributed to a six-model benchmark for compensated microcytosis using stratified five-fold cross-validation and SHAP feature attribution."
       ]
     },
     {
       title: "President",
       organization: "DIU Girls' Computer Programming Club (GCPC)",
+      website: "https://gcpc.daffodilvarsity.edu.bd/",
       location: "Daffodil International University",
-      period: "Jan 2026 – Present",
+      period: "Spring 2026 – Fall 2026",
       type: "Leadership" as const,
-      technologies: ["Leadership", "Community", "Web Deployment", "Event Management"],
+      technologies: ["Leadership", "Backend Mentorship", "Contest Management", "Web Engineering"],
       bullets: [
-        "Leading strategic operations across ACM, Research, and Career wings, coordinating workshops for 300+ active members.",
-        "Led the architecture, development, and deployment of the official GCPC institutional web platform on a university domain.",
-        "Mentoring junior female undergraduates in competitive programming and academic research methodology."
+        "Lead Bangladesh's first women-only programming club, directing strategic operations and mentoring junior members in software development and student leadership.",
+        "Lead hands-on backend development sessions, co-host technical workshops with industry professionals, and organise national programming contests.",
+        "Architected and deployed the official university web portal with Firebase Authentication, Cloud Firestore workflows, and public certificate verification."
       ]
     },
     {
       title: "Student Prefect (Object-Oriented Programming in Java)",
       organization: "Department of CSE, Daffodil International University",
+      website: "https://daffodilvarsity.edu.bd/",
       location: "Dhaka, Bangladesh",
-      period: "May 2025 – Dec 2025",
+      period: "Two Semesters (May 2025 – Dec 2025)",
       type: "Teaching" as const,
-      technologies: ["Java", "OOP", "Design Patterns", "Code Review"],
+      technologies: ["Java", "OOP", "Design Patterns", "Data Structures", "Code Review"],
       bullets: [
-        "Conducted laboratory problem-solving sessions and code reviews in Object-Oriented Programming (OOP) and Java for 100+ undergraduate students.",
+        "Served as Java OOP Lab Prefect for two consecutive semesters, guiding 100+ undergraduate students in applying OOP principles during practical lab sessions.",
         "Assisted faculty in designing programming assignments, explaining OOP design patterns, and debugging complex Java implementations."
       ]
     }
@@ -112,14 +131,14 @@ export const siteConfig = {
       degree: "B.Sc. in Computer Science and Engineering",
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
-      period: "2022 – 2026",
-      distinction: "Current CGPA: 3.92 / 4.00 · 3× Dean's Award · 75% Merit Waiver",
+      period: "2023 – Current",
+      distinction: "Final Grade: 3.93 / 4.00 (3.92) · 142.5/154.5 Credits Completed · 3× Dean's Award · 75% Merit Waiver",
       notes: [
-        "Current CGPA: 3.92 / 4.00 (Department of Computer Science and Engineering).",
-        "Recipient of 3× Dean's Honor List Award for sustained academic distinction.",
-        "Recipient of 75% Merit-Based Tuition Scholarship (Waiver) across consecutive academic semesters.",
-        "Undergraduate Thesis: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis.",
-        "Core Coursework: Machine Learning, Artificial Intelligence, Object-Oriented Programming (Java), Data Structures & Algorithms, Database Systems, Computer Networks, Operating Systems, Software Engineering."
+        "Final Grade: 3.93 out of 4.00 (142.5 credits completed out of 154.5, Level in EQF: EQF level 6).",
+        "Recipient of 3× Dean's Honor List Award for sustained academic distinction across consecutive academic semesters.",
+        "Recipient of 75% Merit-Based Tuition Scholarship (Waiver) — Brilliant Academic Result scholarship from Daffodil International University.",
+        "Undergraduate Thesis: Parameter-Efficient Adaptation of DINOv2-Small for Dental Radiograph Classification: A Comparative Study of Fine-Tuning Strategies, Data Efficiency, and Interpretability (Journal manuscript under review).",
+        "Core Coursework: Programming and Problem Solving, OOP, Data Structures and Algorithms, Database Management Systems, Software Engineering, Computer Networks, Calculus and Linear Algebra, Discrete Mathematics, Statistics and Probability, Artificial Intelligence, Machine Learning, Introduction to Data Science, Natural Language Processing."
       ]
     }
   ],
@@ -129,59 +148,121 @@ export const siteConfig = {
       title: "3× Dean's Honor List Award",
       issuer: "Daffodil International University",
       year: "Spring 2024, Fall 2024, Spring 2025",
-      description: "Conferred 3 times across consecutive academic semesters for sustained academic excellence and maintaining high semester grade point average (CGPA 3.92 / 4.00)."
+      description: "Conferred 3 times across consecutive academic semesters for sustained academic excellence and maintaining high semester grade point average (Current CGPA: 3.93 / 4.00)."
     },
     {
-      title: "75% Merit-Based Tuition Scholarship (Waiver)",
+      title: "75% Merit-Based Tuition Waiver (Brilliant Academic Result)",
       issuer: "Daffodil International University",
-      year: "2022 – 2026",
-      description: "75% merit-based tuition waiver awarded continuously across consecutive academic semesters based on academic distinction."
+      year: "2023 – Current",
+      description: "Received a 75% tuition fee waiver scholarship, the Brilliant Academic Result, from Daffodil International University awarded continuously based on academic distinction."
     }
   ],
 
   certifications: [
     {
-      title: "15+ Professional Course Certifications",
-      issuer: "Coursera, Udemy & AWS (DeepLearning.AI, Stanford Online, Google, Meta)",
-      year: "2023 – 2026",
-      description: "Completed 15+ comprehensive certifications covering Machine Learning, Deep Learning Specializations, Python for Data Science, Backend API Design, Cloud Systems, and AWS infrastructure."
+      title: "IBM Data Science Professional Certificate (Coursera)",
+      issuer: "Coursera / IBM",
+      year: "2024",
+      description: "Completed 12 comprehensive courses under the IBM Data Science Professional Certificate on Coursera."
     },
     {
-      title: "Specialized Research Writing & Methodology",
-      issuer: "Health Informatics Research Lab & Academic Workshops",
-      year: "2025",
-      description: "Rigorous training in scientific manuscript drafting, experimental reproducibility, statistical verification, and publication ethics."
+      title: "The Complete Java Programming Mastery - Developers Bootcamp",
+      issuer: "Udemy",
+      year: "2024",
+      description: "Comprehensive bootcamp mastering Java programming, OOP architecture, and enterprise software engineering patterns."
+    },
+    {
+      title: "Complete MySQL Bootcamp: Learn SQL Step by Step",
+      issuer: "Udemy",
+      year: "2024",
+      description: "In-depth database design, relational modeling, complex SQL queries, and schema optimization."
     }
   ],
+
+  leadership: [
+    {
+      title: "President, Girls' Computer Programming Club- DIU",
+      period: "Spring 2026 – Fall 2026",
+      description:
+        "Lead Bangladesh's first women-only programming club | Lead hands-on backend development sessions | Organised national contests | Set and judge contest problems | Cohost technical workshops with industry professionals | Mentored junior members in software development and student leadership."
+    },
+    {
+      title: "Industry Mentor and Judge, LandTech Hackathon",
+      period: "2025",
+      description:
+        "Mentored teams as they refined their ideas and made technical decisions about their prototypes. Served as a judge, reviewing final presentations and evaluating the solutions teams developed."
+    },
+    {
+      title: "Lab Prefect, Object-Oriented Programming (Java)",
+      period: "May 2025 – Dec 2025",
+      description:
+        "Served as Java OOP Lab Prefect for two consecutive semesters, guiding students in applying OOP principles during practical lab sessions."
+    },
+    {
+      title: "Executive Member, Data Science Club- DIU",
+      period: "Spring 2023 – Summer 2024",
+      description:
+        "Organised student events and volunteered at contests, supporting event coordination and participants."
+    },
+    {
+      title: "Executive Member, Robotics Club- DIU",
+      period: "Spring 2024 – Fall 2024",
+      description:
+        "Supported student events and robotics contests through volunteer coordination and on-site assistance."
+    }
+  ],
+
+  languages: [
+    {
+      language: "Bengali",
+      proficiency: "Native Language"
+    },
+    {
+      language: "English",
+      proficiency: "IELTS Academic, Overall Band 7.5 (Listening: 8.0, Reading: 8.0, Writing: 6.5, Speaking: 6.5)"
+    }
+  ],
+
+  authoredBook: {
+    title: "Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design",
+    description:
+      "Authored an illustrated companion book covering compiler design theory and laboratory exercises, made freely available online and distributed in print to students.",
+    link: "https://github.com/anushka06onu"
+  },
 
   additionalTraining:
     "Active participant in competitive programming, national hackathons, and scientific research writing workshops.",
 
   skills: [
     {
-      category: "Research & Machine Learning",
-      description: "Model training, parameter-efficient fine-tuning, explainability, and clinical evaluation.",
-      skills: ["Python", "PyTorch", "LightGBM", "SHAP", "Scikit-Learn", "Grad-CAM", "Vision Foundation Models (VFMs)", "PEFT (LoRA/BitFit)"]
+      category: "Software Engineering & Backend",
+      description: "Enterprise REST APIs, microservices, server-side validation, and robust service architectures.",
+      skills: ["Spring Boot", "Laravel", "FastAPI", "REST APIs", "HTML", "CSS", "React", "Firebase Authentication"]
     },
     {
-      category: "Backend & Systems",
-      description: "Robust service engineering, relational databases, and enterprise APIs.",
-      skills: ["Spring Boot", "FastAPI", "Laravel", "PostgreSQL", "MySQL", "Docker", "Linux", "REST APIs"]
+      category: "Programming Languages",
+      description: "Core compiled and interpreted programming languages.",
+      skills: ["Java", "Python", "PHP", "C", "C++", "JavaScript", "TypeScript"]
     },
     {
-      category: "Networking & Distributed Infrastructure",
-      description: "Software-defined networking, telemetry ingestion, and cluster simulation.",
-      skills: ["Mininet", "OpenFlow", "Ryu Controller", "Network Telemetry", "Distributed Systems"]
+      category: "ML & Deep Learning",
+      description: "Model adaptation, evaluation protocols, and explainable AI.",
+      skills: ["PyTorch", "TensorFlow", "LightGBM", "scikit-learn", "ONNX", "NumPy", "pandas", "SHAP", "Grad-CAM"]
     },
     {
-      category: "Frontend & Web Engineering",
-      description: "Interactive single-page applications, responsive design, and state management.",
-      skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Zustand"]
+      category: "LLMs & AI Agents",
+      description: "Generative AI applications, protocol-driven tool integration, and agent workflows.",
+      skills: ["Prompt Engineering", "Retrieval-Augmented Generation (RAG)", "Model Context Protocol (MCP)", "Agentic AI"]
     },
     {
-      category: "Tools & DevOps",
-      description: "Version control, automated CI/CD, and scientific documentation.",
-      skills: ["Git", "GitHub Actions", "Vercel", "Firebase", "Postman", "LaTeX"]
+      category: "Databases & Tools",
+      description: "Relational/document databases and software development tooling.",
+      skills: ["SQL", "MySQL", "PostgreSQL", "Cloud Firestore", "Git", "Docker", "Jupyter Notebook", "LaTeX"]
+    },
+    {
+      category: "CS Fundamentals",
+      description: "Algorithmic foundation, graph theory, and mathematical problem-solving.",
+      skills: ["Data Structures & Algorithms", "Dynamic Programming", "Number Theory", "Graph Theory"]
     }
   ]
 };
