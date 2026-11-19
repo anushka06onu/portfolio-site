@@ -13,6 +13,7 @@ test("Canonical content files exist and are readable", () => {
 
 test("Public assets and local CV exist", () => {
   const publicDir = path.resolve("public");
+  assert.ok(fs.existsSync(path.join(publicDir, "anushka.jpg")), "anushka.jpg exists");
   assert.ok(fs.existsSync(path.join(publicDir, "fateha-hossain.jpg")), "fateha-hossain.jpg exists");
   assert.ok(fs.existsSync(path.join(publicDir, "og-image.svg")), "og-image.svg exists");
   assert.ok(fs.existsSync(path.join(publicDir, "Fateha_Hossain_CV.pdf")), "Fateha_Hossain_CV.pdf exists");
