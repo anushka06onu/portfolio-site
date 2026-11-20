@@ -423,7 +423,7 @@ export const additionalProjects: AdditionalProject[] = [
       "Low-latency CPU inference pipeline served via ONNX and FastAPI"
     ],
     technologies: ["Python", "FastAPI", "MobileNetV3", "ONNX", "PyTorch", "DeepDRiD"],
-    github: "https://github.com/anushka06onu"
+    github: "https://github.com/anushka06onu/RetinaGuard-QA"
   },
   {
     title: "DIU GCPC Official Website",
