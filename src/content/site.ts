@@ -37,21 +37,21 @@ export const siteConfig = {
   narrative: {
     threePillars: [
       {
-        title: "Backend Software Engineering",
-        desc: "Developing enterprise REST APIs, server-side validation, and scalable services across Spring Boot, Laravel, and FastAPI."
+        title: "Clinical AI & Foundation Models",
+        desc: "Adapting Vision Foundation Models (DINOv2 with LoRA & bottleneck adapters) for 4-class dental radiography, PMAM pediatric alignment, and ultrasound audits."
       },
       {
-        title: "Health Informatics & Clinical AI",
-        desc: "Adapting Vision Foundation Models (DINOv2 with LoRA) for medical diagnostics and trustworthy machine learning in radiography and hematology."
+        title: "Explainable ML & Low-Resource NLP",
+        desc: "SHAP threshold analysis for compensated microcytosis, Integrated Gradients for ethnic languages, and multiregional Bangla dialect normalization."
       },
       {
-        title: "Explainable Intelligent Systems & NLP",
-        desc: "Investigating model interpretability with Grad-CAM, SHAP, and Integrated Gradients across low-resource Bangla NLP and clinical datasets."
+        title: "Production Backend Engineering",
+        desc: "Enterprise Spring Boot REST APIs with server-side validation for ministry-level web apps, and Laravel learning platforms at CSE-Tech."
       }
     ],
 
     aboutText:
-      "I am a Computer Science and Engineering undergraduate at Daffodil International University (Final Grade: 3.93 / 4.00, previously 3.92, 142.5 credits completed out of 154.5, 3× Dean's Honor List Award recipient, 75% Merit-Based Scholarship). I work full-time as a Junior Developer at CSE-Tech after completing a six-month backend development internship (March 01, 2026 – September 01, 2026), where I build Spring Boot REST APIs for ministry-level web applications and maintain Laravel backend platforms. Concurrently, as a Research Assistant at the Health Informatics Research Lab (HIRL), I conduct research on parameter-efficient adaptation of Vision Foundation Models (DINOv2 with LoRA) for dental radiograph classification (undergraduate thesis, journal manuscript under review) and explainable hematological classification (accepted at ICERIE 2027). I also authored the illustrated academic companion book 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design'."
+      "I am a Computer Science and Engineering undergraduate at Daffodil International University (CGPA: 3.93 / 4.00, 3× Dean's Honor List Award, 75% Merit Scholarship). Currently, I work full-time as a Junior Developer at CSE-Tech after completing a six-month backend development internship, engineering Spring Boot REST APIs for ministry-level web applications and Laravel backend services. Alongside my engineering work, I conduct research at the Health Informatics Research Lab (HIRL) across medical image analysis, parameter-efficient foundation models, and explainable AI—spanning my undergraduate thesis evaluating DINOv2 adaptation on dental radiographs (journal manuscript under review), accepted conference papers on hematological classification and ethnic language identification (ICERIE 2027), and pulmonary ultrasound audits (ICEEICT 2027). I am also the author of 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design', an illustrated textbook and lab companion distributed to students."
   },
 
   experience: [
@@ -132,13 +132,11 @@ export const siteConfig = {
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
       period: "2023 – Current",
-      distinction: "Final Grade: 3.93 / 4.00 (3.92) · 142.5/154.5 Credits Completed · 3× Dean's Award · 75% Merit Waiver",
+      distinction: "Final Grade: 3.93 / 4.00 · 3× Dean's Honor List Award · 75% Merit-Based Scholarship",
       notes: [
-        "Final Grade: 3.93 out of 4.00 (142.5 credits completed out of 154.5, Level in EQF: EQF level 6).",
-        "Recipient of 3× Dean's Honor List Award for sustained academic distinction across consecutive academic semesters.",
-        "Recipient of 75% Merit-Based Tuition Scholarship (Waiver) — Brilliant Academic Result scholarship from Daffodil International University.",
+        "Academic Standing: Final Grade 3.93 out of 4.00 (142.5 credits completed out of 154.5) with sustained placement on the Dean's Honor List (3× recipient) and a 75% Brilliant Academic Result merit tuition waiver.",
         "Undergraduate Thesis: Parameter-Efficient Adaptation of DINOv2-Small for Dental Radiograph Classification: A Comparative Study of Fine-Tuning Strategies, Data Efficiency, and Interpretability (Journal manuscript under review).",
-        "Core Coursework: Programming and Problem Solving, OOP, Data Structures and Algorithms, Database Management Systems, Software Engineering, Computer Networks, Calculus and Linear Algebra, Discrete Mathematics, Statistics and Probability, Artificial Intelligence, Machine Learning, Introduction to Data Science, Natural Language Processing."
+        "Core Coursework: Programming and Problem Solving, OOP (Java), Data Structures and Algorithms, Database Management Systems, Software Engineering, Computer Networks, Artificial Intelligence, Machine Learning, Natural Language Processing, Calculus and Linear Algebra, Discrete Mathematics, Statistics and Probability."
       ]
     }
   ],
@@ -163,19 +161,23 @@ export const siteConfig = {
       title: "IBM Data Science Professional Certificate (Coursera)",
       issuer: "Coursera / IBM",
       year: "2024",
-      description: "Completed 12 comprehensive courses under the IBM Data Science Professional Certificate on Coursera."
+      description: "Completed 12 comprehensive courses under the IBM Data Science Professional Certificate on Coursera.",
+      link: "https://www.coursera.org/account/accomplishments/professional-cert/WWJZILGDM7FR",
+      folderLink: "https://drive.google.com/drive/folders/1T3DoAOkKDGgGMIEczYR9X5VK_T0JrPtn?usp=sharing"
     },
     {
       title: "The Complete Java Programming Mastery - Developers Bootcamp",
       issuer: "Udemy",
       year: "2024",
-      description: "Comprehensive bootcamp mastering Java programming, OOP architecture, and enterprise software engineering patterns."
+      description: "Comprehensive bootcamp mastering Java programming, OOP architecture, and enterprise software engineering patterns.",
+      link: "https://www.udemy.com/certificate/UC-abd5aef1-dc70-44bc-9a99-00c545c85fb0/"
     },
     {
       title: "Complete MySQL Bootcamp: Learn SQL Step by Step",
       issuer: "Udemy",
       year: "2024",
-      description: "In-depth database design, relational modeling, complex SQL queries, and schema optimization."
+      description: "In-depth database design, relational modeling, complex SQL queries, and schema optimization.",
+      link: "https://www.udemy.com/certificate/UC-649f5e58-4e3b-4ac5-bf39-34cb8fa5c73b/"
     }
   ],
 
@@ -227,7 +229,7 @@ export const siteConfig = {
     title: "Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design",
     description:
       "Authored an illustrated companion book covering compiler design theory and laboratory exercises, made freely available online and distributed in print to students.",
-    link: "https://github.com/anushka06onu"
+    link: "https://drive.google.com/file/d/18svxtHLMDiEXos6tFleZHarM6d4AWHl7/view?usp=drive_link"
   },
 
   additionalTraining:
