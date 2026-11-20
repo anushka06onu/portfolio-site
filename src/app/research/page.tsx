@@ -181,12 +181,12 @@ export default function ResearchPage() {
 
           <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center gap-3">
             <a
-              href="https://github.com/anushka06onu"
+              href={authoredBook.links[0].url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface-subtle)] text-[var(--text-main)] hover:text-[var(--primary-accent)] transition-all font-mono"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface-subtle)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] transition-all font-mono"
             >
-              <span>Repository &amp; Textbook Resources</span>
+              <span>Read Companion Book (Google Drive)</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
