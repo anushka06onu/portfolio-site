@@ -139,11 +139,6 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-
-          <div className="flex items-center gap-2 p-3 rounded-lg bg-[var(--primary-accent-subtle)] border border-[var(--primary-accent)]/20 text-sm text-[var(--primary-accent)] font-medium">
-            <Award className="w-4 h-4 shrink-0" />
-            <span>Academic Standing: Final Grade 3.93 / 4.00 (3.92) · 142.5/154.5 Credits Completed (EQF Level 6) · 3× Dean&apos;s Award · 75% Merit Waiver</span>
-          </div>
         </div>
       </section>
 
@@ -172,12 +167,21 @@ export default function AboutPage() {
             {siteConfig.authoredBook.description}
           </p>
 
-          <div className="pt-2">
+          <div className="pt-2 flex flex-wrap items-center gap-3">
+            <a
+              href={siteConfig.authoredBook.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface-subtle)] text-[var(--text-main)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] transition-all font-mono"
+            >
+              <span>Read Companion Book (Google Drive)</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
             <Link
               href="/research"
               className="text-xs font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1 font-mono"
             >
-              <span>View Book Details in Research Roadmap →</span>
+              <span>View in Research Roadmap →</span>
             </Link>
           </div>
         </div>
@@ -231,6 +235,27 @@ export default function AboutPage() {
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
               Completed all 12 courses under the IBM Data Science Professional Certificate, covering data analysis, Python, machine learning models, databases, and scientific reporting.
             </p>
+            <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
+              <a
+                href="https://www.coursera.org/account/accomplishments/professional-cert/WWJZILGDM7FR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[var(--primary-accent)] hover:underline"
+              >
+                <span>Certificate Link</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="text-[var(--text-muted)]">·</span>
+              <a
+                href="https://drive.google.com/drive/folders/1T3DoAOkKDGgGMIEczYR9X5VK_T0JrPtn?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[var(--secondary-accent)] hover:underline"
+              >
+                <span>12 Certificates Folder</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
 
           {/* Udemy Developer Bootcamps */}
@@ -245,6 +270,27 @@ export default function AboutPage() {
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
               Completed &apos;The Complete Java Programming Mastery - Developers Bootcamp&apos; and &apos;Complete MySQL Bootcamp: Learn SQL Step by Step&apos; covering enterprise backend design and query optimization.
             </p>
+            <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
+              <a
+                href="https://www.udemy.com/certificate/UC-abd5aef1-dc70-44bc-9a99-00c545c85fb0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[var(--primary-accent)] hover:underline"
+              >
+                <span>Java Certificate</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="text-[var(--text-muted)]">·</span>
+              <a
+                href="https://www.udemy.com/certificate/UC-649f5e58-4e3b-4ac5-bf39-34cb8fa5c73b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[var(--secondary-accent)] hover:underline"
+              >
+                <span>MySQL Certificate</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
