@@ -4,7 +4,7 @@ export const researchDirection = {
   heading: "Research",
   tagline: "Trustworthy Machine Learning, Medical Image Analysis & Low-Resource NLP",
   overview:
-    "My research focuses on trustworthy machine learning, parameter-efficient adaptation of Vision Foundation Models for healthcare, and explainable AI. As a Research Assistant at the Health Informatics Research Lab (HIRL), I contribute to medical image analysis in dental radiography and explainable hematological classification (accepted at ICERIE 2027). Alongside research, I authored the academic textbook 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design'.",
+    "My research focuses on trustworthy machine learning, parameter-efficient adaptation of Vision Foundation Models for healthcare, and explainable AI. At the Health Informatics Research Lab (HIRL), my work spans medical image analysis in dental radiography and ultrasound, explainable hematological modeling (accepted at ICERIE 2027), and low-resource dialect corpora. Alongside research, I authored the academic textbook 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design'.",
 
   corePillars: [
     {
@@ -48,7 +48,7 @@ export const researchDirection = {
   ],
 
   historyNote:
-    "Research spans clinical computer vision at HIRL (undergraduate thesis on dental radiograph classification, journal under review), 2 accepted papers at ICERIE 2027 (hematology and ethnic language identification), 3 submissions at ICEEICT 2027, the 50,513-sentence Upobhasha dialect corpus, and an authored textbook on compiler design."
+    "Research spans clinical computer vision at HIRL (undergraduate thesis on dental radiograph classification, journal manuscript under review), 2 accepted full papers at ICERIE 2027 (hematology and ethnic language identification), 3 submissions at ICEEICT 2027, the 50,513-sentence Upobhasha dialect corpus on Zenodo, and an authored textbook on compiler design."
 };
 
 export const authoredBook = {
@@ -70,8 +70,8 @@ export const authoredBook = {
   ],
   links: [
     {
-      label: "Book Information & Resources",
-      url: "https://github.com/anushka06onu"
+      label: "Read Companion Book (Google Drive)",
+      url: "https://drive.google.com/file/d/18svxtHLMDiEXos6tFleZHarM6d4AWHl7/view?usp=drive_link"
     }
   ]
 };
@@ -201,8 +201,8 @@ export const researchOutputs: ResearchOutput[] = [
     topics: ["Bangla NLP", "Corpus Linguistics", "Dialect Dataset", "Parallel Corpus", "Low-Resource NLP"],
     links: [
       {
-        label: "Corpus Details",
-        url: "https://github.com/anushka06onu"
+        label: "Download Dataset (Zenodo)",
+        url: "https://zenodo.org/records/22997452?preview_file=Upobhasha.zip"
       }
     ]
   },
@@ -219,8 +219,8 @@ export const researchOutputs: ResearchOutput[] = [
     topics: ["Compiler Design", "Computer Science Education", "Parsing & AST", "Laboratory Manual"],
     links: [
       {
-        label: "Companion Book Information",
-        url: "https://github.com/anushka06onu"
+        label: "Read Companion Book (Google Drive)",
+        url: "https://drive.google.com/file/d/18svxtHLMDiEXos6tFleZHarM6d4AWHl7/view?usp=drive_link"
       }
     ]
   }
