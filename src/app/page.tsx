@@ -24,18 +24,18 @@ export default function HomePage() {
   const pillars = [
     {
       icon: <Activity className="w-4 h-4 text-teal-500" />,
-      title: "Health Informatics",
-      desc: "Medical imaging and clinical-data research"
+      title: "Clinical AI & Foundation Models",
+      desc: "Adapting DINOv2-Small with LoRA & bottleneck adapters for dental radiography, PMAM pediatric alignment, and ultrasound audits."
     },
     {
       icon: <ShieldCheck className="w-4 h-4 text-cyan-500" />,
-      title: "Trustworthy ML",
-      desc: "Explainability and reproducible evaluation"
+      title: "Explainable ML & Low-Resource NLP",
+      desc: "SHAP threshold analysis for compensated microcytosis, Integrated Gradients for ethnic languages, and multiregional Bangla corpora."
     },
     {
       icon: <Server className="w-4 h-4 text-blue-500" />,
-      title: "Backend Systems",
-      desc: "APIs, data pipelines and deployed applications"
+      title: "Production Backend Engineering",
+      desc: "Enterprise Spring Boot REST APIs with server-side validation for ministry-level web apps, and Laravel learning platforms at CSE-Tech."
     }
   ];
 
@@ -414,43 +414,58 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Right 3 Compact Research Entries (Protected Mobile Layout) */}
+            {/* Right 4 Compact Research Entries (Protected Mobile Layout) */}
             <div className="lg:col-span-3 space-y-3">
               {/* 1. Thesis */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Undergraduate Thesis · DINOv2 Dental Radiography
+                    Dental Radiograph Classification (Undergraduate Thesis)
                   </h4>
                   <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--secondary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
                     Journal Under Review
                   </span>
                 </div>
                 <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Adapting DINOv2-Small with LoRA and bottleneck adapters on dental radiographs, matching fully fine-tuned ResNet-50 with just 2.63% parameter updates.
+                  Adapting DINOv2-Small with LoRA and bottleneck adapters on dental radiographs, matching fully fine-tuned ResNet-50 with just 2.63% parameter updates and Grad-CAM off-tooth error auditing.
                 </p>
               </div>
 
-              {/* 2. ICERIE 2027 Accepted Papers */}
+              {/* 2. Compensated Microcytosis (ICERIE 2027) */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Hematology &amp; Ethnic Languages (ICERIE 2027)
+                    Detecting Compensated Microcytosis (ICERIE 2027)
                   </h4>
                   <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 self-start sm:self-auto shrink-0">
-                    Full Papers Accepted
+                    Full Paper Accepted
                   </span>
                 </div>
                 <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Two full papers accepted: explainable ML for compensated microcytosis with SHAP, and parameter-efficient ethnic language identification in shared Bengali script.
+                  Tri-class hematological modeling to detect masked microcytosis under normal hemoglobin, using SHAP threshold analysis across a six-model benchmark with stratified 5-fold cross-validation.
                 </p>
               </div>
 
-              {/* 3. Authored Companion Book */}
+              {/* 3. Ethnic Languages in Shared Script (ICERIE 2027) */}
               <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
                   <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Compiler Architectonics (Authored Book)
+                    Ethnic Language Identification (ICERIE 2027)
+                  </h4>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 self-start sm:self-auto shrink-0">
+                    Full Paper Accepted
+                  </span>
+                </div>
+                <p className="text-sm text-[var(--text-muted)] leading-6">
+                  Investigating cross-language ambiguity in Bengali script under low-resource conditions, benchmarking four transformer adaptation methods with SHAP and Integrated Gradients subword attribution.
+                </p>
+              </div>
+
+              {/* 4. Authored Companion Book */}
+              <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+                  <h4 className="text-sm font-bold text-[var(--text-main)]">
+                    Compiler Architectonics (Authored Companion Book)
                   </h4>
                   <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
                     Published Book
