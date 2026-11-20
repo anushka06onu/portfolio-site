@@ -91,11 +91,11 @@ test("Research outputs match exact PMAM journal study, thesis details, and 4 und
   assert.match(researchContent, /Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions/);
 });
 
-test("Site config contains verified email, CSE-Tech company, CGPA 3.92, April 2026 RA, 3x Dean's Award, and 75% waiver", () => {
+test("Site config contains verified email, CSE-Tech company, CGPA 3.93, April 2026 RA, 3x Dean's Award, and 75% waiver", () => {
   const siteContent = fs.readFileSync(path.resolve("src/content/site.ts"), "utf-8");
   assert.match(siteContent, /fatehahossainanushka@gmail\.com/);
   assert.match(siteContent, /CSE-Tech/);
-  assert.match(siteContent, /3\.92/);
+  assert.match(siteContent, /3\.93/);
   assert.match(siteContent, /April 2026 – Present/);
   assert.match(siteContent, /3×/);
   assert.match(siteContent, /75%/);
