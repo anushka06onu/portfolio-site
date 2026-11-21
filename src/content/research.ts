@@ -2,33 +2,33 @@ import { ResearchOutput } from "./types";
 
 export const researchDirection = {
   heading: "Research",
-  tagline: "Trustworthy Machine Learning, Medical Image Analysis & Low-Resource NLP",
+  tagline: "Health Informatics, Medical Artificial Intelligence & Low-Resource NLP",
   overview:
-    "My research focuses on trustworthy machine learning, parameter-efficient adaptation of Vision Foundation Models for healthcare, and explainable AI. At the Health Informatics Research Lab (HIRL), my work spans medical image analysis in dental radiography and ultrasound, explainable hematological modeling (accepted at ICERIE 2027), and low-resource dialect corpora. Alongside research, I authored the academic textbook 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design'.",
+    "My research focuses on health informatics, trustworthy medical artificial intelligence, and low-resource natural language processing. At the Health Informatics Research Lab (HIRL), my investigations center on clinical decision support, diagnostic imaging interpretability, and computational linguistics for underserved regional languages.",
 
   corePillars: [
     {
-      title: "Parameter-Efficient Vision Foundation Models",
+      title: "Health Informatics & Medical Imaging",
       description:
-        "Adapting Vision Foundation Models (DINOv2-Small, BiomedCLIP, MedSAM) with LoRA, BitFit, and bottleneck adapters for data-scarce dental and clinical radiography."
+        "Advancing clinical decision support, diagnostic imaging analysis, and robust evaluation methodologies under severe clinical data constraints."
     },
     {
-      title: "Trustworthy Medical AI & Hematological Modeling",
+      title: "Trustworthy Machine Learning & Explainability",
       description:
-        "Developing calibrated, benchmarked, and explainable ML pipelines (SHAP, Grad-CAM, Integrated Gradients) for tri-class hematological classification and ultrasound grounding."
+        "Developing calibrated, interpretable, and reproducible machine learning frameworks for hematological modeling and diagnostic auditing."
     },
     {
-      title: "Low-Resource Bangla NLP & Multiregional Corpora",
+      title: "Low-Resource Computational Linguistics",
       description:
-        "Curating multiregional dialect corpora (50,513-sentence Upobhasha dataset), dialect normalization, and ethnic language identification in shared script under severe data scarcity."
+        "Curating multiregional dialect corpora, standardizing dialect normalization, and advancing language identification in shared scripts under low-resource conditions."
     }
   ],
 
   // 5 concise focus tags for the homepage
   homepageTopics: [
     "Health Informatics",
-    "Vision Foundation Models",
     "Medical Image Analysis",
+    "Clinical AI",
     "Explainable AI",
     "Low-Resource NLP"
   ],
