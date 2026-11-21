@@ -27,7 +27,7 @@ export default function ResearchOutputsSection({ outputs }: ResearchOutputsSecti
           <div>
             <h3 className="text-sm font-bold text-[var(--text-main)]">
               {currentPage === 0
-                ? "Health Informatics & Vision Foundation Models (1–3)"
+                ? "Health Informatics & Medical AI (1–3)"
                 : "Low-Resource Bangla NLP & Machine Translation (4–6)"}
             </h3>
             <p className="text-xs text-[var(--text-muted)]">
