@@ -347,7 +347,7 @@ export default function HomePage() {
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                   <h3 className="text-lg sm:text-xl font-bold text-[var(--text-main)]">
                     <Link href="/research" className="hover:text-[var(--primary-accent)] transition-colors">
-                      Vision Foundation Models for Dental Radiographs
+                      Dental Radiograph Classification &amp; Interpretability
                     </Link>
                   </h3>
                 </div>
@@ -404,13 +404,13 @@ export default function HomePage() {
             <div className="lg:col-span-2 editorial-card p-5 sm:p-6 space-y-3 flex flex-col justify-center">
               <div className="flex items-center gap-2 text-[var(--primary-accent)] font-mono text-xs font-semibold uppercase">
                 <Activity className="w-4 h-4 shrink-0" />
-                <span>Medical AI &amp; Vision Models</span>
+                <span>Medical AI &amp; Health Informatics</span>
               </div>
               <h3 className="text-lg font-bold text-[var(--text-main)]">
                 Trustworthy Medical AI
               </h3>
               <p className="text-sm leading-6 text-[var(--text-muted)]">
-                My current work focuses on trustworthy medical AI, particularly parameter-efficient vision models and explainable analysis of panoramic radiographs. My earlier research includes low-resource Bangla NLP.
+                My research focuses on trustworthy medical artificial intelligence, clinical decision support systems, and low-resource computational linguistics.
               </p>
             </div>
 
