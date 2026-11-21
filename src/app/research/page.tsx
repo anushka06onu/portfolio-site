@@ -22,7 +22,7 @@ import {
 export const metadata: Metadata = {
   title: "Research Direction & Outputs — Fateha Hossain Anushka",
   description:
-    "Health informatics research, Vision Foundation Models, parameter-efficient adaptation for dental radiography, accepted ICERIE 2027 papers, and authored compiler textbook by Fateha Hossain Anushka."
+    "Health informatics research, medical artificial intelligence, clinical decision support, accepted conference papers, and authored compiler textbook by Fateha Hossain Anushka."
 };
 
 export default function ResearchPage() {
@@ -50,7 +50,7 @@ export default function ResearchPage() {
           Research Direction &amp; Vision
         </span>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)]">
-          Health Informatics, <span className="text-gradient-cyan">Vision Foundation Models</span> &amp; NLP
+          Health Informatics, <span className="text-gradient-cyan">Medical AI</span> &amp; Low-Resource NLP
         </h1>
         <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl">
           {researchDirection.overview}
