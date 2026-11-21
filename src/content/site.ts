@@ -37,21 +37,21 @@ export const siteConfig = {
   narrative: {
     threePillars: [
       {
-        title: "Clinical AI & Foundation Models",
-        desc: "Adapting Vision Foundation Models (DINOv2 with LoRA & bottleneck adapters) for 4-class dental radiography, PMAM pediatric alignment, and ultrasound audits."
+        title: "Health Informatics & Medical AI",
+        desc: "Investigating diagnostic imaging analysis, clinical decision support, and robust evaluation methodologies under clinical data constraints."
       },
       {
-        title: "Explainable ML & Low-Resource NLP",
-        desc: "SHAP threshold analysis for compensated microcytosis, Integrated Gradients for ethnic languages, and multiregional Bangla dialect normalization."
+        title: "Trustworthy ML & Low-Resource NLP",
+        desc: "Developing explainable machine learning frameworks, model interpretability, and multiregional dialect corpora for underserved languages."
       },
       {
         title: "Production Backend Engineering",
-        desc: "Enterprise Spring Boot REST APIs with server-side validation for ministry-level web apps, and Laravel learning platforms at CSE-Tech."
+        desc: "Architecting scalable Spring Boot REST APIs, enterprise Laravel services, and robust relational database schemas at CSE-Tech."
       }
     ],
 
     aboutText:
-      "I am a Computer Science and Engineering undergraduate at Daffodil International University (CGPA: 3.93 / 4.00, 3× Dean's Honor List Award, 75% Merit Scholarship). Currently, I work full-time as a Junior Developer at CSE-Tech after completing a six-month backend development internship, engineering Spring Boot REST APIs for ministry-level web applications and Laravel backend services. Alongside my engineering work, I conduct research at the Health Informatics Research Lab (HIRL) across medical image analysis, parameter-efficient foundation models, and explainable AI—spanning my undergraduate thesis evaluating DINOv2 adaptation on dental radiographs (journal manuscript under review), accepted conference papers on hematological classification and ethnic language identification (ICERIE 2027), and pulmonary ultrasound audits (ICEEICT 2027). I am also the author of 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design', an illustrated textbook and lab companion distributed to students."
+      "I am a Computer Science and Engineering undergraduate at Daffodil International University (CGPA: 3.93 / 4.00, 3× Dean's Honor List Award, 75% Merit Scholarship). Currently, I work full-time as a Junior Developer at CSE-Tech following a six-month backend development internship, engineering production Spring Boot REST APIs for ministry-level web applications and enterprise Laravel backend services. Alongside my engineering work, I conduct research at the Health Informatics Research Lab (HIRL) focused on medical artificial intelligence, clinical decision support, and low-resource natural language processing. I also authored the academic textbook 'Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design', distributed to university students, and serve as President of the Daffodil Girls' Computer Programming Club directing competitive programming initiatives and mentorship."
   },
 
   experience: [
@@ -190,7 +190,7 @@ export const siteConfig = {
     },
     {
       title: "Industry Mentor and Judge, LandTech Hackathon",
-      period: "2025",
+      period: "2026",
       description:
         "Mentored teams as they refined their ideas and made technical decisions about their prototypes. Served as a judge, reviewing final presentations and evaluating the solutions teams developed."
     },
