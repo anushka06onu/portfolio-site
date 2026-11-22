@@ -37,16 +37,16 @@ export const siteConfig = {
   narrative: {
     threePillars: [
       {
-        title: "Health Informatics & Medical AI",
-        desc: "Investigating diagnostic imaging analysis, clinical decision support, and robust evaluation methodologies under clinical data constraints."
+        title: "Backend Engineering",
+        desc: "Full-time Junior Developer at CSE-Tech engineering production Spring Boot REST APIs and enterprise web applications."
       },
       {
-        title: "Trustworthy ML & Low-Resource NLP",
-        desc: "Developing explainable machine learning frameworks, model interpretability, and multiregional dialect corpora for underserved languages."
+        title: "Health Informatics Research",
+        desc: "Research Assistant at HIRL investigating medical image analysis, clinical decision support, and low-resource NLP."
       },
       {
-        title: "Production Backend Engineering",
-        desc: "Architecting scalable Spring Boot REST APIs, enterprise Laravel services, and robust relational database schemas at CSE-Tech."
+        title: "Academic & Community Leadership",
+        desc: "3.93 CGPA (3× Dean's Award, 75% Waiver), author of Compiler Architectonics, and President of Daffodil Girls' CPC."
       }
     ],
 
