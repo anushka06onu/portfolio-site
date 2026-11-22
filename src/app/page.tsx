@@ -13,31 +13,24 @@ import {
   Building2,
   Calendar,
   Activity,
-  ShieldCheck,
-  Server
+  Server,
+  GraduationCap
 } from "lucide-react";
 
 export default function HomePage() {
   const resilinet = featuredProjects.find((p) => p.slug === "resilinet")!;
   const computepulse = featuredProjects.find((p) => p.slug === "computepulse")!;
 
-  const pillars = [
-    {
-      icon: <Activity className="w-4 h-4 text-teal-500" />,
-      title: "Clinical AI & Foundation Models",
-      desc: "Adapting DINOv2-Small with LoRA & bottleneck adapters for dental radiography, PMAM pediatric alignment, and ultrasound audits."
-    },
-    {
-      icon: <ShieldCheck className="w-4 h-4 text-cyan-500" />,
-      title: "Explainable ML & Low-Resource NLP",
-      desc: "SHAP threshold analysis for compensated microcytosis, Integrated Gradients for ethnic languages, and multiregional Bangla corpora."
-    },
-    {
-      icon: <Server className="w-4 h-4 text-blue-500" />,
-      title: "Production Backend Engineering",
-      desc: "Enterprise Spring Boot REST APIs with server-side validation for ministry-level web apps, and Laravel learning platforms at CSE-Tech."
-    }
+  const pillarIcons = [
+    <Server key="1" className="w-4 h-4 text-teal-500" />,
+    <Activity key="2" className="w-4 h-4 text-cyan-500" />,
+    <GraduationCap key="3" className="w-4 h-4 text-blue-500" />
   ];
+
+  const pillars = siteConfig.narrative.threePillars.map((pillar, idx) => ({
+    ...pillar,
+    icon: pillarIcons[idx] ?? <Activity className="w-4 h-4 text-teal-500" />
+  }));
 
   return (
     <div className="relative overflow-hidden">
@@ -521,7 +514,7 @@ export default function HomePage() {
                 </span>
               </div>
               <p className="text-sm text-[var(--text-muted)] leading-6">
-                Adapting DINOv2 with LoRA for dental radiograph classification, conducting lesion grounding audits in ultrasound, and developing explainable ML pipelines.
+                Conducting health informatics research focused on medical image analysis, clinical decision support systems, and explainable AI for healthcare.
               </p>
             </div>
 
