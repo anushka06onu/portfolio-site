@@ -46,7 +46,7 @@ export const siteConfig = {
       },
       {
         title: "Academic & Community Leadership",
-        desc: "3.93 CGPA (3× Dean's Award, 75% Waiver), author of Compiler Architectonics, and President of Daffodil Girls' CPC."
+        desc: "3.93 CGPA (3× Dean's Award, 75% Waiver), author of Compiler Architectonics, and President of GCPC."
       }
     ],
 
