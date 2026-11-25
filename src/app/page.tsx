@@ -47,7 +47,7 @@ export default function HomePage() {
             <div className="flex-1 space-y-4">
               {/* Eyebrow */}
               <p className="text-xs font-semibold tracking-wider text-[var(--primary-accent)] uppercase font-mono">
-                {siteConfig.hero.eyebrow}
+                {siteConfig.fullName}
               </p>
 
               {/* Main Headline */}

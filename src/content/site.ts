@@ -22,11 +22,9 @@ export const siteConfig = {
   },
 
   hero: {
-    eyebrow: "HEALTH INFORMATICS · LOW-RESOURCE NLP",
-    headline:
-      "I study how machine learning works when labeled data is scarce.",
+    headline: "I build software and conduct research.",
     intro:
-      "I’m Fateha Hossain Anushka, a final-year CSE student at Daffodil International University and a research assistant at its Health Informatics Research Lab. My work spans dental imaging and low-resource Bangla NLP.",
+      "I’m a Junior Developer at CSE-Tech and a Research Assistant at the Health Informatics Research Lab at Daffodil International University.",
     buttons: {
       work: { label: "Explore My Work", href: "/projects" },
       research: { label: "View Research", href: "/research" },
