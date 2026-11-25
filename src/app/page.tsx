@@ -59,9 +59,11 @@ export default function HomePage() {
               </h1>
 
               {/* Introduction */}
-              <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-xl font-normal">
-                {siteConfig.hero.intro}
-              </p>
+              <div className="max-w-xl space-y-3 text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
+                {siteConfig.hero.intro.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
 
               {/* Action Buttons & Social Links */}
               <div className="flex flex-wrap items-center gap-3 pt-1 text-sm font-medium">

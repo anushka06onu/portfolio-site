@@ -22,9 +22,11 @@ export const siteConfig = {
   },
 
   hero: {
-    headline: "I build software and conduct research.",
-    intro:
-      "I’m a Junior Developer at CSE-Tech and a Research Assistant at the Health Informatics Research Lab at Daffodil International University.",
+    headline: "Software Engineering and Applied Research",
+    intro: [
+      "I am a final-year Computer Science and Engineering student at Daffodil International University. As a Junior Developer at CSE-Tech, I build backend services and APIs for production web applications.",
+      "As a Research Assistant at the university’s Health Informatics Research Lab, I contribute to machine learning studies, with a focus on reproducible experiments and understanding where models make errors. I also mentor undergraduate programmers through the DIU Girls’ Computer Programming Club."
+    ],
     buttons: {
       work: { label: "Explore My Work", href: "/projects" },
       research: { label: "View Research", href: "/research" },
