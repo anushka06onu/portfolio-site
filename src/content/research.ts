@@ -4,7 +4,7 @@ export const researchDirection = {
   heading: "Research",
   tagline: "Health Informatics, Medical Artificial Intelligence & Low-Resource NLP",
   overview:
-    "My research focuses on health informatics, trustworthy medical artificial intelligence, and low-resource natural language processing. At the Health Informatics Research Lab (HIRL), my investigations center on clinical decision support, diagnostic imaging interpretability, and computational linguistics for underserved regional languages.",
+    "I study how to adapt and evaluate machine-learning models when labeled data is scarce. At the Health Informatics Research Lab (HIRL), I work on medical imaging and interpretable clinical models. In Bangla NLP, I co-curated a dialect corpus and contributed to studies of translation and language identification.",
 
   corePillars: [
     {
@@ -76,19 +76,39 @@ export const authoredBook = {
   ]
 };
 
+export const upobhasha = {
+  title: "Upobhasha: A Multiregional Bengali Dialect Parallel Corpus",
+  shortTitle: "Upobhasha Dialect Corpus",
+  venueOrType: "Zenodo Dataset",
+  role: "Co-curator",
+  status: "Published",
+  year: "2026",
+  summary:
+    "Co-curated a corpus of 50,513 parallel records from 10 regional varieties of Bangla, with Standard Bangla, Banglish transliterations and English translations. Zenodo lists the citation and access details for the restricted files.",
+  topics: ["Bangla NLP", "Dialect Dataset", "Parallel Corpus"],
+  links: [
+    {
+      label: "View dataset record · DOI 10.5281/zenodo.22997452",
+      url: "https://doi.org/10.5281/zenodo.22997452"
+    }
+  ]
+} satisfies ResearchOutput;
+
 export const thesisDetails = {
   title: "Parameter-Efficient Adaptation of DINOv2-Small for Dental Radiograph Classification: A Comparative Study of Fine-Tuning Strategies, Data Efficiency, and Interpretability",
   alternateTitle: "Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis",
+  shortTitle: "Dental Radiograph Classification",
+  codeUrl: "https://github.com/sabbir-sharif/thesis-code",
   venueOrType: "Undergraduate Thesis Research · Journal Manuscript (Under Review)",
-  role: "Lead Undergraduate Researcher",
+  role: "Undergraduate Researcher & Co-author",
   status: "Under review" as const,
   year: "2026",
   description:
-    "Benchmarked LoRA and bottleneck adapters on dental radiographs under reduced-data conditions, matching fully fine-tuned ResNet-50 in balanced accuracy with just 2.63% of parameters updated and identifying off-tooth attention in misclassified cases with Grad-CAM. Part of undergraduate thesis research: Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis using DentIRO.",
+    "I contributed to benchmarking DINOv2-Small adaptation on four classes of DentIRO dental radiographs. In a patient-level comparison, bottleneck adapters achieved balanced accuracy comparable to fully fine-tuned ResNet-50 while updating just 2.63% of DINOv2-Small’s parameters. Grad-CAM helped identify misclassifications where the model highlighted areas away from the tooth.",
   objective:
-    "This study evaluates frozen and parameter-efficient Vision Foundation Models (DINOv2, BiomedCLIP, MedSAM) via linear probing and PEFT strategies (LoRA, BitFit, VPT, bottleneck adapters) against full fine-tuning on patient-level splits across 4-class dental radiograph datasets (DentIRO). It investigates label efficiency under severe data reduction (10–50% data) and validates clinical alignment with Grad-CAM saliency heatmaps.",
+    "The study compares DINOv2-Small adaptation methods with full fine-tuning and a ResNet-50 baseline. Training, validation and test patients are kept separate. Selected methods were also tested with 50% and 20% of the training images. Grad-CAM was used to audit where the models looked in misclassified images.",
   motivation:
-    "Full fine-tuning of Vision Foundation Models on dental radiographs is computationally expensive and constrained by scarce clinical data. This work demonstrates that updating only 2.63% of parameters achieves balanced accuracy comparable to fully fine-tuned ResNet-50 while preserving interpretable clinical focus."
+    "Updating a small share of model parameters can reduce the cost of adapting a vision model. The error audit also shows why balanced accuracy alone gives an incomplete picture of what the model uses to classify an image."
 };
 
 export const researchOutputs: ResearchOutput[] = [
@@ -96,13 +116,14 @@ export const researchOutputs: ResearchOutput[] = [
     title: "Parameter-Efficient Adaptation of DINOv2-Small for Dental Radiograph Classification: A Comparative Study of Fine-Tuning Strategies, Data Efficiency, and Interpretability",
     shortTitle: "PEFT Adaptation of DINOv2 for Dental Radiography",
     venueOrType: "Journal Manuscript (Under Review) · Undergraduate Thesis",
-    role: "Lead Undergraduate Researcher",
+    role: "Undergraduate Researcher & Co-author",
     status: "Under review",
-    statusNote: "Journal manuscript under peer review · Undergraduate thesis research on DentIRO (DINOv2, BiomedCLIP, MedSAM with LoRA, BitFit, VPT, and bottleneck adapters)",
+    statusNote: "Journal manuscript under peer review",
     year: "2026",
     summary:
-      "Benchmarked LoRA and bottleneck adapters on dental radiographs under reduced-data conditions, matching fully fine-tuned ResNet-50 in balanced accuracy with just 2.63% of parameters updated and identifying off-tooth attention in misclassified cases with Grad-CAM.",
-    topics: ["Vision Foundation Models", "DINOv2-Small", "DentIRO", "PEFT (LoRA)", "Bottleneck Adapters", "Grad-CAM", "Medical Imaging"]
+      thesisDetails.description,
+    topics: ["Vision Foundation Models", "DINOv2-Small", "DentIRO", "PEFT (LoRA)", "Bottleneck Adapters", "Grad-CAM", "Medical Imaging"],
+    links: [{ label: "See code and evaluation protocol", url: thesisDetails.codeUrl }]
   },
   {
     title: "PMAM: A Pediatric Morphology Alignment Module for Explainable, Uncertainty-Aware Multi-Disease Detection in Panoramic Radiographs",
@@ -188,24 +209,7 @@ export const researchOutputs: ResearchOutput[] = [
       "A controlled study evaluating whether regional metadata and romanized standard Bangla intermediate representations improve low-resource dialect-to-English translation accuracy.",
     topics: ["Bangla NLP", "Machine Translation", "Dialect Translation", "Regional Metadata", "ICEEICT 2027"]
   },
-  {
-    title: "Upobhasha: A Multiregional Bengali Dialect Parallel Corpus",
-    shortTitle: "Upobhasha Multiregional Dialect Corpus",
-    venueOrType: "Linguistic Parallel Corpus & Dataset",
-    role: "Lead Curator / Researcher",
-    status: "Published",
-    statusNote: "Curated resource for low-resource Bengali dialect research",
-    year: "2026",
-    summary:
-      "Curated 50,513 sentences across 10 regional varieties of Bangla, pairing each with its Standard Bangla equivalent, romanized transliteration, and English translation.",
-    topics: ["Bangla NLP", "Corpus Linguistics", "Dialect Dataset", "Parallel Corpus", "Low-Resource NLP"],
-    links: [
-      {
-        label: "Download Dataset (Zenodo)",
-        url: "https://zenodo.org/records/22997452?preview_file=Upobhasha.zip"
-      }
-    ]
-  },
+  upobhasha,
   {
     title: "Compiler Architectonics: Scientific Principles & Practical Techniques in Compiler Design",
     shortTitle: "Compiler Architectonics Companion Book",

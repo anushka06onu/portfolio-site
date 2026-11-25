@@ -32,7 +32,7 @@ export default function ProjectsPage() {
           Projects &amp; Systems
         </h1>
         <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl">
-          Core engineering implementations spanning software-defined networking, cluster monitoring, full-stack web platforms, and Linux infrastructure.
+          Selected work in medical imaging, software-defined networking, GPU-cluster analysis and full-stack engineering.
         </p>
       </header>
 
@@ -44,7 +44,7 @@ export default function ProjectsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project) => {
-            const screenshot = `/projects/${project.slug}/${
+            const preview = project.evidenceFigure?.src ?? `/projects/${project.slug}/${
               project.slug === "computepulse" || project.slug === "academic-analytics"
                 ? "dashboard.png?v=2"
                 : "overview.png?v=2"
@@ -76,11 +76,11 @@ export default function ProjectsPage() {
 
                   <div className="relative w-full h-44 rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface-subtle)]">
                     <Image
-                      src={screenshot}
-                      alt={project.title}
+                      src={preview}
+                      alt={project.evidenceFigure?.alt ?? `${project.title} interface`}
                       fill
                       unoptimized
-                      className="object-cover object-top hover:scale-105 transition-transform duration-300"
+                      className={project.evidenceFigure ? "object-contain p-2" : "object-cover object-top hover:scale-105 transition-transform duration-300"}
                       sizes="(max-width: 768px) 100vw, 500px"
                     />
                   </div>
@@ -117,7 +117,7 @@ export default function ProjectsPage() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)]"
                     >
-                      <span>Demo</span>
+                      <span>{project.links.demoLabel ?? "Demo"}</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   )}

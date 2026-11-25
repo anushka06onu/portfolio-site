@@ -6,7 +6,7 @@ export const siteConfig = {
   author: "Fateha Hossain Anushka",
   title: "Fateha Hossain Anushka — Software Engineer & Health Informatics Researcher",
   description:
-    "Academic and engineering portfolio of Fateha Hossain Anushka. Junior Developer at CSE-Tech, Research Assistant at HIRL, author of Compiler Architectonics, and DIU CSE graduate.",
+    "Academic and engineering portfolio of Fateha Hossain Anushka. Junior Developer at CSE-Tech, Research Assistant at HIRL, author of Compiler Architectonics, and final-year CSE undergraduate at Daffodil International University.",
   role: "Junior Developer & Health Informatics Researcher",
   availability: "Junior Developer at CSE-Tech · Research Assistant at HIRL · Bangladesh",
   location: "Dhaka, Bangladesh",
@@ -22,27 +22,27 @@ export const siteConfig = {
   },
 
   hero: {
-    eyebrow: "SOFTWARE ENGINEER & RESEARCHER",
+    eyebrow: "HEALTH INFORMATICS · LOW-RESOURCE NLP",
     headline:
-      "I build robust enterprise backend systems and trustworthy clinical AI models.",
+      "I study how machine learning works when labeled data is scarce.",
     intro:
-      "Junior Developer at CSE-Tech (following a completed 6-month backend development internship), Research Assistant at the Health Informatics Research Lab (HIRL), and author of Compiler Architectonics. Experienced in developing Spring Boot and Laravel REST APIs, parameter-efficient vision foundation models, and explainable machine learning.",
+      "I’m Fateha Hossain Anushka, a final-year CSE student at Daffodil International University and a research assistant at its Health Informatics Research Lab. My work spans dental imaging and low-resource Bangla NLP.",
     buttons: {
       work: { label: "Explore My Work", href: "/projects" },
-      research: { label: "Research Roadmap", href: "/research" },
-      cv: { label: "View CV", href: "/Fateha_Hossain_CV.pdf" }
+      research: { label: "View Research", href: "/research" },
+      cv: { label: "Download Academic CV" }
     }
   },
 
   narrative: {
     threePillars: [
       {
-        title: "Backend Engineering",
-        desc: "Full-time Junior Developer at CSE-Tech engineering production Spring Boot REST APIs and enterprise web applications."
+        title: "Health Informatics Research",
+        desc: "Research Assistant at HIRL working on medical imaging, model evaluation and explainability."
       },
       {
-        title: "Health Informatics Research",
-        desc: "Research Assistant at HIRL investigating medical image analysis, clinical decision support, and low-resource NLP."
+        title: "Backend Engineering",
+        desc: "Junior Developer at CSE-Tech building Spring Boot APIs and Laravel backend services."
       },
       {
         title: "Academic & Community Leadership",
@@ -131,10 +131,10 @@ export const siteConfig = {
       degree: "B.Sc. in Computer Science and Engineering",
       institution: "Daffodil International University",
       location: "Dhaka, Bangladesh",
-      period: "2023 – Current",
-      distinction: "Final Grade: 3.93 / 4.00 · 3× Dean's Honor List Award · 75% Merit-Based Scholarship",
+      period: "2023 – Present · In progress",
+      distinction: "Current CGPA: 3.93 / 4.00 · 3× Dean's Honor List Award · 75% Merit-Based Scholarship",
       notes: [
-        "Academic Standing: Final Grade 3.93 out of 4.00 (142.5 credits completed out of 154.5) with sustained placement on the Dean's Honor List (3× recipient) and a 75% Brilliant Academic Result merit tuition waiver.",
+        "Current CGPA of 3.93 out of 4.00 (142.5 credits completed out of 154.5) with sustained placement on the Dean's Honor List (3× recipient) and a 75% Brilliant Academic Result merit tuition waiver.",
         "Undergraduate Thesis: Parameter-Efficient Adaptation of DINOv2-Small for Dental Radiograph Classification: A Comparative Study of Fine-Tuning Strategies, Data Efficiency, and Interpretability (Journal manuscript under review).",
         "Core Coursework: Programming and Problem Solving, OOP (Java), Data Structures and Algorithms, Database Management Systems, Software Engineering, Computer Networks, Artificial Intelligence, Machine Learning, Natural Language Processing, Calculus and Linear Algebra, Discrete Mathematics, Statistics and Probability."
       ]

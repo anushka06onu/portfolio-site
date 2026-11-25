@@ -46,6 +46,11 @@ export interface Project {
   status: ProjectStatus;
   statusLabel: string;
   summary: string;
+  evidenceFigure?: {
+    src: string;
+    alt: string;
+    caption: string;
+  };
   whyItMatters: string;
   myContribution: string;
   evidence: string[];
@@ -53,6 +58,7 @@ export interface Project {
   links: {
     caseStudy: string;
     demo?: string;
+    demoLabel?: string;
     github?: string;
     methodology?: string;
   };

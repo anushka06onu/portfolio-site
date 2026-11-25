@@ -1,6 +1,79 @@
 import { Project, AdditionalProject } from "./types";
 
+export const retinaGuard: Project = {
+  slug: "retinaguard-qa",
+  title: "RetinaGuard-QA",
+  tagline: "Retinal image quality triage with uncertainty estimates",
+  category: "Medical AI · Computer Vision",
+  categoryTrack: "Medical AI · Computer Vision",
+  status: "prototype",
+  statusLabel: "Research prototype · DeepDRiD benchmark",
+  summary:
+    "A retinal image quality tool that detects acquisition defects, recommends a retake, and flags uncertain images for manual review.",
+  evidenceFigure: {
+    src: "/projects/retinaguard-qa/reliability-diagram.png",
+    alt: "Reliability diagram comparing retinal image quality scores before and after calibration",
+    caption: "Calibration of overall image quality scores on the DeepDRiD validation split."
+  },
+  whyItMatters:
+    "An unreadable fundus image can delay review. Quality triage helps decide when to retake an image or ask someone to inspect it.",
+  myContribution:
+    "Trained a multi-task MobileNetV3 model, ran patient-separated DeepDRiD benchmarks, and exported the model to ONNX for CPU serving through FastAPI.",
+  evidence: [
+    "Evaluation over three random seeds",
+    "Held-out DeepDRiD test set of 400 images from 100 patients",
+    "Public benchmark reports, split files and scripts"
+  ],
+  technologies: ["PyTorch", "MobileNetV3", "ONNX", "FastAPI"],
+  links: {
+    caseStudy: "/projects/retinaguard-qa",
+    github: "https://github.com/anushka06onu/RetinaGuard-QA",
+    methodology: "https://github.com/anushka06onu/RetinaGuard-QA#2-verified-empirical-results--benchmark-evidence"
+  },
+  featured: true,
+  order: 0,
+  caseStudy: {
+    problem: "Fundus photography can be affected by blur, visible artifacts and incomplete field coverage.",
+    context: "I built this prototype to assess image acquisition quality before clinical interpretation.",
+    role: "I trained the model, ran the baseline and ablation experiments, and packaged CPU inference with ONNX and FastAPI.",
+    architecture: {
+      overview: "A MobileNetV3 backbone serves four quality heads. An uncertainty threshold sends ambiguous cases for review.",
+      highlights: [
+        "The primary head distinguishes good images from poor or reject-quality images.",
+        "Three auxiliary heads score artifacts, clarity and field definition.",
+        "The system returns an image-quality triage action with a reason."
+      ]
+    },
+    decisions: [
+      {
+        decision: "Multi-task supervision",
+        rationale: "Acquisition attributes give users more specific feedback about why an image might need a retake.",
+        tradeoff: "The auxiliary heads need labeled quality attributes and achieved different levels of performance."
+      }
+    ],
+    methodology: "Evaluated on patient-isolated DeepDRiD partitions with three random seeds and compared with a single-task MobileNetV3 and classical baselines.",
+    evaluation: {
+      metrics: [
+        "Mean test macro-F1: 0.745 multi-task, 0.742 single-task",
+        "400 held-out images from 100 patients"
+      ],
+      summary: "The two MobileNetV3 variants had similar overall-quality performance in this experiment. The multi-task variant also estimated three acquisition attributes."
+    },
+    results: [
+      "Produced separate estimates for artifact severity, clarity and field definition.",
+      "Exported CPU inference with ONNX and published the evaluation artifacts and reproduction guide."
+    ],
+    limitations: [
+      "These results describe DeepDRiD image acquisition quality. Generalization to other clinics and cameras still needs evaluation.",
+      "The prototype is intended for image quality triage before diagnostic interpretation."
+    ],
+    learnings: ["Overall quality scores and attribute-level feedback answer different questions during a retake decision."],
+    statusNote: "Research prototype with a public benchmark and reproducibility artifacts."
+  }
+};
+
 export const featuredProjects: Project[] = [
+  retinaGuard,
   {
     slug: "resilinet",
     title: "ResiliNet",
@@ -34,7 +107,6 @@ export const featuredProjects: Project[] = [
     ],
     links: {
       caseStudy: "/projects/resilinet",
-      demo: "https://resili-net.vercel.app",
       github: "https://github.com/anushka06onu/ResiliNet"
     },
     featured: true,
@@ -114,13 +186,13 @@ export const featuredProjects: Project[] = [
   {
     slug: "computepulse",
     title: "ComputePulse",
-    tagline: "Predictive GPU-Cluster Intelligence & Failure-Risk Forecasting",
+    tagline: "Explainable Workload Risk on Historical GPU Traces",
     category: "Predictive Infrastructure · Machine Learning",
     categoryTrack: "Predictive Infrastructure · Machine Learning",
     status: "prototype",
     statusLabel: "Research prototype · Alibaba historical GPU trace",
     summary:
-      "A predictive GPU-cluster intelligence prototype that combines telemetry monitoring, LightGBM risk scoring, explainable alert presentation, and an operational dashboard.",
+      "Replays historical Alibaba GPU-cluster traces and explains which workload observations are associated with recorded failures or interruptions.",
     whyItMatters:
       "GPU workload failures and resource contention can interrupt experiments. ComputePulse explores explainable risk estimation and offline placement recommendations using historical Alibaba PAI trace data.",
     myContribution:
@@ -144,16 +216,18 @@ export const featuredProjects: Project[] = [
     ],
     links: {
       caseStudy: "/projects/computepulse",
-      demo: "https://computepulse.vercel.app",
+      demo: "https://computepulse.vercel.app/app/demo",
+      demoLabel: "Historical trace demo",
+      methodology: "https://github.com/anushka06onu/computepulse#evaluation-snapshot",
       github: "https://github.com/anushka06onu/computepulse"
     },
     featured: true,
     order: 2,
     caseStudy: {
       problem:
-        "GPU clusters operate under intense thermal and memory workloads. Identifying early warning signals of node stress before job crashes occur helps infrastructure teams prioritize maintenance.",
+        "GPU workload failures and resource contention can interrupt experiments. Historical workload and resource data can help investigate conditions associated with failed or interrupted jobs.",
       context:
-        "Created during a competitive hackathon and subsequently organized into a clean prototype demonstrating how predictive models and explainability can aid hardware operations.",
+        "Started as a hackathon project and developed into a prototype that replays historical workload observations and explains risk scores.",
       role:
         "Team Lead, Aletheia. Coordinated project scope and team delivery.",
       architecture: {
@@ -199,7 +273,7 @@ export const featuredProjects: Project[] = [
         "Packaged data preparation, model artifacts, evaluation reports, and backend services."
       ],
       limitations: [
-        "Current evaluation uses a random row-level split; chronological and workload/machine-grouped validation remain pending.",
+        "The evaluation uses a random row-level split. Forward-in-time forecasting and generalization to unseen machines still need chronological and grouped validation.",
         "Workload mitigation recommendations are rule-based advisory suggestions rather than executed orchestrations."
       ],
       learnings: [
@@ -407,24 +481,6 @@ export const featuredProjects: Project[] = [
 ];
 
 export const additionalProjects: AdditionalProject[] = [
-  {
-    title: "RetinaGuard-QA: Retinal Image Quality Assessment",
-    category: "Medical AI & Computer Vision",
-    status: "Quality triage & uncertainty pipeline",
-    role: "Lead ML Developer",
-    description:
-      "Developed a retinal photograph quality assessment tool that identifies blur, artifacts, and poor field definition, recommends retakes, and flags uncertain images for manual review.",
-    contribution:
-      "Trained a multi-task MobileNetV3 model, benchmarked it on patient-separated DeepDRiD, and served ONNX inference on CPU through FastAPI.",
-    highlights: [
-      "Trained multi-task MobileNetV3 on patient-separated DeepDRiD dataset",
-      "Identifies blur, artifacts, illumination defects, and poor field definition",
-      "Recommends patient retakes and flags uncertain images for manual clinical review",
-      "Low-latency CPU inference pipeline served via ONNX and FastAPI"
-    ],
-    technologies: ["Python", "FastAPI", "MobileNetV3", "ONNX", "PyTorch", "DeepDRiD"],
-    github: "https://github.com/anushka06onu/RetinaGuard-QA"
-  },
   {
     title: "DIU GCPC Official Website",
     category: "Production Web Engineering",

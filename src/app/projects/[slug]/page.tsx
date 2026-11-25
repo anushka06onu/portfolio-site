@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: project.summary,
       images: [
         {
-          url: `/projects/${project.slug}/${
+          url: project.evidenceFigure?.src ?? `/projects/${project.slug}/${
             project.slug === "computepulse" || project.slug === "academic-analytics"
               ? "dashboard.png"
               : "overview.png"
@@ -77,7 +77,7 @@ export default async function CaseStudyPage({ params }: Props) {
     project.slug === "resilinet"
       ? "Architecture Overview: ResiliNet SDN emulation topology, rolling telemetry ingestion, LightGBM risk classifier, and TreeSHAP attribution pipeline."
       : project.slug === "computepulse"
-      ? "Architecture Overview: ComputePulse multi-node telemetry stream, LightGBM fault risk scoring, and SHAP root-cause feature attribution."
+      ? "Architecture Overview: ComputePulse historical workload records, LightGBM workload risk scoring, and SHAP feature attribution."
       : project.slug === "healthcare-analytics"
       ? "Architecture Overview: Healthcare Analytics data processing, in-fold cross-validation pipeline, and SHAP biomarker attribution breakdown."
       : "Architecture Overview: DIU Academic Analytics deterministic credit-weighted projection engine and multi-semester scenario planner.";
@@ -127,7 +127,7 @@ export default async function CaseStudyPage({ params }: Props) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-bold shadow-md shadow-teal-500/15 transition-all"
             >
-              <span>Live Application</span>
+              <span>{project.links.demoLabel ?? "Open application"}</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           )}
@@ -151,35 +151,39 @@ export default async function CaseStudyPage({ params }: Props) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--secondary-accent)] hover:border-[var(--secondary-accent)] hover:bg-[var(--surface-subtle)] transition-all"
             >
-              <span>Methodology Document</span>
+              <span>Evaluation evidence</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           )}
         </div>
       </header>
 
-      {/* Real Application Screenshot */}
-      <section className="space-y-2">
+      <section id="project-visual" className="space-y-2 scroll-mt-24">
         <div className="flex items-center gap-2">
           <Monitor className="w-4 h-4 text-[var(--primary-accent)]" />
           <h2 className="mono-tag text-xs text-[var(--text-main)] font-semibold uppercase">
-            Application Interface
+            {project.evidenceFigure ? "Evaluation figure" : project.slug === "resilinet" ? "Dashboard walkthrough" : "Application interface"}
           </h2>
         </div>
         <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface)] shadow-lg">
           <Image
-            src={screenshotPath}
-            alt={`${project.title} Application Screenshot`}
+            src={project.evidenceFigure?.src ?? screenshotPath}
+            alt={project.evidenceFigure?.alt ?? `${project.title} application screenshot`}
             fill
             priority
             unoptimized
-            className="object-cover object-top"
+            className={project.evidenceFigure ? "object-contain p-3" : "object-cover object-top"}
             sizes="(max-width: 1024px) 100vw, 896px"
           />
         </div>
         <p className="text-xs font-mono text-[var(--text-muted)] text-center">
-          Genuine interface screenshot captured from the deployed {project.title} codebase.
+          {project.evidenceFigure?.caption ?? `Screenshot of the ${project.title} interface.`}
         </p>
+        {project.slug === "resilinet" && (
+          <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+            The Network Overview shows topology and link telemetry. Predictive Intelligence surfaces a congestion-risk estimate and its feature attributions. Routing Decisions records the selected policy and any fallback. The screenshot and architecture below show the workflow without requiring a live Mininet backend.
+          </p>
+        )}
       </section>
 
       {/* Structured Sections */}
@@ -232,20 +236,23 @@ export default async function CaseStudyPage({ params }: Props) {
             {study.architecture.overview}
           </p>
 
-          {/* Architecture Diagram */}
-          <div className="my-4 relative w-full h-64 sm:h-80 rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface-subtle)] p-2 shadow-inner">
-            <Image
-              src={diagramPath}
-              alt={`${project.title} Architectural Diagram`}
-              fill
-              unoptimized
-              className="object-contain p-2"
-              sizes="(max-width: 1024px) 100vw, 896px"
-            />
-          </div>
-          <p className="text-xs font-mono text-[var(--text-muted)] text-center">
-            {diagramCaption}
-          </p>
+          {!project.evidenceFigure && (
+            <figure className="my-4 space-y-2">
+              <div className="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface-subtle)] shadow-inner">
+                <Image
+                  src={diagramPath}
+                  alt={`${project.title} architectural diagram`}
+                  fill
+                  unoptimized
+                  className="object-contain p-2"
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                />
+              </div>
+              <figcaption className="text-xs font-mono text-[var(--text-muted)] text-center">
+                {diagramCaption}
+              </figcaption>
+            </figure>
+          )}
 
           <ul className="space-y-1.5 pt-2">
             {study.architecture.highlights.map((highlight, idx) => (

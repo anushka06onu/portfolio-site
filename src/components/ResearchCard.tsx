@@ -43,9 +43,9 @@ export default function ResearchCard({
         </div>
 
         {/* Title */}
-        <h4 className="text-lg font-bold text-[var(--text-main)] leading-7">
+        <h3 className="text-lg font-bold text-[var(--text-main)] leading-7">
           {displayTitle}
-        </h4>
+        </h3>
 
         {/* Summary */}
         <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">

@@ -69,7 +69,7 @@ test("ComputePulse, Healthcare, and GCPC entries use verified claims and genuine
   assert.match(projectsContent, /Lead Developer & Maintainer/);
 });
 
-test("Research outputs match exact PMAM journal study, thesis details, and 4 under-review conference papers", () => {
+test("Research outputs match the thesis, accepted papers, current submissions, and restricted dataset record", () => {
   const researchContent = fs.readFileSync(path.resolve("src/content/research.ts"), "utf-8");
   
   // PMAM Journal Study
@@ -79,16 +79,21 @@ test("Research outputs match exact PMAM journal study, thesis details, and 4 und
   // Thesis details
   assert.match(researchContent, /Parameter-Efficient Adaptation of Vision Foundation Models for Multi-Class Dental Radiograph Diagnosis/);
   assert.match(researchContent, /DentIRO/);
-  assert.match(researchContent, /DINOv2, BiomedCLIP, MedSAM/);
-  assert.match(researchContent, /LoRA, BitFit, VPT/);
+  assert.match(researchContent, /DINOv2-Small adaptation methods/);
+  assert.match(researchContent, /Training, validation and test patients are kept separate/);
+  assert.match(researchContent, /Bottleneck Adapters/);
 
   // Health Conference Paper
   assert.match(researchContent, /Detecting Compensated Microcytosis: A Benchmarked and Explainable Machine Learning Approach to Tri-Class Hematological Classification/);
 
-  // 3 NLP Conference Papers
+  // NLP conference papers and prior draft titles
   assert.match(researchContent, /Bridging the Dialect Gap: Enhancing Bangla Dialect-to-English Machine Translation with Regional Metadata and Romanized Standard Bangla/);
   assert.match(researchContent, /Explainable Neural Machine Translation for Bangla Regional Dialect Normalization: A Multi-Model Comparative Study with Attention-Based Interpretability/);
   assert.match(researchContent, /Explainable and Parameter-Efficient Identification of Ethnic Languages in Shared Bengali Script under Low-Resource Conditions/);
+
+  assert.match(researchContent, /https:\/\/doi\.org\/10\.5281\/zenodo\.22997452/);
+  assert.match(researchContent, /restricted files/);
+  assert.doesNotMatch(researchContent, /Download Dataset/);
 });
 
 test("Site config contains verified email, CSE-Tech company, CGPA 3.93, April 2026 RA, 3x Dean's Award, and 75% waiver", () => {

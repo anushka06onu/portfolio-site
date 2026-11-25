@@ -58,7 +58,7 @@ export default function ResearchPage() {
       </header>
 
       {/* Undergraduate Thesis Deep Dive */}
-      <section className="space-y-4">
+      <section id="thesis" className="space-y-4 scroll-mt-24">
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
           <div className="flex items-center gap-2">
             <Microscope className="w-5 h-5 text-[var(--primary-accent)]" />
@@ -96,6 +96,14 @@ export default function ResearchPage() {
             <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
               {thesisDetails.description}
             </p>
+            <a
+              href={thesisDetails.codeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--primary-accent)] hover:underline"
+            >
+              See code and evaluation protocol <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
 
           {/* Objective */}
@@ -221,19 +229,16 @@ export default function ResearchPage() {
       </section>
 
       {/* Research Outputs & Conference Manuscripts */}
-      <section className="space-y-6">
+      <section id="outputs" className="space-y-6 scroll-mt-24">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)]">
             Publications, Manuscripts &amp; Research Datasets
           </h2>
-          <span className="text-xs font-mono text-[var(--text-muted)]">
-            2 Accepted (ICERIE 2027) · 4 Under Review · 1 Published Corpus · 1 Book
-          </span>
         </div>
 
         <div className="space-y-4">
-          {researchOutputs.map((output, idx) => (
-            <ResearchCard key={idx} output={output} />
+          {researchOutputs.map((output) => (
+            <ResearchCard key={output.title} output={output} />
           ))}
         </div>
       </section>
@@ -245,10 +250,10 @@ export default function ResearchPage() {
           <span>Methodological Continuity: From Low-Resource NLP to Clinical AI</span>
         </h3>
         <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-          My experimental methodology originated in low-resource Natural Language Processing, where lack of standardized benchmarks required building custom corpora (such as the 50,513-sentence Upobhasha parallel dataset), handling dialect variations, and establishing rigorous multi-model evaluation frameworks.
+          I began by working with underrepresented Bangla dialects and co-curating Upobhasha. In medical imaging, I use comparable methods to study how models behave when training labels are limited and where their errors come from.
         </p>
         <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-          In my research at the Health Informatics Research Lab and in my undergraduate thesis, I translate these principles to clinical AI—where data scarcity demands parameter-efficient adaptation (LoRA, BitFit, bottleneck adapters) and diagnostic stakes require rigorous feature attribution (SHAP, Grad-CAM, Integrated Gradients).
+          My thesis compares parameter-efficient adaptation methods, while my work at HIRL uses feature attribution and saliency analysis to examine medical-model errors.
         </p>
         <div className="pt-3 border-t border-[var(--border-subtle)] flex flex-wrap gap-2 items-center">
           <span className="mono-tag text-xs font-semibold text-[var(--text-muted)] mr-1">
