@@ -49,12 +49,14 @@ export default function HomePage() {
                 id="hero-heading"
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)] leading-[1.15]"
               >
-                Hi, I’m {siteConfig.fullName}.
+                Hi, I’m{" "}
+                <span className="text-gradient-cyan hero-name-gradient">{siteConfig.fullName}</span>
+                .
               </h1>
 
               <div className="max-w-xl space-y-3 text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
-                <p className="font-semibold text-violet-700 dark:text-violet-300">
-                  {siteConfig.hero.headline}
+                <p className="font-semibold">
+                  <span className="text-gradient-cyan">{siteConfig.hero.headline}</span>
                 </p>
                 {siteConfig.hero.intro.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>

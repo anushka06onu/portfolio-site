@@ -202,6 +202,18 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   -webkit-text-fill-color: transparent;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .hero-name-gradient {
+    background-size: 190% 100%;
+    animation: hero-name-gradient 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-name-gradient {
+    from { background-position: 0% 50%; }
+    to { background-position: 100% 50%; }
+  }
+}
+
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
