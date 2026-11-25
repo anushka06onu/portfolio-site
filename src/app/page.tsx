@@ -50,8 +50,7 @@ export default function HomePage() {
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)] leading-[1.15]"
               >
                 Hi, I’m{" "}
-                <span className="text-gradient-cyan hero-name-gradient">{siteConfig.fullName}</span>
-                .
+                <span className="text-gradient-cyan hero-name-gradient">{siteConfig.fullName}.</span>
               </h1>
 
               <div className="max-w-xl space-y-3 text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
