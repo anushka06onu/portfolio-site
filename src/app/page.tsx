@@ -53,7 +53,9 @@ export default function HomePage() {
               </h1>
 
               <div className="max-w-xl space-y-3 text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
-                <p className="font-semibold text-[var(--text-main)]">{siteConfig.hero.headline}</p>
+                <p className="font-semibold">
+                  <span className="text-gradient-cyan">{siteConfig.hero.headline}</span>
+                </p>
                 {siteConfig.hero.intro.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
