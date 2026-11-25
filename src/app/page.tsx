@@ -45,21 +45,15 @@ export default function HomePage() {
         <section className="space-y-6 pt-2 sm:pt-4" aria-labelledby="hero-heading">
           <div className="flex flex-col-reverse md:flex-row items-start justify-between gap-8 md:gap-10">
             <div className="flex-1 space-y-4">
-              {/* Eyebrow */}
-              <p className="text-xs font-semibold tracking-wider text-[var(--primary-accent)] uppercase font-mono">
-                {siteConfig.fullName}
-              </p>
-
-              {/* Main Headline */}
               <h1
                 id="hero-heading"
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)] leading-[1.15]"
               >
-                {siteConfig.hero.headline}
+                Hi, I’m {siteConfig.fullName}.
               </h1>
 
-              {/* Introduction */}
               <div className="max-w-xl space-y-3 text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
+                <p className="font-semibold text-[var(--text-main)]">{siteConfig.hero.headline}</p>
                 {siteConfig.hero.intro.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
