@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "../content/site";
-import { featuredProjects } from "../content/projects";
+import { featuredProjects, retinaGuard } from "../content/projects";
+import { authoredBook, thesisDetails, upobhasha } from "../content/research";
+import ProjectCard from "../components/ProjectCard";
 import CoreToolkit from "../components/CoreToolkit";
 import ContactSection from "../components/ContactSection";
 import { GithubIcon, LinkedinIcon } from "../components/Icons";
 import {
-  ArrowDown,
   ArrowRight,
   FileDown,
   ExternalLink,
@@ -17,13 +18,15 @@ import {
   GraduationCap
 } from "lucide-react";
 
+const selectedEngineering = featuredProjects.filter(
+  ({ slug }) => slug === "resilinet" || slug === "computepulse"
+);
+
 export default function HomePage() {
-  const resilinet = featuredProjects.find((p) => p.slug === "resilinet")!;
-  const computepulse = featuredProjects.find((p) => p.slug === "computepulse")!;
 
   const pillarIcons = [
-    <Server key="1" className="w-4 h-4 text-teal-500" />,
-    <Activity key="2" className="w-4 h-4 text-cyan-500" />,
+    <Activity key="1" className="w-4 h-4 text-teal-500" />,
+    <Server key="2" className="w-4 h-4 text-cyan-500" />,
     <GraduationCap key="3" className="w-4 h-4 text-blue-500" />
   ];
 
@@ -44,7 +47,7 @@ export default function HomePage() {
             <div className="flex-1 space-y-4">
               {/* Eyebrow */}
               <p className="text-xs font-semibold tracking-wider text-[var(--primary-accent)] uppercase font-mono">
-                HEALTH INFORMATICS · INTELLIGENT SYSTEMS · BACKEND ENGINEERING
+                {siteConfig.hero.eyebrow}
               </p>
 
               {/* Main Headline */}
@@ -52,33 +55,31 @@ export default function HomePage() {
                 id="hero-heading"
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-main)] leading-[1.15]"
               >
-                I build <span className="text-gradient-cyan">reliable intelligent systems</span> for healthcare and complex infrastructure.
+                {siteConfig.hero.headline}
               </h1>
 
               {/* Introduction */}
               <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-xl font-normal">
-                I’m Fateha Hossain, a final-year CSE student and Research Assistant working in health informatics, explainable machine learning and backend engineering.
+                {siteConfig.hero.intro}
               </p>
 
               {/* Action Buttons & Social Links */}
               <div className="flex flex-wrap items-center gap-3 pt-1 text-sm font-medium">
                 <Link
-                  href="/projects"
+                  href={siteConfig.hero.buttons.research.href}
                   className="btn-gradient inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-950 font-semibold shadow-md shadow-teal-500/20"
                 >
-                  <span>Explore My Work</span>
+                  <span>{siteConfig.hero.buttons.research.label}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <a
                   href={siteConfig.links.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="btn-outline inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
-                  aria-label="View Curriculum Vitae"
+                  download
                 >
                   <FileDown className="w-4 h-4 text-[var(--primary-accent)]" />
-                  <span>View CV</span>
+                  <span>{siteConfig.hero.buttons.cv.label}</span>
                 </a>
 
                 <div className="flex items-center gap-2 pl-1">
@@ -124,18 +125,18 @@ export default function HomePage() {
 
           {/* Three Specialization Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-[var(--border-subtle)]">
-            {pillars.map((pillar, idx) => (
+            {pillars.map((pillar) => (
               <div
-                key={idx}
+                key={pillar.title}
                 className="editorial-card p-4 space-y-1.5"
               >
                 <div className="flex items-center gap-2">
                   <div className="p-1.5 rounded-md bg-[var(--surface-subtle)] border border-[var(--border-subtle)]">
                     {pillar.icon}
                   </div>
-                  <h3 className="text-sm font-bold text-[var(--text-main)]">
+                  <h2 className="text-sm font-bold text-[var(--text-main)]">
                     {pillar.title}
-                  </h3>
+                  </h2>
                 </div>
                 <p className="text-xs text-[var(--text-muted)] leading-5">
                   {pillar.desc}
@@ -145,330 +146,103 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. SELECTED WORK */}
-        <section id="work" className="space-y-6 scroll-mt-20" aria-labelledby="work-heading">
-          <div className="border-b border-[var(--border-color)] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-            <div>
-              <span className="text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider font-mono">
-                01 / Selected Work
-              </span>
-              <h2
-                id="work-heading"
-                className="mt-0.5 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
-              >
-                Selected Work
-              </h2>
-            </div>
-            <Link
-              href="/projects"
-              className="text-xs font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1 font-mono"
-            >
-              <span>View all projects ({featuredProjects.length + 3})</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+        <section id="research" className="space-y-5 scroll-mt-20" aria-labelledby="research-heading">
+          <div className="border-b border-[var(--border-color)] pb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="research-heading" className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
+              Selected Research
+            </h2>
+            <Link href="/research" className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--primary-accent)] hover:underline">
+              View all research <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* 1. ResiliNet */}
-            <article className="editorial-card editorial-card-accent p-5 sm:p-6 flex flex-col justify-between gap-5">
-              <div className="space-y-3.5">
-                <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
-                  <span className="text-xs font-semibold text-[var(--primary-accent)] tracking-wide font-mono">
-                    NETWORK INTELLIGENCE
-                  </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)] shrink-0">
-                    Research prototype
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-[var(--text-main)]">
-                    <Link href="/projects/resilinet" className="hover:text-[var(--primary-accent)] transition-colors">
-                      ResiliNet
-                    </Link>
-                  </h3>
-                </div>
-
-                <div className="relative w-full h-44 rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface-subtle)] shadow-inner">
-                  <Image
-                    src="/projects/resilinet/overview.png?v=3"
-                    alt="ResiliNet Interface Screenshot"
-                    fill
-                    unoptimized
-                    className="object-cover object-top hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 450px"
-                  />
-                </div>
-
-                <p className="text-sm leading-6 text-[var(--text-muted)]">
-                  An explainable SDN research prototype combining congestion-risk forecasting, policy-aware routing and reproducible Mininet experiments.
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-[var(--border-color)] space-y-3">
-                <div className="flex flex-wrap gap-1.5 font-mono text-xs text-[var(--text-muted)]">
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Python</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">LightGBM</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Mininet</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">FastAPI</span>
-                </div>
-
-                <div className="flex items-center gap-2 pt-0.5 text-xs font-medium">
-                  <Link
-                    href="/projects/resilinet"
-                    className="btn-gradient inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-slate-950 font-semibold shadow-sm"
-                  >
-                    <span>View Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                  {resilinet.links.demo && (
-                    <a
-                      href={resilinet.links.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-outline inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
-                    >
-                      <span>Live Demo</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                  {resilinet.links.github && (
-                    <a
-                      href={resilinet.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-outline inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5" />
-                      <span>GitHub</span>
-                    </a>
-                  )}
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <article className="editorial-card editorial-card-accent p-5 flex flex-col gap-3">
+              <p className="text-xs font-medium text-[var(--primary-accent)]">Undergraduate thesis · Journal manuscript under review</p>
+              <h3 className="text-lg font-bold text-[var(--text-main)]">{thesisDetails.shortTitle}</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-6">
+                I helped benchmark DINOv2-Small on patient-separated DentIRO radiographs. Bottleneck adapters updated 2.63% of its parameters and achieved balanced accuracy comparable to fully fine-tuned ResNet-50.
+              </p>
+              <Link href="/research#thesis" className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-[var(--primary-accent)] hover:underline">
+                See thesis methods <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </article>
 
-            {/* 2. ComputePulse */}
-            <article className="editorial-card editorial-card-accent p-5 sm:p-6 flex flex-col justify-between gap-5">
-              <div className="space-y-3.5">
-                <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
-                  <span className="text-xs font-semibold text-[var(--secondary-accent)] tracking-wide font-mono">
-                    PREDICTIVE INFRASTRUCTURE
-                  </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)] shrink-0">
-                    Historical trace prototype
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-[var(--text-main)]">
-                    <Link href="/projects/computepulse" className="hover:text-[var(--primary-accent)] transition-colors">
-                      ComputePulse
-                    </Link>
-                  </h3>
-                </div>
-
-                <div className="relative w-full h-44 rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--surface-subtle)] shadow-inner">
-                  <Image
-                    src="/projects/computepulse/dashboard.png?v=3"
-                    alt="ComputePulse Dashboard Screenshot"
-                    fill
-                    unoptimized
-                    className="object-cover object-top hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 450px"
-                  />
-                </div>
-
-                <p className="text-sm leading-6 text-[var(--text-muted)]">
-                  A GPU-cluster research prototype using historical Alibaba trace data, explainable workload-risk estimates and advisory placement recommendations.
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-[var(--border-color)] space-y-3">
-                <div className="flex flex-wrap gap-1.5 font-mono text-xs text-[var(--text-muted)]">
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">FastAPI</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">LightGBM</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">React</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">SHAP</span>
-                </div>
-
-                <div className="flex items-center gap-2 pt-0.5 text-xs font-medium">
-                  <Link
-                    href="/projects/computepulse"
-                    className="btn-gradient inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-slate-950 font-semibold shadow-sm"
-                  >
-                    <span>View Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                  {computepulse.links.demo && (
-                    <a
-                      href={computepulse.links.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-outline inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
-                    >
-                      <span>Live Demo</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                  {computepulse.links.github && (
-                    <a
-                      href={computepulse.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-outline inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5" />
-                      <span>GitHub</span>
-                    </a>
-                  )}
-                </div>
-              </div>
+            <article className="editorial-card p-5 flex flex-col gap-3">
+              <p className="text-xs font-medium text-[var(--primary-accent)]">Published dataset record · Co-curator</p>
+              <h3 className="text-lg font-bold text-[var(--text-main)]">{upobhasha.shortTitle}</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-6">{upobhasha.summary}</p>
+              <a
+                href={upobhasha.links[0].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-[var(--primary-accent)] hover:underline"
+              >
+                View dataset record <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </article>
 
-            {/* 3. Healthcare Vision Thesis (Full Width) */}
-            <article className="md:col-span-2 editorial-card p-5 sm:p-6 flex flex-col justify-between gap-4">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
-                  <span className="text-xs font-semibold text-[var(--primary-accent)] tracking-wide font-mono">
-                    MEDICAL IMAGE ANALYSIS
-                  </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)] shrink-0">
-                    Undergraduate thesis
-                  </span>
-                </div>
+            <article className="editorial-card p-5 flex flex-col gap-3">
+              <p className="text-xs font-medium text-[var(--primary-accent)]">Medical imaging project</p>
+              <h3 className="text-lg font-bold text-[var(--text-main)]">{retinaGuard.title}</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-6">
+                I trained a model to check retinal image quality and flag uncertain images for review. The DeepDRiD evaluation used a held-out test set of 400 images from 100 patients.
+              </p>
+              <Link href={retinaGuard.links.caseStudy} className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-[var(--primary-accent)] hover:underline">
+                Read RetinaGuard case study <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </article>
+          </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                  <h3 className="text-lg sm:text-xl font-bold text-[var(--text-main)]">
-                    <Link href="/research" className="hover:text-[var(--primary-accent)] transition-colors">
-                      Dental Radiograph Classification &amp; Interpretability
-                    </Link>
-                  </h3>
-                </div>
+          <p className="text-sm text-[var(--text-muted)]">
+            My ICERIE 2027 accepted papers cover compensated microcytosis and ethnic language identification.{" "}
+            <Link href="/research#outputs" className="font-semibold text-[var(--primary-accent)] hover:underline">See research outputs</Link>
+          </p>
+        </section>
 
-                <p className="text-sm leading-6 text-[var(--text-muted)]">
-                  Ongoing research evaluating parameter-efficient adaptation of vision foundation models (DINOv2, BiomedCLIP, MedSAM) for medical-image classification across DentIRO radiograph datasets.
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-[var(--border-color)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex flex-wrap gap-1.5 font-mono text-xs text-[var(--text-muted)]">
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">PyTorch</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">DINOv2</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">PEFT (LoRA/BitFit)</span>
-                  <span className="px-2.5 py-1 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">Grad-CAM</span>
-                </div>
-
-                <Link
-                  href="/research"
-                  className="btn-gradient inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-slate-950 font-semibold text-xs shadow-sm self-start sm:self-auto"
-                >
-                  <span>View Research Details</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
+        <section id="leadership" className="space-y-5 scroll-mt-20" aria-labelledby="leadership-heading">
+          <h2 id="leadership-heading" className="border-b border-[var(--border-color)] pb-3 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
+            Leadership &amp; Teaching
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <article className="editorial-card p-5 space-y-2">
+              <h3 className="text-base font-bold text-[var(--text-main)]">Programming Club President</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-6">
+                Led backend workshops and mentored junior members at the DIU Girls’ Computer Programming Club.
+              </p>
+              <a href="https://gcpc.daffodilvarsity.edu.bd/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--primary-accent)] hover:underline">
+                See the club website <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </article>
+            <article className="editorial-card p-5 space-y-2">
+              <h3 className="text-base font-bold text-[var(--text-main)]">Java Lab Prefect</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-6">
+                Guided 100+ undergraduate students through Java and object-oriented programming lab exercises over two semesters.
+              </p>
+            </article>
+            <article className="editorial-card p-5 space-y-2">
+              <h3 className="text-base font-bold text-[var(--text-main)]">Compiler Architectonics</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-6">
+                Wrote an illustrated compiler design companion and lab manual for university students.
+              </p>
+              <a href={authoredBook.links[0].url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--primary-accent)] hover:underline">
+                Read the book <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </article>
           </div>
         </section>
 
-        {/* 3. RESEARCH SNAPSHOT (SPLIT PANEL) */}
-        <section id="research" className="space-y-6 scroll-mt-20" aria-labelledby="research-heading">
-          <div className="border-b border-[var(--border-color)] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-            <div>
-              <span className="text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider font-mono">
-                02 / Research Snapshot
-              </span>
-              <h2
-                id="research-heading"
-                className="mt-0.5 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
-              >
-                Research Direction
-              </h2>
-            </div>
-            <Link
-              href="/research"
-              className="text-xs font-semibold text-[var(--primary-accent)] hover:underline inline-flex items-center gap-1 font-mono"
-            >
-              <span>View all research →</span>
+        <section id="work" className="space-y-5 scroll-mt-20" aria-labelledby="work-heading">
+          <div className="border-b border-[var(--border-color)] pb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="work-heading" className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
+              Selected Engineering Work
+            </h2>
+            <Link href={siteConfig.hero.buttons.work.href} className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--primary-accent)] hover:underline">
+              View all projects <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
-            {/* Left Narrative */}
-            <div className="lg:col-span-2 editorial-card p-5 sm:p-6 space-y-3 flex flex-col justify-center">
-              <div className="flex items-center gap-2 text-[var(--primary-accent)] font-mono text-xs font-semibold uppercase">
-                <Activity className="w-4 h-4 shrink-0" />
-                <span>Medical AI &amp; Health Informatics</span>
-              </div>
-              <h3 className="text-lg font-bold text-[var(--text-main)]">
-                Trustworthy Medical AI
-              </h3>
-              <p className="text-sm leading-6 text-[var(--text-muted)]">
-                My research focuses on trustworthy medical artificial intelligence, clinical decision support systems, and low-resource computational linguistics.
-              </p>
-            </div>
-
-            {/* Right 4 Compact Research Entries (Protected Mobile Layout) */}
-            <div className="lg:col-span-3 space-y-3">
-              {/* 1. Thesis */}
-              <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-                  <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Dental Radiograph Classification (Undergraduate Thesis)
-                  </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--secondary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
-                    Journal Under Review
-                  </span>
-                </div>
-                <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Adapting DINOv2-Small with LoRA and bottleneck adapters on dental radiographs, matching fully fine-tuned ResNet-50 with just 2.63% parameter updates and Grad-CAM off-tooth error auditing.
-                </p>
-              </div>
-
-              {/* 2. Compensated Microcytosis (ICERIE 2027) */}
-              <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-                  <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Detecting Compensated Microcytosis (ICERIE 2027)
-                  </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 self-start sm:self-auto shrink-0">
-                    Full Paper Accepted
-                  </span>
-                </div>
-                <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Tri-class hematological modeling to detect masked microcytosis under normal hemoglobin, using SHAP threshold analysis across a six-model benchmark with stratified 5-fold cross-validation.
-                </p>
-              </div>
-
-              {/* 3. Ethnic Languages in Shared Script (ICERIE 2027) */}
-              <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-                  <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Ethnic Language Identification (ICERIE 2027)
-                  </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 self-start sm:self-auto shrink-0">
-                    Full Paper Accepted
-                  </span>
-                </div>
-                <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Investigating cross-language ambiguity in Bengali script under low-resource conditions, benchmarking four transformer adaptation methods with SHAP and Integrated Gradients subword attribution.
-                </p>
-              </div>
-
-              {/* 4. Authored Companion Book */}
-              <div className="editorial-card p-4 sm:p-4.5 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-                  <h4 className="text-sm font-bold text-[var(--text-main)]">
-                    Compiler Architectonics (Authored Companion Book)
-                  </h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[var(--primary-accent)] border border-[var(--border-subtle)] self-start sm:self-auto shrink-0">
-                    Published Book
-                  </span>
-                </div>
-                <p className="text-sm text-[var(--text-muted)] leading-6">
-                  Illustrated companion book covering compiler design theory, ASTs, and laboratory exercises, freely available online and distributed in print to students.
-                </p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {selectedEngineering.map((project) => <ProjectCard key={project.slug} project={project} />)}
           </div>
         </section>
 
@@ -476,9 +250,6 @@ export default function HomePage() {
         <section id="experience" className="space-y-6 scroll-mt-20" aria-labelledby="exp-heading">
           <div className="border-b border-[var(--border-color)] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
             <div>
-              <span className="text-xs font-semibold text-[var(--primary-accent)] uppercase tracking-wider font-mono">
-                03 / Experience
-              </span>
               <h2
                 id="exp-heading"
                 className="mt-0.5 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]"
@@ -500,9 +271,9 @@ export default function HomePage() {
             <div className="editorial-card p-5 space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
                 <div>
-                  <h4 className="text-base font-bold text-[var(--text-main)]">
+                  <h3 className="text-base font-bold text-[var(--text-main)]">
                     Research Assistant
-                  </h4>
+                  </h3>
                   <p className="text-xs font-medium text-[var(--primary-accent)] flex items-center gap-1 mt-0.5">
                     <Building2 className="w-3.5 h-3.5 shrink-0" />
                     <span>Health Informatics Research Lab</span>
@@ -522,9 +293,9 @@ export default function HomePage() {
             <div className="editorial-card p-5 space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
                 <div>
-                  <h4 className="text-base font-bold text-[var(--text-main)]">
+                  <h3 className="text-base font-bold text-[var(--text-main)]">
                     Junior Developer
-                  </h4>
+                  </h3>
                   <p className="text-xs font-medium text-[var(--primary-accent)] flex items-center gap-1 mt-0.5">
                     <Building2 className="w-3.5 h-3.5 shrink-0" />
                     <span>CSE-Tech</span>

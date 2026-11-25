@@ -32,11 +32,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
             {project.categoryTrack}
           </span>
           <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-[var(--surface-subtle)] text-[var(--text-muted)] border border-[var(--border-color)]">
-            {project.status === "prototype"
-              ? "Research prototype"
-              : project.slug === "computepulse"
-              ? "Hackathon prototype"
-              : "Production platform"}
+            {project.statusLabel}
           </span>
         </div>
 
@@ -120,7 +116,7 @@ export default function ProjectCard({ project, imagePath }: ProjectCardProps) {
               rel="noopener noreferrer"
               className="btn-outline inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--surface)] text-[var(--text-main)]"
             >
-              <span>Live Demo</span>
+              <span>{project.links.demoLabel ?? "Demo"}</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           )}
